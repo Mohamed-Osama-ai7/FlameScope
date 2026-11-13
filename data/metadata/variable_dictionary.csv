@@ -1,0 +1,47 @@
+source_id,source_column,platform_variable,role,unit_as_labelled,platform_unit,mapping_status,value_origin,missing_markers,evidence_reference,notes
+PSI-69,FLEX Test #,run_sequence,identifier,,,MAPPED_WITH_ISSUE,,,,"Sequential PSI row number 1..274 - NOT the report's FLEX test number after #155 (PSI #156 = report FLEX-157). Join to the report on identifier + GMT + values, never on this number."
+PSI-69,FLEX Identifier,run_id,identifier,,,MAPPED_WITH_ISSUE,,,,"'193F001' on PSI #70 and #73 with identical date/GMT but different values; the same duplicate exists in report Table IX (FLEX-070/073) - upstream issue, not a PSI transcription error."
+PSI-69,Test Date,test_date,metadata,M/D/YYYY,ISO date,MAPPED_WITH_ISSUE,,,,Mixed 2- and 4-digit years (50 rows 2-digit). Span 2009-03-05 to 2011-12-08 assuming 20YY.
+PSI-69,Test GMT,test_time_gmt,metadata,H:MM:SS,,MAPPED,,(blank),,1 blank (test 9).
+PSI-69,Fuel,material_or_fuel,condition,,,MAPPED,reported_in_source,,,Heptane (117) / Methanol (157).
+PSI-69,Ambient pressure; mmHg,ambient_pressure,condition,mmHg,mmHg,MAPPED_WITH_ISSUE,reported_in_source,,"NASA/TP-2015-216046 (Dietrich et al. 2015) https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf; Table IX header 'Ambient pressure, mmHg'","Range 0-2319.9. PSI #114 reports 0 mmHg, identical to report Table IX - physically implausible; flag as invalid value."
+PSI-69,O initial ambient composition; mole fraction,ambient_oxygen_mole_fraction,condition,mole fraction,mole_fraction,RESOLVED,reported_in_source,,NASA/TP-2015-216046 (Dietrich et al. 2015) https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf; Table IX header O2; Appendix A.1,Report header O2 ('ambient oxygen mole fraction'). PSI header lost subscript.
+PSI-69,N initial ambient composition; mole fraction,ambient_nitrogen_mole_fraction,condition,mole fraction,mole_fraction,RESOLVED,reported_in_source,,NASA/TP-2015-216046 (Dietrich et al. 2015) https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf; Table IX header N2; Appendix A.1,Report header N2 ('ambient nitrogen mole fraction'). PSI header lost subscript.
+PSI-69,CO initial ambient composition; mole fraction,co2_mole_fraction,condition,mole fraction,mole_fraction,RESOLVED,reported_in_source,,NASA/TP-2015-216046 (Dietrich et al. 2015) https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf; Table IX composition headers O2/N2/CO2/He (p.20); Appendix A.1 (p.19),Appendix A.1: 'CO2-ambient carbon dioxide mole fraction from detailed records of the chamber fill...'. Table IX header CO2. PSI header 'CO' lost the subscript.
+PSI-69,He initial ambient composition; mole fraction,ambient_helium_mole_fraction,condition,mole fraction,mole_fraction,MAPPED,reported_in_source,,NASA/TP-2015-216046 (Dietrich et al. 2015) https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf; Table IX header He,
+PSI-69,Droplet initial diameter; mm,initial_droplet_diameter,condition,mm,mm,MAPPED,reported_in_source,– (0x96),NASA/TP-2015-216046 (Dietrich et al. 2015) https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf; Appendix A.1 'Actual D0'; sec. 3.1.2 (p.8) droplet size uncertainty +/-50 um,D0 at igniter-on. 6 rows use en dash (0x96) as missing marker (same in report). Report states droplet size uncertainty +/-50 um.
+PSI-69,Visible flame extinction diameter; mm,extinction_diameter,outcome,mm,mm,MAPPED,reported_in_source,– (0x96),NASA/TP-2015-216046 (Dietrich et al. 2015) https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf; Appendix A.1,Report: '-' = no extinction (burned to completion or disruption). Some values extrapolated when droplet left HiBMs FOV; zeros present - meaning unconfirmed.
+PSI-69,Burning rate; mm,burning_rate_constant_mm2_s,outcome,mm,mm^2/s,RESOLVED,reported_in_source,(blank),NASA/TP-2015-216046 (Dietrich et al. 2015) https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf; Appendix A.1 (p.19) and Table IX header (p.20),Appendix A.1 defines Burning rate as 'average burning rate constant from a linear fit of the droplet diameter squared versus time from shortly after ignition to extinction'; Table IX unit mm2/s. PSI header 'mm' lost '2/s'. REPORTED value (FLEX team fit) - not a FlameScope calculation; fit window per test described in report notes; no per-value uncertainty given.
+PSI-69,Burn time; s,burn_time,outcome,s,s,MAPPED_WITH_ISSUE,reported_in_source,~ prefix,,2 approximate values ('~6' '~9') - keep as approximate flag; do not parse as exact.
+PSI-69,Test end,test_end_mode,outcome,,,MAPPED,reported_in_source,,,Extinction 186 / Disruption 61 / Completion 27. Disruption runs violate d^2-law assumptions.
+PSI-25,PI,principal_investigator_group,metadata,,,MAPPED,,,,6 PI groups; different experiment designs within BASS-II.
+PSI-25,Test #,run_id,identifier,,,MAPPED,,,,Unique B1..
+PSI-25,Date,test_date,metadata,M/D/YYYY,ISO date,MAPPED,,,,
+PSI-25,GMT,test_day_of_year_gmt,metadata,,,AMBIGUOUS,,,,Numeric values 100-175: appear to be GMT day-of-year not clock time - unconfirmed.
+PSI-25,Sample #,sample_id,identifier,,,MAPPED,,,,
+PSI-25,Fuel Sample Material,material_or_fuel,condition,free text,,NEEDS_PARSING,reported_in_source,,,51 free-text descriptions mixing material (PMMA SIBAL rods films) geometry and ignition notes. Requires manual curation into material + geometry fields.
+PSI-25,Flow restrictor,flow_restrictor_setting,condition,,,MAPPED,reported_in_source,,,Values 0/1/2 (setting code; not a velocity).
+PSI-25,Fan display,fan_display_reading,condition,display units,,NOT_MAPPED,reported_in_source,,,Instrument display readings; multiple values per cell (sequence during test). Not a flow velocity; conversion to forced_flow_velocity requires calibration from BASS-II documentation.
+PSI-25,Air display,air_display_reading,condition,display units,,NOT_MAPPED,reported_in_source,,,Multiple values per cell. Not a flow velocity without calibration.
+PSI-25,Radiometer gain   (1000   250   50   10),radiometer_gain,metadata,,,MAPPED,,,,May list multiple gains.
+PSI-25,Total Frames Shot,frame_count,metadata,,,MAPPED_WITH_ISSUE,,,,6 free-text entries (e.g. '10 postburn only').
+PSI-25,Calibrated  initial O2 % by vol ,ambient_oxygen_mole_fraction,condition,% by volume,mole_fraction,MAPPED,reported_in_source,,,Explicit conversion %vol/100 -> mole fraction (ideal-gas assumption) must be applied and recorded.
+PSI-25,Calibrated final O2 % by vol,final_oxygen_volume_percent,outcome,% by volume,,MAPPED,reported_in_source,none,,
+PSI-25,Initial CO2 % by vol,initial_co2_volume_percent,condition,% by volume,,MAPPED,reported_in_source,none,,
+PSI-25,Final CO2 % by vol,final_co2_volume_percent,outcome,% by volume,,MAPPED,reported_in_source,none,,
+PSI-25,Initial CO (ppm),initial_co_ppm,condition,ppm,,MAPPED_WITH_ISSUE,reported_in_source,none;OR,,13 negative values (sensor offset?) and 'OR' (over range?) - keep raw; flag.
+PSI-25,Final CO (ppm),final_co_ppm,outcome,ppm,,MAPPED_WITH_ISSUE,reported_in_source,none;OR;over;>500,,Censored values ('>500' 'over' 'OR') must be treated as right-censored not numeric.
+PSI-25,(no column),flame_spread_rate,outcome,,,NOT_PRESENT,reported_in_source,,,The BASS-II experimental table contains NO flame spread rate. Outcomes must come from other PSI-25 files (videos/reports; ~275 GB total) - not downloaded.
+PSI-98,Sample Number ,sample_id,identifier,,,QUARANTINED,,,,Source QUARANTINED (metadata conflict). Rows F1C1/F1C2 F2C1/F2C2 are pre-test flow visualisation not burns.
+PSI-98,Material,material_or_fuel,condition,,,QUARANTINED,reported_in_source,(blank),,'SIBAL Fabric' for S1/S2 - consistent with Saffire-1 description in PSI approach text.
+PSI-98,Sample Thickness (cm),sample_thickness,condition,cm,,QUARANTINED,reported_in_source,,,0.37 cm.
+PSI-98,Sample Length (cm),sample_length,condition,cm,,QUARANTINED,reported_in_source,,,40.6 cm; PSI approach text says ~0.94 m long x 0.4 m wide - length/width appear swapped relative to approach text. Unconfirmed.
+PSI-98,Sample Width (cm),sample_width,condition,cm,,QUARANTINED,reported_in_source,,,94 cm (see length note).
+PSI-98,Air Flow (cm/s),forced_flow_velocity,condition,cm/s,cm/s,QUARANTINED,reported_in_source,,,20 cm/s.
+PSI-98,Percent O2,ambient_oxygen_volume_percent,condition,%,,QUARANTINED,reported_in_source,,,Text ranges ('21.5 - 21.7' '~ 21.5') - not numeric.
+PSI-98,Ignition Power (W),ignition_power,condition,W,,QUARANTINED,reported_in_source,,,
+PSI-98,Ignition Time (s),ignition_time,condition,s,,QUARANTINED,reported_in_source,,,
+PSI-98,Burn Time (s),burn_time,outcome,s,s,QUARANTINED,reported_in_source,,,420 s / 70 s.
+PSI-98,Flow Direction ,flow_direction,condition,,,QUARANTINED,reported_in_source,,,Concurrent / Opposed - distinct flame-spread modes; never pool.
+PSI-98,Camera 1,video_reference,metadata,,,QUARANTINED,,,,
+PSI-98,Camera 2,video_reference,metadata,,,QUARANTINED,,,,

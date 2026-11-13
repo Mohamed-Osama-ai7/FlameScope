@@ -1,0 +1,1408 @@
+{
+ "source": {
+  "report": "NASA/TP-2015-216046",
+  "pdf_sha256": "b4f6ca983e2792c33a0b92220a791a818f426bb635b94f7fd33dc8c9c471e79d",
+  "url": "https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf",
+  "extraction": "pypdf text extraction of Appendix B figure captions"
+ },
+ "unmatched_table_ix_rows": [
+  {
+   "flex": 216,
+   "identifier": "N03H201",
+   "date": "9/1/11"
+  },
+  {
+   "flex": 230,
+   "identifier": "H01H103",
+   "date": "9/13/11"
+  }
+ ],
+ "flex_numbers_without_caption": [
+  156,
+  205,
+  213,
+  228
+ ],
+ "captions": {
+  "FLEX-001": {
+   "figure": 5,
+   "pdf_page": 35,
+   "caption": "Free-floating methanol droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. This was the first FLEX test. The droplet remained in the fields of view (FOVs) of all the cameras for the entire test. Because the Low Light Level Ultra-Violet (LLUV) camera settings were not optimal, the LLUV data are not reliable. The droplet probably disrupted at the end of the test coincident with flame extinction. The igniters were too bright and overexposed the High-Bit-Depth Multispectral (HiBMs) images during ignition, so the droplet diameter could not be measured accurately."
+  },
+  "FLEX-002": {
+   "figure": 6,
+   "pdf_page": 36,
+   "caption": "Free-floating methanol droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet remained in the fields of view (FOVs) of all the cameras for the entire test and extinguished diffusively. Because this was a calibration run, the Low Light Level Ultra-Violet (LLUV) setting was not optimal. Consequently, the LLUV flame data are not reliable, especially near the end of the test. The droplet did not disrupt, but clearly something happened to the flame near the end of the test."
+  },
+  "FLEX-003": {
+   "figure": 7,
+   "pdf_page": 37,
+   "caption": "Free-floating methanol droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet remained in the fields of view (FOVs) of all the cameras for the entire test. Because this was a calibration run, the Low Light Level Ultra-Violet (LLUV) setting was not optimal as indicated by the flame being very difficult to see and measure (especially near the end of the test)."
+  },
+  "FLEX-004": {
+   "figure": 8,
+   "pdf_page": 38,
+   "caption": "Free-floating methanol droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet drifted south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition, leaving the HiBMs FOV one-third of the way through the burn. There was some evidence of flame disruption before the flame extinguished, but it was difficult to judge from the color camera images. This was a calibration test point. The igniter overwhelmed the HiBMs and made measuring the droplet impossible until the igniters moved out of the FOV. The Low Light Level Ultra-Violet (LLUV) setting was not optimal, and the flame nearly disappeared from the LLUV halfway through the burn, coincident with when the color camera showed a noticeable change in the flame behavior."
+  },
+  "FLEX-005": {
+   "figure": 9,
+   "pdf_page": 39,
+   "caption": "Free-floating methanol droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet remained in the fields of view (FOVs) of all the cameras. Because this was a calibration run, the Low Light Level Ultra-Violet (LLUV) settings were not optimal. Consequently, halfway through the burn the flame became undetectable in the LLUV. There was no evidence of disruptive burning near extinction. The flame, however, seemed to shrink quickly after ignition—maybe because of a small bubble burst."
+  },
+  "FLEX-006": {
+   "figure": 10,
+   "pdf_page": 40,
+   "caption": "Free-floating methanol droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet was misshapen on the needles before it stretched and deployed. Ignition imparted a significant drift velocity on the droplet to the east. This could be due to a small air bubble that distorted the droplet and then popped when the igniters turned on. The droplet drifted out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) and then drifted back in the FOV. The flame extinguished without disruption. This was a calibration test. Because the Low Light Level Ultra-Violet (LLUV) settings were not optimized for these tests, late in the flame lifetime the flame was not discernable in the LLUV."
+  },
+  "FLEX-007": {
+   "figure": 11,
+   "pdf_page": 41,
+   "caption": "Free-floating heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet deployed and ignited with little residual velocity and remained within the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. The droplet burned with a very luminous flame that obscured the droplet in the HiBMs for a large portion of the test. The droplet burned to a small droplet size and then disrupted. The last part of the droplet history was obscured by the luminous flame."
+  },
+  "FLEX-008": {
+   "figure": 12,
+   "pdf_page": 42,
+   "caption": "Free-floating heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet drifted southeast out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) a few seconds after the igniter was withdrawn. Significant sooting was apparent in the HiBMs. The droplet also drifted out of the color camera FOV. It remained in the Low Light Level Ultra- Violet (LLUV) FOV for the entire burn. There is a lot of noise in the droplet diameter data because of the soot, but the LLUV showed that the droplet disrupted at the end of the burn."
+  },
+  "FLEX-009": {
+   "figure": 13,
+   "pdf_page": 43,
+   "caption": "Free-floating heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The deployment was very poor, and the droplet drifted out of the fields of view (FOVs) of all the cameras very shortly after deployment and ignition. No Image Processing and Storage Unit (IPSU) data were downlinked for this test. The color camera analysis was from the downlinked video."
+  },
+  "FLEX-010": {
+   "figure": 14,
+   "pdf_page": 44,
+   "caption": "Free-floating methanol droplet burning in a 0.21/0.09/0.70 O2/N2/CO2, 3.0-atm ambient environment. The droplet drifted southeast after deployment, hit the igniter, changed direction, and quickly moved west out of the fields of view (FOVs) of the High-Bit-Depth Multispectral (HiBMs), Low Light Level Ultra-Violet (LLUV), and color camera. The HiBMs produced a saturated image that influenced the droplet size measurement. In addition, the HiBMs backlight was too strong, and the droplet size measurement was a function of which “quad-slice” the droplet was in the HiBMs image. Because the droplet was in the HiBMs FOV for only a short time, no burning rate constant or extinction droplet diameter is reported."
+  },
+  "FLEX-011": {
+   "figure": 15,
+   "pdf_page": 45,
+   "caption": "Free-floating methanol droplet burning in a 0.21/0.09/0.70 O2/N2/CO2, 3.0-atm ambient environment. The droplet drifted southeast in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment, hit the lower igniter, and then drifted very quickly to the east and out of the HiBMs FOV. The HiBMs and illumination settings were not correct, so the igniters obscured the droplet. Also the background was near saturation, so the droplet size is a function of the “quadrant slice” of the HiBMs image that it was in. The droplet drifted out of the Low Light Level Ultra-Violet (LLUV) FOV, but it remained in the color camera FOV most of the time."
+  },
+  "FLEX-012": {
+   "figure": 16,
+   "pdf_page": 46,
+   "caption": "Free-floating heptane droplet burning in a 0.21/0.09/0.70 O2/N2/CO2, 3.0-atm ambient environment. The deployment was very poor. The droplet drifted toward the upper igniter in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment, hooked around the igniter, and got hit by the igniter when the igniter was withdrawn. That propelled the droplet rapidly out of the HiBMs FOV. The droplet left the FOVs of all the cameras before burning to a presumed extinction. The flame was very luminous and yellow, with significant sooting present in the HiBMs."
+  },
+  "FLEX-013": {
+   "figure": 17,
+   "pdf_page": 47,
+   "caption": "Free-floating methanol droplet burning in a 0.21/0.09/0.70 O2/N2/CO2, 3.0-atm ambient environment. The droplet drifted west in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), hit the igniter, drifted southeast after the igniter was withdrawn, and left the FOV. It reappeared for a short time before disappearing again. The glow from the igniter influenced the droplet size measurement early, the HiBMs and illumination package settings were not good enough for reliable droplet size measurements. Because the droplet was not in the HiBMs FOV for enough of the test, no extinction droplet diameter is reported. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment."
+  },
+  "FLEX-014": {
+   "figure": 18,
+   "pdf_page": 48,
+   "caption": "Free-floating methanol droplet burning in a 0.21/0.09/0.70 O2/N2/CO2, 3.0-atm ambient environment. The droplet drifted significantly to the northwest in the High-Bit- Depth Multispectral (HiBMs) after deployment and ignition (ignition did not change the motion visually). Then the droplet quickly drifted out of the field of view (FOV) of the HiBMs. The color camera Image Processing and Storage Unit (IPSU) did not record any images for this test. The droplet also drifted north out of the Low Light Level Ultra-Violet (LLUV) FOV before the flame extinguished. Because the droplet was within the HiBMs FOV for only a limited time, no burning rate or extinction droplet diameter is reported."
+  },
+  "FLEX-015": {
+   "figure": 19,
+   "pdf_page": 49,
+   "caption": "Free-floating methanol droplet burning in a 0.21/0.09/0.70 O2/N2/CO2, 3.0-atm ambient environment. After ignition, the droplet quickly drifted north and out of the High-Bit- Depth Multispectral (HiBMs) field of view (FOV). Because the droplet was in the HiBMs FOV for only a short time, no burning rate constant is reported. The droplet did not drift out of the FOV of the Low Light Level Ultra-Violet (LLUV), but the Image Processing and Storage Unit (IPSU) data for the LLUV ended before the flame extinguished. The droplet drifted northeast and out of the color camera FOV before the flame extinguished. In the color camera view, the flame was visibly brighter in the direction of the translation, an indication that the convective motion was impacting the flame behavior significantly."
+  },
+  "FLEX-016": {
+   "figure": 20,
+   "pdf_page": 50,
+   "caption": "Free-floating methanol droplet burning in a 0.21/0.09/0.70 O2/N2/CO2, 3.0-atm ambient environment. The droplet drifted and hit the igniter before the igniter was withdrawn. Then the droplet drifted slowly west in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), but it remained in the FOVs of all the cameras for the entire test. There was significant translation in the HiBMs FOV during the test."
+  },
+  "FLEX-017": {
+   "figure": 21,
+   "pdf_page": 51,
+   "caption": "Free-floating methanol droplet burning in a 0.21/0.09/0.70 O2/N2/CO2, 3.0-atm ambient environment. The droplet drifted east in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment, hit the igniter, and then drifted north. The droplet immediately began to grow, disrupted, and finally shattered, causing the flame to extinguish. This behavior was probably due to a gas bubble being trapped in the droplet after deployment."
+  },
+  "FLEX-018": {
+   "figure": 22,
+   "pdf_page": 52,
+   "caption": "Free-floating heptane droplet burning in a 0.21/0.09/0.70 O2/N2/CO2, 2.0-atm ambient environment. There was a luminous yellow flame immediately after ignition, with the High-Bit- Depth Multispectral (HiBMs) view showing significant soot formation. Then the luminous flame disappeared, and a dim blue flame surrounded the droplet. The flame oscillated and then appeared to extinguish in both the Low Light Level Ultra-Violet (LLUV) and color camera fields of view (FOVs). However, the droplet continued to vaporize vigorously, and the radiometer did not settle to its baseline value. There was “hazing” around the droplet in the HiBMs FOV during combustion, almost like there was significant internal liquid motion. The droplet disrupted after it drifted out of the HiBMs FOV. There probably was cool flame burning after the visible flame extinguished."
+  },
+  "FLEX-019": {
+   "figure": 23,
+   "pdf_page": 53,
+   "caption": "Free-floating heptane droplet burning in a 0.34/0.66 O2/N2, 0.70-atm ambient environment. The droplet was almost motionless after deployment, but after the igniters began to heat, a large impulse moved the droplet southwest and quickly out of High-Bit-Depth Multispectral (HiBMs) field of view (FOV). The droplet was nearly out of the FOV when the igniters began to move away from the droplet. There was significant sooting with large aggregates, so the data from this test are not reliable."
+  },
+  "FLEX-020": {
+   "figure": 24,
+   "pdf_page": 54,
+   "caption": "Free-floating methanol droplet burning in a 0.34/0.66 O2/N2, 0.70-atm ambient environment. The droplet drifted south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition. It was in the HiBMs FOV for only a short time, and it drifted quickly out of the color camera FOV. It remained in the Low Light Level Ultra-Violet (LLUV) FOV for the entire burn and seemed to burn to either a very small extinction droplet size or completion."
+  },
+  "FLEX-021": {
+   "figure": 25,
+   "pdf_page": 55,
+   "caption": "Free-floating methanol droplet burning in a 0.34/0.66 O2/N2, 0.70-atm ambient environment. This was the first successful test after switching from the high-CO2, high- pressure ambient environments, where we had significant deployment problems. The droplet had a high burning rate and remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. Before the flame extinguished, the droplet distorted. Eventually, the droplet shattered coincident with flame extinction."
+  },
+  "FLEX-022": {
+   "figure": 26,
+   "pdf_page": 56,
+   "caption": "Free-floating methanol droplet burning in a 0.34/0.66 O2/N2, 0.7-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test and drifted slowly south-southeast during the test. The droplet began to change shape, and it became almost oblong with a pointed end (shown in the video) before disrupting. The disruption was coincident with flame extinction."
+  },
+  "FLEX-023": {
+   "figure": 27,
+   "pdf_page": 57,
+   "caption": "Free-floating heptane droplet burning in a 0.37/0.66 O2/N2, 0.70-atm ambient environment. The droplet drifted south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition. It drifted partially out of the FOV, but then it drifted back in. Throughout the test, there was significant sooting with large agglomerates."
+  },
+  "FLEX-024": {
+   "figure": 28,
+   "pdf_page": 58,
+   "caption": "Free-floating heptane droplet burning in a 0.34/0.66 O2/N2, 0.70-atm ambient environment. The High-Bit-Depth Multispectral (HiBMs) Image Processing and Storage Unit (IPSU) did not record any images for this test. There appeared to be a needle fire. The color camera and Low Light Level Ultra-Violet (LLUV) IPSUs stopped recording before the test was complete. In addition, the LLUV images were recorded at 8-bit depth (instead of 12-bit depth), which resulted in more uncertainty in the LLUV flame size measurements."
+  },
+  "FLEX-025": {
+   "figure": 29,
+   "pdf_page": 59,
+   "caption": "Free-floating methanol droplet burning in a 0.30/0.70 O2/N2, 0.7-atm ambient environment. The droplet drifted south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition, leaving the FOV halfway through the burn before burning to near completion."
+  },
+  "FLEX-026": {
+   "figure": 30,
+   "pdf_page": 60,
+   "caption": "Free-floating methanol droplet burning in a 0.30/0.80 O2/N2, 0.70-atm ambient environment. The droplet drifted northwest out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) about halfway through the burn. The droplet appeared to burn to completion or a very small size before it disrupted, causing the flame to extinguish."
+  },
+  "FLEX-027": {
+   "figure": 31,
+   "pdf_page": 61,
+   "caption": "Free-floating heptane droplet burning in a 0.30/0.70 O2/N2, 0.7-atm ambient environment. The droplet drifted west in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition, and it drifted out of the FOV two-thirds of the way through the test. Initially luminous yellow, the flame dimmed to blue relatively quickly about one-third of the way through the burn. There was significant sooting with large soot agglomerates present throughout the burn. The droplet disrupted coincident with flame extinction."
+  },
+  "FLEX-028": {
+   "figure": 32,
+   "pdf_page": 62,
+   "caption": "Free-floating heptane droplet burning in a 0.30/0.70 O2/N2, 0.7-atm ambient environment. The droplet drifted north in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition and out of the FOV approximately two-thirds of the way through the burn. A bright, luminous flame persisted throughout the droplet lifetime. There was significant sooting with large soot agglomerates present throughout the burn. The droplet disrupted coincident with flame extinction."
+  },
+  "FLEX-029": {
+   "figure": 33,
+   "pdf_page": 63,
+   "caption": "Free-floating methanol droplet burning in a 0.360/0.80 O2/N2, 1.0-atm ambient environment. The droplet drifted south out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) about one-third of the way through the test. The droplet also drifted out of the color camera FOV before the flame extinguished. The droplet remained in the Low Light Level Ultra-Violet (LLUV) FOV for the entire test and the droplet did not appear to disrupt when the flame extinguished. From the extrapolated droplet history and the duration of the burn, the droplet burned to completion or to a very small droplet size."
+  },
+  "FLEX-030": {
+   "figure": 34,
+   "pdf_page": 64,
+   "caption": "Free-floating methanol droplet burning in a 0.30/0.70 O2/N2, 1.0-atm ambient environment. The droplet remained in the fields of view (FOVs) of all the cameras for the entire test. The droplet drifted south, east, and then north in the High-Bit-Depth Multispectral (HiBMs) FOV. Coincident with flame extinction, the droplet became almost football shaped. The oblong- shaped droplet with a pointed end remained stationary for several seconds until the recording ended. The actual extinction diameter is reported, but it may be influenced by the shape change."
+  },
+  "FLEX-031": {
+   "figure": 35,
+   "pdf_page": 65,
+   "caption": "Free-floating heptane droplet burning in a 0.30/0.70 O2/N2, 1.0-atm ambient environment. The droplet drifted south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) and left the FOV shortly after the igniter was withdrawn. There was significant sooting, and a large soot shell surrounded the droplet. The droplet drifted out of the color camera FOV, but it remained in the Low Light Level Ultra-Violet (LLUV) FOV. The droplet burned to disruption at a small size."
+  },
+  "FLEX-032": {
+   "figure": 36,
+   "pdf_page": 66,
+   "caption": "Free-floating heptane droplet burning in a 0.30/0.70 O2/N2, 1.0-atm ambient environment. There was significant sooting with large agglomerates throughout the test. A very luminous flame persisted throughout the droplet lifetime until disruptive extinction. The droplet drifted northwest out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) one-third of the way through the test. It remained in the Low Light Level Ultra-Violet (LLUV) and color camera FOVs for the entire test. The significant sooting made accurate measurement of the droplet size difficult."
+  },
+  "FLEX-033": {
+   "figure": 37,
+   "pdf_page": 67,
+   "caption": "Free-floating methanol droplet burning in a 0.21/0.79 O2/N2, 1.0-atm ambient environment. The droplet drifted slightly north and then east in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). It eventually left the HiBMs FOV, but that was well after the flame extinguished. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment."
+  },
+  "FLEX-034": {
+   "figure": 38,
+   "pdf_page": 68,
+   "caption": "Free-floating methanol droplet burning in a cabin air (0.21/0.79 O2/N2, 1.0-atm) ambient environment. The droplet was almost motionless after deployment and ignition. It slowly drifted north in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), then began to move north much quicker and out of the HiBMs FOV about halfway through the test. The color camera Image Processing and Storage Unit (IPSU) did not record any images for this test. It is not clear from the Low Light Level Ultra-Violet (LLUV) whether the droplet disrupted coincident with flame extinction. Because the droplet was out of the HiBMs FOV for a long time near visible flame extinction, no extinction droplet diameter is reported."
+  },
+  "FLEX-035": {
+   "figure": 39,
+   "pdf_page": 69,
+   "caption": "Free-floating heptane droplet in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test including a long time after the visible flame extinguished. The flame oscillated before the visible flame extinguished, and this was apparent in both the Low Light Level Ultra-Violet (LLUV) and color camera. After the flame extinguished, the droplet vaporized very vigorously with droplet-diameter-squared versus time behavior that was nearly perfectly linear. The vaporization rate was only slightly lower than the burning rate constant before the flame extinguished. The droplet vaporization rate then plateaued coincident with the formation of a very large vapor cloud. This behavior is indicative of cool flame burning and extinction."
+  },
+  "FLEX-036": {
+   "figure": 40,
+   "pdf_page": 70,
+   "caption": "Free-floating methanol droplet burning in a cabin air (0.21/0.79 O2/N2), 0.70-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire burn and for several seconds after the flame extinguished. The droplet did not distort or disrupt."
+  },
+  "FLEX-037": {
+   "figure": 41,
+   "pdf_page": 71,
+   "caption": "Fiber-supported methanol droplet translating approximately 3 mm/s and burning in a 0.34/0.66 O2/N2, 0.7-atm ambient environment. The droplet remained within the High-Bit- Depth Multispectral (HiBMs) field of view (FOV) for the entire test. After ignition and the start of translation, there was significant transverse motion. There was a lot of scatter in the droplet history because of the motion of the droplet on the fiber. The color camera showed a bright flame with a lot of sparklers throughout the burn. The transverse droplet motion became more severe toward the end of the test, with the droplet deforming. The flame extinguished when a complete disruption tore the droplet off the fiber."
+  },
+  "FLEX-038": {
+   "figure": 42,
+   "pdf_page": 72,
+   "caption": "Fiber-supported methanol droplet translating and burning in a 0.34/0.66 O2/N2, 0.7-atm ambient environment. The burn was very smooth, with little motion of the droplet relative to the fiber for most of the test. About 80 percent of the way through the burn, the droplet began to vibrate transversely on the fiber. The vibrations grew in magnitude until the droplet disrupted and disintegrated, extinguishing the flame and leaving no fuel droplet on the fiber. The Low Light Level Ultra-Violet (LLUV) Image Processing and Storage Unit (IPSU) stopped recording for about one-half of the test (in the middle)."
+  },
+  "FLEX-039": {
+   "figure": 43,
+   "pdf_page": 73,
+   "caption": "Fiber-supported heptane droplet translating 3 mm/s and burning in a 0.34/0.66 O2/N2, 0.70-atm ambient environment. There were significant transverse and axial oscillations on the fiber during the entire burn, but the droplet remained within the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. There also was significant sooting with large aggregates throughout the test. The sooting was so severe that the threshold intensity for droplet discrimination had to be reduced to get reasonable droplet size measurements. The flame was bright yellow and very luminous throughout the entire test. A disruption dislocated the droplet from fiber coincident with flame extinction."
+  },
+  "FLEX-040": {
+   "figure": 44,
+   "pdf_page": 74,
+   "caption": "Fiber-supported methanol droplet translating 3 mm/s and burning in a 0.30/0.70 O2/N2, 0.7-atm ambient environment. The droplet had some transverse oscillations after ignition, but they diminished relatively quickly. During and after translation, the droplet oscillated axially. It moved east into and partially out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). Then the droplet stopped moving both transversely and axially and burned smoothly— eventually shrinking until it was fully in the HiBMs FOV. Near the end of the test, the droplet again began to oscillate on the fiber and disrupted, dislodging from the fiber and causing the flame to extinguish."
+  },
+  "FLEX-041": {
+   "figure": 45,
+   "pdf_page": 75,
+   "caption": "Fiber-supported methanol droplet translating 3 mm/s and burning in a 0.30/0.70 O2/N2, 0.7-atm ambient environment. The droplet had significant axial oscillations during and after the start and stop of fiber translation. The droplet drifted in and partially out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). At the end of the test, the droplet swelled, disrupted, and became dislodged from the fiber coincident with flame extinction. The dislodged droplet did burn as it drifted away. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment."
+  },
+  "FLEX-042": {
+   "figure": 46,
+   "pdf_page": 76,
+   "caption": "Fiber-supported heptane droplet burning in a 0.30/0.70 O2/N2, 0.70-atm ambient environment. The droplet was sooted relatively heavily immediately after ignition. Shortly after ignition, the droplet began to distort severely, periodically expelling small droplets of fuel that continued to burn. A large disruption completely dislodged the droplet from the fiber. Afterward, the droplet drifted north in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), then south (after another disruption). It then burned relatively cleanly to disruption at a small size. The burning rate constant was that during the relatively clean period after the droplet was dislodged from the fiber. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment."
+  },
+  "FLEX-043": {
+   "figure": 47,
+   "pdf_page": 77,
+   "caption": "Fiber-supported heptane droplet translating 3 mm/s and burning in a 0.30/0.70 O2/N2, 0.7-atm ambient environment. There was significant sooting, but the droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test until it disrupted and dislodged from the fiber. There was significant oscillatory axial motion on the fiber during the entire test."
+  },
+  "FLEX-044": {
+   "figure": 48,
+   "pdf_page": 78,
+   "caption": "Fiber-supported methanol droplet translating 3 mm/s and burning in a 0.30/0.70 O2/N2, 1.0-atm ambient environment. Transverse motion that began after deployment persisted throughout the test. In addition, there was significant oscillatory axial motion during the translation that persisted after the fiber stopped translating. The droplet drifted axially out of the High- Bit-Depth Multispectral (HiBMs) field of view (FOV) about one-third of the way through the burn. Significant “sparkling” was evident in the color camera but was not visible in the HiBMs or Low Light Level Ultra-Violet (LLUV). The droplet disrupted and dislodged from the fiber coincident with flame extinction."
+  },
+  "FLEX-045": {
+   "figure": 49,
+   "pdf_page": 79,
+   "caption": "Fiber-supported methanol droplet translating 3 mm/s and burning in a 0.30/0.70 O2/N2, 1.0-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. There was some axial and transverse droplet motion from deployment until the end of the test, and there was some droplet swelling or shape change before disruption. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment, so the extinction droplet diameter is that when the droplet disrupted and became dislodged from the fiber coincident with flame extinction."
+  },
+  "FLEX-046": {
+   "figure": 50,
+   "pdf_page": 80,
+   "caption": "Fiber-supported methanol droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. There was significant oscillatory axial motion during the most of the test, but at the very end, the droplet became stationary and there was some deformation, growth, and shape change. A small disruption occurred coincident with flame extinction."
+  },
+  "FLEX-047": {
+   "figure": 51,
+   "pdf_page": 81,
+   "caption": "Free-floating heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet drifted east out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) about halfway through the test. The droplet oscillated for several seconds before the droplet left the FOVs of all the cameras. It left the Low Light Level Ultra-Violet (LLUV) FOV last, oscillating as it translated south out of the FOV. The radiometer showed that the flame persisted even after the droplet left the FOV. Extrapolating the burning history to when the radiometer indicated extinction (with large error bars) showed that the droplet burned nearly to extinction. There was no evidence of disruptive burning in any of the camera views. The color camera did not capture the flame history correctly because it did not zoom out."
+  },
+  "FLEX-048": {
+   "figure": 52,
+   "pdf_page": 82,
+   "caption": "Fiber-supported methanol droplet translating 3 mm/s and burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet drifted east after the start of translation and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) about one-fifth of the way through the test. The flame remained within the FOVs of the Low Light Level Ultra-Violet (LLUV) and color camera for the entire test. There was disruptive burning at the end of the test."
+  },
+  "FLEX-049": {
+   "figure": 53,
+   "pdf_page": 83,
+   "caption": "Fiber-supported heptane droplet translating 3 mm/s and burning in a cabin air (0.21/0.79 O2/N2), 1-atm ambient environment. The High-Bit-Depth Multispectral (HiBMs) Image Processing and Storage Unit (IPSU) stopped recording for a few seconds, which resulted in a gap in the droplet history. The droplet oscillated on the fiber throughout the test, with the amplitude and frequency changing. There also was some unusual gas-phase recirculation evident from soot particle motion. The droplet vaporized vigorously after the visible flame extinguished, and a large vapor cloud formed near the end of the recording period. This is evidence of cool flame burning and extinction following visible flame extinction."
+  },
+  "FLEX-050": {
+   "figure": 54,
+   "pdf_page": 84,
+   "caption": "Fiber-supported heptane droplet translating 3 mm/s and burning in a cabin air (0.21/0.79 O2/N2), 1-atm ambient environment. There were moderate transverse oscillations on the fiber throughout the test, and unique circulation patterns in the gas phase were evident from the soot motion. The droplet continued to vaporize linearly after the visible flame extinguished, and a large vapor cloud formed nearly coincident with a plateau in the droplet history. This is evidence of cool flame burning and extinction following visible flame extinction."
+  },
+  "FLEX-051": {
+   "figure": 55,
+   "pdf_page": 85,
+   "caption": "Fiber-supported heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test, and it burned to completion. The flame was very luminous flame initially, but it disappeared abruptly halfway through the burn. The droplet had significant transverse oscillations on the fiber, but it never dislodged."
+  },
+  "FLEX-052": {
+   "figure": 56,
+   "pdf_page": 86,
+   "caption": "Fiber-supported heptane droplet translating 3 mm/s and burning in a 0.30/0.70 O2/N2, 1.0-atm ambient environment. The droplet oscillated significantly on the fiber throughout the burn. There also was significant sooting, with large agglomerates stuck to the fiber (which created scatter in the droplet history). The droplet drifted partially out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for a short time before moving back in. Late in the test, significant oscillations, shape changes, and ejection of material from the droplet ended with a disruption."
+  },
+  "FLEX-053": {
+   "figure": 57,
+   "pdf_page": 87,
+   "caption": "Fiber-supported heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. There were no High-Bit-Depth Multispectral (HiBMs) data for this test. There was poor alignment between the needle and the droplet, and the droplet did not deploy on the fiber. It drifted north in the color camera field of view (FOV) after deployment and ignition and out of the FOV before the end of the test. However, the droplet remained in the Low Light Level Ultra-Violet (LLUV) FOV for the entire test. The discrepancy in the flame size between the LLUV and color camera was due to the flame being much brighter at the leading edge than at the trailing edge, which resulted in some of the flame being cropped from the color camera images during analysis."
+  },
+  "FLEX-054": {
+   "figure": 58,
+   "pdf_page": 88,
+   "caption": "Free-floating methanol droplet burning in a 0.20/0.80 O2/N2, 0.7-atm ambient environment. The droplet had almost no residual motion after ignition. About halfway through the test, the droplet began to move abruptly north-northeast and then quickly changed direction to the northeast. The droplet left the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after the second change in direction. The color camera views indicate that there may have been some small gas bubbles in the droplet. There also was some distortion in the droplet history right before the droplet changed direction. This could have been due to the expanding gas bubbles distorting the droplet, then bursting and imparting a momentum to the droplet. The burning rate constant and flame standoff data are for the portion of the test before the disruption and change in direction. Because the droplet was in the HiBMs FOV for only a limited time and because there were disruptions in the droplet during the burn, no extinction droplet diameter is reported."
+  },
+  "FLEX-055": {
+   "figure": 59,
+   "pdf_page": 89,
+   "caption": "Fiber-supported methanol droplet translating 3 mm/s and burning in a 0.20/0.80 O2/N2, 0.7-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. After the start of translation, the droplet oscillated rapidly between the spots where the flame impinged on the fiber. The periodic noise in the droplet history was caused by the oscillation, which stopped approximately halfway through the test. The droplet then grew and had a small disruption (coincident with flame extinction) that left a small residual droplet on the fiber."
+  },
+  "FLEX-056": {
+   "figure": 60,
+   "pdf_page": 90,
+   "caption": "Free-floating heptane droplet burning in a 0.20/0.80 O2/N2, 0.70-atm ambient environment. The droplet drifted east after ignition and left the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) shortly after the visible flame extinguished. The droplet reentered the HiBMs FOV from the east a few seconds prior to the stop of video recording. A vapor cloud formed in the color camera view approximately 20 s after the visible flame extinguished. It is not clear whether cool flame burning and extinction occurred for this test."
+  },
+  "FLEX-057": {
+   "figure": 61,
+   "pdf_page": 91,
+   "caption": "Fiber-supported heptane droplet translating 3 mm/s and burning in a 0.20/0.80 O2/N2, 0.70-atm ambient environment. There were moderate transverse and axial oscillations on the fiber after deployment, during the entire visible flame, and after the visible flame extinguished. The flame extinguished after the translation stopped, with the trailing edge of the flame visibly weaker and extinguishing first. There were unusual, recirculating flow patterns in the High-Bit- Depth Multispectral (HiBMs) fuel from soot that moved toward the droplet, accelerated circumferentially in a short arc, and then moved radially toward the flame and back again. A small vapor cloud formed in the color camera view approximately 20 s after the visible flame extinguished. It is not clear whether cool flame burning and extinction was present in this test."
+  },
+  "FLEX-058": {
+   "figure": 62,
+   "pdf_page": 92,
+   "caption": "Free-floating methanol droplet burning in a 0.18/0.82 O2/N2, 1.0-atm ambient environment. The droplet drifted slowly east out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), accelerating slowly before leaving the FOV. The droplet remained in the FOVs of the Low Light Level Ultra-Violet (LLUV) and color camera for the entire test, and there was no disruption. Because the droplet was not in the HiBMs FOV for the majority of the burning history, no extinction droplet diameter is reported."
+  },
+  "FLEX-059": {
+   "figure": 63,
+   "pdf_page": 93,
+   "caption": "Free-floating methanol droplet burning in a 0.18/0.82 O2/N2, 1.0-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test, drifting north after deployment, stopping, drifting southwest to the corner of the FOV, and then drifting north to the middle west of the FOV. The color camera Image Processing and Storage Unit (IPSU) did not record any images for this test."
+  },
+  "FLEX-060": {
+   "figure": 64,
+   "pdf_page": 94,
+   "caption": "Fiber-supported methanol droplet translating 3 mm/s and burning in a 0.18/0.82 O2/N2, 1.0-atm ambient environment. The droplet moved east in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) with translation and continued to move east along the fiber and out of the FOV after the translation stopped. It also drifted partially out of the Low Light Level Ultra-Violet (LLUV) FOV. The droplet then oscillated between the regions where the flame impinged on the fiber for several seconds before becoming quiescent and burning until the flame extinguished, presumably diffusively. There was no apparent disruption at or near flame extinction."
+  },
+  "FLEX-061": {
+   "figure": 65,
+   "pdf_page": 95,
+   "caption": "Fiber-supported methanol droplet with no translation and burning in a 0.18/0.82 O2/N2, 1.0-atm ambient environment. The droplet remained stationary on the fiber and within the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. The flame was very dim in both the Low Light Level Ultra-Violet (LLUV) and color camera views."
+  },
+  "FLEX-062": {
+   "figure": 66,
+   "pdf_page": 96,
+   "caption": "Free-floating heptane droplet burning in a 0.18/0.82 O2/N2, 1.0-atm ambient environment. The droplet was nearly motionless after deployment and ignition and remained in the fields of view (FOVs) of all the cameras for the entire test. The High-Bit-Depth Multispectral (HiBMs) Image Processing and Storage Unit (IPSU) stopped recording images for a short time after the visible flame extinguished. After the visible flame extinguished, there was continued rapid vaporization and a large vapor cloud formed. This is indicative of cool flame burning and extinction following visible flame extinction."
+  },
+  "FLEX-063": {
+   "figure": 67,
+   "pdf_page": 97,
+   "caption": "Free-floating heptane droplet burning in a 0.18/0.82 O2/N2, 1.0-atm ambient environment. The droplet drifted north in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition and out of the FOV two-thirds of the way through the test. There was a small disruption near the end of the test. Extrapolating the droplet history using the average burning rate constant resulted in a very small extinction droplet size, indicating that the droplet burned essentially to completion."
+  },
+  "FLEX-064": {
+   "figure": 68,
+   "pdf_page": 98,
+   "caption": "Fiber-supported heptane droplet translating 3 mm/s (for approximately 4 s) and burning in a 0.18/0.82 O2/N2, 1.0-atm ambient environment. The droplet had moderate transverse oscillations and remained within the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. The flame grew and became dim blue. During translation, the leading edge of the flame was bright and the fiber glowed brightly. The trailing edge of the flame was much dimmer and the fiber did not glow. After the translation stopped, the flame extinguished and the droplet vaporized significantly. A small disruption very late in the droplet lifetime left a small residual droplet on the fiber. The behavior after the visible flame extinguished is indicative of cool flame burning and extinction."
+  },
+  "FLEX-065": {
+   "figure": 69,
+   "pdf_page": 99,
+   "caption": "Free-floating methanol droplet burning in a 0.15/0.85 O2/N2, 1.0-atm ambient environment. The droplet drifted south-southeast and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) before the end of the test. The color camera Image Processing and Storage Unit (IPSU) did not record any images for this test. The Low Light Level Ultra-Violet (LLUV) showed a very long burn with a flame that appeared to get a little bit brighter for a short period of time. Because the droplet was out of the HiBMs FOV for most of the droplet lifetime, no extinction droplet diameter is reported."
+  },
+  "FLEX-066": {
+   "figure": 70,
+   "pdf_page": 100,
+   "caption": "Free-floating methanol droplet burning in a 0.15/0.85 O2/N2, 1.0-atm ambient environment. The droplet drifted southeast and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), but then it drifted back into the FOV for a few seconds before the flame extinguished. During ignition, the droplet changed shape when some material was apparently ejected. The droplet shape oscillated immediately after this. The color camera Image Processing and Storage Unit (IPSU) did not record any images for this test."
+  },
+  "FLEX-067": {
+   "figure": 71,
+   "pdf_page": 101,
+   "caption": "Free-floating methanol droplet burning in a 0.15/0.85 O2/N2, 1.0-atm ambient environment. The flame oscillated significantly before the flame extinguished. After the flame extinguished, the droplet drifted slowly east and then southeast and out of the High-Bit- Depth Multispectral (HiBMs) field of view (FOV)."
+  },
+  "FLEX-068": {
+   "figure": 72,
+   "pdf_page": 102,
+   "caption": "Free-floating methanol droplet burning in a 0.15/0.85 O2/N2, 1.0-atm ambient environment. The droplet drifted slowly to the north, turned south, then drifted slowly before accelerating out of the field of view (FOV) right after the visible flame extinguished."
+  },
+  "FLEX-069": {
+   "figure": 73,
+   "pdf_page": 103,
+   "caption": "Fiber-supported heptane droplet with no translation burning in a 0.15/0.85 O2/N2, 1.0-atm ambient environment. There was significant droplet motion during the entire very short burn, and there appeared to be some visible distortions where the droplet edge intersected the fiber. This small droplet had significant motion on the fiber, which had a marked influence on the burning characteristics."
+  },
+  "FLEX-070": {
+   "figure": 74,
+   "pdf_page": 104,
+   "caption": "Free-floating heptane droplet burning in a 0.15/0.85 O2/N2, 1.0-atm ambient environment. Extra fuel was dispensed after the automated sequence started. After deployment, the droplet drifted northwest in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), hit the upper igniter, and quickly drifted southeast and out of the HiBMs FOV. The post deployment/ignition velocity was quite high, approximately 8 mm/s. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment. It is not known whether there was cool flame burning and extinction for this test."
+  },
+  "FLEX-071": {
+   "figure": 75,
+   "pdf_page": 105,
+   "caption": "Free-floating methanol droplet burning in a 0.15/0.85 O2/N2, 1.0-atm ambient environment. The droplet had a high drift velocity to the north after deployment. It hit the igniter and then continued to move to the north-northwest after ignition at approximately 7 to 8 mm/s. It left the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) relatively quickly and well before the flame extinguished. Because the droplet was out of the HiBMs FOV for most of the burn, no extinction droplet diameter is reported. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment."
+  },
+  "FLEX-072": {
+   "figure": 76,
+   "pdf_page": 106,
+   "caption": "Free-floating heptane droplet burning in a 0.15/0.85 O2/N2, 1.0-atm ambient environment. This was a very small droplet, smaller than would be typically recommended to burn in the apparatus. The droplet drifted north-northwest in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition with a significant (7 to 8 mm/s) velocity, and it left the FOV before the test was complete. The droplet burned with a dim blue flame to completion without disruption. After ignition, there was only a little luminous region. This may have been due to a small bubble burst during ignition (indicated by the droplet history)."
+  },
+  "FLEX-073": {
+   "figure": 77,
+   "pdf_page": 107,
+   "caption": "Free-floating heptane droplet burning in a 0.15/0.85 O2/N2, 1.0-atm ambient environment. There was an error in the automated test sequence, and the Multi-User Droplet Combustion Apparatus (MDCA) dispensed fuel before deployment. The result was a very large droplet, much larger than intended. The droplet drifted northwest in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment, then it hit the igniter and began to drift southeast and quickly out of the FOV. The droplet lifetime was very short with the flame extinguishing only a few seconds after the igniter was withdrawn. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment, and there is not enough evidence to know whether this test exhibited cool flame burning and extinction after the visible flame extinguished."
+  },
+  "FLEX-074": {
+   "figure": 78,
+   "pdf_page": 108,
+   "caption": "Fiber-supported heptane droplet burning in a 0.15/0.85 O2/N2, 1.0-atm ambient environment. The droplet oscillated significantly on the fiber after deployment and throughout the burn. The oscillations caused the droplet to become misshapen and caused large errors and scatter in the droplet size measurements. This was a very short burn and, although there was not a large disruption, the oscillations compromised the test data."
+  },
+  "FLEX-075": {
+   "figure": 79,
+   "pdf_page": 109,
+   "caption": "Fiber-supported methanol droplet translating 3 mm/s and burning in a 0.13/0.85 O2/N2, 1.0-atm ambient environment. After deployment, there was some transverse, but no axial, motion along the fiber. The transverse motion persisted throughout the test, but it stopped after the flame extinguished. There was no axial motion relative to the fiber; that is, the droplet started and stopped with the start and stop of the fiber. There also was no disruption during this test."
+  },
+  "FLEX-076": {
+   "figure": 80,
+   "pdf_page": 110,
+   "caption": "Fiber-supported methanol droplet burning in a 0.14/0.86 O2/N2, 1.0-atm ambient environment. The droplet oscillated axially on the fiber throughout the flame lifetime, only becoming quiescent after the visible flame extinguished."
+  },
+  "FLEX-077": {
+   "figure": 81,
+   "pdf_page": 111,
+   "caption": "Free-floating methanol droplet burning in a 0.14/0.85 O2/N2, 1.0-atm ambient environment. There was very little droplet motion after deployment and ignition (it only moved a few millimeters during the entire test)."
+  },
+  "FLEX-078": {
+   "figure": 82,
+   "pdf_page": 112,
+   "caption": "Free-floating methanol droplet burning in a 0.14/0.85 O2/N2, 1.0-atm ambient environment. There was very little droplet motion after ignition. Halfway through the burn, the droplet began to drift east at approximately 3 mm/s. It drifted out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) just before the flame extinguished. The extinction droplet diameter was extrapolated from the droplet history and the measured average burning rate constant just prior to when the droplet left the HiBMs FOV."
+  },
+  "FLEX-079": {
+   "figure": 83,
+   "pdf_page": 113,
+   "caption": "Free-floating heptane droplet burning in a 0.13/0.85 O2/N2, 1.0-atm ambient environment. This very short burn was entirely transient. The ambient environment was probably below the quasi-steady flammability limit. A small vapor cloud formed shortly after the visible flame extinguished, which may be indicative of cool flame burning and extinction following hot flame extinction."
+  },
+  "FLEX-080": {
+   "figure": 84,
+   "pdf_page": 114,
+   "caption": "Fiber-supported heptane droplet translating 3 mm/s and burning in a 0.13/0.87 O2/N2, 1.0-atm ambient environment. The High-Bit-Depth Multispectral (HiBMs) Image Processing and Storage Unit (IPSU) did not record any images for this test. This test had a very short flame lifetime, with the flame extinguishing before the droplet began to translate. A small vapor cloud formed sometime after the visible flame extinguished. It is not clear whether there was cool flame burning and extinction following visible flame extinction."
+  },
+  "FLEX-081": {
+   "figure": 85,
+   "pdf_page": 115,
+   "caption": "Fiber-supported heptane droplet burning in a 0.13/0.87 O2/N2, 1.0-atm ambient environment. The High-Bit-Depth Multispectral (HiBMs) and color camera Image Processing and Storage Units (IPSUs) did not record any images after deployment. This was a very short burn with almost no burning after the igniter was withdrawn."
+  },
+  "FLEX-082": {
+   "figure": 86,
+   "pdf_page": 116,
+   "caption": "Free-floating methanol droplet burning in a 0.13/0.87 O2/N2, 1.0-atm ambient environment. The deployment and ignition were very good, with almost no residual motion. The droplet did drift south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) and then drifted out of the FOV, but not until well after the flame extinguished. This was a very dim flame."
+  },
+  "FLEX-083": {
+   "figure": 87,
+   "pdf_page": 117,
+   "caption": "Free-floating methanol droplet burning in a 0.12/0.88 O2/N2, 1.0-atm ambient environment. The High-Bit-Depth Multispectral (HiBMs) Image Processing and Storage Unit (IPSU) did not record any images for this test. The droplet did not drift after deployment and ignition and remained in the fields of view (FOVs) of both the Low Light Level Ultra-Violet (LLUV) and color camera. The flame was very dim and almost undetectable by the LLUV (especially later in the flame lifetime). As a result, the LLUV flame size measurements are not accurate."
+  },
+  "FLEX-084": {
+   "figure": 88,
+   "pdf_page": 118,
+   "caption": "Free-floating methanol droplet burning in a 0.13/0.87 O2/N2, 1.0-atm ambient environment. The droplet drifted north after deployment and ignition (deployment-induced motion) and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) halfway through the test. The flame remained within the Low Light Level Ultra-Violet (LLUV) and color camera FOVs during the entire test. The droplet burned for a long time in this ambient environment. The extinction droplet diameter was based on extrapolating the droplet history using the measured burning rate constant while the droplet was within the HiBMs FOV. The flame was very dim, and the LLUV flame data are not as reliable as for the other tests because of the intensifier noise."
+  },
+  "FLEX-085": {
+   "figure": 89,
+   "pdf_page": 119,
+   "caption": "Free-floating methanol droplet burning in a 0.13/0.87 O2/N2, 1.0-atm ambient environment. The droplet drifted northwest in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) and then drifted out of the FOV about halfway through the test. The flame remained within the Low Light Level Ultra-Violet (LLUV) and color camera FOVs for the entire test. The extinction droplet diameter is based on extrapolating the droplet history using the known burning rate constant from the droplet history until just before the droplet left the HiBMs FOV."
+  },
+  "FLEX-086": {
+   "figure": 90,
+   "pdf_page": 120,
+   "caption": "Fiber-supported methanol droplet translating 3 mm/s and burning in a 0.13/0.87 O2/N2, 1.0-atm ambient environment. The droplet oscillated transversely on the fiber throughout the test. It continued to move (relative to the fiber) even after the fiber stopped translating. It drifted out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) and to the edge of the Low Light Level Ultra-Violet (LLUV) FOV. Only about half of the test was captured by the HiBMs. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment. The extinction droplet diameter was based on extrapolating the droplet history using the measured burning rate constant while the droplet was within the HiBMs FOV (and extinction from the LLUV)."
+  },
+  "FLEX-087": {
+   "figure": 91,
+   "pdf_page": 121,
+   "caption": "Fiber-supported methanol droplet with no translation and burning in a 0.13/0.87 O2/N2, 1.0-atm ambient environment. Throughout the burn, there were significant axial oscillations along the fiber axis. The oscillations were significant and persistent. The droplet remained within the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test, and it burned for a relatively long time in this low-O2 ambient environment. Because the flame was very dim, the Low Light Level Ultra-Violet (LLUV) flame size measurements are not reliable."
+  },
+  "FLEX-088": {
+   "figure": 92,
+   "pdf_page": 122,
+   "caption": "Free-floating methanol droplet burning in a 0.25/0.60/0.15 O2/N2/CO2, 0.70-atm ambient environment. The droplet deployed and ignited with almost no residual motion. It remained within the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. The droplet burned cleanly with a brighter-than-usual blue flame during the entire test. Near the end of the test, the droplet deformed (becoming football shaped). Then the droplet disrupted coincident with flame extinction. The droplet shattered at the end of the test, indicating that it was probably compromised by contamination from the conformal coating on the needle."
+  },
+  "FLEX-089": {
+   "figure": 93,
+   "pdf_page": 123,
+   "caption": "Free-floating methanol droplet burning in a 0.25/0.60/0.15 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted slowly to the east in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), then drifted out of the FOV before the test ended. As the droplet was leaving the HiBMs FOV, the liquid began to oscillate slightly. The motion was visible in the color camera view. The flame extinguished abruptly—probably because of disruption."
+  },
+  "FLEX-090": {
+   "figure": 94,
+   "pdf_page": 124,
+   "caption": "Fiber-supported methanol droplet with no translation in a 0.25/0.60/0.15 O2/N2/CO2, 0.70-atm ambient environment. There were significant axial and transverse oscillations on the fiber after ignition. While the droplet was oscillating on the fiber, “sparklers” were evident on the color camera view. Then the oscillations diminished and the droplet burned cleanly (on the color camera view as well). A few seconds before the flame extinguished, there was a disruption (without dislocation), followed by a complete disruption, dislocation, and flame extinction."
+  },
+  "FLEX-091": {
+   "figure": 95,
+   "pdf_page": 125,
+   "caption": "Fiber-supported methanol droplet translating 3 mm/s and burning in a 0.25/0.60/0.15 O2/N2/CO2, 0.70-atm ambient environment. There were moderate axial oscillations on the fiber (lower frequency than for some of the tests with severe oscillations) while the droplet was translating. The oscillations stopped and the droplet burned nicely until the end of the test, when there was a disruption coincident with flame extinction. The increase in droplet size at the end of the test was probably the result of bubble nucleation and growth."
+  },
+  "FLEX-092": {
+   "figure": 96,
+   "pdf_page": 126,
+   "caption": "Free-floating heptane droplet burning in a 0.14/0.86 O2/N2, 0.7-atm ambient environment. The droplet drifted north and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) before the burn was complete (about 60 percent of the burn was captured with the HiBMs). The burn looked very clean. The droplet burned for a very long time to a small size, with a disruption that was coincident with flame extinction."
+  },
+  "FLEX-093": {
+   "figure": 97,
+   "pdf_page": 127,
+   "caption": "Fiber-supported heptane droplet translating 3 mm/s and burning in a 0.24/0.56/0.20 O2/N2/CO2, 0.70-atm ambient environment. There was a lot of transverse and axial oscillatory motion during the entire droplet burn. The droplet did not leave the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) during the test, but the burning rate was high, probably because of the significant and high-frequency oscillations."
+  },
+  "FLEX-094": {
+   "figure": 98,
+   "pdf_page": 128,
+   "caption": "Free-floating heptane droplet burning in a 0.27/0.56/0.20 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted north after deployment and ignition and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) shortly after the visible flame extinguished. Sometime after the visible flame extinguished, a large vapor cloud formed. This is indicative of cool flame burning and extinction following visible flame extinction."
+  },
+  "FLEX-095": {
+   "figure": 99,
+   "pdf_page": 129,
+   "caption": "Fiber-supported heptane droplet translating 3 mm/s (for approximately 4 s) and burning in a 0.24/0.56/0.20 O2/N2/CO2, 0.70-atm ambient environment. The droplet had very little axial or transverse oscillation on the fiber, and it remained within the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. Shortly after the fiber translation stopped, the visible flame extinguished, but the droplet continued to vaporize at a relatively high rate. Then there was some axial oscillation on the fiber, followed by a significant reduction in the vaporization rate. The marked decrease in vaporization was coincident with the formation of a large vapor cloud, with a toroidal vapor cloud in the immediate vicinity of the droplet. This is indicative of cool flame burning and extinction following visible flame extinction."
+  },
+  "FLEX-096": {
+   "figure": 100,
+   "pdf_page": 130,
+   "caption": "Fiber-supported heptane droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 1.0-atm ambient environment. The High-Bit-Depth Multispectral (HiBMs) Image Processing and Storage Unit (IPSU) did not record any images for this test. There were significant oscillations on the fiber, so severe that the droplet dislodged from the fiber and drifted south and out of the color camera and Low Light Level Ultra-Violet (LLUV) fields of view (FOVs)."
+  },
+  "FLEX-097": {
+   "figure": 101,
+   "pdf_page": 131,
+   "caption": "Free-floating methanol droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted north with a relatively high velocity in the High-Bit- Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition, and it drifted out of the FOV shortly after ignition. The droplet appeared to drift close enough to the needle to start a needle fire (also visible on the Low Light Level Ultra-Violet, LLUV). This changed the droplet direction from north to east in the color camera FOV, and it pushed the droplet north in the LLUV FOV. While the needle was still burning, the droplet quickly left the color camera FOV, but it remained in the LLUV FOV, drifting south after deployment and ignition until it left the LLUV FOV before extinction or disruption."
+  },
+  "FLEX-098": {
+   "figure": 102,
+   "pdf_page": 132,
+   "caption": "Free-floating methanol droplet burning in a 0.23/0.52/0.25 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted north in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition, to the edge of the FOV, then east and out of HiBMs FOV before the end of the test. The flame “swirled” a little before extinction in both Low Light Level Ultra-Violet (LLUV) and color camera. The droplet was not in the HiBMs FOV long enough to obtain an accurate estimate of the extinction droplet diameter."
+  },
+  "FLEX-099": {
+   "figure": 103,
+   "pdf_page": 133,
+   "caption": "Free-floating methanol droplet burning in a 0.23/0.52/0.25 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted north and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition. It appeared to drift close to the needle (no fire) in the color camera view and was pushed away slightly. It remained in both the Low Light Level Ultra-Violet (LLUV) and color camera FOVs until the flame extinguished. The droplet was not in the HiBMs FOV long enough to obtain a good estimate of the extinction droplet diameter."
+  },
+  "FLEX-100": {
+   "figure": 104,
+   "pdf_page": 134,
+   "caption": "Free-floating heptane droplet burning in a 0.23/0.52/0.25 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted north after deployment and ignition, and out of High-Bit-Depth Multispectral (HiBMs) field of view (FOV) just after the visible flame extinguished radiatively at a relatively large droplet size. A vapor cloud, which is indicative of cool flame burning and extinction, formed approximately 15 s after the visible flame extinguished."
+  },
+  "FLEX-101": {
+   "figure": 105,
+   "pdf_page": 135,
+   "caption": "Fiber-supported heptane droplet translating 3 mm/s (for approximately 4 s) and burning in a 0.23/0.52/0.25 O2/N2/CO2, 0.70-atm ambient environment. There was a little axial and transverse oscillation after deployment and ignition and during translation of the fiber, but for most of the burn and postburn, the droplet was relatively quiescent. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire recording of the HiBMs Image Processing and Storage Unit (IPSU). The flame extinguished radiatively, preferentially along the fiber axis. The droplet continued to vaporize at a high rate after the visible flame extinguished. The vaporization then slowed considerably, and a visible vapor cloud formed, which is indicative of cool flame burning and extinction following visible flame extinction."
+  },
+  "FLEX-102": {
+   "figure": 106,
+   "pdf_page": 136,
+   "caption": "Free-floating heptane droplet burning in a 0.21/0.49/0.30 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted north in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition and out of the HiBMs FOV shortly after the visible flame extinguished. The color camera Image Processing and Storage Unit (IPSU) failed to record any images after the droplet deployed. The flame extinguished radiatively, and a vapor cloud was visible on the downlink video sometime after the visible flame extinguished. This is indicative of cool flame burning and extinction following visible flame extinction."
+  },
+  "FLEX-103": {
+   "figure": 107,
+   "pdf_page": 137,
+   "caption": "Fiber-supported heptane droplet translating 3 mm/s and burning in a 0.21/0.49/0.30, 0.70-atm ambient environment. A short time after translation stopped, the droplet moved axially on the fiber and partially out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). By the end of the HiBMs Image Processing and Storage Unit (IPSU) recording, it had moved completely back into the HiBMs FOV. A small droplet or debris on the fiber ignited and burned briefly, but it burned out before the flame extinguished radiatively before translation stopped. For a while, the droplet continued to vaporize at a relatively high rate. Then the vaporization rate slowed coincident with the formation of a visible vapor cloud that formed a toroidal ring around the droplet. The background intensity in the HiBMs decreased significantly as the vapor cloud formed. The post- visible-flame-extinction behavior is indicative of cool flame burning and extinction."
+  },
+  "FLEX-104": {
+   "figure": 108,
+   "pdf_page": 138,
+   "caption": "Free-floating methanol droplet burning in a 0.21/0.49/0.30 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted north after deployment and ignition and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) about one-third of the way through the test. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment. The flame extinguished diffusively without disruption. Because the droplet was in the HiBMs FOV for only a short fraction of the burn time, no extinction droplet diameter is reported."
+  },
+  "FLEX-105": {
+   "figure": 109,
+   "pdf_page": 139,
+   "caption": "Fiber-supported methanol droplet translating 3 mm/s and burning in a 0.24/0.56/0.20 O2/N2/CO2, 0.70-atm ambient environment. There was significant axial oscillatory motion on the fiber after deployment and ignition that persisted after fiber translation stopped about halfway through the burn. The droplet then burned without axial or transverse motion until it disrupted and dislocated from the fiber coincident with flame extinction."
+  },
+  "FLEX-106": {
+   "figure": 110,
+   "pdf_page": 140,
+   "caption": "Fiber-supported methanol droplet translating 3 mm/s and burning in a 0.23/0.52/0.25 O2/N2/CO2, 0.70-atm ambient environment. The droplet moved west along the fiber a short distance after deployment and ignition but before translation and then moved east with the fiber during translation. The droplet remained within the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. There was very little motion of the droplet relative to the fiber during the test. However, a small disruption coincident with flame extinction left a slightly smaller droplet on the fiber. The extinction droplet diameter is the droplet diameter just prior to the disruption."
+  },
+  "FLEX-107": {
+   "figure": 111,
+   "pdf_page": 141,
+   "caption": "Fiber-supported methanol droplet translating 3 mm/s and burning in a 0.24/0.56/0.20 O2/N2/CO2, 0.70-atm ambient environment. There was not much axial oscillatory motion associated with fiber motion, but there were some transverse oscillations. There was no shape change prior to disruption, which was right around the time of extinction."
+  },
+  "FLEX-108": {
+   "figure": 112,
+   "pdf_page": 142,
+   "caption": "Fiber-supported methanol droplet translating 3 mm/s and burning in a 0.23/0.52/0.25 O2/N2/CO2, 0.70-atm ambient environment. There was significant oscillatory motion of the droplet on the fiber during the burn both before and after the translation. The droplet swelled and eventually disrupted before the flame extinguished, leaving a small residual droplet on the fiber."
+  },
+  "FLEX-109": {
+   "figure": 113,
+   "pdf_page": 143,
+   "caption": "Free-floating methanol droplet burning in a 0.21/0.49/0.30 O2/N2/CO2, 0.70-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) and color camera fields of view (FOVs) for the entire Image Processing and Storage Unit (IPSU) recording time (even after the visible flame extinguished). The Low Light Level Ultra-Violet (LLUV) IPSU did not record any images for this test. The droplet deformed (became aspherical) right around the time of extinction and remained misshapen after the flame extinguished. The fuel may have been contaminated during this test."
+  },
+  "FLEX-110": {
+   "figure": 114,
+   "pdf_page": 144,
+   "caption": "Free-floating methanol droplet burning in a 0.21/0.49/0.30 O2/N2/CO2, 0.70-atm ambient environment. The droplet remained in the fields of view (FOVs) of all cameras, and the flame extinguished radiatively. Because the flame was very dim and there was a smudge on the Combustion Integrated Rack (CIR) Low Light Level Ultra-Violet (LLUV) viewing window, the LLUV data have a lot of noise."
+  },
+  "FLEX-111": {
+   "figure": 115,
+   "pdf_page": 145,
+   "caption": "Fiber-supported methanol droplet burning in a 0.21/0.49/0.30 O2/N2/CO2, 0.70-atm ambient environment with fiber translation after ignition. This was an almost ideal fiber- supported test, with almost no oscillation of the droplet. The fiber started and stopped moving with almost no relative motion imparted to the droplet."
+  },
+  "FLEX-112": {
+   "figure": 116,
+   "pdf_page": 146,
+   "caption": "Fiber-supported methanol droplet burning in a 0.21/0.49/0.30 O2/N2/CO2, 0.70-atm ambient environment. There was no fiber translation during this test. The droplet initially moved west in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) before stopping and then slowly moving back to the center of the image. A little disruption (maybe a small gas bubble popping) occurred near flame extinction coincident with a small satellite droplet being ejected from the droplet."
+  },
+  "FLEX-113": {
+   "figure": 117,
+   "pdf_page": 147,
+   "caption": "Free-floating methanol droplet burning in a 0.20/0.45/0.35 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted northwest after deployment in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), hit the igniter, and then drifted southeast after ignition and out of the FOV approximately 8 s after the igniter was withdrawn. The droplet burned with a very weak relatively steady flame for a long period of time before oscillating before extinction. The extinction droplet diameter is based on an extrapolation of the droplet history to the time of extinction. The measured burning rate constant from just before the droplet left the HiBMs FOV was used in the extrapolation."
+  },
+  "FLEX-114": {
+   "figure": 118,
+   "pdf_page": 148,
+   "caption": "Free-floating methanol droplet burning in a 0.20/0.45/0.35 O2/N2/CO2, 0.70-atm ambient environment. After ignition, the droplet drifted northeast and out of the High-Bit- Depth Multispectral (HiBMs) field of view (FOV). The droplet remained out of the FOV until just before the flame extinguished, when it drifted back into the FOV from the northeast corner."
+  },
+  "FLEX-115": {
+   "figure": 119,
+   "pdf_page": 149,
+   "caption": "Fiber-supported methanol droplet translating 3 mm/s and burning in a 0.20/0.45/0.35 O2/N2/CO2, 0.70-atm ambient environment. A small residue on the fiber to the west of the droplet ignited a few seconds after the droplet ignited. During translation, this residue burned with a very bright luminous flame for 1 to 2 s. The droplet drifted partially out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after the translation stopped, then it shrank back so that it was completely in the FOV. There appeared to be some oscillations near extinction. The droplet burned without any transverse or axial oscillations along the fiber, and it did not disrupt or deform."
+  },
+  "FLEX-116": {
+   "figure": 120,
+   "pdf_page": 150,
+   "caption": "Fiber-supported methanol droplet (translated for approximately 3 s immediately after ignition) burning in a 0.20/0.45/0.35 O2/N2/CO2, 0.70-atm ambient environment. This was a very clean test with very little motion of the droplet on the fiber."
+  },
+  "FLEX-117": {
+   "figure": 121,
+   "pdf_page": 151,
+   "caption": "Free-floating heptane droplet burning in a 0.20/0.45/0.35 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted north in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition and out of the FOV after the visible flame extinguished. The droplet had a very low burning rate constant. A relatively large vapor cloud formed well after the visible flame extinguished, which indicates that there was probably cool flame burning and extinction after visible flame extinction."
+  },
+  "FLEX-118": {
+   "figure": 122,
+   "pdf_page": 152,
+   "caption": "Fiber-supported heptane droplet burning in a 0.20/0.45/0.25 O2/N2/CO2, 0.70-atm ambient environment. The droplet ignited, and shortly after ignition, a small droplet or debris ignited to the west (color camera) or north (Low Light Level Ultra-Violet, LLUV) of the droplet. This small droplet or particle burned for only a short time and was not visible in the High-Bit-Depth Multispectral (HiBMs). The droplet burns for only a short time before the visible flame extinguished radiatively. Rapid vaporization continued, however, and approximately 5 s after the visible flame extinguished, a vapor cloud formed. This is an indication of cool flame burning and extinction following visible flame extinction."
+  },
+  "FLEX-119": {
+   "figure": 123,
+   "pdf_page": 153,
+   "caption": "Fiber-supported heptane droplet burning in a 0.18/0.42/0.40 O2/N2/CO2, 0.70-atm ambient environment. After ignition the flame extinguished quickly, probably radiatively. It is quite possible that this ambient condition was below the flammability limit for heptane. The droplet had some unusual oscillations on the fiber during the burn that seemed to disappear for most of the test (after the flame extinguished). The color camera Image Processing and Storage Unit (IPSU) did not record any images for this test. There was a brief period of significant vaporization after the visible flame extinguished; then a small vapor cloud formed. This is indicative of cool flame burning and extinction following visible flame extinction."
+  },
+  "FLEX-120": {
+   "figure": 124,
+   "pdf_page": 154,
+   "caption": "Fiber-supported heptane droplet with fiber translation burning in a 0.18/0.42/0.40 O2/N2/CO2, 0.70-atm ambient environment. The droplet did not oscillate much on the fiber during or after the burn. A small vapor cloud formed after the visible flame extinguished. It is difficult to determine whether there was cool flame burning and extinction from the available data. The Low Light Level Ultra-Violet (LLUV) Image Processing and Storage Unit (IPSU) did not record any images during the burn."
+  },
+  "FLEX-121": {
+   "figure": 125,
+   "pdf_page": 155,
+   "caption": "Free-floating methanol droplet burning in a 0.18/0.42/0.40 O2/N2/CO2, 0.70-atm ambient environment. The droplet did not drift at all in any of the camera fields of view (FOVs) after deployment and ignition. The flame oscillated a few times before extinguishing radiatively."
+  },
+  "FLEX-122": {
+   "figure": 126,
+   "pdf_page": 156,
+   "caption": "Free-floating methanol droplet burning in a 0.18/0.42/0.40 O2/N2/CO2, 0.7-atm ambient environment. The droplet was almost motionless after deployment and ignition. It then slowly drifted south and eventually out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), but this was after the flame extinguished. The droplet burned for about 15 s. Even though the flame appeared to be weak, it persisted for quite a while. This was a nice clean burn with no distortion or disruption. The flame appeared to oscillate radially (primarily in intensity) a few seconds before it extinguished."
+  },
+  "FLEX-123": {
+   "figure": 127,
+   "pdf_page": 157,
+   "caption": "Fiber-supported methanol droplet burning in a 0.18/0.42/0.40 O2/N2/CO2, 0.70-atm ambient environment. There was no fiber translation, and the large droplet appeared to extinguish radiatively. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment. The Low Light Level Ultra-Violet (LLUV) IPSU lost data for about 5 s during the test. Also, the Low Light Level Ultra-Violet (LLUV) images were very dim, and it was almost impossible to detect the edges of the flame. In the LLUV view, the flame appeared to be quenched where the flame and fiber met."
+  },
+  "FLEX-124": {
+   "figure": 128,
+   "pdf_page": 158,
+   "caption": "Free-floating methanol droplet burning in a 0.18/0.42/0.40 O2/N2/CO2, 0.70-atm ambient environment. The droplet remained in the fields of view (FOVs) of all the cameras for the entire burn. The droplet burned for only a short time, and the flame probably extinguished radiatively."
+  },
+  "FLEX-125": {
+   "figure": 129,
+   "pdf_page": 159,
+   "caption": "Free-floating methanol droplet burning in a 0.17/0.38/0.45 O2/N2/CO2, 0.70-atm ambient environment. The droplet remained in the fields of view (FOVs) of all cameras after deployment and ignition. The flame oscillated for one or two cycles before extinguishing radiatively. This test was very near, if not below, the flammability limit. Because the flame was barely distinguishable from the background in the Low Light Level Ultra-Violet (LLUV), the color camera flame size data are a bit more reliable than the LLUV data, which have a lot of noise."
+  },
+  "FLEX-126": {
+   "figure": 130,
+   "pdf_page": 160,
+   "caption": "Free-floating methanol droplet burning in a 0.17/0.38/0.45 O2/N2/CO2, 0.70-atm ambient environment. The droplet remained in the fields of view (FOVs) of all cameras after deployment and ignition. The droplet burned a relatively long time and appeared to extinguish diffusively."
+  },
+  "FLEX-127": {
+   "figure": 131,
+   "pdf_page": 161,
+   "caption": "Fiber-supported methanol with no translation burning in a 0.17/0.38/0.45 O2/N2/CO2, 0.70-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. The flame then became very dim blue and was nearly cylindrical because of flame quenching due to the support fiber. There was little fiber glow (broadband radiation from the heated fiber) after the droplet stopped translating, and the flame measurements from the color camera indicated that the flame size oscillated periodically after the droplet stopped translating. The HiBMs Image Processing and Storage Unit (IPSU) stopped recording for a relatively large block of time: from just before the igniter withdrew to about halfway through the burn."
+  },
+  "FLEX-128": {
+   "figure": 132,
+   "pdf_page": 162,
+   "caption": "Fiber-supported methanol droplet burning in a 0.17/0.38/0/45 O2/N2/CO2, 0.70-atm ambient environment. Shortly after ignition, the droplet began to move west along the fiber at ~8 mm/s. It left the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) about one-third of the way through the test. The flame was brighter at the leading edge during the translation. When the translation stopped, the flame was quenched by the fiber at both ends, making the flame more cylindrical than spherical. Because the droplet was in the HiBMs FOV for only a short fraction of the burn, no extinction droplet diameter is reported."
+  },
+  "FLEX-129": {
+   "figure": 133,
+   "pdf_page": 163,
+   "caption": "Free-floating heptane droplet burning in a 0.17/0.38/0.45 O2/N2/CO2, 0.70-atm ambient environment. The droplet remained in the fields of view (FOVs) of all the cameras for the very short burn and for a considerable period of time after the visible flame extinguished. The Low Light Level Ultra-Violet (LLUV) stopped recording images for several seconds right around ignition. This was a very short burn with no appreciable vaporization or vapor cloud formation after the visible flame extinguished. There was probably no cool flame or only a very brief cool flame."
+  },
+  "FLEX-130": {
+   "figure": 134,
+   "pdf_page": 164,
+   "caption": "Fiber-supported heptane droplet translating 3 mm/s and burning in a 0.17/0.38/0.45 O2/N2/CO2, 0.7-atm ambient environment. This was a very short burn, and the flame extinguished radiatively very soon after translation began. No vapor cloud formed, and the vaporization rate was quite small after the visible flame extinguished. As a result, there was probably no, or only very brief, cool flame burning."
+  },
+  "FLEX-131": {
+   "figure": 135,
+   "pdf_page": 165,
+   "caption": "Free-floating heptane droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 1.0-atm ambient environment. This smaller droplet remained in the fields of view (FOVs) of all the cameras for the entire test. The droplet extinguished disruptively at a small size."
+  },
+  "FLEX-132": {
+   "figure": 136,
+   "pdf_page": 166,
+   "caption": "Free-floating heptane droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted slowly northeast after ignition, but it remained in the field of view (FOV) for the entire test. The droplet was initially luminous with a bright yellow flame that eventually turned blue with a little yellow and then blue until the end of the test. The droplet burned to a small size before a small disruption when the flame extinguished. The Low Light Level Ultra-Violet (LLUV) Image Processing and Storage Unit (IPSU) stopped recording for about 7 s in the middle of the test."
+  },
+  "FLEX-133": {
+   "figure": 137,
+   "pdf_page": 167,
+   "caption": "Free-floating heptane droplet in a 0.24/0.56/0.20 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted northwest and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) before the end of the test (about halfway). After ignition, the droplet flame was luminous, quickly changing to a nearly all blue, dim flame. The flame then began to oscillate for several seconds before becoming stable and brighter. It burned until a small disruption coincident with when the flame extinguished. The extinction droplet diameter is the diameter of the droplet when the flame disrupted; it was estimated from the burning rate constant while the droplet was in the HiBMs FOV and the time of extinction from either the Low Light Level Ultra-Violet (LLUV) or color camera."
+  },
+  "FLEX-134": {
+   "figure": 138,
+   "pdf_page": 168,
+   "caption": "Free-floating heptane droplet in a 0.24/0.56/0.20 O2/N2/CO2, 1.0-atm ambient environment. There were problems with gas bubbles during dispensing, stretching, and deployment. During this test, a small gas bubble burst during ignition and caused the droplet to oscillate. The droplet drifted slowly southeast and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) a few seconds after the flame extinguished radiatively. The droplet continued to vaporize at a relatively high rate after the flame extinguished, although only a few seconds passed before the droplet left the HiBMs FOV. A vapor cloud formed 10 to 20 s after the visible flame extinguished. The post-visible-flame-extinction behavior is indicative of cool flame burning and extinction."
+  },
+  "FLEX-135": {
+   "figure": 139,
+   "pdf_page": 169,
+   "caption": "Fiber-supported heptane droplet with no translation in a 0.24/0.56/0.20 O2/N2/CO2, 1.0-atm ambient environment. A small droplet to the west of the main droplet ignited and quickly burned off. There was significant transverse and axial motion of the droplet on the fiber during most of the test. The droplet drifted west on the fiber after deployment; then it stopped and oscillated (irregularly) axially and transversely during the entire burn. The shape changed briefly from spherical when there was a discrete change in droplet size that corresponded to something being ejected from the droplet (visible on the color camera)."
+  },
+  "FLEX-136": {
+   "figure": 140,
+   "pdf_page": 170,
+   "caption": "Free-floating heptane droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted northwest in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment, then it hit the igniter and moved northeast and out of the HiBMs FOV. Because the droplet was in the HiBMs FOV for only a small fraction of the droplet lifetime, no extinction droplet diameter is reported. It is not clear whether the droplet burned to completion or the flame extinguished at a finite droplet size. However, given the ambient conditions and the expected burning behavior, burnout is more likely."
+  },
+  "FLEX-137": {
+   "figure": 141,
+   "pdf_page": 171,
+   "caption": "Free-floating heptane droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted northwest and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) about halfway through the test. After deployment, there was a disruption (maybe a bubble burst because these droplets had issues with gas bubbles) that caused significant droplet deformation and oscillations. There also was a moderate degree of sooting. The droplet burned to a relatively small size before disruptive extinction. The noise in the beginning of the droplet history was due to soot influencing the droplet size measurement. The color camera Image Processing and Storage Unit (IPSU) failed to record any images after deployment. The Low Light Level Ultra-Violet (LLUV) IPSU stopped recording images for a brief time in the middle of the burn."
+  },
+  "FLEX-138": {
+   "figure": 142,
+   "pdf_page": 172,
+   "caption": "Free-floating heptane droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 1.0-atm ambient environment. The High-Bit-Depth Multispectral (HiBMs) Image Processing and Storage Unit (IPSU) did not record any images for this test. The flame grew in size initially, became very dim, but then shrank, became brighter, and burned to disruption at a small size."
+  },
+  "FLEX-139": {
+   "figure": 143,
+   "pdf_page": 173,
+   "caption": "Free-floating heptane droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 1.0-atm ambient environment. The droplet deformed shortly after deployment, presumably because of a gas bubble that burst. This caused the droplet to drift slowly northeast in the High-Bit-Depth Multispectral (HiBMs). A large flash coincident with ignition caused the droplet to drift southwest at approximately 6 mm/s. The droplet drifted with a constant trajectory until it left the HiBMs field of view (FOV) about halfway through the test. The burning rate was relatively high, and the flame was distorted by the large drift velocity. The droplet burned to a small size, then disrupted when the flame extinguished."
+  },
+  "FLEX-140": {
+   "figure": 144,
+   "pdf_page": 174,
+   "caption": "Free-floating methanol droplet burning in a 0.15/0.35/0.50 O2/N2/CO2, 0.70-atm ambient environment. The droplet had a very small drift south after deployment and ignition, but it remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire recording time. For this very short burn, either the droplet was significantly larger than the radiative extinction limit or the test was completely outside of the quasi-steady flammability boundary."
+  },
+  "FLEX-141": {
+   "figure": 145,
+   "pdf_page": 175,
+   "caption": "Free-floating methanol droplet burning in a 0.15/0.35/0.50 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted slowly south, but it remained in the High-Bit- Depth Multispectral (HiBMs) field of view (FOV) for the entire test and well after the flame extinguished. The droplet abruptly left the HiBMs FOV in the video, probably because the HiBMs stopped archiving images for a short time. This very short burn either extinguished radiatively or was completely outside of the quasi-steady flammability boundary."
+  },
+  "FLEX-142": {
+   "figure": 146,
+   "pdf_page": 176,
+   "caption": "Free-floating methanol droplet burning in a 0.15/0.35/0.50 O2/N2/CO2, 0.70-atm ambient environment. The droplet deployed with a relatively high (~6 mm/s) drift velocity to the northwest. The burn time was relatively short, and the droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test."
+  },
+  "FLEX-143": {
+   "figure": 147,
+   "pdf_page": 177,
+   "caption": "Free-floating methanol droplet burning in a 0.15/0.35/0.50 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted north after deployment and ignition, and it drifted out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after the flame extinguished. It then drifted back into the HiBMs FOV before Image Processing and Storage Unit (IPSU) recording stopped (thus the gap in the droplet history shown in this figure). This smaller droplet had a very short burn—probably outside of the quasi-steady flammability boundary or, more likely, right at the boundary."
+  },
+  "FLEX-144": {
+   "figure": 148,
+   "pdf_page": 178,
+   "caption": "Free-floating methanol droplet burning in a 0.20/0.75/0.05 O2/N2/CO2, 1.0-atm ambient environment. The droplet was nearly motionless after deployment and ignition. Halfway through the burn, the droplet drifted south. It left the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) just before the flame extinguished, but it remained in the FOVs of the Low Light Level Ultra-Violet (LLUV) and color camera. The burning rate constant measured near the end of the time when the droplet was in the HiBMs FOV was used to extrapolate the extinction droplet diameter from the droplet history from when the droplet left the HiBMs FOV until the flame extinguished."
+  },
+  "FLEX-145": {
+   "figure": 149,
+   "pdf_page": 179,
+   "caption": "Free-floating methanol droplet burning in a 0.20/0.75/0.05 O2/N2/CO2, 1.0-atm ambient environment. The droplet remained in the fields of view (FOVs) of all the cameras during the entire burn."
+  },
+  "FLEX-146": {
+   "figure": 150,
+   "pdf_page": 180,
+   "caption": "Free-floating methanol droplet burning in a 0.20/0.75/0.05 O2/N2/CO2, 1.0-atm ambient environment. This very large droplet was nearly motionless after deployment and ignition. The droplet eventually drifted south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) and left the FOV a short time before the flame extinguished. Because the flame was very dim and there was contamination on the Combustion Integrated Rack (CIR) LLUV viewing window, the flame size from the color camera was a bit more reliable than that from the Low Light Level Ultra- Violet (LLUV). The burning rate constant measured near the end of the time that the droplet was in the High-Bit-Depth Multispectral (HiBMs) FOV was used to extrapolate the extinction droplet diameter from the droplet history from when the droplet left the HiBMs FOV until the flame extinguished."
+  },
+  "FLEX-147": {
+   "figure": 151,
+   "pdf_page": 181,
+   "caption": "Free-floating methanol droplet burning in a 0.17/0.38/0.45 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted southeast at approximately 4 to 5 mm/s (deployment-induced change of direction at ignition) and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after a few seconds. The droplet remained in the FOVs of the Low Light Level Ultra-Violet (LLUV) and color camera for the entire test, but it was at the very edge of the FOVs of both cameras. The flame dimmed increasingly throughout the test. Because the droplet was in the HiBMs FOV for only a small fraction of the burn, no extinction droplet diameter is reported."
+  },
+  "FLEX-148": {
+   "figure": 152,
+   "pdf_page": 182,
+   "caption": "Free-floating heptane droplet burning in a 0.20/0.75/0.05 O2/N2/CO2, 1.0-atm ambient environment. There was very little residual motion after deployment and ignition. The droplet remained in the fields of view (FOVs) of all the cameras for the entire test. It burned cleanly to small size, then it disrupted coincident with when the flame extinguished. The extinction droplet size is the size when the droplet disrupted. The High-Bit-Depth Multispectral (HiBMs) Image Processing and Storage Unit (IPSU) stopped recording data sometime before deployment to part way through the burn. The plotted data used the first measured droplet as time zero even though the droplet had been burning for some time before that point."
+  },
+  "FLEX-149": {
+   "figure": 153,
+   "pdf_page": 183,
+   "caption": "Free-floating heptane droplet burning in a 0.20/0.75/0.05 O2/N2/CO2, 1.0-atm ambient environment. The deployment was excellent with almost no residual motion after deployment and ignition. The droplet drifted a little south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), but it remained in the FOVs of all cameras for the entire test. The droplet burned cleanly down to a small size then disrupted coincident with flame extinction. The extinction droplet size is the size when the disruption occurred."
+  },
+  "FLEX-150": {
+   "figure": 154,
+   "pdf_page": 184,
+   "caption": "Free-floating heptane droplet burning in a 0.20/0.75/0.05 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted northwest in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition, remained in the FOV for the entire burn, and left the FOV shortly after the visible flame extinguished. The flame oscillated a few times before it extinguished radiatively. A vapor cloud formed approximately 20 sec after the visible flame extinguished, indicating cool flame burning and extinction after visible flame extinction. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment."
+  },
+  "FLEX-151": {
+   "figure": 155,
+   "pdf_page": 185,
+   "caption": "Free-floating methanol droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted northeast and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) about one-fourth of the way through the burn. The droplet burned for a very long time, but the flame was very dim and difficult to see, with significant noise in the Low Light Level Ultra-Violet (LLUV) when automated analysis was used and a very low threshold when manual analysis was used. The droplet oscillated for a few seconds halfway through the burn, then it burned with a steady flame until it oscillated again right before the flame extinguished. Because the droplet was in the HiBMs FOV for only a short time, no extinction droplet diameter is reported."
+  },
+  "FLEX-152": {
+   "figure": 156,
+   "pdf_page": 186,
+   "caption": "Free-floating methanol droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), and it left the FOV about two-thirds of the way through the burn. The burning rate constant from the droplet history for a short period of time before the droplet left the HiBMs FOV was used to extrapolate the extinction droplet diameter from the droplet history from when the droplet left the HiBMs FOV until the flame extinguished."
+  },
+  "FLEX-153": {
+   "figure": 157,
+   "pdf_page": 187,
+   "caption": "Free-floating methanol droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted north after deployment and ignition; then it began to drift back to the center. It remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) until four-fifths of the way through the burn when the HiBMs stopped recording data for about 5 s. The HiBMs did not record data when the flame extinguished. It was a long burn, and the measured burning rate constant for a short time right before recording stopped was used to extrapolate the extinction diameter from the droplet history until the visible flame extinguished."
+  },
+  "FLEX-154": {
+   "figure": 158,
+   "pdf_page": 188,
+   "caption": "Free-floating heptane droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 1.0-atm ambient environment. The droplet had almost no residual motion after deployment and ignition. This relatively large droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire (short) burn and for the entire recording time of the HiBMs Image Processing and Storage Unit (IPSU). The droplet extinguished radiatively after a short burn with no flame oscillations. Late in the recording time, there was significant post-visible-flame-extinction vaporization and a large vapor cloud formed. The post-visible-flame-extinction behavior is indicative of cool flame burning and extinction."
+  },
+  "FLEX-155": {
+   "figure": 159,
+   "pdf_page": 189,
+   "caption": "Free-floating heptane droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 1.0-atm ambient environment. The droplet had almost no residual motion after deployment and ignition, and it remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire time that images were recorded. The flame had a very short burn time and probably extinguished radiatively. The vaporization rate was high after the visible flame extinguished, and there was an eventual plateau late in the HiBMs Image Processing and Storage Unit (IPSU) recording time coincident with the formation of a large vapor cloud. The post-visible-flame-extinction behavior is indicative of cool flame burning and extinction."
+  },
+  "FLEX-157": {
+   "figure": 160,
+   "pdf_page": 190,
+   "caption": "Free-floating heptane droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 1.0-atm ambient environment. This very small droplet had a high northwest drift velocity in the High- Bit-Depth Multispectral (HiBMs) field of view (FOV). The droplet left the HiBMs FOV about one-third of the way through the test, and it moved past the northwest igniter before the igniter began to withdraw. The color camera Image Processing and Storage Unit (IPSU) failed to record any frames after deployment. Because the droplet was in the HiBMs FOV for only a short fraction of the entire test, no extinction diameter is reported."
+  },
+  "FLEX-158": {
+   "figure": 161,
+   "pdf_page": 191,
+   "caption": "Free-floating methanol droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 1.0-atm ambient environment. This relatively large droplet was nearly motionless after deployment and ignition, and it remained in the fields of view (FOVs) of all the cameras. The flame oscillated for a few cycles (increasing in magnitude with time) until it extinguished radiatively. Because the flame was dim and there was contamination on the Low Light Level Ultra-Violet (LLUV) viewing window, the flame was difficult to see with the LLUV."
+  },
+  "FLEX-159": {
+   "figure": 162,
+   "pdf_page": 192,
+   "caption": "Free-floating methanol droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 1.0-atm ambient environment. The droplet was nearly motionless after deployment and ignition, and it remained near the center of the fields of view (FOVs) for the entire test. The flame oscillated for several cycles before extinguishing radiatively. Because the flame was very dim and there was contamination on the Combustion Integrated Rack (CIR) LLUV viewing window, the Low Light Level Ultra-Violet (LLUV) flame diameter data are very noisy."
+  },
+  "FLEX-160": {
+   "figure": 163,
+   "pdf_page": 193,
+   "caption": "Free-floating methanol droplet burning in a 0.19/0.59/0.25 O2/N2/CO2, 1.0-atm ambient environment. The droplet remained in the fields of view (FOVs) of all the cameras for the entire burn, and the flame extinguished diffusively. Because the Low Light Level Ultra-Violet (LLUV) images were dim and there was contamination on the Combustion Integrated Rack (CIR) LLUV viewing window, the flame size data are a bit noisy but seem to be reasonable."
+  },
+  "FLEX-161": {
+   "figure": 164,
+   "pdf_page": 194,
+   "caption": "Free-floating methanol droplet burning in a 0.16/0.59/0.25 O2/N2/CO2, 1.0-atm ambient environment. The droplet was nearly motionless after deployment and ignition, and it remained in the fields of view (FOVs) of all the cameras for the entire burn, which was a long burn to diffusive extinction. Because the Low Light Level Ultra-Violet (LLUV) images were dim and there was contamination on the Combustion Integrated Rack (CIR) LLUV viewing window, and the LLUV flame size data are very noisy."
+  },
+  "FLEX-162": {
+   "figure": 165,
+   "pdf_page": 195,
+   "caption": "Free-floating methanol droplet burning in a 0.14/0.54/0.32 O2/N2/CO2, 1.0-atm ambient environment. The droplet was nearly motionless after deployment and ignition, and it remained in the fields of view (FOVs) of all the cameras for the duration of the test. The flame oscillated for several seconds with increasing magnitude before extinguishing radiatively. Because the Low Light Level Ultra-Violet (LLUV) images were dim and there was contamination on the Combustion Integrated Rack (CIR) LLUV viewing window, the LLUV flame data are very noisy."
+  },
+  "FLEX-163": {
+   "figure": 166,
+   "pdf_page": 196,
+   "caption": "Free-floating methanol droplet burning in a 0.14/0.54/0.32 O2/N2/CO2, 1.0-atm ambient environment. The droplet remained in the fields of view (FOVs) of all the cameras for the entire burn. The flame oscillated for several cycles of increasing magnitude before extinguishing radiatively. Because the Low Light Level Ultra-Violet (LLUV) images were dim and there was contamination on the Combustion Integrated Rack (CIR) LLUV viewing window, the LLUV flame data are very noisy."
+  },
+  "FLEX-164": {
+   "figure": 167,
+   "pdf_page": 197,
+   "caption": "Free-floating methanol droplet burning in a 0.14/0.54/0.32 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted northwest in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition. It left the FOV just after the visible flame extinguished. The flame oscillated several cycles with a nearly constant amplitude before extinguishing radiatively. Because the Low Light Level Ultra-Violet (LLUV) images were dim and there was contamination of the Combustion Integrated Rack (CIR) LLUV viewing window, the LLUV flame data are noisy."
+  },
+  "FLEX-165": {
+   "figure": 168,
+   "pdf_page": 198,
+   "caption": "Free-floating methanol droplet burning in a 0.14/0.54/0.32 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition, left the FOV shortly after the visible flame extinguished, and then drifted back into the FOV well after extinction near the end of recording. Because this was a very dim flame and there was contamination on the Combustion Integrated Rack (CIR) Low Light Level Ultra-Violet (LLUV) viewing window, the LLUV data are very noisy."
+  },
+  "FLEX-166": {
+   "figure": 169,
+   "pdf_page": 199,
+   "caption": "Free-floating heptane droplet burning in a 0.18/0.670.15 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted southeast in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), remained in the FOV until the visible flame extinguished, and then drifted out of the FOV. The flame became dimmer as the burn progressed, but it did not oscillate before it extinguished, and no vapor cloud formed after visible flame extinction."
+  },
+  "FLEX-167": {
+   "figure": 170,
+   "pdf_page": 200,
+   "caption": "Free-floating methanol droplet burning in a 0.14/0.50/0.36 O2/N2/CO2, 1.0-atm ambient environment. The droplet remained in the fields of view (FOVs) of all cameras. This was a short burn to radiative extinction, and the color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment."
+  },
+  "FLEX-168": {
+   "figure": 171,
+   "pdf_page": 201,
+   "caption": "Free-floating methanol droplet burning in a 0.136/0.50/0.363 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted west in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment, hit the igniter, and then drifted slowly east after ignition. It left the HiBMs FOV shortly after the visible flame extinguished. The very dim Low Light Level Ultra-Violet (LLUV) images and the contamination on the Combustion Integrated Rack (CIR) LLUV viewing window resulted in a lot of noise in the data. The flame oscillated for nearly half of its lifetime."
+  },
+  "FLEX-169": {
+   "figure": 172,
+   "pdf_page": 202,
+   "caption": "Free-floating methanol droplet burning in a 0.21/0.64/0.15 O2/N2/CO2, 1.0-atm ambient environment. The droplet was nearly motionless after deployment and ignition. It drifted slightly around the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) and then disrupted when the flame extinguished. The extinction droplet diameter is the diameter of the droplet at disruption and not the true extinction droplet diameter."
+  },
+  "FLEX-170": {
+   "figure": 173,
+   "pdf_page": 203,
+   "caption": "Free-floating methanol droplet burning in a 0.21/0.64/0.16 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition. The droplet left the HiBMs FOV three-fourths of the way through the burn; then it drifted back into the FOV just after the visible flame extinguished. The extinction droplet diameter is the diameter of the droplet when it fully reappeared in the FOV. It should be nearly identical to the diameter of the droplet when the visible flame extinguished."
+  },
+  "FLEX-171": {
+   "figure": 174,
+   "pdf_page": 204,
+   "caption": "Free-floating methanol droplet burning in a 0.21/0.64/0.15 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted north in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition, and it drifted out of the HiBMs FOV about halfway through the burn. The droplet then drifted back in shortly after the flame extinguished diffusively. The extinction droplet diameter was determined from a cubic polynomial fit of the droplet history between the two times that the droplet was in the HiBMs FOV (subject to the constraint that the slope of the droplet history of the fit was equal to that of the experiment just before it left and after it returned to the FOV)."
+  },
+  "FLEX-172": {
+   "figure": 175,
+   "pdf_page": 205,
+   "caption": "Free-floating heptane droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 1.0-atm ambient environment. This was the first test after the needle and window were changed out (cleaner window for the Low Light Level Ultra-Violet (LLUV)). The droplet remained in the High-Bit- Depth Multispectral (HiBMs) field of view (FOV) for the entire test with very little residual motion. The LLUV image was very bright with none of the asymmetry observed in the previous tests. The flame extinguished when the droplet was relatively large, and the droplet continued to vaporize at a relatively high and nearly constant rate after the visible flame extinguished—indicating cool flame burning and extinction after visible flame extinction. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment."
+  },
+  "FLEX-173": {
+   "figure": 176,
+   "pdf_page": 206,
+   "caption": "Free-floating heptane droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 1.0-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. The Low Light Level Ultra-Violet (LLUV) provided good distortion-free, bright images. The flame extinguished radiatively. The visible flame extinction was followed by rapid vaporization, a plateau when the droplet became quite small, and the formation of a visible vapor cloud late in the recording history. The post-visible-flame-extinction behavior was consistent with cool flame burning and extinction."
+  },
+  "FLEX-174": {
+   "figure": 177,
+   "pdf_page": 207,
+   "caption": "Free-floating heptane droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 1.0-atm ambient environment. This was a very small heptane droplet. It drifted south in the High-Bit- Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition, but it remained in the FOV for the entire recording time. The droplet burned with a relatively bright flame to a very small size, at which point there was a small disruption that was coincident with visible flame extinction."
+  },
+  "FLEX-175": {
+   "figure": 178,
+   "pdf_page": 208,
+   "caption": "Free-floating heptane droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted east, but it remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. The droplet burned linearly to a small size, and it disrupted when the flame extinguished. The droplet size at extinction was an extrapolation of the average burning rate to the time of extinction."
+  },
+  "FLEX-176": {
+   "figure": 179,
+   "pdf_page": 209,
+   "caption": "Free-floating heptane droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted slowly northeast in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition and out of the FOV a little over halfway through the test. The droplet burned to a small size and then disrupted. An extrapolation of the droplet history to the time when the flame extinguished showed that the droplet had almost completely vaporized when it disrupted and ended the test. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment."
+  },
+  "FLEX-177": {
+   "figure": 180,
+   "pdf_page": 210,
+   "caption": "Free-floating methanol droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 0.7-atm ambient environment. There was almost no drift, and the droplet remained in High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. The HiBMs recording stopped before the burn was complete, and the droplet drifted out of the Low Light Level Ultra-Violet (LLUV) FOV before the end of the test. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment."
+  },
+  "FLEX-178": {
+   "figure": 181,
+   "pdf_page": 211,
+   "caption": "Free-floating methanol droplet burning in a 0.24/0.56/0.20 O2/N2/CO2, 0.70-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) and Low Light Level Ultra-Violet (LLUV) fields of view (FOVs) during the entire test. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment, and the flame extinguished diffusively with no disruption."
+  },
+  "FLEX-179": {
+   "figure": 182,
+   "pdf_page": 212,
+   "caption": "Free-floating heptane droplet burning in a 0.23/0.52/0.25 O2/N2/CO2, 0.7-atm ambient environment. The droplet drifted slowly east in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), but it remained in the HiBMs FOV for the entire recording time (including after extinction). There was some rapid postextinction vaporization, but it was not as pronounced as in other heptane tests. This was followed by a plateau in the droplet history. The flame extinguished radiatively, and this was probably followed by a cool flame and cool flame extinction. The color camera Image Processing and Storage Unit (IPSU) failed to record any images after deployment."
+  },
+  "FLEX-180": {
+   "figure": 183,
+   "pdf_page": 213,
+   "caption": "Free-floating heptane droplet burning in a 0.23/0.52/0.25 O2/N2/CO2, 0.7-atm ambient environment. This smaller droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. The droplet disrupted when the droplet was very small—coincident with visible flame extinction. The droplet size at extinction is the size of the droplet just before the disruption."
+  },
+  "FLEX-181": {
+   "figure": 184,
+   "pdf_page": 214,
+   "caption": "Free-floating heptane droplet burning in a 0.19/0.71/0.10 O2/N2/CO2, 0.7-atm ambient environment. The droplet remained in High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test, including a long period after the visible flame extinguished. The flame extinguished radiatively when the droplet was relatively large. After the visible flame extinguished, the droplet vaporized rapidly and almost constantly. Then a vapor cloud formed, and there was a plateau in the droplet history. The post-visible-flame vaporization and plateau indicate cool flame burning and extinction, respectively. The color camera Image Processing and Storage Unit (IPSU) did not record any video after deployment."
+  },
+  "FLEX-182": {
+   "figure": 185,
+   "pdf_page": 215,
+   "caption": "Free-floating heptane droplet burning in a 0.19/0.71/0.10 O2/N2/CO2, 0.7-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test, including after the visible flame extinguished. The flame extinguished radiatively, followed by rapid vaporization and then a plateau late in the test time. The plateau was coincident with the formation of a vapor cloud. The post-visible-flame-extinction behavior and the plateau in the droplet history indicate cool flame burning and extinction, respectively."
+  },
+  "FLEX-183": {
+   "figure": 186,
+   "pdf_page": 216,
+   "caption": "Free-floating heptane droplet burning in a 0.19/0.71/0.10 O2/N2/CO2, 0.7-atm ambient environment. This small droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. The droplet burned to a very small size where it disrupted before the droplet vanished. The extinction droplet diameter is the size of the droplet just prior to the disruption."
+  },
+  "FLEX-184": {
+   "figure": 187,
+   "pdf_page": 217,
+   "caption": "Free-floating methanol droplet burning in a 0.23/0.52/0.25 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted south and out of the High-Bit-Depth Multispectral (HiBMs) and color camera fields of view (FOVs) relatively quickly after ignition. It remained in the Low Light Level Ultra-Violet (LLUV) FOV for the entire test. The droplet burned for a long time before the flame extinguished diffusively."
+  },
+  "FLEX-185": {
+   "figure": 188,
+   "pdf_page": 218,
+   "caption": "Free-floating methanol droplet burning in a 0.70/0.52/0.25 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted south after deployment, hit the igniter, and then drifted east slowly. It left fields of view (FOVs) of the High-Bit-Depth Multispectral (HiBMs), Low Light Level Ultra-Violet (LLUV), and color cameras before the flame extinguished."
+  },
+  "FLEX-186": {
+   "figure": 189,
+   "pdf_page": 219,
+   "caption": "Free-floating methanol droplet burning in a 0.23/0.52/0.25 O2/N2/CO2, 0.70-atm ambient environment. The droplet drifted south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition, went to the end of the FOV, drifted west briefly, and drifted back north; but it never left the FOVs of any of the cameras. The flame extinguished diffusively."
+  },
+  "FLEX-187": {
+   "figure": 190,
+   "pdf_page": 220,
+   "caption": "Free-floating methanol droplet burning in a 0.23/0.52/0.25 O2/N2/CO2, 0.70-atm ambient environment. The droplet deployed and ignited with almost no residual motion and remained in the fields of view (FOVs) of all the cameras for the entire test. The flame extinguished diffusively."
+  },
+  "FLEX-188": {
+   "figure": 191,
+   "pdf_page": 221,
+   "caption": "Free-floating methanol droplet burning in a 0.19/0.71/0.10 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted east and then southeast and out of the High-Bit- Depth Multispectral (HiBMs) field of view (FOV) about one-third of the way through the test. There was no disruption at extinction. This was a very long burn, and the flame probably extinguished diffusively. Because the droplet was in the HiBMs FOV for only a small fraction of the burn, no extinction droplet diameter is reported."
+  },
+  "FLEX-189": {
+   "figure": 192,
+   "pdf_page": 222,
+   "caption": "Free-floating methanol droplet burning in a 0.19/0.71/0.10 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) and left the FOV immediately after the visible flame extinguished. It remained in the FOVs of all the cameras for the entire burn, which ended with diffusive extinction."
+  },
+  "FLEX-190": {
+   "figure": 193,
+   "pdf_page": 223,
+   "caption": "Free-floating methanol droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted east after deployment and ignition, and it drifted out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) before the flame extinguished. It then drifted briefly back in the HiBMs FOV immediately after the flame extinguished. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment. The droplet drifted partially out of the Low Light Level Ultra-Violet (LLUV) FOV for a portion of the burn (resulting in more scatter in the flame size measurement). The extinction droplet diameter was estimated by interpolating the droplet history with a cubic polynomial from the known and measured droplet size and burning rate in the segments of the droplet history just before the droplet left the HiBMs FOV and after it reentered the FOV."
+  },
+  "FLEX-191": {
+   "figure": 194,
+   "pdf_page": 224,
+   "caption": "Free-floating methanol droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 1.0-atm ambient environment. The droplet deployed and ignited with very little residual motion, but it started to drift south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) a few seconds after the igniters were withdrawn. The droplet remained in the FOVs of the Low Light Level Ultra- Violet (LLUV) and color camera for the entire burn. The average burning rate constant was used to extrapolate the droplet size at extinction from the droplet history from the time that the droplet left the HiBMs FOV until the flame extinguished as determined by the LLUV and color camera."
+  },
+  "FLEX-192": {
+   "figure": 195,
+   "pdf_page": 225,
+   "caption": "Free-floating methanol droplet burning in a 0.18/0.67/0.15 O2/N2/CO2, 1.0-atm ambient environment. This smaller droplet drifted to the lower igniter after deployment. The igniter seemed to stop the drift, and the droplet remained near the center of the field of view (FOV) for the duration of the entire test. The droplet burned to diffusive extinction."
+  },
+  "FLEX-193": {
+   "figure": 196,
+   "pdf_page": 226,
+   "caption": "Free-floating methanol droplet burning in a 0.17/0.63/0.20 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted east and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition. The droplet also drifted out of the Low Light Level Ultra-Violet (LLUV) FOV before the flame extinguished. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment. The downlink video shows that the flame extinguished diffusively without disruption."
+  },
+  "FLEX-194": {
+   "figure": 197,
+   "pdf_page": 227,
+   "caption": "Free-floating methanol droplet burning in a 0.17/0.63/0.20 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition, remained in the FOV, briefly drifted north, and then drifted east and out of the HiBMs FOV just before the visible flame extinguished diffusively. The measured burning rate constant from the later part of the burn was used to extrapolate the extinction droplet diameter from the droplet history until the flame extinguished (from the Low Light Level Ultra- Violet (LLUV)). The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment."
+  },
+  "FLEX-195": {
+   "figure": 198,
+   "pdf_page": 228,
+   "caption": "Free-floating heptane droplet burning in a 0.17/0.63/0.20 O2/N2/CO2, 1.0-atm ambient environment. The droplet had almost no drift in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), and it remained in the FOVs of all cameras for the entire recording time. The flame extinguished radiatively and quickly after ignition. The vaporization rate increased after the visible flame extinguished and then quickly plateaued well after the visible flame extinguished. This is indicative of cool flame burning and extinction. The HiBMs view became extremely dark when a vapor cloud formed."
+  },
+  "FLEX-196": {
+   "figure": 199,
+   "pdf_page": 229,
+   "caption": "Free-floating heptane droplet in a 0.20/0.75/0.05 O2/N2/CO2, 1.0-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) with very little residual motion for the entire test. The flame extinguished radiatively and quickly, followed by rapid vaporization and the formation of a large vapor cloud. This indicates that cool flame burning and extinction were likely after the visible flame extinguished. The HiBMs FOV view dimmed when the cloud formed, and this probably caused the droplet to be recorded as being slightly larger at the end of the test (the changing background combined with the fixed segmentation value caused more pixels to be counted as “droplet”)."
+  },
+  "FLEX-197": {
+   "figure": 200,
+   "pdf_page": 230,
+   "caption": "Free-floating heptane droplet burning in a 0.20/0.75/0.05 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted east out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) just before the flame extinguished radiatively. A large vapor cloud formed 15 to 20 s after the visible flame extinguished (visible in the color camera), indicating that cool flame burning and extinction were likely after the visible flame extinguished. The measured burning rate constant (later in the droplet lifetime) was used to extrapolate the extinction droplet diameter from the droplet history, and the Low Light Level Ultra-Violet (LLUV) was used to determine the time of extinction."
+  },
+  "FLEX-198": {
+   "figure": 201,
+   "pdf_page": 231,
+   "caption": "Free-floating heptane droplet in a 0.20/0.75/0.05 O2/N2/CO2, 1.0-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) and Low Light Level Ultra-Violet (LLUV) fields of view (FOVs) for the entire recording time. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment. The flame extinguished radiatively, and there appeared to be rapid vaporization followed by a plateau late in the recording time after the visible flame extinguished. This is indicative of a cool flame burning and extinction after visible flame extinction."
+  },
+  "FLEX-199": {
+   "figure": 202,
+   "pdf_page": 232,
+   "caption": "Free-floating heptane droplet burning in a 0.20/0.75/0.05 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted north after deployment and ignition and out of High-Bit-Depth Multispectral (HiBMs) field of view (FOV). The droplet left the HiBMs FOV before the flame extinguished disruptively when the droplet was very small. The measured burning rate constant was used to extrapolate the extinction droplet diameter from the droplet history until disruption occurred."
+  },
+  "FLEX-200": {
+   "figure": 203,
+   "pdf_page": 233,
+   "caption": "Free-floating methanol droplet burning in a 0.20/0.75/0.05 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted east and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). After drifting out of the HiBMs FOV, the droplet drifted back in slightly then out again for the rest of the test. The flame extinguished diffusively after a long burn. Because the droplet was in the HiBMs FOV for only a small fraction of the total test, no extinction diameter is reported. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment."
+  },
+  "FLEX-201": {
+   "figure": 204,
+   "pdf_page": 234,
+   "caption": "Free-floating methanol droplet burning in a 0.20/0.75/0.05 O2/N2/CO2, 1.0-atm ambient environment. The droplet drifted north in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition. It left the HiBMs FOV approximately two-thirds of the way through the burn, which ended with diffusive extinction. The average burning rate constant from the last half of the time that the droplet was in the HiBMs FOV was used to extrapolate the extinction droplet diameter from the droplet history until the time of extinction. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment."
+  },
+  "FLEX-202": {
+   "figure": 205,
+   "pdf_page": 235,
+   "caption": "Free-floating methanol droplet in a 0.20/0.75/0.05 O2/N2/CO2, 1.0-atm ambient environment. The droplet had very little residual motion after deployment and ignition, drifting very slowly south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). The droplet remained in the FOVs of all the cameras for the entire test."
+  },
+  "FLEX-203": {
+   "figure": 206,
+   "pdf_page": 236,
+   "caption": "Free-floating methanol droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet remained in the fields of view (FOVs) of all cameras, and the flame extinguished diffusively."
+  },
+  "FLEX-204": {
+   "figure": 207,
+   "pdf_page": 237,
+   "caption": "Free-floating methanol droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet remained in the fields of view (FOVs) of all cameras for the entire burn, but it drifted south and out of the High-Bit-Depth Multispectral (HiBMs) FOV shortly after the flame extinguished diffusively. Image Processing and Storage Unit (IPSU) did not record every frame."
+  },
+  "FLEX-206": {
+   "figure": 208,
+   "pdf_page": 238,
+   "caption": "Free-floating heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet drifted southeast in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment; then it hit the igniter and changed direction to the northwest with a relatively high speed. It drifted northwest and out of the HiBMs FOV after a very short time. The droplet also drifted out of the color camera FOV, but it remained in the Low Light Level Ultra-Violet (LLUV) FOV."
+  },
+  "FLEX-207": {
+   "figure": 209,
+   "pdf_page": 239,
+   "caption": "Free-floating heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet drifted southeast in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment; then it hit the igniter and began to drift north. The drift velocity was relatively high, and the droplet drifted out of the HiBMs FOV relatively quickly after ignition. It also drifted out of the Low Light Level Ultra-Violet (LLUV) and color camera FOVs before the end of the test. The flame oscillated briefly in the middle of the burn and then became steady and burned to a disruptive extinction. The flame was very dim in the color camera FOV, with the leading edge of the flame (in the direction of the droplet drift) much brighter than the trailing edge."
+  },
+  "FLEX-208": {
+   "figure": 210,
+   "pdf_page": 240,
+   "caption": "Free-floating heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet drifted southeast after deployment, drifted into the igniter, and changed direction to the north after the igniter was withdrawn. The droplet drifted north during the burn and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). The flame grew, remained stable (no oscillations), and then shrank to a disruptive extinction at a relatively small size. The droplet remained in the Low Light Level Ultra-Violet (LLUV) FOV for the entire test, but the Multi- User Droplet Combustion Apparatus (MDCA) color camera did not record images onboard for this test (the downlinked video is available)."
+  },
+  "FLEX-209": {
+   "figure": 211,
+   "pdf_page": 241,
+   "caption": "Free-floating heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet drifted southeast after deployment, did not touch the igniter, and continued to drift southeast in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) and out of the FOV. The droplet also drifted south and out of the Low Light Level Ultra-Violet (LLUV) FOV. The color camera Image Processing and Storage Unit (IPSU) did not record color camera data. It is not clear whether disruption occurred."
+  },
+  "FLEX-210": {
+   "figure": 212,
+   "pdf_page": 242,
+   "caption": "Fiber-supported heptane droplet in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet drifted east some on the fiber after ignition and early in the droplet lifetime. The soot agglomerates that were near the droplet created a lot of noise in the droplet measurement for the first half of the burn. The droplet also moved significantly on the fiber late in the droplet lifetime. There was evidence of some unusual soot dynamics—large soot particles moving slowly toward the droplet and then being more rapidly pushed away (presumably by the Stefan flow). The droplet burned to completion."
+  },
+  "FLEX-211": {
+   "figure": 213,
+   "pdf_page": 243,
+   "caption": "Free-floating heptane droplet burning in a 0.16/0.84 O2/N2, 1.0-atm ambient environment. The droplet was nearly motionless after deployment and ignition and remained in the fields of view (FOVs) of all the cameras throughout the entire recording time of the Image Processing and Storage Units (IPSUs). The visible flame grew then extinguished radiatively. This was followed by rapid vaporization. The vaporization rate of the droplet actually increased after the visible flame extinguished and then rapidly decreased when a vapor cloud formed. This behavior is indicative of cool flame burning and extinction."
+  },
+  "FLEX-212": {
+   "figure": 214,
+   "pdf_page": 244,
+   "caption": "Free-floating heptane droplet burning in a 0.16/0.84 O2/N2, 1.0-atm ambient environment. The droplet drifted north in the color camera field of view (FOV). The High- Bit-Depth Multispectral (HiBMs) Image Processing and Storage Unit (IPSU) did not record any images for this test, but the droplet remained in the FOVs of the Low Light Level Ultra-Violet (LLUV) and color camera. The flame burned for a short time to radiative extinction. This was probably followed by cool flame burning and extinction. The color camera showed that a large vapor cloud formed sometime after the visible flame extinguished."
+  },
+  "FLEX-214": {
+   "figure": 215,
+   "pdf_page": 245,
+   "caption": "Free-floating heptane droplet burning in a 0.16/0.84 O2/N2, 1.0-atm ambient environment. The droplet remained in the fields of view (FOVs) of all cameras for the entire recording time of the Image Processing and Storage Units (IPSUs). The flame grew and extinguished radiatively shortly after ignition. A period of rapid post visible flame extinction vaporization was followed by a plateau in the droplet history coincident with the appearance of a vapor cloud. Both indicate cool flame burning and extinction following visible flame extinction."
+  },
+  "FLEX-215": {
+   "figure": 216,
+   "pdf_page": 246,
+   "caption": "Free-floating heptane droplet burning in a 0.15/0.85 O2/N2, 1.0-atm ambient environment. The droplet had very little residual motion after deployment and ignition with only a very small drift north in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). The droplet remained in the FOVs of all cameras throughout the recording time of the Image Processing and Storage Units (IPSUs). After ignition, the flame grew but became dimmer, and it extinguished radiatively shortly after ignition. This was followed by a period of rapid vaporization and a quick plateau in the droplet history coincident with the formation of a vapor cloud. Both of these are evidence of cool flame burning and extinction after visible flame extinction."
+  },
+  "FLEX-216": {
+   "figure": 217,
+   "pdf_page": 247,
+   "caption": "Free-floating heptane droplet burning in a 0.15/0.84 O2/N2, 1.0-atm ambient environment. The droplet remained in the fields of view (FOVs) of all the cameras throughout the entire burn and during the recording time of the Image Processing and Storage Unit (IPSUs). Either the droplet burned to completion or the flame extinguished when the droplet was very small. There was no disruption when the flame extinguished."
+  },
+  "FLEX-217": {
+   "figure": 218,
+   "pdf_page": 248,
+   "caption": "Free-floating heptane droplet burning in a 0.14/0.86 O2/N2, 1.0-atm ambient environment. The droplet remained in the fields of view (FOVs) of all cameras for the entire recording time of all the Image Processing and Storage Units (IPSUs). The droplet did drift east to the edge of the High-Bit-Depth Multispectral (HiBMs) FOV and then south to the corner of the HiBMs FOV, but it never left the HiBMs FOV. The flame had a very quick radiative extinction. The vaporization rate did not change after extinction, and a small vapor cloud formed, indicating that there may have been a cool flame, although the extinction of the cool flame was not pronounced."
+  },
+  "FLEX-218": {
+   "figure": 219,
+   "pdf_page": 249,
+   "caption": "Free-floating heptane droplet burning in a 0.14/0.86 O2/N2, 1.0-atm ambient environment. This small droplet drifted quickly northwest in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition. It drifted out of the FOV a short time after the igniter was withdrawn. The droplet appeared to extinguish radiatively, even at this relatively small size. Because the droplet was in the HiBMs FOV for only a small fraction of the entire test, no extinction droplet diameter is reported. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment."
+  },
+  "FLEX-219": {
+   "figure": 220,
+   "pdf_page": 250,
+   "caption": "Free-floating methanol droplet burning in a 0.14/0.86 O2/N2, 1.0-atm ambient environment. The droplet drifted north and out of High-Bit-Depth Multispectral (HiBMs) field of view (FOV) about one-fourth of the way through a very long burn that appeared to end in a diffusive extinction. The droplet drifted east and partially out of the Low Light Level Ultra-Violet (LLUV) FOV, but it remained in the color camera FOV. This was a very weak flame, barely visible on both the LLUV and color cameras. Because the droplet was only in the HiBMs FOV for a small fraction of the flame lifetime, no extinction droplet diameter is reported."
+  },
+  "FLEX-220": {
+   "figure": 221,
+   "pdf_page": 251,
+   "caption": "Free-floating methanol droplet in a 0.14/0.86 O2/N2, 1.0-atm ambient environment. The droplet drifted north after deployment and ignition and then out of High-Bit-Depth Multispectral (HiBMs) field of view (FOV). Just after the visible flame extinguished, the droplet drifted back into the HiBMs FOV. This was a weak flame with a long burn to diffusive extinction. The extinction droplet diameter was derived from a spline fit between the periods of time when the droplet was in the HiBMs FOV."
+  },
+  "FLEX-221": {
+   "figure": 222,
+   "pdf_page": 252,
+   "caption": "Free-floating methanol droplet burning in a 0.13/0.87 O2/N2, 1.0-atm ambient environment. The droplet drifted east; then just after the visible flame extinguished, it drifted south and out of the southeast corner of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). The flame oscillated for several seconds before it extinguished radiatively. The flame oscillations are very difficult to discern in the Low Light Level Ultra-Violet (LLUV) view because the flame luminosity barely registered on the LLUV. The color camera Image Processing and Storage Unit (IPSU) did not record any images for this test."
+  },
+  "FLEX-222": {
+   "figure": 223,
+   "pdf_page": 253,
+   "caption": "Free-floating methanol droplet burning in a 0.13/0.87 O2/N2, 1.0-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for most of the test. For a short period near visible flame extinction, the droplet drifted partially out of the FOV. It drifted back into the HiBMs FOV for the remainder of the HiBMs Image Processing and Storage Unit (IPSU) recording time. The flame was very dim, barely above the background level, in both the Low Light Level Ultra-Violet (LLUV) and color cameras. The extinction droplet diameter was interpolated from the droplet history from when the droplet left the HiBMs FOV to when it reentered a short time after the visible flame extinguished. The interpolation polynomial is a fourth- order polynomial with the constraint that the values and burning rate constants at both ends match the experimental values."
+  },
+  "FLEX-223": {
+   "figure": 224,
+   "pdf_page": 254,
+   "caption": "Free-floating methanol droplet burning in a 0.12/0.88 O2/N2, 1.0-atm ambient environment. The droplet deployed and ignited with almost no residual motion. The droplet drifted a little south and then east in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), but it remained in the FOVs of the HiBMs, Low Light Level Ultra-Violet (LLUV), and color cameras for the entire recording time."
+  },
+  "FLEX-224": {
+   "figure": 225,
+   "pdf_page": 255,
+   "caption": "Free-floating methanol droplet burning in a 0.12/0.88 O2/N2, 1.0-atm ambient environment. The droplet drifted north after deployment and ignition and out of the High-Bit- Depth Multispectral (HiBMs) field of view (FOV) about three-fourths of the way through the burn. The flame grew and then shrank in response to the shrinking droplet. The flame was very dim and difficult to see in the Low Light Level Ultra-Violet (LLUV). The flame probably extinguished diffusively. The measured burning rate constant while the droplet was in the FOV was used to extrapolate the extinction droplet diameter from the droplet history to flame extinction."
+  },
+  "FLEX-225": {
+   "figure": 226,
+   "pdf_page": 256,
+   "caption": "Free-floating methanol droplet burning in a 0.12/0.88 O2/N2, 1.0-atm ambient environment. The droplet was nearly motionless after deployment and ignition. Then it started to drift slowly east, but it changed direction and quickly drifted west in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). The droplet left the HiBMs FOV about three-fourths of the way through the burn. The flame was very dim, but it did appear to grow, reach a maximum, and then decrease in size in response to the shrinking droplet. The burning rate constant measured from the last part of the droplet history while the droplet was still in the HiBMs FOV was used to extrapolate the extinction droplet diameter from the droplet history to when the flame extinguished (as measured by the Low Light Level Ultra-Violet (LLUV)). The flame probably extinguished diffusively with a significant contribution from radiative loss. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment."
+  },
+  "FLEX-226": {
+   "figure": 227,
+   "pdf_page": 257,
+   "caption": "Free-floating methanol droplet burning in a 0.20/0.75/0.05 O2/N2/He, 1.0-atm ambient environment. The droplet was nearly motionless after deployment and ignition, but it began to drift southeast in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) a few seconds after ignition. The droplet drifted out of the HiBMs field of view (FOV), but it remained in the FOVs of the Low Light Level Ultra-Violet (LLUV) and color cameras. The color camera Image Processing and Storage Unit (IPSU) failed to record any images after deployment. The droplet burned for a relatively long time before the flame extinguished diffusively. The burning rate constant from a short period just prior to the droplet leaving the HiBMs FOV was used to extrapolate the extinction droplet diameter from the droplet history from the time that the droplet left the HiBMs FOV until the flame extinguished."
+  },
+  "FLEX-227": {
+   "figure": 228,
+   "pdf_page": 258,
+   "caption": "Free-floating methanol droplet in a 0.20/0.75.0.05 O2/N2/He, 1.0-atm ambient environment. The High-Bit-Depth Multispectral (HiBMs) Image Processing and Storage Unit (IPSU) failed to start, so no droplet data were recorded. The flame was bright and burned for over 5 s until it (presumably) extinguished diffusively."
+  },
+  "FLEX-229": {
+   "figure": 229,
+   "pdf_page": 259,
+   "caption": "Free-floating heptane droplet burning in a 0.20/0.75.0.05 O2/N2/He, 1.0- atm ambient environment. The droplet drifted southeast after deployment in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), hit the igniter, and developed a large drift velocity to the east. The droplet drifted out of the FOV of the HiBMs and then out of the FOVs of the Low Light Level Ultra-Violet (LLUV) and color cameras before the flame either extinguished or burned out."
+  },
+  "FLEX-230": {
+   "figure": 230,
+   "pdf_page": 260,
+   "caption": "Free-floating heptane droplet burning in a 0.20/0375/0.05 O2/N2/He, 1.0-atm ambient environment. The droplet drifted southwest after deployment then hit the igniter and moved southwest in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). It left the HiBMs FOV about halfway through the burn. Because of soot, the droplet burned very brightly with a lot of luminosity. The soot diminished, and the flame burned with a dim blue flame that got brighter near the end of the burn. The droplet burned to a very small size and disrupted coincident with flame extinction."
+  },
+  "FLEX-231": {
+   "figure": 231,
+   "pdf_page": 261,
+   "caption": "Free-floating methanol droplet burning in a 0.19/0.71/0.10 O2/N2/He, 1.0-atm ambient environment. The droplet had a pronounced drift south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment; then it struck the igniter and continued to drift south and out of the HiBMs FOV about one-third of the way through the burn. The droplet burned for a relatively long time before the flame extinguished diffusively. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment for this test. Also, because the droplet was in the HiBMs FOV for only a short fraction of the total test, no extinction droplet diameter is reported for this test."
+  },
+  "FLEX-232": {
+   "figure": 232,
+   "pdf_page": 262,
+   "caption": "Free-floating methanol droplet burning in a 0.18/0.67/0.15 O2/N2/He, 1.0-atm ambient environment. The droplet slowly drifted south after deployment and ignition in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), but it never left the FOV. The flame extinguished diffusively with no disruption."
+  },
+  "FLEX-233": {
+   "figure": 233,
+   "pdf_page": 263,
+   "caption": "Fiber-supported methanol droplet burning in a 0.18/0.67/0.15 O2/N2/He, 1.0-atm ambient environment. After ignition, the droplet moved slowly and smoothly west on the fiber in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). The droplet drifted to the edge of the HiBMs FOV, but it remained in the FOV. There was some small oscillatory motion on the fiber, but the burn was relatively clean until the flame extinguished diffusively."
+  },
+  "FLEX-234": {
+   "figure": 234,
+   "pdf_page": 264,
+   "caption": "Free-floating heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet drifted southeast and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) about halfway through the burn. The flame began to oscillate and then drifted south and out of the Low Light Level Ultra-Violet (LLUV) FOV before the flame extinguished. The color camera Image Processing and Storage Unit (IPSU) did not record any images during the burn. It is not clear whether the droplet continued to burn in the LLUV FOV or for how long it burned if it continued to burn. The oscillations were significant, but the flame appeared to decrease in size. From the radiometer, it appears that the droplet burned with a stable flame after the flame oscillations stopped."
+  },
+  "FLEX-235": {
+   "figure": 235,
+   "pdf_page": 265,
+   "caption": "Free-floating heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for most of its lifetime. The droplet burned to a very small size, with a small disruption coincident with visible flame extinction."
+  },
+  "FLEX-236": {
+   "figure": 236,
+   "pdf_page": 266,
+   "caption": "Fiber-supported heptane droplet burning in a cabin air (0.21/0.79 O2/N2), 1.0-atm ambient environment. The droplet oscillated on the fiber throughout the burn, but it remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). Large soot agglomerates interfered with the measurement of droplet size for a portion of the burn. The flame extinguished radiatively after a very long, slow, high-amplitude oscillation. This was followed by rapid vaporization and the formation of a vapor cloud coincident with the plateau. The droplet moved during the vaporization, but this did not seem to impact the size measurement significantly. There was a small disruption near the end of the vaporization and a small jump in droplet size—maybe a gas bubble that burst. A cool flame and cool flame extinction probably followed the visible flame extinction."
+  },
+  "FLEX-237": {
+   "figure": 237,
+   "pdf_page": 267,
+   "caption": "Free-floating heptane droplet burning in a 0.19/0.71/0.10 O2/N2/He, 1.0-atm ambient environment. The droplet drifted north in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition and just out of the FOV before the flame extinguished and disrupted. There may have been a disruption coincident with when the flame extinguished."
+  },
+  "FLEX-238": {
+   "figure": 238,
+   "pdf_page": 268,
+   "caption": "Free-floating heptane droplet burning in a 0.18/0.67/0.15 O2/N2/He, 1.0-atm ambient environment. The droplet was almost motionless after deployment and ignition. This was a large droplet, and it remained in High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. After ignition, the flame grew but became increasingly dimmer, and it quickly extinguished because of radiative loss. After the visible flame extinguished, the droplet continued to vaporize at almost the same rate well after the flame extinguished when a plateau occurred coincident with the formation of a large vapor cloud. Both phenomena indicate cool flame burning and extinction after visible flame extinction. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment."
+  },
+  "FLEX-239": {
+   "figure": 239,
+   "pdf_page": 269,
+   "caption": "Free-floating heptane droplet burning in a 0.18/0.67/0.15 O2/N2/He, 1.0-atm ambient environment. The droplet drifted north after deployment and ignition and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) one-third of the way through the burn. The flame remained in the FOV of both the Low Light Level Ultra-Violet (LLUV) and color camera for the duration of the burn. Initially, soot oxidation caused the flame to be bright and very luminous, but quickly the flame became a dimmer blue. The luminosity increased slightly as the flame approached extinction. Because the droplet was out of the HiBMs FOV for the majority of the test, no extinction diameter is reported."
+  },
+  "FLEX-240": {
+   "figure": 240,
+   "pdf_page": 270,
+   "caption": "Free-floating heptane droplet burning in a 0.18/0.67/0.15 O2/N2/He, 1.0-atm ambient environment. The droplet drifted north after deployment and ignition and out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) about one-fourth of the way through the burn. The drift velocity was relatively high, and the flame was brighter on the leading edge in the direction of the drift. The droplet did remain in the FOVs of the Low Light Level Ultra-Violet (LLUV) and color camera. Because the droplet was in the HiBMs FOV for only a small fraction of the burn, no extinction diameter is reported for this test. The color camera Image Processing and Storage Unit (IPSU) did not record any images after deployment for this test."
+  },
+  "FLEX-241": {
+   "figure": 241,
+   "pdf_page": 271,
+   "caption": "Free-floating heptane droplet burning in a 0.17/0.63/0.20 O2/N2/He, 1.0-atm ambient environment. The droplet had almost no drift after deployment and ignition, and it remained in the High-Bit-Depth Multispectral (HiBMs), Low Light Level Ultra-Violet (LLUV), and color camera fields of view (FOVs) with little motion throughout the Image Processing and Storage Unit (IPSU) recording time. The flame extinguished radiatively, and there was a brief period after the visible flame extinguished in which the droplet continued to vaporize at a nearly constant rate, indicating that there was a cool flame after the visible flame extinguished. The color camera IPSU did not record any images after deployment."
+  },
+  "FLEX-242": {
+   "figure": 242,
+   "pdf_page": 272,
+   "caption": "Free-floating heptane droplet burning in a 0.17/0.63/0.20 O2/N2/He, 1.0-atm ambient environment. The droplet had almost no drift after deployment and ignition, moving slightly to the southeast in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) but remaining in the FOV of all the cameras for the entire test. The color camera Image Processing and Storage Unit (IPSU) failed to record any images after deployment. The flame extinguished after approximately 5 s, and extinction was probably followed by cool flame burning and extinction."
+  },
+  "FLEX-243": {
+   "figure": 243,
+   "pdf_page": 273,
+   "caption": "Fiber-supported heptane droplet burning in a 0.17/0.63 O2/N2, 1.0-atm ambient environment. Neither the High-Bit-Depth Multispectral (HiBMs) or color camera Image Processing and Storage Units (IPSUs) recorded any images for this test. The droplet burned for a short time to disruption."
+  },
+  "FLEX-244": {
+   "figure": 244,
+   "pdf_page": 274,
+   "caption": "Fiber-supported heptane droplet burning in a 0.17/0.63/0.20 O2/N2/He, 1.0-atm ambient environment. This was a smaller droplet. After ignition, there was a lot of motion on the fiber. It was not really disruptive burning, in which the droplet becomes dislodged from the fiber, but the motion clearly influenced the burning history. The droplet burned to completion, and the color camera did not record to the onboard Image Processing and Storage Unit (IPSU) for this test."
+  },
+  "FLEX-245": {
+   "figure": 245,
+   "pdf_page": 275,
+   "caption": "Free-floating methanol droplet in a 0.17/0.63/0.20 O2/N2/He, 1.0-atm ambient environment. The droplet had a strong north to northeast drift after deployment, nearly hitting the igniter before it withdrew. The droplet had a relatively high drift velocity after ignition and only remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for one-fourth of the burn. Because the droplet was in the FOV for only a short time, no extinction diameter is reported. The flame extinguished diffusively."
+  },
+  "FLEX-246": {
+   "figure": 246,
+   "pdf_page": 276,
+   "caption": "Free-floating methanol droplet burning in a 0.17/0.63/0.20 O2/N2/He, 1.0-atm ambient environment. The droplet had almost no drift after deployment and ignition, but shortly into the burn it developed a slow drift northeast then east in the color camera field of view (FOV). The droplet left the High-Bit-Depth Multispectral (HiBMs) FOV near diffusive flame extinction. The measured burning rate constant while the droplet was in the HiBMs FOV was used to extrapolate the extinction droplet diameter from the droplet history from the time that the droplet left the HiBMs FOV until the flame extinguished. The diameter should be reasonably accurate because the flame extinguished only a short time after it left the HiBMs FOV."
+  },
+  "FLEX-247": {
+   "figure": 247,
+   "pdf_page": 277,
+   "caption": "Free-floating methanol droplet burning in a 0.16/0.59/0.25 O2/N2/He, 1.0-atm ambient environment. The droplet was nearly motionless after deployment and ignition, and it remained in the fields of view (FOVs) of all the cameras for the entire recording time. It is difficult to say whether the flame extinguished diffusively or radiatively. It was probably near the flammability boundary. The color camera Image Processing and Storage Unit (IPSU) failed to record any images after deployment."
+  },
+  "FLEX-248": {
+   "figure": 248,
+   "pdf_page": 278,
+   "caption": "Free-floating methanol droplet burning in a 0.16/0.59/0.25 O2/N2/He, 1.0-atm ambient environment. The High-Bit-Depth Multispectral (HiBMs) Image Processing and Storage Unit (IPSU) did not record any images for this test. There was only a very small drift south in color camera field of view (FOV), but the droplet remained in the FOV for the entire test (as well as the Low Light Level Ultra-Violet (LLUV) FOV). The droplet burned to extinction."
+  },
+  "FLEX-249": {
+   "figure": 249,
+   "pdf_page": 279,
+   "caption": "Free-floating heptane droplet burning in a 0.16/0.59/0.25 O2/N2/He, 1.0- atm ambient environment. This smaller droplet was nearly motionless after deployment and ignition, and it remained in the fields of view (FOVs) of all the cameras. The flame surrounding the droplet extinguished at a very small size, near the limit of what we can reasonably measure. The flame size was nearly constant throughout the burn, decreasing only slightly toward the end of the burn after increasing only slightly in size initially. The flame standoff increased linearly throughout the burn."
+  },
+  "FLEX-250": {
+   "figure": 250,
+   "pdf_page": 280,
+   "caption": "Fiber-supported methanol droplet burning in a 0.15/0.55/0.30 O2/N2/He, 1.0-atm ambient environment. There was a small amount of axial motion on the fiber, but it did not seem to influence the burning behavior to a large degree. This was a relatively short, transient burn, and the flame probably extinguished radiatively."
+  },
+  "FLEX-251": {
+   "figure": 251,
+   "pdf_page": 281,
+   "caption": "Free-floating methanol droplet burning in a 0.15/0.55/0.30 O2/N2/He, 1.0-atm ambient environment. The droplet drifted south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition. It remained in the FOV for the duration of the burn, leaving shortly after the visible flame extinguished. This ambient environment was probably near the flammability boundary, so it is difficult to determine whether the flame extinguished diffusively or radiatively."
+  },
+  "FLEX-252": {
+   "figure": 252,
+   "pdf_page": 282,
+   "caption": "Free-floating methanol droplet burning in a 0.14/0.51/0.35 O2/N2/He, 1.0-atm ambient environment. After deployment and ignition, the droplet had a slow southeast drift in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). It left the HiBMs FOV well after the visible flame extinguished, but it drifted back into the HiBMs FOV before the end of the recording period. The droplet burned for a short time before the flame extinguished."
+  },
+  "FLEX-253": {
+   "figure": 253,
+   "pdf_page": 283,
+   "caption": "Free-floating methanol droplet burning in a 0.14/0.51/0.35 O2/N2/He, 1.0-atm ambient environment. The droplet was nearly motionless after deployment and ignition in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). It started to drift south as it burned, and it left the FOV well after the visible flame extinguished. The droplet burned for only a very short time, and the flame was very dim, almost undetectable in both the Low Light Level Ultra-Violet (LLUV) and color camera. The droplet was very near or even below the flammability limit."
+  },
+  "FLEX-254": {
+   "figure": 254,
+   "pdf_page": 284,
+   "caption": "Free-floating methanol droplet burning in a 0.13/0.47/0.40 O2/N2/He, 1.0-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire recording period. It had a very short burn to extinction. This was probably below the flammability limit."
+  },
+  "FLEX-255": {
+   "figure": 255,
+   "pdf_page": 285,
+   "caption": "Free-floating heptane droplet burning in a 0.24/0.56/0.20 O2/N2/He, 0.70-atm ambient environment. The droplet drifted out of the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) close to extinction, but it remained in the FOV of the Low Light Level Ultra-Violet (LLUV) and color camera FOVs. A small vapor cloud formed at extinction. There was noise in the analysis of the droplet image because soot particles that formed during combustion interfered with the analysis. It is not clear whether the visible extinction was radiative or diffusive or if there was a cool flame after the visible flame extinguished."
+  },
+  "FLEX-256": {
+   "figure": 256,
+   "pdf_page": 286,
+   "caption": "Free-floating heptane droplet burning in a 0.23/0.52/0.25 O2/N2/He, 0.70-atm ambient environment. The droplet drifted east after deployment and ignition in the High-Bit- Depth Multispectral (HiBMs) field of view (FOV), leaving the FOV just prior to extinction or burnout. The droplet burned to a very small size and then appeared to disrupt or rapidly change direction after the droplet left the HiBMs FOV. The measured burning rate constant was used to extrapolate the extinction droplet diameter from the droplet history from the time that the droplet left the FOV until the flame extinguished. The small droplet size at extinction suggests that the droplet burned almost to completion."
+  },
+  "FLEX-257": {
+   "figure": 257,
+   "pdf_page": 287,
+   "caption": "Free-floating methanol droplet burning in a 0.24/0.56/0.20 O2/N2/He, 0.70-atm ambient environment. The droplet drifted southeast in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition. It stopped briefly at the corner of the FOV and then disappeared from the FOV (there one frame, gone the next) at a time coincident with visible flame extinction. The droplet may have moved to just outside of the FOV after the flame extinguished. The droplet burned nicely to a diffusive extinction. The extinction droplet diameter is the droplet diameter in the frame just before the droplet disappeared."
+  },
+  "FLEX-258": {
+   "figure": 258,
+   "pdf_page": 288,
+   "caption": "Fiber-supported methanol droplet burning in a 0.24/0.56/0.20 O2/N2/He, 0.70-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), but there was a lot of motion on the fiber. Eventually the droplet disrupted and dislodged from the fiber. Because of the disruption, no extinction droplet diameter is reported."
+  },
+  "FLEX-259": {
+   "figure": 259,
+   "pdf_page": 289,
+   "caption": "Free-floating methanol droplet in a 0.23/0.52/0.25 O2/N2/He, 0.70-atm ambient environment. The droplet drifted southeast in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after ignition and out of the FOV near diffusive extinction. The burning rate constant from the last part of the burn while the droplet was in the FOV was used to extrapolate the extinction droplet diameter from the droplet history from the time that the droplet left the HiBMs FOV until the visible flame extinguished."
+  },
+  "FLEX-260": {
+   "figure": 260,
+   "pdf_page": 290,
+   "caption": "Fiber-supported methanol droplet burning in a 0.23/0.52/0.25 O2/N2/He, 0.70-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), and there was very little motion on the fiber until very close to visible flame extinction when the droplet dislodged from the fiber. Because the flame extinguished when the droplet disrupted off of the fiber, no extinction droplet diameter is reported."
+  },
+  "FLEX-261": {
+   "figure": 261,
+   "pdf_page": 291,
+   "caption": "Free-floating methanol droplet in a 0.21/0.49/0.30 O2/N2/He, 0.70-atm ambient environment. The droplet drifted northwest in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment, hit the igniter, and then drifted quickly south after ignition. Because the droplet left the HiBMs FOV shortly after ignition, only a small portion of the droplet burning history was captured. The droplet also left the color camera FOV. Because only a short part of the burning history was captured, no extinction droplet diameter is reported and the burning rate constant is probably inaccurate."
+  },
+  "FLEX-262": {
+   "figure": 262,
+   "pdf_page": 292,
+   "caption": "Free-floating methanol droplet in a 0.21/0.49/0.30 O2/N2/He, 0.70-atm ambient environment. The droplet drifted southeast in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment, hit the igniter, and then began to drift slowly northwest after ignition. The droplet left the HiBMs FOV before extinction, but most of the burning history was captured by the HiBMs. The droplet burned for a long time before the flame extinguished diffusively. The measured burning rate constant from just before the droplet left the HiBMs FOV was used to extrapolate the extinction droplet diameter from the droplet size history from the time that the droplet left the HiBMs FOV until the visible flame extinguished."
+  },
+  "FLEX-263": {
+   "figure": 263,
+   "pdf_page": 293,
+   "caption": "Fiber-supported methanol droplet burning in a 0.21/0.49/0.30 O2/N2/He, 0.70-atm ambient environment. The droplet drifted slowly east along the fiber in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition. There was a little disruptive motion on the fiber during the burning history. The flame extinguished diffusively."
+  },
+  "FLEX-264": {
+   "figure": 264,
+   "pdf_page": 294,
+   "caption": "Free-floating heptane droplet in a 0.21/.0.49/0.30 O2/N2/He, 0.7-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test. The flame grew to a maximum size shortly after ignition, then remained at a constant size until extinction. It is not clear whether the flame extinguished diffusively or radiatively. There was no evidence of prolonged cool flame burning after the visible flame extinguished; there was no rapid vaporization after extinction and no vapor cloud formed in the color camera view."
+  },
+  "FLEX-265": {
+   "figure": 265,
+   "pdf_page": 295,
+   "caption": "Free-floating heptane droplet burning in a 0.21/0.49/0.30 O2/N2/He, 0.70-atm ambient environment. The droplet remained in the fields of view (FOVs) of all the cameras for the entire test. The flame grew, reached a maximum size, and then decreased in size until it extinguished diffusively at a very small size. Shortly after extinction, the droplet appeared to disrupt and disappeared from the High-Bit-Depth Multispectral (HiBMs) FOV."
+  },
+  "FLEX-266": {
+   "figure": 266,
+   "pdf_page": 296,
+   "caption": "Free-floating heptane droplet burning in a 0.20/0.45/0.35 O2/N2/He, 0.70-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) (and the FOVs of all cameras) for the entire test. The flame grew continuously after ignition, extinguishing radiatively after approximately 5 s. There appears to be no cool flame or only a very brief one—there was no significant vaporization after extinction and no vapor cloud formed in the color camera view."
+  },
+  "FLEX-267": {
+   "figure": 267,
+   "pdf_page": 297,
+   "caption": "Free-floating heptane droplet burning in a 0.20/0.45/0.35 O2/N2/He, 0.70-atm ambient environment. The droplet remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) (and the FOVs of all the cameras) for the entire test. The flame grew throughout the test and became dimmer until it extinguished radiatively after approximately 5 s. There appeared to be no evidence of cool flame formation—there was no rapid vaporization after the visible flame extinguished and no vapor cloud formed in the color camera view."
+  },
+  "FLEX-268": {
+   "figure": 268,
+   "pdf_page": 298,
+   "caption": "Free-floating methanol droplet burning in a 0.20/0.45/0.35 O2/N2/He, 0.70-atm ambient environment. The droplet drifted south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition, but it remained in the FOV for the entire test. The flame was very dim and barely detectable in the color camera. The very long burn resulted in diffusive extinction, although the flame standoff grew throughout the test."
+  },
+  "FLEX-269": {
+   "figure": 269,
+   "pdf_page": 299,
+   "caption": "Free-floating methanol droplet burning in a 0.20/0.45/0.35 O2/N2/He, 0.70-atm ambient environment. The droplet was nearly motionless after deployment and ignition, and it drifted around the High-Bit-Depth Multispectral (HiBMs) field of view (FOV). However, it remained in the FOV for the entire burn and well after the visible flame extinguished."
+  },
+  "FLEX-270": {
+   "figure": 270,
+   "pdf_page": 300,
+   "caption": "Free-floating methanol droplet burning in a 0.18/0.42/0.40 O2/N2/He, 0.70-atm ambient environment. The droplet drifted south in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition, leaving the FOV when the visible flame extinguished. This was a large droplet, and it probably extinguished radiatively."
+  },
+  "FLEX-271": {
+   "figure": 271,
+   "pdf_page": 301,
+   "caption": "Free-floating methanol droplet burning in a 0.18/0.42/0.40 O2/N2/He, 0.70-atm ambient environment. The droplet drifted north in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment; then it hit the igniter and drifted east and out of the FOV before extinction. The burning rate constant measured during the later period while the droplet was in the HiBMs FOV was used to extrapolate the extinction droplet diameter from the droplet history from the time that the droplet left the HiBMs FOV until the visible flame extinguished."
+  },
+  "FLEX-272": {
+   "figure": 272,
+   "pdf_page": 302,
+   "caption": "Fiber-supported methanol droplet burning in a 0.18/0.42/0.40 O2/N2/He, 0.70-atm ambient environment. There was almost no axial motion of the droplet relative to the fiber, but the droplet oscillated radially on the fiber, causing minor disruptions in the flame and creating some scatter in the droplet history."
+  },
+  "FLEX-273": {
+   "figure": 273,
+   "pdf_page": 303,
+   "caption": "Free-floating heptane droplet burning in a 0.18/0.42/0.40 O2/N2/He, 0.70-atm ambient environment. The droplet drifted northeast in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition, but it remained in the FOVs of all cameras for the entire test. The droplet burned for several seconds, and the flame grew, reached a maximum size, and remained nearly constant for the entire test. The luminosity of the flame continuously decreased as the droplet burned. This was probably near the flammability limit. There was no evidence of cool flame formation (no rapid vaporization or vapor cloud formation)."
+  },
+  "FLEX-274": {
+   "figure": 274,
+   "pdf_page": 304,
+   "caption": "Free-floating heptane droplet burning in a 0.18/0.42/0.40 O2/N2/He, 0.70-atm ambient environment. The droplet drifted northeast after deployment and ignition, but it remained in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire burn and for several seconds after the flame extinguished (long enough to observe the vaporization history). The flame grew slightly and reached a maximum size one-third of the way through the burn. It then decreased in size in response to the shrinking droplet. The flame probably extinguished diffusively, but it was very close to the flammability limit. There was no evidence of a cool flame; that is, there was no rapid vaporization after the visible flame extinguished and no vapor cloud formed."
+  },
+  "FLEX-275": {
+   "figure": 275,
+   "pdf_page": 305,
+   "caption": "Free-floating heptane droplet burning in a 0.17/0.38/0.45 O2/N2/He, 0.70-atm ambient environment. The droplet drifted northeast in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV), but it remained in the FOV for the entire test. Well after the flame extinguished, the droplet drifted partially out of the HiBMs FOV and then back in for the remainder of the recording time. The flame grew continuously throughout the test, getting dimmer until the flame extinguished. There was no evidence of a cool flame (continued vaporization or vapor cloud)."
+  },
+  "FLEX-276": {
+   "figure": 276,
+   "pdf_page": 306,
+   "caption": "Fiber-supported heptane droplet burning in a 0.17/0.38/0.45 O2/N2/He, 0.70-atm ambient environment. The droplet exhibited significant axial and radial oscillations throughout the test, and the burning rate and extinction diameter data were strongly influenced by this motion. The residual droplet on the fiber had a large gas bubble that resulted in the size jump after the visible flame extinguished."
+  },
+  "FLEX-277": {
+   "figure": 277,
+   "pdf_page": 307,
+   "caption": "Free-floating methanol droplet burning in a 0.17/0.38/0.45 O2/N2/He, 0.70-atm ambient environment. The droplet drifted south in High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition. Well after extinction, the droplet drifted out of the FOV."
+  },
+  "FLEX-278": {
+   "figure": 278,
+   "pdf_page": 308,
+   "caption": "Fiber-supported methanol droplet burning in a 0.17/0.38/0.45 O2/N2/He, 0.70-atm ambient environment. The droplet migrated slowly west in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after ignition, but it remained in the FOV the entire test. There was a small spot on the fiber that burned off early in the burn, which was a short burn to extinction. This was near the limiting oxygen index (LOI) in this ambient mixture."
+  },
+  "FLEX-279": {
+   "figure": 279,
+   "pdf_page": 309,
+   "caption": "Free-floating heptane droplet burning in a 0.21/0.64/0.15 O2/N2/He, 1.0-atm ambient environment. The droplet remained in High-Bit-Depth Multispectral (HiBMs) field of view (FOV) for the entire test (it briefly drifted out well after the visible flame extinguished). A large vapor cloud formed at the end of the test, indicating that a cool flame probably followed visible flame extinction."
+  },
+  "FLEX-280": {
+   "figure": 280,
+   "pdf_page": 310,
+   "caption": "Free-floating heptane droplet burning in a 0.21/0.15/0.64 O2/N2/He, 1.0-atm ambient environment. The droplet drifted east in the High-Bit-Depth Multispectral (HiBMs) field of view (FOV) after deployment and ignition, and it drifted out of the FOV right before the flame extinguished diffusively. The measured burning rate constant from the last part of the burn was used to extrapolate the extinction droplet diameter from the droplet history from the time that the droplet left the FOV until the visible flame extinguished."
+  }
+ }
+}

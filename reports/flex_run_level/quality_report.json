@@ -1,0 +1,1340 @@
+{
+  "rows_total": 274,
+  "rows_by_fuel": {
+    "Methanol": 157,
+    "Heptane": 117
+  },
+  "rows_by_test_end": {
+    "Disruption": 61,
+    "Extinction": 186,
+    "Completion": 27
+  },
+  "rows_by_diluent_family": {
+    "Methanol": {
+      "N2_only": 54,
+      "CO2_added": 75,
+      "He_added": 28
+    },
+    "Heptane": {
+      "N2_only": 47,
+      "CO2_added": 48,
+      "He_added": 22
+    }
+  },
+  "pressure_clusters": {
+    "752-774.1 mmHg": 161,
+    "2318.8-2319.9 mmHg": 3,
+    "2055.6-2074.2 mmHg": 4,
+    "1545.7-1553.8 mmHg": 2,
+    "526.3-544.4 mmHg": 103,
+    "pressure_invalid": 1
+  },
+  "row_flag_counts": {
+    "missing_test_time_gmt": 1,
+    "composition_sum_deviation": 6,
+    "duplicate_source_identifier": 2
+  },
+  "flagged_rows": [
+    {
+      "psi_row": 4,
+      "identifier": "30CAL02",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 7,
+      "identifier": "20CAL13",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 8,
+      "identifier": "30CAL06",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 9,
+      "identifier": "30CAL07",
+      "fuel": "Heptane",
+      "row_flags": [
+        "missing_test_time_gmt"
+      ],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "D0_mm": [
+          "missing_blank"
+        ],
+        "Dext_mm": [
+          "missing_blank"
+        ],
+        "K_reported_mm2_s": [
+          "missing_blank"
+        ],
+        "burn_time_s": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 10,
+      "identifier": "256F002",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 11,
+      "identifier": "256R001",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 12,
+      "identifier": "264F003",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ],
+        "K_reported_mm2_s": [
+          "missing_blank"
+        ],
+        "burn_time_s": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 13,
+      "identifier": "256R002",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 14,
+      "identifier": "256F007",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ],
+        "K_reported_mm2_s": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 15,
+      "identifier": "256F008",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ],
+        "K_reported_mm2_s": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 17,
+      "identifier": "240R003",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ],
+        "K_reported_mm2_s": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 19,
+      "identifier": "196F001",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 22,
+      "identifier": "192F003",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 23,
+      "identifier": "196F002",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 24,
+      "identifier": "196F003",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "D0_mm": [
+          "missing_dash_marker"
+        ],
+        "Dext_mm": [
+          "missing_blank"
+        ],
+        "K_reported_mm2_s": [
+          "missing_blank"
+        ],
+        "burn_time_s": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 27,
+      "identifier": "195F001",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 28,
+      "identifier": "195F002",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 29,
+      "identifier": "178R001",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 31,
+      "identifier": "182F001",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 32,
+      "identifier": "182F002",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 37,
+      "identifier": "220R001",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 38,
+      "identifier": "220R002",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 39,
+      "identifier": "224F001",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "zero_value_meaning_unconfirmed"
+        ]
+      }
+    },
+    {
+      "psi_row": 40,
+      "identifier": "219R001",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 41,
+      "identifier": "219F001",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 42,
+      "identifier": "223F001",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 43,
+      "identifier": "223F002",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "zero_value_meaning_unconfirmed"
+        ]
+      }
+    },
+    {
+      "psi_row": 44,
+      "identifier": "206F001",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 47,
+      "identifier": "209F001",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 48,
+      "identifier": "205F001",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 51,
+      "identifier": "209F005",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "zero_value_meaning_unconfirmed"
+        ]
+      }
+    },
+    {
+      "psi_row": 52,
+      "identifier": "210F002",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "zero_value_meaning_unconfirmed"
+        ]
+      }
+    },
+    {
+      "psi_row": 53,
+      "identifier": "209F002",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "D0_mm": [
+          "missing_blank"
+        ],
+        "Dext_mm": [
+          "missing_blank"
+        ],
+        "K_reported_mm2_s": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 54,
+      "identifier": "190F003",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 58,
+      "identifier": "176F001",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 60,
+      "identifier": "204F001",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 63,
+      "identifier": "301F002",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 0.99,
+      "field_flags": {
+        "Dext_mm": [
+          "zero_value_meaning_unconfirmed"
+        ]
+      }
+    },
+    {
+      "psi_row": 65,
+      "identifier": "189R001",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 69,
+      "identifier": "193R002",
+      "fuel": "Heptane",
+      "row_flags": [
+        "composition_sum_deviation"
+      ],
+      "composition_sum": 0.98,
+      "field_flags": {
+        "Dext_mm": [
+          "zero_value_meaning_unconfirmed"
+        ]
+      }
+    },
+    {
+      "psi_row": 70,
+      "identifier": "193F001",
+      "fuel": "Heptane",
+      "row_flags": [
+        "duplicate_source_identifier"
+      ],
+      "composition_sum": 0.99,
+      "field_flags": {}
+    },
+    {
+      "psi_row": 71,
+      "identifier": "189R002",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 0.99,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 72,
+      "identifier": "193R001",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 0.99,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 73,
+      "identifier": "193F001",
+      "fuel": "Heptane",
+      "row_flags": [
+        "duplicate_source_identifier"
+      ],
+      "composition_sum": 0.99,
+      "field_flags": {}
+    },
+    {
+      "psi_row": 74,
+      "identifier": "221F001",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 0.99,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 75,
+      "identifier": "203R002",
+      "fuel": "Methanol",
+      "row_flags": [
+        "composition_sum_deviation"
+      ],
+      "composition_sum": 0.98,
+      "field_flags": {}
+    },
+    {
+      "psi_row": 76,
+      "identifier": "203F001",
+      "fuel": "Methanol",
+      "row_flags": [
+        "composition_sum_deviation"
+      ],
+      "composition_sum": 0.98,
+      "field_flags": {}
+    },
+    {
+      "psi_row": 79,
+      "identifier": "179F001",
+      "fuel": "Heptane",
+      "row_flags": [
+        "composition_sum_deviation"
+      ],
+      "composition_sum": 0.98,
+      "field_flags": {}
+    },
+    {
+      "psi_row": 80,
+      "identifier": "207F001",
+      "fuel": "Heptane",
+      "row_flags": [
+        "composition_sum_deviation"
+      ],
+      "composition_sum": 0.98,
+      "field_flags": {
+        "D0_mm": [
+          "missing_dash_marker"
+        ],
+        "Dext_mm": [
+          "missing_blank"
+        ],
+        "K_reported_mm2_s": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 81,
+      "identifier": "207F002",
+      "fuel": "Heptane",
+      "row_flags": [
+        "composition_sum_deviation"
+      ],
+      "composition_sum": 0.98,
+      "field_flags": {
+        "D0_mm": [
+          "missing_dash_marker"
+        ],
+        "Dext_mm": [
+          "missing_blank"
+        ],
+        "K_reported_mm2_s": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 83,
+      "identifier": "304F002",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 0.99,
+      "field_flags": {
+        "D0_mm": [
+          "missing_dash_marker"
+        ],
+        "Dext_mm": [
+          "missing_blank"
+        ],
+        "K_reported_mm2_s": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 88,
+      "identifier": "053R001",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 89,
+      "identifier": "053F001",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 90,
+      "identifier": "141R001",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 91,
+      "identifier": "141F001",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 92,
+      "identifier": "061F002",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 93,
+      "identifier": "149F001",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "zero_value_meaning_unconfirmed"
+        ]
+      }
+    },
+    {
+      "psi_row": 96,
+      "identifier": "C08H301",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "D0_mm": [
+          "missing_dash_marker"
+        ],
+        "Dext_mm": [
+          "missing_dash_marker"
+        ],
+        "K_reported_mm2_s": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 107,
+      "identifier": "C08M401",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 0.99,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 108,
+      "identifier": "C09M301",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 109,
+      "identifier": "C10M102",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "burn_time_s": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 114,
+      "identifier": "C11M201",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "P_mmHg": [
+          "invalid_nonpositive_pressure"
+        ]
+      }
+    },
+    {
+      "psi_row": 128,
+      "identifier": "C13M401",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 135,
+      "identifier": "C21H501",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "zero_value_meaning_unconfirmed"
+        ]
+      }
+    },
+    {
+      "psi_row": 136,
+      "identifier": "C21H302",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 137,
+      "identifier": "C21H303",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 138,
+      "identifier": "C21H304",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "D0_mm": [
+          "missing_dash_marker"
+        ],
+        "Dext_mm": [
+          "missing_dash_marker"
+        ],
+        "K_reported_mm2_s": [
+          "missing_blank"
+        ],
+        "burn_time_s": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 139,
+      "identifier": "C21H305",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 151,
+      "identifier": "C03M101",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 175,
+      "identifier": "C08H601",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 176,
+      "identifier": "C08M501",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 183,
+      "identifier": "C09M501",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 184,
+      "identifier": "C09M502",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 192,
+      "identifier": "C04M101",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 204,
+      "identifier": "N01H101",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 205,
+      "identifier": "N01H102",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 208,
+      "identifier": "N01H301",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_dash_marker"
+        ]
+      }
+    },
+    {
+      "psi_row": 210,
+      "identifier": "N02H201",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "D0_mm": [
+          "missing_blank"
+        ],
+        "Dext_mm": [
+          "missing_blank"
+        ],
+        "K_reported_mm2_s": [
+          "missing_blank"
+        ],
+        "burn_time_s": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 214,
+      "identifier": "N04H201",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 215,
+      "identifier": "N04M101",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 223,
+      "identifier": "H01M104",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "D0_mm": [
+          "missing_blank"
+        ],
+        "Dext_mm": [
+          "missing_blank"
+        ],
+        "K_reported_mm2_s": [
+          "missing_blank"
+        ],
+        "burn_time_s": [
+          "approximate"
+        ]
+      }
+    },
+    {
+      "psi_row": 224,
+      "identifier": "H01H102",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ],
+        "burn_time_s": [
+          "approximate"
+        ]
+      }
+    },
+    {
+      "psi_row": 225,
+      "identifier": "H02M101",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 229,
+      "identifier": "N01H502",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 231,
+      "identifier": "H02H101",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 233,
+      "identifier": "H03H201",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 234,
+      "identifier": "H03H202",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 237,
+      "identifier": "H04H302",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "D0_mm": [
+          "missing_blank"
+        ],
+        "Dext_mm": [
+          "missing_blank"
+        ],
+        "K_reported_mm2_s": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 238,
+      "identifier": "H04H303",
+      "fuel": "Heptane",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 239,
+      "identifier": "H04M101",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 242,
+      "identifier": "H05M202",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "D0_mm": [
+          "missing_blank"
+        ],
+        "Dext_mm": [
+          "missing_blank"
+        ],
+        "K_reported_mm2_s": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 254,
+      "identifier": "H11M102",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    },
+    {
+      "psi_row": 255,
+      "identifier": "H12M101",
+      "fuel": "Methanol",
+      "row_flags": [],
+      "composition_sum": 1.0,
+      "field_flags": {
+        "Dext_mm": [
+          "missing_blank"
+        ]
+      }
+    }
+  ],
+  "variable_coverage_by_fuel": {
+    "Methanol": {
+      "P_mmHg": {
+        "rows": 157,
+        "usable": 156,
+        "invalid_nonpositive_pressure": 1
+      },
+      "X_O2": {
+        "rows": 157,
+        "usable": 157
+      },
+      "X_N2": {
+        "rows": 157,
+        "usable": 157
+      },
+      "X_CO2": {
+        "rows": 157,
+        "usable": 157
+      },
+      "X_He": {
+        "rows": 157,
+        "usable": 157
+      },
+      "D0_mm": {
+        "rows": 157,
+        "usable": 154,
+        "missing_dash_marker": 1,
+        "missing_blank": 2
+      },
+      "Dext_mm": {
+        "rows": 157,
+        "usable": 117,
+        "missing_blank": 24,
+        "missing_dash_marker": 16
+      },
+      "K_reported_mm2_s": {
+        "rows": 157,
+        "usable": 151,
+        "missing_blank": 6
+      },
+      "burn_time_s": {
+        "rows": 157,
+        "usable": 156,
+        "missing_blank": 1,
+        "approximate": 1
+      }
+    },
+    "Heptane": {
+      "P_mmHg": {
+        "rows": 117,
+        "usable": 117
+      },
+      "X_O2": {
+        "rows": 117,
+        "usable": 117
+      },
+      "X_N2": {
+        "rows": 117,
+        "usable": 117
+      },
+      "X_CO2": {
+        "rows": 117,
+        "usable": 117
+      },
+      "X_He": {
+        "rows": 117,
+        "usable": 117
+      },
+      "D0_mm": {
+        "rows": 117,
+        "usable": 108,
+        "missing_blank": 4,
+        "missing_dash_marker": 5
+      },
+      "Dext_mm": {
+        "rows": 117,
+        "usable": 80,
+        "missing_blank": 25,
+        "zero_value_meaning_unconfirmed": 8,
+        "missing_dash_marker": 12
+      },
+      "K_reported_mm2_s": {
+        "rows": 117,
+        "usable": 107,
+        "missing_blank": 10
+      },
+      "burn_time_s": {
+        "rows": 117,
+        "usable": 112,
+        "missing_blank": 5,
+        "approximate": 1
+      }
+    }
+  }
+}

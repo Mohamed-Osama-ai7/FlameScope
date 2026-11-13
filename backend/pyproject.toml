@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flamescope-api"
+version = "0.1.0"
+description = "Evidence-first scientific research intelligence for microgravity combustion"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115,<1.0",
+  "uvicorn[standard]>=0.30,<1.0",
+  "pydantic>=2.8,<3.0",
+  "numpy>=2.0,<3.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0,<9.0", "httpx>=0.27,<1.0", "ruff>=0.6", "mypy>=1.11"]
+data = ["pandas>=2.2,<3.0"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["UP042"]  # keep (str, Enum): StrEnum changes str() output used in messages
+
+[tool.ruff.lint.per-file-ignores]
+"app/analysis/svg_charts.py" = ["E501"]  # SVG markup templates read better unwrapped
+"scripts/export_lab_dataset.py" = ["E501"]  # long prose strings in the rule-text table are data, kept unwrapped
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+plugins = ["pydantic.mypy"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

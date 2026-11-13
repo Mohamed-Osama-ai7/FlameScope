@@ -1,0 +1,111 @@
+{
+  "_note": "Verbatim field extract of PSI API responses (https://psi.nasa.gov/geode-py/ws/repo/investigations/<id>), retrieved 2026-11-13. Original full responses are kept unmodified (gitignored; they contain contact emails) at raw_file_path. Values are NOT corrected here; see discrepancies.",
+  "records": {
+    "PSI-69": {
+      "raw_file_path": "data/raw/PSI-69/metadata/psi_api_investigation_PSI-69.json",
+      "raw_sha256": "a2d8ec5d0e9ad1060f6ecc7a850598634cc5519c373ae70462bf76c31fc8731c",
+      "raw_bytes": 31770,
+      "fields": {
+        "accession": "PSI-69",
+        "investigationAcronym": "FLEX",
+        "proposalTitle": "Droplet Flame Extinguishment in Microgravity",
+        "investigationStartDate": "08-01-2007",
+        "investigationEndDate": "07-31-2016",
+        "experimentHardware": "Combustion Integrated Rack (CIR)-Fluids and Combustion Facility (FCF), Multi-user Droplet Combustion Appartatus (MDCA)",
+        "flightProgram": "International Space Station (ISS)",
+        "managingNasaCenter": "Glenn Research Center (GRC)",
+        "doi": "10.60555/mbq8-0451",
+        "licenseIdentifier": "CC0-1.0",
+        "modifiedDate": "06-Jun-2025",
+        "objective": "The FLEX (Flame Extinguishment Experiment) investigation aims to map the flammability limits of liquid fuels in microgravity environments, measure the effectiveness of various gaseous fire suppressants such as CO2, He, and SF6, and develop reliable predictive models for combustion limits under reduced gravity conditions. The mission seeks to validate and improve simplified models by incorporating detailed chemical reactions, heat transfer, and material movement, using both space-based data and extensive ground-based tests. Key flight experiment goals include obtaining high-resolution measurements of droplet burning rates, flame extinction behavior, heat radiation, soot levels, and temperature profiles, while systematically analyzing the effects of different ambient conditions and suppressant concentrations. These investigations are essential for advancing the fundamental understanding of combustion processes in microgravity and enhancing fire safety protocols for future space missions.",
+        "approach": "The FLEX experiments involve igniting and observing the burning behavior of relatively large droplets. A primary objective of the experiments is to determine the Limiting Oxygen Index (LOI) as a function of ambient pressure and determine how the presence of a suppressant influences the LOI .\nThe basic outline of the procedure to construct this diagram is as follows:\n  1. Select the test pressure (0.5 − 1.5 atm) for the LOI tests.\n  2. Select a smaller droplet size (≈ 3 mm)\n  3. Select an ambient oxygen mole fraction that, based on ground-based testing, will support droplets burning to completion (as opposed to extinguishing at a finite droplet size).\n  4. Perform a droplet combustion test.\n  5. Increase the droplet size or repeat the test (if finite extinction diameter at flame extinction observed).\n  6. Continue steps 4 and 5 until flame exists for only a short time after ignition (radiative extinction).\n  7. Continue steps 4 thru 6 at a decreased ambient oxygen mole fraction.\n  8. Continue step 7 to an ambient oxygen mole fraction where the droplet does not ignite.\n\nThere were ambient conditions where the extinction droplet sizes at all ambient oxygen mole fractions were too small to either be observed or measured with the available diagnostics. In this case, the determination of the LOI is similar, but more iterative. Instead of observing flame extinction, however, the procedure  involved an iterative sequence of tests (burn to completion followed by a no ignition test) with progressively smaller increments in ambient oxygen mole fraction to determine the LOI . For the slow flow tests (in the flight experiment), the configuration of the flight hardware did not allow for adequate diagnostics over the entire test for a droplet in a uniform, steady convective flow.  In these tests, the procedure will be to duplicate tests above which yield finite-sized extinction droplet diameters. Near the end of the tests, prior to flame extinction, the droplet will be subjected to a small, sub-buoyant, convective flow (imparted by translating the droplet at a slow, uniform speed).\n\nThe goal of the experiment is then to see how the presence of this flow influences the extinction process. Note, a large number of the tests involve free droplets (as opposed to fiber-supported droplets) and a number of these tests will have droplets with a slow drift velocity. Data gathered from these tests to examine the influences of a small, sub-buoyant flow on both the burning and extinction process.",
+        "experimentalTable": [
+          {
+            "file_name": "PSI-69_Experimental table_FLEX.csv",
+            "file_size": 24776,
+            "version": 1,
+            "restricted": false
+          }
+        ]
+      }
+    },
+    "PSI-25": {
+      "raw_file_path": "data/raw/PSI-25/metadata/psi_api_investigation_PSI-25.json",
+      "raw_sha256": "b9234754db5da651ad27d888af082b889d07210b018e543369662f065b4ec2da",
+      "raw_bytes": 680348,
+      "fields": {
+        "accession": "PSI-25",
+        "investigationAcronym": "BASS-II",
+        "proposalTitle": "",
+        "investigationStartDate": "01-01-2010",
+        "investigationEndDate": "12-31-2022",
+        "experimentHardware": "Microgravity Science Glovebox (MSG)",
+        "flightProgram": "International Space Station (ISS)",
+        "managingNasaCenter": "Glenn Research Center (GRC)",
+        "doi": "10.60555/4qc4-de67",
+        "licenseIdentifier": "CC0-1.0",
+        "modifiedDate": "24-Nov-2025",
+        "objective": "BASS-II results contribute to the combustion computational models used in the design of fire detection and suppression systems in microgravity and on Earth.\nObjectives Include:\n  1) Study the ignition, flame growth, flame spread, and extinction limits for solid fuels burning in low-velocity forced flows in microgravity.\n  2) Begin to bridge the gap between the normal gravity NASA-STD-6001 Test #1 method, ground-based microgravity tests, and actual material flammability in microgravity.\n  3) Provide SoFIE PIs with preliminary data to refine Science Requirements.\n  4)  Practical, realistic (thicker) fuels in typical geometries will be examined, including slabs, cylinders, and spherical sections.\n\nThe primary variables include:\n     • Forced flow velocity (speed and direction)\n     • Ambient oxygen concentration (via working volume nitrogen vitiation)\n     • Sample geometry (rods, spherical section, slabs, films, and fabric sheets",
+        "approach": "To summarize, BASS-II's approach, microgravity combustion tests were performed aboard the International Space Station. Active crew support for real-time “lab partner” operations. The wind tunnel was installed in the Microgravity Science Glovebox which supplied power, imaging, and a level of containment. Fuel samples were mounted inside a small wind tunnel which could impose airflow speeds up to 40 cm/s. Main variables are airflow speed and oxygen concentration (oxygen varied below 21% by adding nitrogen). Flame appearance, flame growth, and spread rates were determined in both the opposed and concurrent flow.",
+        "experimentalTable": [
+          {
+            "file_name": "PSI-25_Experimental table_BASS-II.csv",
+            "file_size": 16590,
+            "version": 1,
+            "restricted": false
+          }
+        ]
+      }
+    },
+    "PSI-98": {
+      "raw_file_path": "data/raw/PSI-98/metadata/psi_api_investigation_PSI-98.json",
+      "raw_sha256": "501b5f625733e29c0c6ff0c12b3de1a3e960a159a8c8f8a21ba5c5803afe0570",
+      "raw_bytes": 134230,
+      "fields": {
+        "accession": "PSI-98",
+        "investigationAcronym": "SAFFIRE-I",
+        "proposalTitle": "Characterization of Smoke from Microgravity Fires for Improved Spacecraft Fire Detection",
+        "investigationStartDate": "03-02-2001",
+        "investigationEndDate": "02-28-2008",
+        "experimentHardware": "Saffire 1 enclosure in Cygnus",
+        "flightProgram": "International Space Station (ISS)",
+        "managingNasaCenter": "Glenn Research Center (GRC)",
+        "doi": "10.60555/0t15-1z43",
+        "licenseIdentifier": "CC0-1.0",
+        "modifiedDate": "03-Jun-2025",
+        "objective": "The objectives of this investigation were to:\n(1) determine how rapidly a large scale fire grows in low-gravity and (2) investigate the low-g flammability limits compared to those obtained in NASA’s normal\ngravity material flammability screening test.",
+        "approach": "The Saffire-1 experiments was performed on the Orbital Science’s Cygnus resupply vehicle after it deberthed from the ISS. The sample material for Saffire-I is a composite fabric called Sibal consisting of cotton on a fiberglass substrate (75% cotton, 25% fiberglass by weight). It has been used in many space experiments because it burns like cotton but maintains structural integrity after the cotton is consumed. The sample was approximately 0.94 meters long and 0.4 meters wide, simulating a large piece of flammable fabric. The Saffire-1 flight unit had a sample card installed in the middle of a large flow duct. Air is drawn through the flow duct by fans located at the top of the duct with flow straighteners at the bottom of the experiment module. Saffire-I was conducted at an air flow velocity of 20 cm/s. Once the sample was ignited flame images were captured using two cameras. In addition, thermocouples provided flow, flame, and plume temperatures, two radiometers recorded flame radiation, solid state sensors were used to measure pressure, CO2 and O2 mole faction, and two anemometer tracked flow velocity. All data was compressed, and subsequently downlinked.",
+        "experimentalTable": [
+          {
+            "file_name": "PSI-98_Experimental table_SAFFIRE-1.csv",
+            "file_size": 469,
+            "version": 1,
+            "restricted": false
+          }
+        ]
+      }
+    }
+  },
+  "discrepancies": [
+    {
+      "source_id": "PSI-98",
+      "status": "QUARANTINED",
+      "conflict": "PSI lists investigationAcronym 'SAFFIRE-I', hardware 'Saffire 1 enclosure in Cygnus', and objective/approach text describing Saffire-1 on Cygnus after deberthing, but proposalTitle 'Characterization of Smoke from Microgravity Fires for Improved Spacecraft Fire Detection' and investigation dates 03-02-2001 to 02-28-2008.",
+      "external_evidence": [
+        {
+          "ref": "NASA NTRS 20170000230, 'Operation and Development Status of the Spacecraft Fire Experiments (Saffire)', pub. 2016-07-10",
+          "url": "https://ntrs.nasa.gov/citations/20170000230",
+          "supports": "Saffire under development since 2012; experiments conducted in Cygnus after unberthing from ISS."
+        },
+        {
+          "ref": "NASA NTRS 20170001636, 'The Spacecraft Fire Experiment (Saffire) - Objectives, Development and Status'",
+          "url": "https://ntrs.nasa.gov/citations/20170001636",
+          "supports": "Saffire-I/-II/-III hardware complete, launches all planned for 2016."
+        }
+      ],
+      "not_verified": "Exact Saffire-I operation date (commonly reported as June 2016 on Cygnus OA-6) was not confirmed from a NASA source during this audit.",
+      "interpretation": "Title/dates likely belong to a different (smoke-characterisation) investigation; unconfirmed. Ask PSI curators (psi.nasa.gov contact) before use.",
+      "action": "Original metadata preserved unmodified. PSI-98 excluded from scientific analysis (API rejects it) until resolved."
+    }
+  ]
+}

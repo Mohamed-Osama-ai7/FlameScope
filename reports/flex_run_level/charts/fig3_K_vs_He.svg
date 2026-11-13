@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 470" width="980" height="470" font-family="Inter, Segoe UI, system-ui, sans-serif" role="img" aria-label="Reported burning-rate constant vs He (He-added atmospheres)">
+<rect width="980" height="470" fill="#fcfcfb"/>
+<text x="70" y="28" font-size="17" font-weight="600" fill="#0b0b0b">Reported burning-rate constant vs He (He-added atmospheres)</text>
+<text x="70" y="49" font-size="12.5" fill="#52514e">O2 also varies between runs here; see fixed-O2 strata in the summary. Colour = pressure cluster.</text>
+<circle cx="75.0" cy="72.0" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>526.3-544.4 mmHg</title></circle>
+<text x="85" y="76" font-size="12" fill="#52514e">526.3-544.4 mmHg</text>
+<rect x="225.7" y="67.5" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>752-774.1 mmHg</title></rect>
+<text x="240.2" y="76" font-size="12" fill="#52514e">752-774.1 mmHg</text>
+<text x="70.0" y="102" font-size="13" font-weight="600" fill="#0b0b0b">Methanol (n = 26)</text>
+<line x1="70.0" x2="490.0" y1="400.0" y2="400.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="62.0" y="404.0" font-size="11" text-anchor="end" fill="#52514e">0</text>
+<line x1="70.0" x2="490.0" y1="328.0" y2="328.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="62.0" y="332.0" font-size="11" text-anchor="end" fill="#52514e">0.25</text>
+<line x1="70.0" x2="490.0" y1="256.0" y2="256.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="62.0" y="260.0" font-size="11" text-anchor="end" fill="#52514e">0.5</text>
+<line x1="70.0" x2="490.0" y1="184.0" y2="184.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="62.0" y="188.0" font-size="11" text-anchor="end" fill="#52514e">0.75</text>
+<line x1="70.0" x2="490.0" y1="112.0" y2="112.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="62.0" y="116.0" font-size="11" text-anchor="end" fill="#52514e">1</text>
+<line x1="70.0" x2="70.0" y1="400" y2="404" stroke="#9a9893"/>
+<text x="70.0" y="418" font-size="11" text-anchor="middle" fill="#52514e">0</text>
+<line x1="154.0" x2="154.0" y1="400" y2="404" stroke="#9a9893"/>
+<text x="154.0" y="418" font-size="11" text-anchor="middle" fill="#52514e">0.1</text>
+<line x1="238.0" x2="238.0" y1="400" y2="404" stroke="#9a9893"/>
+<text x="238.0" y="418" font-size="11" text-anchor="middle" fill="#52514e">0.2</text>
+<line x1="322.0" x2="322.0" y1="400" y2="404" stroke="#9a9893"/>
+<text x="322.0" y="418" font-size="11" text-anchor="middle" fill="#52514e">0.3</text>
+<line x1="406.0" x2="406.0" y1="400" y2="404" stroke="#9a9893"/>
+<text x="406.0" y="418" font-size="11" text-anchor="middle" fill="#52514e">0.4</text>
+<line x1="490.0" x2="490.0" y1="400" y2="404" stroke="#9a9893"/>
+<text x="490.0" y="418" font-size="11" text-anchor="middle" fill="#52514e">0.5</text>
+<line x1="70.0" x2="490.0" y1="400" y2="400" stroke="#9a9893"/>
+<text x="280.0" y="440" font-size="12" text-anchor="middle" fill="#0b0b0b">He mole fraction</text>
+<circle cx="238.0" cy="221.4" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 251 | H10M101 | Methanol | X_O2=0.24 X_CO2=0.0 X_He=0.2 | P=534.3 mmHg | D0=2.82 mm | K=0.62 mm2/s | Dext=1.03 | Extinction</title></circle>
+<circle cx="238.0" cy="198.4" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 252 | H10M102 | Methanol | X_O2=0.24 X_CO2=0.0 X_He=0.2 | P=534.6 mmHg | D0=2.79 mm | K=0.7 mm2/s | Dext=1.53 | Disruption</title></circle>
+<circle cx="280.0" cy="227.2" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 253 | H11M101 | Methanol | X_O2=0.23 X_CO2=0.0 X_He=0.25 | P=531.7 mmHg | D0=2.45 mm | K=0.6 mm2/s | Dext=0.86 | Extinction</title></circle>
+<circle cx="280.0" cy="189.8" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 254 | H11M102 | Methanol | X_O2=0.23 X_CO2=0.0 X_He=0.25 | P=531.8 mmHg | D0=2.61 mm | K=0.73 mm2/s | Dext=None | Disruption</title></circle>
+<circle cx="322.0" cy="238.7" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 255 | H12M101 | Methanol | X_O2=0.21 X_CO2=0.0 X_He=0.3 | P=531.9 mmHg | D0=3.22 mm | K=0.56 mm2/s | Dext=None | Extinction</title></circle>
+<circle cx="322.0" cy="212.8" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 256 | H12M102 | Methanol | X_O2=0.21 X_CO2=0.0 X_He=0.3 | P=531.2 mmHg | D0=3.25 mm | K=0.65 mm2/s | Dext=1.78 | Extinction</title></circle>
+<circle cx="322.0" cy="198.4" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 257 | H12M201 | Methanol | X_O2=0.21 X_CO2=0.0 X_He=0.3 | P=531.2 mmHg | D0=2.67 mm | K=0.7 mm2/s | Dext=1.42 | Extinction</title></circle>
+<circle cx="364.0" cy="227.2" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 262 | H13M102 | Methanol | X_O2=0.2 X_CO2=0.0 X_He=0.35 | P=527.6 mmHg | D0=3.87 mm | K=0.6 mm2/s | Dext=2.24 | Extinction</title></circle>
+<circle cx="364.0" cy="218.6" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 263 | H13M201 | Methanol | X_O2=0.2 X_CO2=0.0 X_He=0.35 | P=527.9 mmHg | D0=2.95 mm | K=0.63 mm2/s | Dext=1.5 | Extinction</title></circle>
+<circle cx="406.0" cy="230.1" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 264 | H14M101 | Methanol | X_O2=0.18 X_CO2=0.0 X_He=0.4 | P=532.4 mmHg | D0=3.5 mm | K=0.59 mm2/s | Dext=2.67 | Extinction</title></circle>
+<circle cx="406.0" cy="218.6" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 265 | H14M201 | Methanol | X_O2=0.18 X_CO2=0.0 X_He=0.4 | P=532.9 mmHg | D0=2.7 mm | K=0.63 mm2/s | Dext=1.92 | Extinction</title></circle>
+<circle cx="406.0" cy="221.4" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 266 | H14M202 | Methanol | X_O2=0.18 X_CO2=0.0 X_He=0.4 | P=533.2 mmHg | D0=1.84 mm | K=0.62 mm2/s | Dext=1.3 | Extinction</title></circle>
+<circle cx="448.0" cy="218.6" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 271 | H15M102 | Methanol | X_O2=0.17 X_CO2=0.0 X_He=0.45 | P=530.4 mmHg | D0=2.79 mm | K=0.63 mm2/s | Dext=2.3 | Extinction</title></circle>
+<circle cx="448.0" cy="209.9" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 272 | H15M201 | Methanol | X_O2=0.17 X_CO2=0.0 X_He=0.45 | P=531.5 mmHg | D0=2.68 mm | K=0.66 mm2/s | Dext=2.31 | Extinction</title></circle>
+<rect x="107.5" y="248.6" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 222 | H01M102 | Methanol | X_O2=0.2 X_CO2=0.0 X_He=0.05 | P=759.2 mmHg | D0=2.91 mm | K=0.51 mm2/s | Dext=1.12 | Extinction</title></rect>
+<rect x="149.5" y="231.3" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 225 | H02M101 | Methanol | X_O2=0.19 X_CO2=0.0 X_He=0.1 | P=753.4 mmHg | D0=2.78 mm | K=0.57 mm2/s | Dext=None | Extinction</title></rect>
+<rect x="191.5" y="248.6" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 226 | H03M101 | Methanol | X_O2=0.18 X_CO2=0.0 X_He=0.15 | P=759.2 mmHg | D0=2.79 mm | K=0.51 mm2/s | Dext=1.3 | Extinction</title></rect>
+<rect x="191.5" y="242.9" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 227 | H03M201 | Methanol | X_O2=0.18 X_CO2=0.0 X_He=0.15 | P=760.3 mmHg | D0=2.95 mm | K=0.53 mm2/s | Dext=1.67 | Extinction</title></rect>
+<rect x="233.5" y="254.4" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 239 | H04M101 | Methanol | X_O2=0.17 X_CO2=0.0 X_He=0.2 | P=754.2 mmHg | D0=2.99 mm | K=0.49 mm2/s | Dext=None | Extinction</title></rect>
+<rect x="233.5" y="248.6" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 240 | H04M202 | Methanol | X_O2=0.17 X_CO2=0.0 X_He=0.2 | P=757.0 mmHg | D0=2.9 mm | K=0.51 mm2/s | Dext=1.42 | Extinction</title></rect>
+<rect x="275.5" y="248.6" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 241 | H05M102 | Methanol | X_O2=0.16 X_CO2=0.0 X_He=0.25 | P=759.9 mmHg | D0=3.4 mm | K=0.51 mm2/s | Dext=2.79 | Extinction</title></rect>
+<rect x="317.5" y="271.7" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 244 | H06M102 | Methanol | X_O2=0.15 X_CO2=0.0 X_He=0.3 | P=755.6 mmHg | D0=3.67 mm | K=0.43 mm2/s | Dext=3.47 | Extinction</title></rect>
+<rect x="317.5" y="234.2" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 245 | H06M201 | Methanol | X_O2=0.15 X_CO2=0.0 X_He=0.3 | P=756.7 mmHg | D0=2.52 mm | K=0.56 mm2/s | Dext=2.06 | Extinction</title></rect>
+<rect x="359.5" y="234.2" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 246 | H07M101 | Methanol | X_O2=0.14 X_CO2=0.0 X_He=0.35 | P=759.2 mmHg | D0=2.44 mm | K=0.56 mm2/s | Dext=2.26 | Extinction</title></rect>
+<rect x="359.5" y="228.5" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 247 | H07M202 | Methanol | X_O2=0.14 X_CO2=0.0 X_He=0.35 | P=759.8 mmHg | D0=1.88 mm | K=0.58 mm2/s | Dext=1.73 | Extinction</title></rect>
+<rect x="401.5" y="248.6" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 248 | H08M101 | Methanol | X_O2=0.13 X_CO2=0.0 X_He=0.4 | P=763.5 mmHg | D0=3.56 mm | K=0.51 mm2/s | Dext=3.54 | Extinction</title></rect>
+<text x="540.0" y="102" font-size="13" font-weight="600" fill="#0b0b0b">Heptane (n = 21)</text>
+<line x1="540.0" x2="960.0" y1="400.0" y2="400.0" stroke="#e4e3df" stroke-width="1"/>
+<line x1="540.0" x2="960.0" y1="328.0" y2="328.0" stroke="#e4e3df" stroke-width="1"/>
+<line x1="540.0" x2="960.0" y1="256.0" y2="256.0" stroke="#e4e3df" stroke-width="1"/>
+<line x1="540.0" x2="960.0" y1="184.0" y2="184.0" stroke="#e4e3df" stroke-width="1"/>
+<line x1="540.0" x2="960.0" y1="112.0" y2="112.0" stroke="#e4e3df" stroke-width="1"/>
+<line x1="540.0" x2="540.0" y1="400" y2="404" stroke="#9a9893"/>
+<text x="540.0" y="418" font-size="11" text-anchor="middle" fill="#52514e">0</text>
+<line x1="624.0" x2="624.0" y1="400" y2="404" stroke="#9a9893"/>
+<text x="624.0" y="418" font-size="11" text-anchor="middle" fill="#52514e">0.1</text>
+<line x1="708.0" x2="708.0" y1="400" y2="404" stroke="#9a9893"/>
+<text x="708.0" y="418" font-size="11" text-anchor="middle" fill="#52514e">0.2</text>
+<line x1="792.0" x2="792.0" y1="400" y2="404" stroke="#9a9893"/>
+<text x="792.0" y="418" font-size="11" text-anchor="middle" fill="#52514e">0.3</text>
+<line x1="876.0" x2="876.0" y1="400" y2="404" stroke="#9a9893"/>
+<text x="876.0" y="418" font-size="11" text-anchor="middle" fill="#52514e">0.4</text>
+<line x1="960.0" x2="960.0" y1="400" y2="404" stroke="#9a9893"/>
+<text x="960.0" y="418" font-size="11" text-anchor="middle" fill="#52514e">0.5</text>
+<line x1="540.0" x2="960.0" y1="400" y2="400" stroke="#9a9893"/>
+<text x="750.0" y="440" font-size="12" text-anchor="middle" fill="#0b0b0b">He mole fraction</text>
+<circle cx="708.0" cy="192.6" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 249 | H10H101 | Heptane | X_O2=0.24 X_CO2=0.0 X_He=0.2 | P=534.0 mmHg | D0=3.78 mm | K=0.72 mm2/s | Dext=2.52 | Extinction</title></circle>
+<circle cx="750.0" cy="195.5" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 250 | H11H101 | Heptane | X_O2=0.23 X_CO2=0.0 X_He=0.25 | P=532.2 mmHg | D0=2.8 mm | K=0.71 mm2/s | Dext=0.12 | Completion</title></circle>
+<circle cx="792.0" cy="207.0" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 258 | H12H101 | Heptane | X_O2=0.21 X_CO2=0.0 X_He=0.3 | P=529.6 mmHg | D0=3.23 mm | K=0.67 mm2/s | Dext=2.33 | Extinction</title></circle>
+<circle cx="792.0" cy="198.4" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 259 | H12H201 | Heptane | X_O2=0.21 X_CO2=0.0 X_He=0.3 | P=529.0 mmHg | D0=2.86 mm | K=0.7 mm2/s | Dext=0.71 | Extinction</title></circle>
+<circle cx="834.0" cy="224.3" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 260 | H13H101 | Heptane | X_O2=0.2 X_CO2=0.0 X_He=0.35 | P=532.5 mmHg | D0=3.69 mm | K=0.61 mm2/s | Dext=3.32 | Extinction</title></circle>
+<circle cx="834.0" cy="207.0" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 261 | H13H201 | Heptane | X_O2=0.2 X_CO2=0.0 X_He=0.35 | P=532.0 mmHg | D0=3.08 mm | K=0.67 mm2/s | Dext=1.69 | Extinction</title></circle>
+<circle cx="876.0" cy="195.5" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 267 | H14H101 | Heptane | X_O2=0.18 X_CO2=0.0 X_He=0.4 | P=528.0 mmHg | D0=2.27 mm | K=0.71 mm2/s | Dext=1.64 | Extinction</title></circle>
+<circle cx="876.0" cy="178.2" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 268 | H14H201 | Heptane | X_O2=0.18 X_CO2=0.0 X_He=0.4 | P=530.3 mmHg | D0=1.86 mm | K=0.77 mm2/s | Dext=0.84 | Extinction</title></circle>
+<circle cx="918.0" cy="181.1" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 269 | H15H101 | Heptane | X_O2=0.17 X_CO2=0.0 X_He=0.45 | P=532.2 mmHg | D0=2.22 mm | K=0.76 mm2/s | Dext=1.86 | Extinction</title></circle>
+<circle cx="918.0" cy="94.7" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI row 270 | H15H201 | Heptane | X_O2=0.17 X_CO2=0.0 X_He=0.45 | P=532.5 mmHg | D0=1.61 mm | K=1.06 mm2/s | Dext=0.91 | Completion</title></circle>
+<rect x="577.5" y="231.3" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 224 | H01H102 | Heptane | X_O2=0.2 X_CO2=0.0 X_He=0.05 | P=755.3 mmHg | D0=2.25 mm | K=0.57 mm2/s | Dext=None | Completion</title></rect>
+<rect x="619.5" y="240.0" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 231 | H02H101 | Heptane | X_O2=0.19 X_CO2=0.0 X_He=0.1 | P=758.8 mmHg | D0=2.59 mm | K=0.54 mm2/s | Dext=None | Disruption</title></rect>
+<rect x="661.5" y="277.4" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 232 | H03H101 | Heptane | X_O2=0.18 X_CO2=0.0 X_He=0.15 | P=763.7 mmHg | D0=3.52 mm | K=0.41 mm2/s | Dext=3.28 | Extinction</title></rect>
+<rect x="661.5" y="254.4" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 233 | H03H201 | Heptane | X_O2=0.18 X_CO2=0.0 X_He=0.15 | P=765.9 mmHg | D0=2.3 mm | K=0.49 mm2/s | Dext=None | Completion</title></rect>
+<rect x="661.5" y="248.6" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 234 | H03H202 | Heptane | X_O2=0.18 X_CO2=0.0 X_He=0.15 | P=766.5 mmHg | D0=2.27 mm | K=0.51 mm2/s | Dext=None | Completion</title></rect>
+<rect x="703.5" y="263.0" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 235 | H04H101 | Heptane | X_O2=0.17 X_CO2=0.0 X_He=0.2 | P=759.3 mmHg | D0=2.85 mm | K=0.46 mm2/s | Dext=2.6 | Extinction</title></rect>
+<rect x="703.5" y="225.6" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 236 | H04H201 | Heptane | X_O2=0.17 X_CO2=0.0 X_He=0.2 | P=759.3 mmHg | D0=2.12 mm | K=0.59 mm2/s | Dext=1.39 | Extinction</title></rect>
+<rect x="703.5" y="133.4" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 238 | H04H303 | Heptane | X_O2=0.17 X_CO2=0.0 X_He=0.2 | P=759.8 mmHg | D0=1.61 mm | K=0.91 mm2/s | Dext=None | Completion</title></rect>
+<rect x="745.5" y="222.7" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 243 | H05H103 | Heptane | X_O2=0.16 X_CO2=0.0 X_He=0.25 | P=757.9 mmHg | D0=1.49 mm | K=0.6 mm2/s | Dext=0.69 | Extinction</title></rect>
+<rect x="661.5" y="237.1" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 273 | H19H101 | Heptane | X_O2=0.21 X_CO2=0.0 X_He=0.15 | P=764.7 mmHg | D0=3.54 mm | K=0.55 mm2/s | Dext=2.91 | Extinction</title></rect>
+<rect x="661.5" y="208.3" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI row 274 | H19H201 | Heptane | X_O2=0.21 X_CO2=0.0 X_He=0.15 | P=766.2 mmHg | D0=2.82 mm | K=0.65 mm2/s | Dext=0.73 | Extinction</title></rect>
+<text transform="translate(18 256) rotate(-90)" font-size="12" text-anchor="middle" fill="#0b0b0b">Reported K (mm2/s)</text>
+<text x="70" y="460" font-size="11" fill="#52514e">Source: NASA PSI-69 (FLEX), DOI 10.60555/mbq8-0451, CC0. Reported values; exploratory and observational - no causal claim. Hover a point for its PSI row.</text>
+</svg>

@@ -1,0 +1,68 @@
+{
+  "reference": {
+    "report_id": "NASA/TP-2015-216046",
+    "other_report_numbers": [
+      "E-18493",
+      "GRC-E-DAA-TN5314"
+    ],
+    "ntrs_id": "20150023456",
+    "title": "Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011",
+    "authors": "Dietrich, Ferkul, Bryg, Nayagam, Hicks, Williams, Dryer, Shaw, Choi, Avedisian",
+    "date": "November 2015",
+    "url": "https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf",
+    "pdf_bytes": 42900650,
+    "pdf_sha256": "b4f6ca983e2792c33a0b92220a791a818f426bb635b94f7fd33dc8c9c471e79d",
+    "retrieved_utc_date": "2026-11-13",
+    "stored_in_repo": false,
+    "relevant_sections": {
+      "abstract": "presents the results of the first 284 tests performed",
+      "sec_3.1.2_p8": "droplet size uncertainty +/-50 um",
+      "appendix_A.1_p19": "column definitions incl. Burning rate (average burning rate constant from a linear fit of D^2 vs t from shortly after ignition to extinction) and CO2 (ambient carbon dioxide mole fraction)",
+      "table_IX_p20_onward": "headers incl. 'Burning rate, mm2/s' and initial ambient composition O2 N2 CO2 He",
+      "appendix_B_p29": "Figures 5 to 280 show D^2(t) and flame diameter per test; per-test text files on a DVD addendum (not acquired)"
+    }
+  },
+  "method": "Text extracted from the PDF with pypdf 7.0.1 (scratch install, not a project dependency). Table IX rows parsed by regex and matched to PSI-69 rows on identifier, fuel, test end and 9 numeric fields (pressure, O2, N2, CO2, He, D0, extinction diameter, burning rate, burn time) by exact equality.",
+  "results": {
+    "psi_rows": 274,
+    "psi_rows_exactly_matching_a_table_ix_row": 274,
+    "table_ix_numbered_rows_FLEX_001_to_280": 280,
+    "table_ix_rows_with_extractable_text": 276,
+    "table_ix_rows_without_extractable_text": [],
+    "table_ix_rows_absent_from_psi": [
+      {
+        "flex": "FLEX-216",
+        "identifier": "N03H201",
+        "date": "9/1/11",
+        "fuel": "Heptane",
+        "test_end": "Completion"
+      },
+      {
+        "flex": "FLEX-230",
+        "identifier": "H01H103",
+        "date": "9/13/11",
+        "fuel": "Heptane",
+        "test_end": "Disruption"
+      }
+    ],
+    "psi_test_number_is_not_report_flex_number": "PSI 'FLEX Test #' is sequential; it differs from the report FLEX number for 119 of 274 rows (from PSI #156 = FLEX-157). Corrected 2026-11-13 audit: an earlier figure of 120 came from a join that collided on the duplicate identifier 193F001.",
+    "duplicate_identifier": "193F001 appears twice with identical date/GMT and different values in BOTH the report (FLEX-070/073) and PSI (#70/#73).",
+    "table_ix_printed_rows_visually_verified": 276,
+    "table_ix_numbers_not_printed_visually_verified": [
+      "FLEX-156",
+      "FLEX-205",
+      "FLEX-213",
+      "FLEX-228"
+    ],
+    "visual_verification": "PDF pages rendered with PDFium (pypdfium2, scratch install) on 2026-11-13: FLEX-156/205/213/228 are numbering skips (no row printed, no Appendix B figure), NOT blank or unreadable rows. FLEX-216 and FLEX-230 are printed in full. FLEX-130 (K .05) and FLEX-070/073 (shared identifier 193F001, GMT 7:25:43) confirmed as printed.",
+    "flex_156_note": "Matrix Table VIII lists a FLEX-156 (heptane, Dec. 9, 2010) but Table IX and Appendix B contain no result for it."
+  },
+  "unresolved": [
+    "Report abstract states 'the first 284 tests'; Table IX prints 276 rows numbered FLEX-001..280 (156, 205, 213, 228 not printed). The 284-vs-280-vs-276 difference is not explained in the report.",
+    "Why PSI omits FLEX-216 and FLEX-230 (both printed in Table IX) is unknown; ask PSI curators.",
+    "Appendix A intro says 'March 2009 through December 2010' while the title, sec. 4.1 and the dated rows run to December 2011.",
+    "FLEX-070 and FLEX-073 share identifier and GMT in Table IX with different values; Table V matrix D0 (1.30 vs 4.72 mm) and the captions describe different tests. Which Table IX row belongs to which test cannot be established.",
+    "FLEX-114 pressure: Table IX/PSI 0 mmHg vs Table VI 0.70 atm and caption '0.70-atm'."
+  ],
+  "verified_scope": "PSI-69 table = 274 of the 276 rows printed in Table IX (visually verified), value-identical; it covers FLEX-001..FLEX-280 except FLEX-216 and FLEX-230. FLEX-156/205/213/228 are not printed in Table IX."
+}
