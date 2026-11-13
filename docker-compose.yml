@@ -1,0 +1,65 @@
+# FlameScope scientific data platform - local stack (development / demo; not a production deployment).
+#
+#   docker compose up -d --build                 # PostgreSQL + API (API runs `alembic upgrade head` on start)
+#   docker compose run --rm loader               # load verified NASA files from ./data into PostgreSQL
+#   open http://127.0.0.1:8000/docs
+#
+# Raw files are fetched on the host first (data/raw is gitignored):
+#   python backend/scripts/fetch_psi_table.py PSI-69 PSI-25 PSI-98 --root .
+# ./data is mounted READ-ONLY into the containers: nothing in the stack can modify original files.
+# Credentials below are local-development defaults; override them with environment variables.
+
+name: flamescope
+
+x-backend-env: &backend-env
+  FLAMESCOPE_DATABASE_URL: postgresql+psycopg://${FLAMESCOPE_DB_USER:-flamescope}:${FLAMESCOPE_DB_PASSWORD:-flamescope_dev}@db:5432/${FLAMESCOPE_DB_NAME:-flamescope}
+  FLAMESCOPE_PROJECT_ROOT: /srv
+
+services:
+  db:
+    image: postgres:16.4-alpine
+    environment:
+      POSTGRES_USER: ${FLAMESCOPE_DB_USER:-flamescope}
+      POSTGRES_PASSWORD: ${FLAMESCOPE_DB_PASSWORD:-flamescope_dev}
+      POSTGRES_DB: ${FLAMESCOPE_DB_NAME:-flamescope}
+    ports:
+      - "127.0.0.1:${FLAMESCOPE_DB_PORT:-5432}:5432"
+    volumes:
+      - flamescope-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  api:
+    image: flamescope-backend:local  # one image shared by api and loader (built once)
+    build:
+      context: ./backend
+    environment:
+      <<: *backend-env
+    command: ["sh", "-c", "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"]
+    ports:
+      - "127.0.0.1:${FLAMESCOPE_API_PORT:-8000}:8000"
+    volumes:
+      - ./data:/srv/data:ro
+    depends_on:
+      db:
+        condition: service_healthy
+
+  loader:
+    image: flamescope-backend:local
+    build:
+      context: ./backend
+    environment:
+      <<: *backend-env
+    command: ["sh", "-c", "alembic upgrade head && python scripts/load_database.py"]
+    volumes:
+      - ./data:/srv/data:ro
+    depends_on:
+      db:
+        condition: service_healthy
+    profiles: ["tools"]
+
+volumes:
+  flamescope-pgdata:

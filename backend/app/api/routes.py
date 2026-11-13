@@ -2,6 +2,7 @@ from pathlib import Path
 
 from fastapi import APIRouter, HTTPException
 
+from app.data_platform.api import platform_status
 from app.domain.comparison import ComparisonRequest, ComparisonResult, validate_comparison
 from app.domain.regimes import REGIME_DESCRIPTIONS, REGIME_VARIABLES, CombustionRegime
 from app.domain.sources import (
@@ -37,14 +38,22 @@ def list_sources() -> list[SourceRecord]:
 @router.get("/status", tags=["system"])
 def project_status() -> dict[str, object]:
     records = _registry()
+    db = platform_status()  # never raises; False when no database is configured or reachable
+    loaded = db.database_reachable and db.measurements > 0
     return {
         "project": "FlameScope",
         "team": "UnderFitted",
         "official_challenge_resource_recorded": official_resource_recorded(records),
-        # No measurement store exists yet; flip only when the ingestion pipeline loads verified rows.
-        "scientific_dataset_loaded": False,
+        # Derived from the scientific database: true only when the loader has stored verified rows.
+        "scientific_dataset_loaded": loaded,
+        "official_challenge_resource_loaded": db.official_challenge_resource_loaded,
         "sources_usable_as_evidence": [r.source_id for r in records if r.usable_as_evidence],
-        "notice": "No scientific measurements are seeded in this starter scaffold.",
+        "notice": (
+            f"Scientific database: {len(db.investigations_loaded)} investigation(s), {db.measurements} "
+            "source-cell measurements, each traceable to artifact SHA-256 + row + column."
+            if loaded
+            else "No scientific measurements loaded (see GET /api/v1/data-platform/status)."
+        ),
     }
 
 
