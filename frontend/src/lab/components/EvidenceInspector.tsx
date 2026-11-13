@@ -8,28 +8,33 @@ import { useLab } from '../state/LabContext';
 export function EvidenceInspector() {
   const { dataset, byKey, selectedKey, inspectorOpen, closeInspector } = useLab();
   const panel = useRef<HTMLDivElement>(null);
-  const opener = useRef<Element | null>(null);
+  const opener = useRef<HTMLElement | null>(null);
   const r = selectedKey ? byKey.get(selectedKey) : undefined;
 
   useEffect(() => {
     if (!inspectorOpen) return;
-    opener.current = document.activeElement;
+    opener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
     panel.current?.querySelector<HTMLElement>('h2')?.focus();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') closeInspector();
       if (e.key === 'Tab' && panel.current) {
-        const f = panel.current.querySelectorAll<HTMLElement>('a[href],button,[tabindex="0"],summary');
+        const f = [...panel.current.querySelectorAll<HTMLElement>('a[href],button:not([disabled]),[tabindex]:not([tabindex="-1"]),summary')]
+          .filter((element) => element.getClientRects().length > 0);
         if (!f.length) return;
         const first = f[0];
         const last = f[f.length - 1];
-        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        const title = panel.current.querySelector<HTMLElement>('h2');
+        if (e.shiftKey && (document.activeElement === first || document.activeElement === title)) { e.preventDefault(); last.focus(); }
         else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
     };
     document.addEventListener('keydown', onKey);
     return () => {
       document.removeEventListener('keydown', onKey);
-      (opener.current as HTMLElement | null)?.focus?.();
+      document.body.style.overflow = previousOverflow;
+      opener.current?.focus();
     };
   }, [inspectorOpen, closeInspector]);
 
@@ -99,22 +104,28 @@ export function EvidenceInspector() {
           <blockquote>{ev.caption ?? 'UNKNOWN: no caption located for this test.'}</blockquote>
           <ul className="refs">
             <li>Table IX row: printed p. {ev.table_ix_printed_page} (PDF p. {ev.table_ix_pdf_page}) — <a href={reportPage(ev.table_ix_pdf_page) ?? '#'} target="_blank" rel="noreferrer">open report page</a></li>
-            {ev.caption_figure && <li>Appendix B Figure {ev.caption_figure} (PDF p. {ev.caption_pdf_page}) — <a href={reportPage(ev.caption_pdf_page) ?? '#'} target="_blank" rel="noreferrer">open figure page</a></li>}
+            {ev.caption_figure && ev.caption_pdf_page && <li>Appendix B Figure {ev.caption_figure} (PDF p. {ev.caption_pdf_page}) — <a href={reportPage(ev.caption_pdf_page) ?? undefined} target="_blank" rel="noreferrer">open figure page</a></li>}
             <li>Extraction: {ev.verification_status}</li>
           </ul>
         </section>
 
         <section aria-labelledby="ins-prov"><h3 id="ins-prov">Provenance</h3>
           <dl className="kv mono">
-            <div><dt>Source</dt><dd>{p.source_id} · DOI {p.doi} · {p.license}</dd></div>
-            <div><dt>Source URL</dt><dd><a href={p.source_url} target="_blank" rel="noreferrer">{p.source_url}</a></dd></div>
-            <div><dt>File · version</dt><dd>{p.file_name} · v{p.psi_file_version} (S3 {p.psi_s3_version_id})</dd></div>
-            <div><dt>Raw SHA-256</dt><dd>{p.raw_sha256}</dd></div>
-            <div><dt>Enrichment SHA-256</dt><dd>{p.enrichment_sha256}</dd></div>
-            <div><dt>Analysis</dt><dd>v{dataset.analysis_version} · {p.analysis_summary_file} · {p.analysis_summary_sha256}</dd></div>
-            <div><dt>Report</dt><dd>{p.report} · PDF SHA-256 {p.report_pdf_sha256}</dd></div>
-            <div><dt>Audit</dt><dd>{p.audit_doc}</dd></div>
+            <div><dt>Source</dt><dd>{p.source_id} · <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noreferrer">DOI {p.doi}</a> · {p.license}</dd></div>
+            <div><dt>Dataset file</dt><dd><a href={p.source_url} target="_blank" rel="noreferrer">{p.file_name}</a> · version {p.psi_file_version}</dd></div>
+            <div><dt>Retrieved</dt><dd>{p.retrieved_at_utc}</dd></div>
+            <div><dt>Raw file SHA-256</dt><dd><code>{p.raw_sha256}</code></dd></div>
+            <div><dt>NASA report</dt><dd><a href={p.report_url} target="_blank" rel="noreferrer">{p.report}</a> · PDF SHA-256 <code>{p.report_pdf_sha256}</code></dd></div>
           </dl>
+          <details className="provenance-details"><summary>Processing and verification details</summary>
+            <dl className="kv mono">
+              <div><dt>Acquisition version</dt><dd>{p.psi_s3_version_id}</dd></div>
+              <div><dt>Enrichment file · SHA-256</dt><dd>{p.enrichment_file} · <code>{p.enrichment_sha256}</code></dd></div>
+              <div><dt>Caption index SHA-256</dt><dd><code>{p.captions_sha256}</code></dd></div>
+              <div><dt>Analysis</dt><dd>v{dataset.analysis_version} · {p.analysis_summary_file} · <code>{p.analysis_summary_sha256}</code></dd></div>
+              <div><dt>Audit record</dt><dd>{p.audit_doc}</dd></div>
+            </dl>
+          </details>
         </section>
       </div>
     </div>
