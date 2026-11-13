@@ -416,7 +416,48 @@ Rule applied: newest verified Cartesian version that passes all correctness, com
 | Browser | Result |
 |---|---|
 | Chromium (system Chrome) | **52/52 passed**: lab sections, light and dark, desktop and 390 px mobile, selection and linked filtering, duplicate 193F001 identity, SVG/PNG export integrity, axe on every view, keyboard, reduced motion, 9 visual baselines, console-error scan |
-| Firefox 159.0 | **Not completed.** After the approved download 2 axe tests passed; then Firefox crashed in its software compositor and `firefox.exe` disappeared. A reinstall failed with `EPERM` on `firefox.exe`. The remaining Firefox failures read "Executable doesn't exist" and say nothing about the application |
-| WebKit 27.2 | **Not completed.** 3 axe tests passed, one then hung to the 90 s test timeout and `Playwright.exe` disappeared the same way |
+| Firefox 159.0 | **BLOCKED (endpoint protection).** After the approved download 2 axe tests passed; then Firefox crashed in its software compositor and `firefox.exe` disappeared. A reinstall failed with `EPERM` on `firefox.exe`. The remaining Firefox failures read "Executable doesn't exist" and say nothing about the application |
+| WebKit 27.2 | **BLOCKED (endpoint protection).** 3 axe tests passed, one then hung to the 90 s test timeout and `Playwright.exe` disappeared the same way |
 
 The removal and blocking of freshly extracted unsigned browser binaries looks like endpoint protection on this machine. It was not worked around, and no security setting was changed. To finish cross-browser QA, run `E2E_BROWSERS=chromium,firefox,webkit npx playwright test --update-snapshots=missing` on a machine, or with a folder exclusion that the owner approves, where the Playwright browser cache is allowed. Firefox and WebKit visual baselines and benchmarks therefore do not exist yet, and no cross-browser pass is claimed. Browsers were installed to `D:\UnderFitted_FlameScope\.pw-browsers` because `C:` had under 0.5 GB free; that folder was deleted afterwards.
+
+
+## Part 5 — Follow-up investigation (2026-11-13; nothing committed, published or overwritten)
+
+Baseline accepted by the reviewer: `plotly.js-cartesian-dist-min@2.35.3` with `react-plotly.js@2.6.0`. The engine is not to be switched.
+
+### 5.1 Vitest advisories (dev-only test runner)
+
+| Advisory | Affected | Fixed in | Needs to be true to be exploited | Exploitable here? |
+|---|---|---|---|---|
+| GHSA-5xrq-8626-4rwp / CVE-2026-47429 (critical, CVSS 9.8) | vitest <3.2.6, 4.0.x | 3.2.6, 4.1.0 | Vitest UI server exposed to the network, or Vitest UI or Browser Mode used on Windows | No: this project uses neither the UI server nor Browser Mode (`vitest run`, jsdom-free node tests) |
+| GHSA-82fw-gwwq-j7x9 / CVE-2026-84373 (medium) | `@vitest/mocker` 2.1.0 to <4.1.11 | 4.1.11, 5.0.0-rc.2 | an attacker reaching the dev server's WebSocket, via the public `mockerPlugin` / `interceptorPlugin` exports | No: no dev-server WebSocket is exposed during `vitest run`, no third-party mock plugin |
+| GHSA-qxg6-89mg-rqv8 / CVE-2026-112949 (medium) | `@vitest/mocker` 2.1.0-beta.7 to <4.1.12 | 4.1.12, 5.0.3 | same unauthenticated mock registration | No, same reason |
+| GHSA-5gmw-xhrv-c9v3 and GHSA-85c8-ppgw-ccpr / CVE-2026-104848, -104849 (critical) | `tinypool` <=2.1.0 and <2.1.2 | 2.1.1, 2.1.2 | prototype pollution elsewhere in the same process, then worker options or `run()` options read from the polluted prototype | Practically no: it is a gadget that needs a separate pollution bug; the tests run only trusted repository code and data |
+
+Fixed versions: the 3.x line stops at 3.2.7, which fixes the UI advisory only; the mocker and tinypool findings stay open on 3.x. The 4.x line has 4.1.12 and the 5.x line has 5.1.0 (current `latest`; 5.0.3 and later carry the mocker fixes; 5.x no longer depends on `tinypool`).
+
+**Isolated evaluation** (a copy of `frontend/` outside the project, deleted afterwards; the main working tree stayed on Vitest 3.0.5 and was not changed). Same application code and tests, only `vitest` changed:
+
+| Vitest | `npm audit` | Unit tests | `tsc` on tests |
+|---|---|---|---|
+| 5.1.0 (Vite 6.4.6 kept; peers `vite ^6.4`, Node ^22.12 or >=24; we run Node 24.21.0) | 0 vulnerabilities | 35/35 pass (1.25 s) | pass |
+| 4.1.12 | 0 vulnerabilities | 35/35 pass | pass |
+
+(A first run showed two failures in the copy only because `reports/flex_run_level_v0.2/summary.json` was not copied; with that file present all 35 pass.) Not exercised in the isolated copy: the Playwright suites do not depend on Vitest. **Recommendation:** Vitest 5.1.0 (or 4.1.12 as a smaller step) is a safe, test-only upgrade that clears all three advisories with no code changes; it is a dev dependency, so no production bundle or scientific result is affected. Pending explicit approval; not applied.
+
+### 5.2 FLEX v0.2.0 reproducibility
+
+`backend/scripts/run_flex_analysis.py --out <scratch>` was rerun against the verified PSI-69 table (sha256 `37c88ce8…`; 274 rows, Methanol 157, Heptane 117; 137 strata, 7 charts). All 12 output files were compared by SHA-256 with `reports/flex_run_level_v0.2/`: **12 of 12 byte-identical, no missing or extra files.** The approved outputs were not touched (output went to a scratch folder). The lab dataset `flex_lab_dataset_v0.2.0.json` hash is unchanged (`e1f0fca7…`) and no file under `data/raw` was modified.
+
+### 5.3 Visual inspection of the final exports (`docs/screenshots/lab/exports/`)
+
+Inspected by eye: `exported-k_o2.png` (2400 × 900) and the exported SVG rendered in a fresh page.
+* Correct: both Methanol and Heptane free-floating panels, `n = 38` and `n = 28` in the titles, axis labels with units, legend (≈0.7 atm, ≈1.0 atm), dark theme colours, text legible, no clipping, no "Loading chart" placeholder, marker count equals the plotted records (66, checked by the integrity test).
+* PNG and SVG agree with each other.
+* Observations, none a rendering defect: (1) overplotted markers show as thin slivers peeking from behind neighbours (for example Methanol O₂ 0.14 and the 0.34 circle); the data are correct but identical or near-identical points hide each other, and a small marker opacity would make them visible; (2) the export carries the on-screen dark theme, so it has a dark background, which suits the screen but not a printed report; (3) the legend has no title ("≈0.7 atm" is chamber pressure) and the export has no provenance caption (dataset version, source, NASA PSI-69), only the config JSON carries that; (4) the SVG uses the page font stack, so its text falls back to a default sans-serif when opened outside the app. The white area under the SVG in the second screenshot is the review page's background, not part of the export.
+These are recommendations, not changes.
+
+### 5.4 Firefox and WebKit: BLOCKED
+
+Status **BLOCKED by endpoint protection** (Part 4.5). Firefox 159.0 and WebKit 27.2 launched briefly, then the executables were removed or write-blocked (`EPERM`). No cross-browser pass is claimed, and no security control was bypassed or changed.
