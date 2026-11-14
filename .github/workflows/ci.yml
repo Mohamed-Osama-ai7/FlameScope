@@ -6,6 +6,7 @@ on:
       - main
       - 'release/**'
       - 'feat/**'
+      - 'integration/**'
   pull_request:
     branches:
       - main
