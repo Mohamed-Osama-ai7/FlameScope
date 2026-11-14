@@ -1,0 +1,74 @@
+{
+  "test_point": "40CAL01",
+  "method": {
+    "method_id": "vision.hibms_droplet_d2_pixel",
+    "version": "1.0.0",
+    "status": "implemented_compared_with_nasa_reported_values_not_validated"
+  },
+  "computable": false,
+  "abstention_reason": "droplet tracked in only 74% of fit-window frames (< 80%): droplet lost, obscured (e.g. soot shell) or touching the image edge; not measurable here",
+  "nasa_reference": {
+    "run_id": "PSI-69-r006",
+    "flex_identifier": "40CAL01",
+    "fuel": "Methanol",
+    "test_end": "Extinction",
+    "reported_k_mm2_per_s": 0.51,
+    "reported_d0_mm": 2.54,
+    "reported_extinction_diameter_mm": 1.53,
+    "reported_burn_time_s": 9.6,
+    "reported_k_over_d0sq_per_s": 0.0790501581003162,
+    "reported_dext_over_d0": 0.6023622047244095,
+    "value_origin": "reported_in_source (FLEX team), PSI-69 experimental table sha256 37c88ce8ae93"
+  },
+  "provenance": [
+    {
+      "source_id": "PSI-69",
+      "test_point": "40CAL01",
+      "role": "camera_settings",
+      "file_name": "PSI-69_Calibration_40CAL01_HIBMS_Camera_Settings.txt",
+      "relative_path": "data/raw/PSI-69/calibration/PSI-69_Calibration_40CAL01_HIBMS_Camera_Settings.txt",
+      "byte_size": "863",
+      "sha256": "b0266043ba4647e8302bad8c58d608fbaeea6a68f9c9b5c02b9dd25092620a8a",
+      "source_url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-69/download?file=PSI-69_Calibration_40CAL01_HIBMS_Camera_Settings.txt&version=1&redirect=false",
+      "license": "CC0-1.0",
+      "retrieved_at_utc": "2026-11-14T08:11:03Z"
+    },
+    {
+      "source_id": "PSI-69",
+      "test_point": "40CAL01",
+      "role": "frame_index",
+      "file_name": "PSI-69_Calibration_40CAL01A.txt",
+      "relative_path": "data/raw/PSI-69/calibration/PSI-69_Calibration_40CAL01A.txt",
+      "byte_size": "105605",
+      "sha256": "b5358cfcbc7cb486b98f0393145f3c427e4e96a64aa547b098fd7a9a7d6b3534",
+      "source_url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-69/download?file=PSI-69_Calibration_40CAL01A.txt&version=1&redirect=false",
+      "license": "CC0-1.0",
+      "retrieved_at_utc": "2026-11-14T08:11:00Z"
+    },
+    {
+      "source_id": "PSI-69",
+      "test_point": "40CAL01",
+      "role": "frames_zip",
+      "file_name": "PSI-69_Calibration_40CAL01A.zip",
+      "relative_path": "data/raw/PSI-69/calibration/PSI-69_Calibration_40CAL01A.zip",
+      "byte_size": "298616396",
+      "sha256": "7c40c752444b73d8effc6695f6be48360f81200e5ef23ac746fe9fb9267915ea",
+      "source_url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-69/download?file=PSI-69_Calibration_40CAL01A.zip&version=1&redirect=false",
+      "license": "CC0-1.0",
+      "retrieved_at_utc": "2026-11-14T08:13:52Z"
+    },
+    {
+      "source_id": "PSI-69",
+      "test_point": "40CAL01",
+      "role": "test_log",
+      "file_name": "PSI-69_Calibration_40CAL01.txt",
+      "relative_path": "data/raw/PSI-69/calibration/PSI-69_Calibration_40CAL01.txt",
+      "byte_size": "11314",
+      "sha256": "c8991c815cc6dbccc48f8c341de6d20d0817861465e38e8e97ce45ae43ca9539",
+      "source_url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-69/download?file=PSI-69_Calibration_40CAL01.txt&version=1&redirect=false",
+      "license": "CC0-1.0",
+      "retrieved_at_utc": "2026-11-14T08:10:57Z"
+    }
+  ],
+  "generated_at_utc": "2026-11-14T08:17:40Z"
+}

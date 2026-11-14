@@ -20,6 +20,7 @@
     "d0_mad_px": 0.06947623948189374,
     "d0_frames": 12,
     "fit_window_coverage": 1.0,
+    "post_break_slope_ratio": 0.025070766983220777,
     "fit": {
       "slope": -143.74116415038412,
       "intercept": 821.8913230043911,
@@ -55,6 +56,28 @@
         4.526999999999993
       ]
     },
+    "diagnostics": {
+      "occlusion": {
+        "clean_frames_in_igniter_window": 23,
+        "hidden_interval_s": [
+          0.55352,
+          1.186854
+        ],
+        "hidden_duration_s": 0.6333340000000001
+      },
+      "edge_bias_k_over_d0sq": {
+        "-0.5": 0.1927320754364584,
+        "0.5": 0.18868754063378457
+      },
+      "local_k_over_d0sq_0p5s_bins": [
+        0.23469477179234124,
+        0.22985034020706904,
+        0.20326015454840402,
+        0.17935567074106004,
+        0.1533421017616862
+      ],
+      "max_local_k_over_d0sq_per_s": 0.23469477179234124
+    },
     "threshold_sensitivity_k_over_d0sq": {
       "0.4": 0.19321399151845195,
       "0.5": 0.1906994025816264,
@@ -74,6 +97,21 @@
       "min_circularity": 0.7,
       "border_margin_px": 1
     }
+  },
+  "uncertainty_budget": {
+    "fit_slope_rel_1sigma": 0.008830581081484082,
+    "d0_dispersion_rel_1sigma": 0.00750368133573444,
+    "combined_random_rel_1sigma": 0.01158811442059984,
+    "threshold_sensitivity_rel_range": [
+      0.0,
+      0.013186139561969679
+    ],
+    "edge_bias_0p5px_rel_range": [
+      -0.010549912168606235,
+      0.010659041545565184
+    ],
+    "not_quantified": "fit-window definition (start hidden by igniters, end = droplet-side regime break, not flame extinction) and the definition of NASA's reported D0 and K",
+    "note": "+/-0.5 px is the segmentation bias bound on synthetic disks (an edge term), not the total measurement uncertainty."
   },
   "nasa_reference": {
     "run_id": "PSI-69-r003",
@@ -96,7 +134,16 @@
     "implied_mm_per_px_from_nasa_d0": 0.05864216064953745,
     "implied_scale_note": "Consistency check only (NASA D0 / measured D0_px); never used to convert results to millimetres. NASA states droplet-size uncertainty +/-50 um.",
     "vision_regime_break_diameter_ratio_proxy": 0.4765454727735837,
-    "note": "Scale-free comparison; no spatial calibration involved. NASA K has no per-value uncertainty in the source. Agreement is reported, not asserted."
+    "note": "Scale-free comparison; no spatial calibration involved. NASA K has no per-value uncertainty in the source. Agreement is reported, not asserted.",
+    "occlusion_assessment": {
+      "assumption": "droplet regime break = flame extinction",
+      "physically_hidden_s": 0.6333340000000001,
+      "verdict": "rejected_as_main_cause",
+      "implied_ignition_t_s": 1.3269999999999929,
+      "hidden_part_of_nasa_window_s": 0.20000000000000728,
+      "required_hidden_k_over_d0sq_per_s": 0.7196177533746544,
+      "fastest_observed_local_k_over_d0sq_per_s": 0.23469477179234124
+    }
   },
   "provenance": [
     {
@@ -148,5 +195,5 @@
       "retrieved_at_utc": "2026-11-14T06:53:36Z"
     }
   ],
-  "generated_at_utc": "2026-11-14T07:08:15Z"
+  "generated_at_utc": "2026-11-14T08:15:38Z"
 }

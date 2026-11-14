@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import csv
 import io
+import os
 import re
 import zipfile
 from dataclasses import dataclass, field
@@ -21,6 +22,19 @@ from typing import Any
 _EVENT = re.compile(r"^(AS [^:]+):\s*(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+)\s*$")
 _SETTING = re.compile(r"^([A-Za-z ]+\(milliseconds\)):\s*(\d+)\s*$")
 TEXT_ENCODING = "latin-1"  # PSI calibration text files are plain ASCII; latin-1 never fails
+RAW_DIR_ENV = "FLAMESCOPE_VISION_RAW_DIR"
+
+
+def raw_dir() -> Path:
+    """Physical folder of the PSI-69 calibration files (kept outside git, e.g. on another drive).
+
+    ``FLAMESCOPE_VISION_RAW_DIR`` overrides the default ``<repo>/data/raw/PSI-69/calibration``. The
+    manifest's ``relative_path`` is the logical project location; files are resolved by ``file_name``.
+    """
+    value = os.environ.get(RAW_DIR_ENV, "").strip()
+    if value:
+        return Path(value)
+    return Path(__file__).resolve().parents[3] / "data" / "raw" / "PSI-69" / "calibration"
 
 
 @dataclass(frozen=True)

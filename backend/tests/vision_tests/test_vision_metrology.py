@@ -123,3 +123,63 @@ def test_analyse_abstains_without_free_droplet_before_ignition():
 def test_analyse_abstains_without_a_burning_segment():
     with pytest.raises(ValueError, match="no d\\^2-law burning segment|regime break"):
         analyse(synthetic_records(k_px=-50.0), FakeBundle())  # type: ignore[arg-type]
+
+
+def test_analyse_abstains_without_a_burning_to_evaporation_break():
+    """Disruption-like history: D^2 keeps falling at the burning rate until the data end (no tail)."""
+    recs = [
+        r if r.t_s is None or r.t_s <= 6.0 or r.status != "measured" else
+        FrameRecord(r.frame, r.t_s, "measured", diameter_px=max(32.0**2 - 120.0 * r.t_s, 1.0) ** 0.5)
+        for r in synthetic_records(k_px=120.0)
+        if r.t_s is None or r.t_s <= 8.0  # data end before D^2 reaches zero: no flat tail at all
+    ]  # fmt: skip
+    with pytest.raises(ValueError, match="no burning-to-evaporation break"):
+        analyse(recs, FakeBundle())  # type: ignore[arg-type]
+
+
+class DriftBundle(FakeBundle):
+    """TEST-ONLY frames: a dark disk that drifts 60 px/s; frames 0-1.53 s are the igniter window."""
+
+    def __init__(self, debris_after: float | None = None):
+        self.debris_after = debris_after
+        self.t0 = parse_test_log(LOG).event("AS Burn to Completion/Igniter On")
+        self.names = [f"f{i:04d}.tif" for i in range(-12, 120)]
+
+    def frame_index(self):
+        return {n[:-4]: self.t0 + timedelta(seconds=int(n[1:5]) / 30) for n in self.names}
+
+    def frame_names(self):
+        return self.names
+
+    def read_frame(self, name):
+        import numpy as np
+
+        cv2 = pytest.importorskip("cv2")
+        t = int(name[1:5]) / 30
+        img = np.full((256, 256), 60000, np.float32)
+        x, y = 40 + 60 * max(t, 0.0), 128
+        r = 6.0 if self.debris_after is not None and t > self.debris_after else 16.0
+        cv2.circle(img, (int(x), y), int(r), 5000, -1)
+        return img
+
+
+def test_fast_drift_across_a_long_gap_is_reanchored():
+    pytest.importorskip("cv2")
+    from app.vision.metrology import measure_series
+    from app.vision.segmentation import SegmentationParams
+
+    recs = measure_series(DriftBundle(), SegmentationParams())  # type: ignore[arg-type]
+    after = [r for r in recs if r.status == "measured" and r.t_s is not None and r.t_s > 1.5]
+    assert after and all("tracking_jump" not in r.flags for r in after[3:])
+    assert any("reanchored" in r.flags for r in after)
+
+
+def test_diameter_jumps_never_reanchor():
+    pytest.importorskip("cv2")
+    from app.vision.metrology import measure_series
+    from app.vision.segmentation import SegmentationParams
+
+    recs = measure_series(DriftBundle(debris_after=2.5), SegmentationParams())  # type: ignore[arg-type]
+    late = [r for r in recs if r.status == "measured" and r.t_s is not None and r.t_s > 2.6]
+    assert late and all("diameter_jump" in r.flags for r in late)
+    assert not any("reanchored" in r.flags for r in late)

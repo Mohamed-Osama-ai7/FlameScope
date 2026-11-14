@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import http.client
 import json
 import sys
 from dataclasses import asdict, fields
@@ -30,7 +31,8 @@ import fetch_psi_table as psi  # noqa: E402
 from app.analysis import flex_run_level as flex  # noqa: E402
 from app.vision.method_card import HIBMS_DROPLET_CARD  # noqa: E402
 from app.vision.metrology import FrameRecord, evaluate  # noqa: E402
-from app.vision.nasa_bundle import HibmsBundle  # noqa: E402
+from app.vision.nasa_bundle import HibmsBundle, raw_dir  # noqa: E402
+from app.vision.validation import occlusion_verdict, uncertainty_budget  # noqa: E402
 
 ROOT = BACKEND.parent
 CAL_DIR = Path("data/raw/PSI-69/calibration")
@@ -69,20 +71,33 @@ def _write_manifest(rows: list[dict[str, str]]) -> None:
         w.writerows(rows)
 
 
+def _download(url: str, attempts: int = 3) -> bytes:
+    """PSI download with retries on dropped connections (a partial body is never stored)."""
+    for i in range(attempts):
+        try:
+            body, ctype = psi._get(url, 120, 3)
+            indirect, data = psi.resolve_payload(body, ctype)
+            if indirect is not None:
+                data, _ = psi._get(indirect, 3600, 2)
+            assert data is not None
+            return data
+        except (http.client.IncompleteRead, ConnectionError, TimeoutError) as exc:
+            if i + 1 == attempts:
+                raise psi.FetchError(f"{url}: download interrupted {attempts} times: {exc!r}") from exc
+            print(f"RETRY {url} after {type(exc).__name__}", flush=True)
+    raise AssertionError("unreachable")
+
+
 def fetch(tests: list[str]) -> None:
     rows = {r["relative_path"]: r for r in _manifest()}
     for test in tests:
         for role, suffix in ROLES.items():
             name = f"PSI-69_Calibration_{test}{suffix}"
-            rel = CAL_DIR / name
-            target = ROOT / rel
+            rel = CAL_DIR / name  # logical project path recorded in the manifest
+            target = raw_dir() / name  # physical location (FLAMESCOPE_VISION_RAW_DIR)
             url = psi.download_url("PSI-69", name, 1)
             if not target.exists():
-                body, ctype = psi._get(url, 120, 3)
-                indirect, data = psi.resolve_payload(body, ctype)
-                if indirect is not None:
-                    data, _ = psi._get(indirect, 3600, 2)
-                assert data is not None
+                data = _download(url)
                 psi.store_immutable(target, data)
                 retrieved = datetime.now(UTC)
             else:  # already acquired (immutable): record what is on disk
@@ -97,7 +112,7 @@ def fetch(tests: list[str]) -> None:
                 "source_url": url, "license": "CC0-1.0",
                 "retrieved_at_utc": retrieved.strftime("%Y-%m-%dT%H:%M:%SZ"),
             }  # fmt: skip
-            print(f"OK   {rel.as_posix()} sha256={digest[:16]}")
+            print(f"OK   {rel.as_posix()} sha256={digest[:16]}", flush=True)
     _write_manifest(list(rows.values()))
 
 
@@ -106,7 +121,7 @@ def verify(test: str) -> list[dict[str, str]]:
     if len(rows) != len(ROLES):
         raise ProvenanceError(f"{test}: manifest has {len(rows)} of {len(ROLES)} files; run `fetch {test}`")
     for r in rows:
-        path = ROOT / r["relative_path"]
+        path = raw_dir() / r["file_name"]
         if not path.is_file():
             raise ProvenanceError(f"missing raw file {r['relative_path']} (run `fetch {test}`)")
         if path.stat().st_size != int(r["byte_size"]) or _sha(path) != r["sha256"]:
@@ -211,7 +226,7 @@ def _overlay(bundle: HibmsBundle, records: list[FrameRecord], path: Path) -> Non
 def write_abstention(test: str, reason: str, files: list[dict[str, str]]) -> None:
     out = OUT_DIR / test
     out.mkdir(parents=True, exist_ok=True)
-    for stale in ("series.csv", "d2_curve.svg", "overlay.png"):
+    for stale in ("series.csv", "d2_curve.svg", "overlay.png", "evidence.png"):
         (out / stale).unlink(missing_ok=True)
     summary = {
         "test_point": test,
@@ -227,6 +242,48 @@ def write_abstention(test: str, reason: str, files: list[dict[str, str]]) -> Non
         "generated_at_utc": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
     }
     (out / "summary.json").write_text(json.dumps(summary, indent=2, default=str) + "\n", "utf-8")
+
+
+def _evidence(bundle: HibmsBundle, records: list[FrameRecord], s: dict, path: Path) -> None:
+    """Original / threshold mask / overlay for a mid-burn frame and for a frame inside the igniter window."""
+    import cv2
+    import numpy as np
+
+    from app.vision.segmentation import SegmentationParams, segment_droplet
+
+    t0, t1 = s["windows_s"]["fit"]
+    ex0, ex1 = s["windows_s"]["excluded_igniters"]
+    by_t = [r for r in records if r.t_s is not None]
+    picks = [
+        (
+            "burning",
+            min((r for r in by_t if r.status == "measured"), key=lambda r: abs(r.t_s - (t0 + t1) / 2)),
+        ),  # type: ignore[operator]
+        ("igniter window", min(by_t, key=lambda r: abs(r.t_s - (ex0 + ex1) / 2))),  # type: ignore[operator]
+    ]
+    params = SegmentationParams(**s["segmentation_params"])
+    rows = []
+    for label, r in picks:
+        img = bundle.read_frame(r.frame + ".tif")
+        if img is None:
+            continue
+        grey = ((img - img.min()) * (255.0 / max(float(img.max() - img.min()), 1.0))).astype(np.uint8)
+        mask = ((img < params.threshold_fraction * float(np.median(img))) * 255).astype(np.uint8)
+        over = cv2.cvtColor(grey, cv2.COLOR_GRAY2BGR)
+        det = segment_droplet(img, params)
+        if det is not None:
+            cv2.circle(over, (round(det.centroid_x_px), round(det.centroid_y_px)),
+                       round(det.equivalent_diameter_px / 2), (40, 40, 220), 2)  # fmt: skip
+        tiles = [cv2.cvtColor(grey, cv2.COLOR_GRAY2BGR), cv2.cvtColor(mask, cv2.COLOR_GRAY2BGR), over]
+        tiles = [cv2.resize(t, (256, 256), interpolation=cv2.INTER_AREA) for t in tiles]
+        for tile, name in zip(
+            tiles, ("original", f"mask f={params.threshold_fraction:.1f}", "overlay"), strict=True
+        ):
+            cv2.putText(tile, f"{label} t={r.t_s:.2f}s {name}", (4, 14), cv2.FONT_HERSHEY_SIMPLEX, 0.38,
+                        (40, 40, 220), 1)  # fmt: skip
+        rows.append(np.hstack(tiles))
+    if rows:
+        cv2.imwrite(str(path), np.vstack(rows))
 
 
 def write_evaluation() -> dict:
@@ -251,6 +308,12 @@ def write_evaluation() -> dict:
             "nasa_k_over_d0sq_per_s": c["nasa_k_over_d0sq_per_s"],
             "relative_difference": c["relative_difference"],
             "implied_mm_per_px_from_nasa_d0": c["implied_mm_per_px_from_nasa_d0"],
+            "occlusion_verdict": c["occlusion_assessment"]["verdict"],
+            "hidden_part_of_nasa_window_s": c["occlusion_assessment"].get("hidden_part_of_nasa_window_s"),
+            "required_hidden_k_over_d0sq_per_s": c["occlusion_assessment"].get(
+                "required_hidden_k_over_d0sq_per_s"
+            ),
+            "max_local_k_over_d0sq_per_s": r["diagnostics"]["max_local_k_over_d0sq_per_s"],
         })  # fmt: skip
     ok = [r for r in rows if r["computable"]]
     diffs = [r["relative_difference"] for r in ok if r["relative_difference"] is not None]
@@ -276,7 +339,7 @@ def run(tests: list[str]) -> int:
     for test in tests:
         try:
             files = verify(test)
-            bundle = HibmsBundle(ROOT / CAL_DIR, test)
+            bundle = HibmsBundle(raw_dir(), test)
             try:
                 result = evaluate(bundle)
             except ValueError as exc:  # scientific abstention: recorded, never hidden
@@ -301,6 +364,11 @@ def run(tests: list[str]) -> int:
                 "vision_regime_break_diameter_ratio_proxy": s["regime_break_diameter_ratio"],
                 "note": "Scale-free comparison; no spatial calibration involved. NASA K has no per-value "
                 "uncertainty in the source. Agreement is reported, not asserted.",
+                "occlusion_assessment": occlusion_verdict(
+                    s,
+                    rk if isinstance(rk, float) else None,
+                    bt if isinstance(bt := ref["reported_burn_time_s"], float) else None,
+                ),
             }
             summary = {
                 "test_point": test,
@@ -325,6 +393,7 @@ def run(tests: list[str]) -> int:
                 "settings give "
                 "resolution and frame rate only). Results stay in pixels or are scale-free (1/s).",
                 "results": s,
+                "uncertainty_budget": uncertainty_budget(s),
                 "nasa_reference": ref,
                 "comparison": comparison,
                 "provenance": files,
@@ -339,6 +408,7 @@ def run(tests: list[str]) -> int:
                 w.writerows(asdict(r) for r in records)
             (out / "d2_curve.svg").write_text(_svg(records, s, test), "utf-8")
             _overlay(bundle, records, out / "overlay.png")
+            _evidence(bundle, records, s, out / "evidence.png")
             bundle.close()
             d = comparison["relative_difference"]
             diff_txt = f"{100 * d:+.1f}%" if isinstance(d, float) else "n/a"
