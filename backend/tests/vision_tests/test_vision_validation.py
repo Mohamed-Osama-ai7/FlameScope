@@ -61,3 +61,23 @@ def test_raw_dir_is_configurable(monkeypatch, tmp_path):
     assert raw_dir() == tmp_path
     monkeypatch.delenv(RAW_DIR_ENV)
     assert raw_dir().parts[-3:] == ("raw", "PSI-69", "calibration")
+
+
+# ------------------------------------------------------------ NASA report cross-check (docs/16 section 5)
+
+
+def test_gap_decomposition_factors_multiply_to_the_ratio():
+    import importlib.util
+    from pathlib import Path
+
+    spec = importlib.util.spec_from_file_location(
+        "crosscheck", Path(__file__).resolve().parents[2] / "scripts" / "nasa_report_crosscheck.py"
+    )
+    mod = importlib.util.module_from_spec(spec)  # type: ignore[arg-type]
+    spec.loader.exec_module(mod)  # type: ignore[union-attr]
+    # numbers shaped like 20CAL10: table D0 1.86 mm, plateau 4.01 mm2, K 0.60, curve slope 0.546 mm2/s
+    d = mod.decompose(1.86**2, 4.01, 0.60, 0.546, ours=0.1348, curve_norm=0.546 / 4.01)
+    ratio = 0.1348 / (0.60 / 1.86**2)
+    assert d["product"] == pytest.approx(ratio)
+    assert d["d0_definition"] < 1 and d["tabulated_k_vs_published_curve"] < 1
+    assert d["our_measurement_vs_curve"] == pytest.approx(0.1348 / (0.546 / 4.01))

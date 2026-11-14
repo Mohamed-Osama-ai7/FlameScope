@@ -328,7 +328,10 @@ def write_evaluation() -> dict:
         "relative_difference_mean": sum(diffs) / len(diffs) if diffs else None,
         "relative_difference_range": [min(diffs), max(diffs)] if diffs else None,
         "implied_scale_range_mm_per_px": [min(scales), max(scales)] if scales else None,
-        "verdict": "not validated: vision K/D0^2 is systematically below NASA's reported value; see docs/16",
+        "verdict": "not validated against the tabulated K: the vision K/D0^2 is 7-22% below it, mostly "
+        "because "
+        "the table normalises by a post-ignition D0 (docs/16 section 5). Cross-check on NASA's published "
+        "D^2(t) curves (unregistered source): within about 3%, see nasa_report_crosscheck.json",
     }
     (OUT_DIR / "evaluation.json").write_text(json.dumps(out, indent=2) + "\n", "utf-8")
     return out

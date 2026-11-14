@@ -119,5 +119,5 @@
     0.057061703643597445,
     0.05864216064953745
   ],
-  "verdict": "not validated: vision K/D0^2 is systematically below NASA's reported value; see docs/16"
+  "verdict": "not validated against the tabulated K: the vision K/D0^2 is 7-22% below it, mostly because the table normalises by a post-ignition D0 (docs/16 section 5). Cross-check on NASA's published D^2(t) curves (unregistered source): within about 3%, see nasa_report_crosscheck.json"
 }

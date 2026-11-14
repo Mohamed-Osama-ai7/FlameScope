@@ -23,7 +23,7 @@ data = ["pandas>=2.2,<3.0"]
 # Optional neural retrieval (BGE-M3 / BGE reranker) and PDF ingestion; weights are downloaded by the library, never committed
 rag = ["sentence-transformers>=5,<5.2", "protobuf>=4", "sentencepiece>=0.2", "pypdf>=4"]
 # Flame vision (HIBMS frame processing, scripts/run_flame_vision.py); the read-only API does not need it
-vision = ["opencv-python-headless>=4.9,<5"]
+vision = ["opencv-python-headless>=4.9,<5", "pypdfium2>=4"]  # pypdfium2: scripts/nasa_report_crosscheck.py only
 
 [tool.ruff]
 line-length = 110

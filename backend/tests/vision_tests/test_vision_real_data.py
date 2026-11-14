@@ -5,6 +5,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
+import os
 from pathlib import Path
 
 import pytest
@@ -28,7 +29,7 @@ def manifest_rows() -> list[dict[str, str]]:
 def test_manifest_is_complete_and_licensed():
     rows = manifest_rows()
     tests = {"20CAL08", "20CAL10", "20CAL12", "30CAL02", "30CAL03", "30CAL06", "40CAL01"}
-    assert {r["test_point"] for r in rows} == tests | {"DOCS"}
+    assert {r["test_point"] for r in rows} == tests | {"DOCS", "NASA-TP"}
     for t in tests:  # every test bundle has its 4 files
         assert {r["role"] for r in rows if r["test_point"] == t} == {
             "test_log",
@@ -37,7 +38,14 @@ def test_manifest_is_complete_and_licensed():
             "frames_zip",
         }
     for r in rows:
-        assert len(r["sha256"]) == 64 and r["license"] == "CC0-1.0"
+        assert len(r["sha256"]) == 64
+        if r["test_point"] == "NASA-TP":  # NTRS report: public use permitted, not CC0; registration pending
+            assert r["license"] == "NTRS-PUBLIC-USE-PERMITTED" and r["source_id"] == "NASA-TP-2015-216046"
+            assert (
+                r["source_url"] == "https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf"
+            )
+            continue
+        assert r["license"] == "CC0-1.0"
         assert r["source_url"].startswith("https://psi.nasa.gov/geode-py/ws/studies/PSI-69/download?")
         assert r["relative_path"].startswith("data/raw/PSI-69/")
 
@@ -68,7 +76,7 @@ def test_evaluation_is_reproducible_on_nasa_frames():
 def test_stored_results_are_honest_about_units_and_validation():
     ev = json.loads((DERIVED / "evaluation.json").read_text("utf-8"))
     assert ev["n_tests"] == 7 and ev["n_computable"] == 3 and ev["n_abstained"] == 4
-    assert ev["verdict"].startswith("not validated")
+    assert ev["verdict"].startswith("not validated against the tabulated K")
     for t in ("20CAL10", "20CAL12", "30CAL03"):
         s = json.loads((DERIVED / t / "summary.json").read_text("utf-8"))
         assert s["physical_units"] is None and "mm" not in json.dumps(s["results"])
@@ -100,3 +108,43 @@ def test_api_routes():
     assert client.get("/api/v1/vision/tests/30CAL06/series").status_code == 404
     assert client.get("/api/v1/vision/tests/99CAL99").status_code == 404
     assert client.get("/api/v1/vision/tests/not-a-test").status_code == 422
+
+
+NASA_TP_PDF = Path(
+    os.environ.get("FLAMESCOPE_NASA_TP_PDF", "D:/FlameScope_raw/NASA-TP-2015-216046/20150023456.pdf")
+)
+
+
+def test_stored_crosscheck_is_consistent_and_honest_about_its_source():
+    x = json.loads((DERIVED / "nasa_report_crosscheck.json").read_text("utf-8"))
+    assert x["source"]["status"].startswith("UNREGISTERED")
+    assert len(x["tests"]) == 3
+    for t, r in x["tests"].items():
+        lo, hi = r["ours_vs_published_range"]
+        assert abs(r["ours_vs_published_curve"]) < 0.05, t  # vision agrees with NASA's published curve
+        assert lo - 1e-9 <= r["ours_vs_published_curve"] <= hi + 1e-9
+        assert abs(r["gap_decomposition"]["product"] - r["ours_vs_table_ratio"]) < 1e-9, t
+        assert r["gap_decomposition"]["d0_definition"] < 0.95  # table D0 is the post-ignition diameter
+        # the table D0 is the diameter of NASA's own plot at its t = 0, not the pre-ignition plateau
+        assert r["published_d_mm_at_plot_t0"] == pytest.approx(r["table_d0_mm"], abs=0.02)
+        assert r["published_plateau_d_mm"] > r["table_d0_mm"] + 0.08
+
+
+@pytest.mark.skipif(not NASA_TP_PDF.exists(), reason="NASA/TP-2015-216046 PDF not present (kept outside git)")
+def test_crosscheck_is_reproducible_from_the_pdf():
+    pytest.importorskip("pypdfium2")
+    import hashlib
+    import importlib.util
+
+    assert hashlib.sha256(NASA_TP_PDF.read_bytes()).hexdigest() == (
+        "b4f6ca983e2792c33a0b92220a791a818f426bb635b94f7fd33dc8c9c471e79d"
+    )
+    spec = importlib.util.spec_from_file_location(
+        "crosscheck", ROOT / "backend/scripts/nasa_report_crosscheck.py"
+    )
+    mod = importlib.util.module_from_spec(spec)  # type: ignore[arg-type]
+    spec.loader.exec_module(mod)  # type: ignore[union-attr]
+    stored = json.loads((DERIVED / "nasa_report_crosscheck.json").read_text("utf-8"))["tests"]["20CAL10"]
+    summary = json.loads((DERIVED / "20CAL10" / "summary.json").read_text("utf-8"))
+    fresh = mod.analyse("20CAL10", mod.FIGURES["20CAL10"], mod.render(NASA_TP_PDF, 36), summary)
+    assert fresh["ours_vs_published_curve"] == pytest.approx(stored["ours_vs_published_curve"], abs=1e-9)
