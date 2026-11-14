@@ -1,0 +1,7 @@
+# Byte-exact files. Their SHA-256 is recorded in manifests, summaries and tests, so git must never
+# rewrite their line endings (core.autocrlf=true on Windows otherwise changes the hashes).
+data/** -text
+reports/** -text
+frontend/public/data/** -text
+*.png binary
+*.svg -text
