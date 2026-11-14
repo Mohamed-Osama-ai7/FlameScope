@@ -1,8 +1,8 @@
-from pathlib import Path
 
 from fastapi import APIRouter, HTTPException
 
 from app.data_platform.api import platform_status
+from app.data_platform.settings import project_root
 from app.domain.comparison import ComparisonRequest, ComparisonResult, validate_comparison
 from app.domain.regimes import REGIME_DESCRIPTIONS, REGIME_VARIABLES, CombustionRegime
 from app.domain.sources import (
@@ -15,8 +15,6 @@ from app.domain.sources import (
 from app.rag.eligibility import EligibilityPolicy
 from app.science.droplet import BurningRateResult, DropletSeries, fit_burning_rate_constant
 from app.science.method_cards import METHOD_REGISTRY, MethodCard
-
-from app.data_platform.settings import project_root
 
 router = APIRouter()
 PROJECT_ROOT = project_root()
