@@ -50,6 +50,7 @@ _ABSTENTION = [
     ("the source named in the question is not available", "data", "ineligible_source"),
     ("no table row for fuel", "data", "absent_fuel"),
     ("the question asks for a measured value without naming", "data", "pooling_refused"),
+    ("the question asks for a predicted or hypothetical value", "model", "extrapolation_refused"),
     ("the experiment named in the question", "retrieval", "unknown_experiment"),
     ("the question uses terms absent from the evidence corpus", "retrieval", "out_of_corpus_terms"),
     ("retrieved evidence covers only", "retrieval", "insufficient_coverage"),

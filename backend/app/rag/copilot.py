@@ -32,6 +32,12 @@ CLAIM_COVERAGE_MIN = 0.5
 MAX_LLM_TOOL_CALLS = 3
 # questions about a specific test or run (as opposed to publications or the record narrative)
 _RUN_QUESTION = re.compile(r"\b(?:tests?|runs?)\b", re.I)
+# predicted / hypothetical values (extrapolation is refused; only measured values are stated)
+_HYPOTHETICAL = re.compile(
+    r"\b(?:what would|what will|would (?:it |they |the \w+ )?be|will be|predict\w*|forecast\w*|"
+    r"extrapolat\w*|estimate[sd]?)\b",
+    re.I,
+)
 
 
 class Status(str, Enum):
@@ -173,6 +179,13 @@ class ScientificCopilot:
                     f"FLEX runs or reported values for {f}" for f in gone
                 ]
             missing += [f"reported values for {f}" for f in gone]  # partial coverage: answer, but disclose
+        if qa.variables and _HYPOTHETICAL.search(qa.question):
+            # v5 diagnostic U24: "What would K of methanol be at 5 atm?" was answered with two unrelated runs
+            return (
+                "the question asks for a predicted or hypothetical value; FlameScope states measured "
+                "values only and does not extrapolate",
+                [f"measured values of {', '.join(qa.variables)} under the stated conditions"],
+            )
         oov = self._unsupported_terms(qa)
         if oov:
             return f"the question uses terms absent from the evidence corpus: {', '.join(oov)}", [

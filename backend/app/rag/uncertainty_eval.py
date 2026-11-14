@@ -42,6 +42,7 @@ def evaluate_item(cop: ScientificCopilot, q: dict[str, Any]) -> dict[str, Any]:
         if not u.evidence:
             ok_ids = u.kind == "retrieval" or u.code in {
                 "pooling_refused",
+                "extrapolation_refused",
                 "absent_fuel",
                 "incompatible_regimes",
                 "claims_failed_validation",
