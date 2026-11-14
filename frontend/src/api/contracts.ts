@@ -329,3 +329,91 @@ export interface DataPlatformStatus {
   measurements: number;
   detail: string | null;
 }
+
+// ---- Physics-Informed Analysis (/physics/d2-consistency, /physics/oxygen-effect) ----
+
+export interface D2FuelSummary {
+  n: number;
+  median: number;
+  median_ci95: [number, number] | null;
+  q1: number;
+  q3: number;
+  min: number;
+  max: number;
+  tukey_fences: [number, number];
+  share_of_intervals_containing_1: number;
+}
+
+export interface D2RunResult {
+  run_id: string;
+  experiment_id: string;
+  fuel: string;
+  d0_mm: number;
+  dext_mm: number;
+  k_mm2_s: number;
+  burn_time_s: number;
+  t_d2_s: number;
+  ratio: number;
+  ratio_interval: [number, number];
+  review_flag: string | null;
+}
+
+export interface D2ConsistencyResponse {
+  analysis: 'd2_consistency';
+  analysis_version: string;
+  equation: string;
+  value_origin: string;
+  n_runs: number;
+  excluded: Record<string, number>;
+  by_fuel: Record<string, D2FuelSummary>;
+  flagged_for_review: string[];
+  runs: D2RunResult[];
+  uncertainty: {
+    per_run: string;
+    summary: string;
+  };
+  limitations: string[];
+}
+
+export interface RegressionCoefficient {
+  estimate: number;
+  se_hc3: number;
+  ci95: [number, number];
+  p_value: number;
+}
+
+export interface OlsModelResult {
+  intercept: RegressionCoefficient;
+  x_o2: RegressionCoefficient;
+  d0_mm?: RegressionCoefficient;
+  r_squared: number;
+  dof_resid: number;
+}
+
+export interface OxygenStratumResult {
+  fuel: string;
+  pressure_cluster: string | null;
+  support_mode: string;
+  n: number;
+  x_o2_range: [number, number];
+  n_distinct_o2: number;
+  run_ids: string[];
+  computable: boolean;
+  abstention_reason?: string;
+  model_k_on_o2?: OlsModelResult;
+  sensitivity_k_on_o2_and_d0?: OlsModelResult | null;
+  spearman_o2_k?: number | null;
+}
+
+export interface OxygenEffectResponse {
+  analysis: 'oxygen_effect';
+  analysis_version: string;
+  model: string;
+  units: Record<string, string>;
+  value_origin: string;
+  strata_held_fixed: string[];
+  excluded: Record<string, number>;
+  strata: OxygenStratumResult[];
+  limitations: string[];
+}
+

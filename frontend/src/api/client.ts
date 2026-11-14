@@ -2,9 +2,11 @@ import type {
   ComparisonRequest,
   ComparisonResult,
   CopilotResponse,
+  D2ConsistencyResponse,
   DataPlatformStatus,
   MeasurementRecord,
   MethodCard,
+  OxygenEffectResponse,
   PaginatedResult,
   ProvenanceRecord,
   RagSource,
@@ -22,6 +24,7 @@ import {
   parseProvenanceRecord,
   parseRunDetail,
 } from './dataPlatformValidation';
+import { parseD2Consistency, parseOxygenEffect } from './physicsValidation';
 import { parseCopilotResponse, parseRagSource, parseSearchResponse } from './ragValidation';
 import { parseComparison, parseList, parseMethod, parseRegime, parseSource } from './validation';
 
@@ -167,7 +170,46 @@ export const api = {
     const payload = await requestJson(`/measurements/${encodeURIComponent(measurementId)}/provenance`, { signal });
     return parseProvenanceRecord(payload);
   },
+  // ---- Physics-Informed Analysis (/physics/d2-consistency, /physics/oxygen-effect) ----
+  async getD2Consistency(params?: {
+    fuel?: 'Methanol' | 'Heptane';
+    diameter_halfwidth_mm?: number;
+  }, signal?: AbortSignal): Promise<D2ConsistencyResponse> {
+    const query = new URLSearchParams();
+    if (params?.fuel) query.set('fuel', params.fuel);
+    if (params?.diameter_halfwidth_mm !== undefined) {
+      query.set('diameter_halfwidth_mm', String(params.diameter_halfwidth_mm));
+    }
+    const qs = query.toString();
+    const payload = await requestJson(`/physics/d2-consistency${qs ? `?${qs}` : ''}`, { signal });
+    return parseD2Consistency(payload);
+  },
+  async getOxygenEffect(params?: {
+    fuel?: 'Methanol' | 'Heptane';
+  }, signal?: AbortSignal): Promise<OxygenEffectResponse> {
+    const query = new URLSearchParams();
+    if (params?.fuel) query.set('fuel', params.fuel);
+    const qs = query.toString();
+    const payload = await requestJson(`/physics/oxygen-effect${qs ? `?${qs}` : ''}`, { signal });
+    return parseOxygenEffect(payload);
+  },
 };
+
+/** Load the precomputed verified physics baseline when the live backend is offline. */
+export async function loadOfflinePhysicsBaseline(): Promise<{
+  d2_consistency: D2ConsistencyResponse;
+  oxygen_effect: OxygenEffectResponse;
+}> {
+  const base = import.meta.env.BASE_URL ?? '/';
+  const prefix = base.endsWith('/') ? base : `${base}/`;
+  const res = await fetch(`${prefix}data/physics_baseline_v0.1.1.json`);
+  if (!res.ok) throw new Error(`Failed to load offline physics baseline: ${res.statusText}`);
+  const data = (await res.json()) as { d2_consistency: unknown; oxygen_effect: unknown };
+  return {
+    d2_consistency: parseD2Consistency(data.d2_consistency),
+    oxygen_effect: parseOxygenEffect(data.oxygen_effect),
+  };
+}
 
 /** Absolute URL of a Data Platform route returned by the RAG API (e.g. a measurement's provenance). */
 export function apiUrl(relativePath: string): string {

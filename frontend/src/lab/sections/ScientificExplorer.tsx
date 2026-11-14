@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { api } from '../../api/client';
-import type { DataPlatformStatus, MethodCard, RegimeRecord, SourceRecord } from '../../api/contracts';
+import type { DataPlatformStatus, MethodCard, RegimeRecord, RunSummary, SourceRecord } from '../../api/contracts';
 import type { FlexRecord, NumericField } from '../data/types';
 import { countBy } from '../data/selectors';
 import { useLab } from '../state/LabContext';
@@ -171,20 +171,138 @@ function DatasetSummary({ dataset }: { dataset: ReturnType<typeof useLab>['datas
 
 function ExperimentRecords({ dataset, onSelect }: { dataset: ReturnType<typeof useLab>['dataset']; onSelect: (key: string) => void }) {
   const [query, setQuery] = useState('');
+  const [liveRuns, setLiveRuns] = useState<RunSummary[] | null>(null);
+  const [liveRunsLoading, setLiveRunsLoading] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    setLiveRunsLoading(true);
+    api.listRuns({ limit: 50 })
+      .then((res) => {
+        if (active && res.items.length > 0) setLiveRuns(res.items);
+      })
+      .catch(() => {
+        // Database offline or 503; fall back to verified offline dataset records
+        if (active) setLiveRuns(null);
+      })
+      .finally(() => {
+        if (active) setLiveRunsLoading(false);
+      });
+    return () => { active = false; };
+  }, []);
+
   const records = useMemo(() => {
     const term = query.trim().toLowerCase();
     if (!term) return dataset.records;
     return dataset.records.filter((record) => [record.record_key, record.identifier, String(record.flex_test_number), record.fuel, record.test_date]
       .some((field) => field.toLowerCase().includes(term)));
   }, [dataset.records, query]);
+
+  const filteredLiveRuns = useMemo(() => {
+    if (!liveRuns) return null;
+    const term = query.trim().toLowerCase();
+    if (!term) return liveRuns;
+    return liveRuns.filter((r) =>
+      [r.run_id, r.source_identifier, r.material_or_fuel ?? '', r.test_date ?? '', r.end_mode ?? '']
+        .some((f) => f.toLowerCase().includes(term)));
+  }, [liveRuns, query]);
+
   const oxygenUnit = dataset.units.ambient_oxygen_mole_fraction;
   const pressureUnit = dataset.units.ambient_pressure;
   const burningRateUnit = dataset.units.burning_rate_constant_mm2_s;
+
   return (
     <section className="card run-explorer" aria-labelledby="run-title">
-      <div className="explorer-heading"><div><h3 id="run-title">FLEX experiment records</h3><p className="small muted">Search test numbers, identifiers, fuel, or date. Select a test number to open its evidence inspector.</p></div><span className="explorer-status">{records.length} matches</span></div>
-      <label className="explorer-search"><span>Find an experiment</span><input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Test number, identifier, fuel, or date" /></label>
-      {records.length === 0 ? <p className="explorer-state">No FLEX records match “{query}”. Try a test number, fuel, or date.</p> : <ExperimentTable records={records} onSelect={onSelect} oxygenUnit={oxygenUnit} pressureUnit={pressureUnit} burningRateUnit={burningRateUnit} />}
+      <div className="explorer-heading">
+        <div>
+          <h3 id="run-title">FLEX experiment records</h3>
+          <p className="small muted">
+            Search test numbers, identifiers, fuel, or date. Select a test to open its evidence inspector and trace raw data cells.
+          </p>
+        </div>
+        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+          {liveRunsLoading && <span className="explorer-status">Checking live DB…</span>}
+          {filteredLiveRuns ? (
+            <span className="explorer-status status-verified">
+              Live DB ({filteredLiveRuns.length} runs)
+            </span>
+          ) : (
+            <span className="explorer-status">{records.length} matches (offline verified)</span>
+          )}
+        </div>
+      </div>
+      <label className="explorer-search">
+        <span>Find an experiment</span>
+        <input
+          type="search"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder="Test number, identifier, fuel, or date"
+        />
+      </label>
+
+      {filteredLiveRuns && filteredLiveRuns.length > 0 ? (
+        <div className="table-scroll">
+          <p className="explorer-table-hint small muted">Scroll horizontally to see all condition columns.</p>
+          <table className="data explorer-record-table">
+            <thead>
+              <tr>
+                <th scope="col">Run ID</th>
+                <th scope="col">Identifier</th>
+                <th scope="col">Fuel</th>
+                <th scope="col">Date</th>
+                <th scope="col">End Mode</th>
+                <th scope="col">Quality Flags</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredLiveRuns.slice(0, 12).map((r) => {
+                const matchingRecord = dataset.records.find((rec) => rec.record_key === r.source_record_key || rec.identifier === r.source_identifier);
+                return (
+                  <tr key={r.run_id}>
+                    <th scope="row">
+                      <button
+                        type="button"
+                        className="link"
+                        onClick={() => {
+                          if (matchingRecord) onSelect(matchingRecord.record_key);
+                          else if (r.source_record_key) onSelect(r.source_record_key);
+                        }}
+                      >
+                        {r.run_id}
+                      </button>
+                    </th>
+                    <td>{r.source_identifier}</td>
+                    <td>{r.material_or_fuel ?? '—'}</td>
+                    <td>{r.test_date ?? r.test_date_raw}</td>
+                    <td>{r.end_mode ?? '—'}</td>
+                    <td>
+                      {r.quality_flags.length ? (
+                        r.quality_flags.map((f) => <span key={f} className="tag warn" style={{ marginRight: '4px' }}>{f}</span>)
+                      ) : (
+                        <span className="tag ok">Verified</span>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          {filteredLiveRuns.length > 12 && (
+            <p className="small muted">Showing first 12 runs from live Data Platform. Search to find specific runs.</p>
+          )}
+        </div>
+      ) : records.length === 0 ? (
+        <p className="explorer-state">No FLEX records match “{query}”. Try a test number, fuel, or date.</p>
+      ) : (
+        <ExperimentTable
+          records={records}
+          onSelect={onSelect}
+          oxygenUnit={oxygenUnit}
+          pressureUnit={pressureUnit}
+          burningRateUnit={burningRateUnit}
+        />
+      )}
     </section>
   );
 }
