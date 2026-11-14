@@ -1,0 +1,152 @@
+{
+  "test_point": "20CAL10",
+  "method": {
+    "method_id": "vision.hibms_droplet_d2_pixel",
+    "version": "1.0.0",
+    "status": "implemented_compared_with_nasa_reported_values_not_validated"
+  },
+  "camera": {
+    "IPSU_TP_CAMERA": "SMD 1M60-20",
+    "IPSU_TP_DIAG": "HIBMS",
+    "IPSU_TP_FMT": "12 bit gray",
+    "IPSU_TP_FPS": "30",
+    "IPSU_TP_XRES": "512",
+    "IPSU_TP_YRES": "512"
+  },
+  "physical_units": null,
+  "physical_units_reason": "No mm/px scale in the PSI-69 calibration files (camera settings give resolution and frame rate only). Results stay in pixels or are scale-free (1/s).",
+  "results": {
+    "d0_px": 32.59629280642236,
+    "d0_mad_px": 0.02930736465341255,
+    "d0_frames": 12,
+    "fit_window_coverage": 1.0,
+    "fit": {
+      "slope": -143.24604984799308,
+      "intercept": 1042.742833496151,
+      "slope_se": 0.8748824703275886,
+      "slope_ci95": [
+        -144.97641493310533,
+        -141.51568476288082
+      ],
+      "r_squared": 0.9950263695993411,
+      "n": 136,
+      "t_start": 1.530521,
+      "t_end": 6.197187,
+      "slope_px2_per_s": -143.24604984799308
+    },
+    "k_px2_per_s": 143.24604984799308,
+    "k_over_d0sq_per_s": 0.13481748898949023,
+    "k_over_d0sq_rel_uncertainty_1sigma": 0.0066640683284542885,
+    "k_over_d0sq_first_half_per_s": 0.1544483373338162,
+    "k_over_d0sq_second_half_per_s": 0.1176243107005316,
+    "regime_break_t_s": 6.225999999999987,
+    "regime_break_diameter_ratio": 0.37684801443547455,
+    "windows_s": {
+      "d0": [
+        -0.41700000000000004,
+        0.0
+      ],
+      "excluded_igniters": [
+        0.0,
+        1.526
+      ],
+      "fit": [
+        1.526,
+        6.225999999999987
+      ]
+    },
+    "threshold_sensitivity_k_over_d0sq": {
+      "0.4": 0.13575368177481897,
+      "0.5": 0.13481748898949023,
+      "0.6": 0.13375235498277502
+    },
+    "frame_status_counts": {
+      "before_droplet_release": 277,
+      "excluded_igniter_window": 44,
+      "measured": 618,
+      "unreadable_frame": 1
+    },
+    "measured_frames_with_flags": 0,
+    "segmentation_params": {
+      "threshold_fraction": 0.5,
+      "min_area_px": 6.0,
+      "max_aspect_ratio": 1.3,
+      "min_circularity": 0.7,
+      "border_margin_px": 1
+    }
+  },
+  "nasa_reference": {
+    "run_id": "PSI-69-r002",
+    "flex_identifier": "20CAL10",
+    "fuel": "Methanol",
+    "test_end": "Extinction",
+    "reported_k_mm2_per_s": 0.6,
+    "reported_d0_mm": 1.86,
+    "reported_extinction_diameter_mm": 0.94,
+    "reported_burn_time_s": 5.0,
+    "reported_k_over_d0sq_per_s": 0.17343045438779048,
+    "reported_dext_over_d0": 0.5053763440860215,
+    "value_origin": "reported_in_source (FLEX team), PSI-69 experimental table sha256 37c88ce8ae93"
+  },
+  "comparison": {
+    "nasa_k_over_d0sq_per_s": 0.17343045438779048,
+    "vision_k_over_d0sq_per_s": 0.13481748898949023,
+    "relative_difference": -0.2226423584865993,
+    "nasa_dext_over_d0": 0.5053763440860215,
+    "implied_mm_per_px_from_nasa_d0": 0.057061703643597445,
+    "implied_scale_note": "Consistency check only (NASA D0 / measured D0_px); never used to convert results to millimetres. NASA states droplet-size uncertainty +/-50 um.",
+    "vision_regime_break_diameter_ratio_proxy": 0.37684801443547455,
+    "note": "Scale-free comparison; no spatial calibration involved. NASA K has no per-value uncertainty in the source. Agreement is reported, not asserted."
+  },
+  "provenance": [
+    {
+      "source_id": "PSI-69",
+      "test_point": "20CAL10",
+      "role": "camera_settings",
+      "file_name": "PSI-69_Calibration_20CAL10_HIBMS_Camera_Settings.txt",
+      "relative_path": "data/raw/PSI-69/calibration/PSI-69_Calibration_20CAL10_HIBMS_Camera_Settings.txt",
+      "byte_size": "863",
+      "sha256": "5708139e67d465ad8cade3f1aa2d1e6a54356ee7c9647763354721eccb2e2ff1",
+      "source_url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-69/download?file=PSI-69_Calibration_20CAL10_HIBMS_Camera_Settings.txt&version=1&redirect=false",
+      "license": "CC0-1.0",
+      "retrieved_at_utc": "2026-11-14T06:42:18Z"
+    },
+    {
+      "source_id": "PSI-69",
+      "test_point": "20CAL10",
+      "role": "frame_index",
+      "file_name": "PSI-69_Calibration_20CAL10A.txt",
+      "relative_path": "data/raw/PSI-69/calibration/PSI-69_Calibration_20CAL10A.txt",
+      "byte_size": "142927",
+      "sha256": "f8c44d35ba3c31967308e6eb55e44abc238bdb45af6d16dddd1c99bf3d1b9fb9",
+      "source_url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-69/download?file=PSI-69_Calibration_20CAL10A.txt&version=1&redirect=false",
+      "license": "CC0-1.0",
+      "retrieved_at_utc": "2026-11-14T06:42:15Z"
+    },
+    {
+      "source_id": "PSI-69",
+      "test_point": "20CAL10",
+      "role": "frames_zip",
+      "file_name": "PSI-69_Calibration_20CAL10A.zip",
+      "relative_path": "data/raw/PSI-69/calibration/PSI-69_Calibration_20CAL10A.zip",
+      "byte_size": "297266769",
+      "sha256": "fa1d10e42d5e033f7e3af3c890f21361cce2da5650f1f492b15e36cc492c6929",
+      "source_url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-69/download?file=PSI-69_Calibration_20CAL10A.zip&version=1&redirect=false",
+      "license": "CC0-1.0",
+      "retrieved_at_utc": "2026-11-14T06:49:09Z"
+    },
+    {
+      "source_id": "PSI-69",
+      "test_point": "20CAL10",
+      "role": "test_log",
+      "file_name": "PSI-69_Calibration_20CAL10.txt",
+      "relative_path": "data/raw/PSI-69/calibration/PSI-69_Calibration_20CAL10.txt",
+      "byte_size": "13225",
+      "sha256": "1032c16474d0e7cd8c883c7d4516db2268a625b2168d6ffb70f6280bc4032b2a",
+      "source_url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-69/download?file=PSI-69_Calibration_20CAL10.txt&version=1&redirect=false",
+      "license": "CC0-1.0",
+      "retrieved_at_utc": "2026-11-14T06:42:07Z"
+    }
+  ],
+  "generated_at_utc": "2026-11-14T07:07:48Z"
+}
