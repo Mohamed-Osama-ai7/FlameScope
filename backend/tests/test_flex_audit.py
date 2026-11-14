@@ -15,10 +15,13 @@ ENRICH = PROJECT_ROOT / "data" / "derived" / "flex_enrichment_v1.csv"
 CAPS = PROJECT_ROOT / "data" / "derived" / "flex_enrichment_v1_captions.json"
 V01 = PROJECT_ROOT / "reports" / "flex_run_level"
 V01_SHA256 = {  # approved v0.1.0 baseline outputs must stay byte-identical
-    "summary.json": "3969559d541f394dfbe38e50be9a4a25baf2442e335dc74194a4331cfe3c2ef2",
+    # SHA-256 of the committed (LF) bytes, kept byte-exact by .gitattributes. The JSON pins were first taken
+    # on a Windows CRLF working copy (summary 3969559d..., quality_report 89019788...); those equal the
+    # SHA-256 of these same bytes with LF -> CRLF, so the approved content is unchanged.
+    "summary.json": "199136152fd2f347893c25f9a95c6df65038c73615c30d297f51104b2db36fc3",
     "strata_results.csv": "abcec13b54267c47442fcc66760549136ad97b710b764ce9886c8e4c24d21d9d",
     "row_quality_table.csv": "a75d9bdf7fd0588578ee9335488a24f8e669a9b6ad2f5db4d3b8370ac34dd6d3",
-    "quality_report.json": "890197884f92638c10fd19aa95235c56e2cd77c94dbb0ae8ca0b69fb800496fc",
+    "quality_report.json": "672040d111fabdefa2a0c69019d11e21ea7543914a950cf6ba9af158d3b2f468",
     "descriptive_by_fuel.csv": "0d42722c996e35d381b5f1ec9d5c25b289ebc3fe95759a1f9863bad7d2ba437f",
 }
 

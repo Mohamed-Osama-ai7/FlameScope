@@ -35,7 +35,8 @@ from scipy import stats
 
 from app.analysis import flex_run_level as fx
 
-ANALYSIS_VERSION = "physics-0.1.0"
+ANALYSIS_VERSION = "physics-0.1.1"
+PRESSURE = "ambient_pressure"
 D0, DEXT, K, TB, O2 = (
     "initial_droplet_diameter",
     "extinction_diameter",
@@ -228,7 +229,8 @@ def d2_consistency(
 
 
 def _ols(y: np.ndarray, x: np.ndarray, names: list[str]) -> dict[str, Any]:
-    fit = sm.OLS(y, sm.add_constant(x, has_constant="add")).fit(cov_type="HC3")
+    # HC3 robust covariance with Student-t inference on the residual dof (small strata)
+    fit = sm.OLS(y, sm.add_constant(x, has_constant="add")).fit(cov_type="HC3", use_t=True)
     ci = fit.conf_int(alpha=0.05)
     return {
         name: {
@@ -252,7 +254,7 @@ def oxygen_effect(runs: list[fx.FlexRun], fuel: str | None = None) -> dict[str, 
                 f"diluent:{r.diluent_family} (O2 is the single compositional variable only with N2)"
             ] += 1
             continue
-        bad = [n for n in (K, O2, D0) if not _clean(r, n)]
+        bad = [n for n in (K, O2, D0, PRESSURE) if not _clean(r, n)]  # pressure defines the stratum
         if bad or set(r.row_flags) & _BAD_ROW_FLAGS:
             excluded["missing_or_flagged"] += 1
             continue
@@ -292,7 +294,10 @@ def oxygen_effect(runs: list[fx.FlexRun], fuel: str | None = None) -> dict[str, 
     return {
         "analysis": "oxygen_effect",
         "analysis_version": ANALYSIS_VERSION,
-        "model": "K = b0 + b1 * X_O2 ; sensitivity: K = b0 + b1 * X_O2 + b2 * D0 ; OLS, HC3 standard errors",
+        "model": (
+            "K = b0 + b1 * X_O2 ; sensitivity: K = b0 + b1 * X_O2 + b2 * D0 ; "
+            "OLS, HC3 standard errors, Student-t 95% CI"
+        ),
         "units": {"K": "mm^2/s", "X_O2": "mole fraction", "b1": "mm^2/s per unit mole fraction", "D0": "mm"},
         "value_origin": "reported K (FLEX team) and reported conditions (PSI-69); coefficients derived here",
         "strata_held_fixed": ["fuel", "diluent_family = N2_only", "pressure_cluster", "support_mode"],

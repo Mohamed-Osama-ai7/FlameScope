@@ -189,7 +189,8 @@ OXYGEN_EFFECT_CARD = MethodCard(
     ],
     required_inputs=["PSI-69 run-level table via the verified loader"],
     uncertainty_method=(
-        "HC3 heteroskedasticity-robust standard errors; 95% CI from the normal approximation (statsmodels)."
+        "HC3 heteroskedasticity-robust standard errors; 95% CI from Student t on the residual dof "
+        "(statsmodels, use_t=True)."
     ),
     validation=["Unit tests recover exact coefficients from noiseless synthetic data."],
     abstention_conditions=["Stratum with n < 8 or fewer than 3 distinct O2 levels: not computed"],

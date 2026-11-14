@@ -197,7 +197,7 @@ def make_charts(runs: list[fx.FlexRun], outdir: Path) -> list[dict[str, Any]]:
             f"(methanol {other['Methanol']}, heptane {other['Heptane']})."
         )
         svg = scatter_by_fuel(title, sub, xl, yl, p, used, FOOT)
-        (outdir / fname).write_text(svg, encoding="utf-8")
+        (outdir / fname).write_text(svg, encoding="utf-8", newline="\n")
         made.append(
             {
                 "file": fname,
@@ -325,8 +325,13 @@ def main(argv: list[str] | None = None) -> int:
         "results": results,
         "charts": charts,
     }
-    (out / "summary.json").write_text(json.dumps(summary, indent=2, default=str) + "\n", encoding="utf-8")
-    (out / "quality_report.json").write_text(json.dumps(quality, indent=2) + "\n", encoding="utf-8")
+    # newline="\n": identical bytes on every OS (these hashes are pinned in tests and in the lab dataset)
+    (out / "summary.json").write_text(
+        json.dumps(summary, indent=2, default=str) + "\n", encoding="utf-8", newline="\n"
+    )
+    (out / "quality_report.json").write_text(
+        json.dumps(quality, indent=2) + "\n", encoding="utf-8", newline="\n"
+    )
     write_csv(out / "row_quality_table.csv", fx.row_table(runs))
     write_csv(
         out / "descriptive_by_fuel.csv",

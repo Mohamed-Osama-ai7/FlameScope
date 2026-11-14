@@ -9,7 +9,7 @@ from app.analysis import physics as p
 from app.analysis.flex_run_level import FlexRun
 from app.main import app
 
-NAMES = (p.D0, p.DEXT, p.K, p.TB, p.O2)
+NAMES = (p.D0, p.DEXT, p.K, p.TB, p.O2, p.PRESSURE)
 
 
 def run(
@@ -28,7 +28,7 @@ def run(
     field_flags=None,
     row_flags=None,
 ) -> FlexRun:
-    raw = dict(zip(NAMES, (d0, dext, k, tb, o2), strict=True))
+    raw = dict(zip(NAMES, (d0, dext, k, tb, o2, "760"), strict=True))
     values = {n: (float(v.lstrip("~")) if v else None) for n, v in raw.items()}
     flags = {n: ([] if v else ["missing_blank"]) for n, v in raw.items()}
     for n, f in (field_flags or {}).items():
@@ -181,3 +181,60 @@ def test_api_endpoints_and_method_cards(real_runs):
     assert c.get("/api/v1/physics/oxygen-effect").status_code == 200
     ids = {m["method_id"] for m in c.get("/api/v1/methods").json()}
     assert {"flex.d2_consistency_of_reported_values", "flex.oxygen_effect_on_reported_k"} <= ids
+
+
+# ------------------------------------------------------------------ edge cases and determinism
+
+
+def test_ratio_interval_edge_cases():
+    # D0 and Dext intervals overlap -> lower bound clipped at 0 (never negative)
+    lo, hi = p.ratio_interval(1.0, 0.99, 0.5, 1.0, 0.01, 0.01, 0.0, 0.0)
+    assert lo == 0.0 and hi > 0
+    # K or burn-time interval reaching zero -> unbounded upper limit, not a division error
+    assert p.ratio_interval(2.0, 1.0, 0.005, 6.0, 0.0, 0.0, 0.005, 0.0)[1] == float("inf")
+    assert p.ratio_interval(2.0, 1.0, 0.5, 0.05, 0.0, 0.0, 0.0, 0.05)[1] == float("inf")
+
+
+def test_empty_and_tiny_inputs_abstain_instead_of_guessing():
+    empty = p.d2_consistency([])
+    assert empty["n_runs"] == 0 and empty["by_fuel"] == {} and empty["flagged_for_review"] == []
+    tiny = p.d2_consistency([run(i) for i in range(1, 4)])  # n = 3 < 5
+    assert tiny["by_fuel"]["Heptane"]["median_ci95"] is None
+    assert p.oxygen_effect([])["strata"] == []
+
+
+def test_fuel_filter_and_non_physical_rows():
+    runs = [run(1), run(2, fuel="Methanol"), run(3, d0="1.00", dext="1.50"), run(4, k="0")]
+    a = p.d2_consistency(runs, fuel="Heptane")
+    assert {x["fuel"] for x in a["runs"]} == {"Heptane"} and a["n_runs"] == 1
+    assert sum(a["excluded"].values()) == 2  # Dext >= D0 and K = 0 are counted, not computed
+
+
+def test_invalid_pressure_excludes_a_run_from_the_o2_strata():
+    o2s = [0.15, 0.15, 0.21, 0.21, 0.25, 0.25, 0.30, 0.30]
+    runs = [run(i, k=f"{0.2 + 2.0 * x:.2f}", o2=f"{x:.2f}") for i, x in enumerate(o2s, 1)]
+    bad = run(99, o2="0.30", k="0.80")
+    bad.raw[p.PRESSURE], bad.values[p.PRESSURE] = "0", 0.0
+    bad.field_flags[p.PRESSURE] = ["invalid_nonpositive_pressure"]
+    out = p.oxygen_effect([*runs, bad])
+    assert out["excluded"] == {"missing_or_flagged": 1}
+    assert out["strata"][0]["n"] == 8
+
+
+def test_outputs_are_deterministic_across_calls(real_runs):
+    assert p.d2_consistency(real_runs) == p.d2_consistency(real_runs)
+    assert p.oxygen_effect(real_runs) == p.oxygen_effect(real_runs)
+
+
+def test_api_returns_503_when_data_cannot_be_verified(monkeypatch):
+    from app.analysis import flex_run_level as fx
+    from app.api import physics_routes
+
+    def broken():
+        raise fx.IntegrityError("hash mismatch")
+
+    monkeypatch.setattr(physics_routes, "_runs", broken)
+    c = TestClient(app)
+    r = c.get("/api/v1/physics/d2-consistency")
+    assert r.status_code == 503 and "hash mismatch" in r.json()["detail"]
+    assert c.get("/api/v1/physics/oxygen-effect").status_code == 503
