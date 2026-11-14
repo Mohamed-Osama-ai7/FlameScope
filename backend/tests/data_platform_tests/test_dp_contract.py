@@ -187,3 +187,48 @@ def test_s5_withdrawn_and_quarantined_rejected(loaded_sqlite, db_client, monkeyp
     hidden = db_client.get(f"{V1}/measurements", params={"usable_only": False, "limit": 1}).json()["items"][0]
     assert "source_withdrawn" in hidden["quality_flags"] and hidden["usable_for_analysis"] is False
     assert db_client.get(f"{V1}/investigations/PSI-98").status_code == 404  # quarantined: never loaded
+
+
+# ------------------------------------------------------------------ RAG chunk contract (docs/15 §B.6a)
+
+
+def test_rag_chunk_write_pattern(loaded_sqlite):
+    """Runs the documented upsert_chunks pattern verbatim: stable ids, idempotent, provenance via artifact."""
+    from sqlalchemy import text
+
+    from app.data_platform import ids
+    from app.data_platform.models import DocumentChunk, SourceArtifact
+
+    def upsert_chunks(session, artifact_id, chunker_version, pieces):
+        artifact = session.get(SourceArtifact, artifact_id)
+        if artifact is None:
+            raise ValueError("artifact not registered: ask data engineering to register and load it first")
+        inv = artifact.investigation
+        out = []
+        for index, (section, txt) in enumerate(pieces):
+            out.append(session.merge(DocumentChunk(
+                chunk_id=ids.chunk_id(artifact_id, chunker_version, index), artifact_id=artifact_id,
+                investigation_id=inv.investigation_id, combustion_regime=inv.combustion_regime,
+                page_or_section=section, chunk_index=index, text=txt,
+                chunker_version=chunker_version)))  # fmt: skip
+        session.commit()
+        return out
+
+    pieces = [("header row", "FLEX Test #,FLEX Identifier,..."), ("row 1", "1,20CAL08,...")]
+    with session_factory(loaded_sqlite)() as s:
+        art = s.scalars(select(SourceArtifact)).one()
+        first = [c.chunk_id for c in upsert_chunks(s, art.artifact_id, "test-chunker-1", pieces)]
+        again = [c.chunk_id for c in upsert_chunks(s, art.artifact_id, "test-chunker-1", pieces)]
+        assert first == again and s.scalar(select(func.count()).select_from(DocumentChunk)) == 2
+        with pytest.raises(ValueError, match="not registered"):
+            upsert_chunks(s, uuid.uuid4(), "test-chunker-1", pieces)
+        row = s.execute(
+            text(
+                "SELECT c.chunk_id, a.sha256, i.registry_status FROM document_chunks c "
+                "JOIN source_artifacts a ON a.artifact_id = c.artifact_id "
+                "JOIN investigations i ON i.investigation_id = a.investigation_id "
+                "WHERE c.chunk_id = :cid AND i.registry_status IN ('ACQUIRED', 'VERIFIED')"
+            ),
+            {"cid": first[0].hex},  # SQLite stores Uuid as 32 hex chars; PostgreSQL takes the UUID itself
+        ).one()
+        assert row.sha256 == art.sha256 and row.registry_status == "ACQUIRED"

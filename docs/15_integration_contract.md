@@ -1,7 +1,7 @@
 # 15 — Scientific Data Platform: Integration Contract
 
 Audience: the Frontend and RAG / Copilot developers, and anyone writing analysis results.
-Owner: Data engineering workstream (doc 14). Branch `feat/scientific-data-platform`. Contract version: `1.0`
+Owner: Data engineering workstream (doc 14). Branch `feat/scientific-data-platform`. Contract version: `1.1` (adds the registry, chunk storage and `ids.chunk_id`)
 (schema revision `0001`, extractor `psi69_flex_experimental_table` `1.0.0`). Status date: 2026-11-13.
 
 The contract below is checked against the code by `backend/tests/data_platform_tests/test_dp_contract.py`.
@@ -12,7 +12,7 @@ The examples are real responses from the Docker stack loaded with PSI-69.
 
 ## Part A — API contract
 
-Base URL: `http://127.0.0.1:8000/api/v1` (Docker) · OpenAPI: `/openapi.json` · interactive docs: `/docs`.
+Base URL: `http://127.0.0.1:8000/api/v1` (Docker; set `FLAMESCOPE_API_PORT` when 8000 is taken, e.g. `8010`) · OpenAPI: `/openapi.json` · interactive docs: `/docs`.
 All endpoints are `GET`, read-only, JSON, and need no authentication (local research prototype). CORS allows `http://localhost:5173`.
 
 ### A.1 Endpoints
@@ -168,6 +168,35 @@ Clients should read `detail` as either a string or a list.
 
 `GET /api/v1/runs?fuel=Heptane&limit=1` returns `total: 117` and `items[0].run_id = "PSI-69-r007"`, `source_record_key = "PSI69-r007|FLEX-007|20CAL13|4/10/2009|13:26:11"`.
 
+### A.7 Source registry (existing endpoint, shared by Frontend and RAG)
+
+`GET /api/v1/sources` returns `SourceRecord[]` in registry order, read from `data/metadata/source_registry.csv`. It does not need the database. A missing registry file or a duplicate `source_id` returns 503, and a row that fails validation returns 500.
+
+Every `SourceRecord` field is present: `source_id`, `source_title`, `source_type`, `official_challenge_resource` (bool), `source_url`, `doi`, `version_or_release`, `retrieved_at_utc`, `license`, `raw_file_path`, `sha256`, `verification_status`, `notes`. Strings that are empty in the CSV come back as `""`, not `null`.
+
+`verification_status` can take **six** values:
+
+| Value | Meaning |
+|---|---|
+| `NOT_YET_ACQUIRED` | no bytes yet |
+| `CANDIDATE_ONLY` | candidate, not acquired |
+| `ACQUIRED` | bytes downloaded and hashed; content not yet reviewed |
+| `VERIFIED` | content reviewed by a named team member |
+| `QUARANTINED` | known conflict; must not feed analysis |
+| `RESOURCE_RECORDED` | a catalogue or index, not a file; never evidence on its own |
+
+Current registry state (2026-11-13). Data engineering does not change these eligibility decisions:
+
+| Source | Registry status | Effective state |
+|---|---|---|
+| `CHALLENGE-RESOURCE-01`: PSI Data Repository, Combustion Science | `RESOURCE_RECORDED` | official resource index; its data enter only through PSI-69 |
+| `PSI-69` FLEX | `ACQUIRED` | loaded; primary eligible candidate, **pending final scientific approval** (it is not `VERIFIED`) |
+| `PSI-25` BASS-II | `ACQUIRED` | **acquired but excluded**: no extractor until the science owner curates it; never loaded |
+| `PSI-98` SAFFIRE-I | `QUARANTINED` | refused by the loader |
+| NASA/TP-2015-216046 (FLEX report) | not in the registry | **unregistered**: used only as a citation for unit and column semantics; its PDF is not stored and must not be chunked until it is registered and content-verified |
+
+Artifacts: each loaded file is a `source_artifacts` row exposed through `GET /investigations/{id}` (`artifacts[]`) and `/provenance` (`artifact`). `artifact_id` is UUIDv5(SHA-256, relative path).
+
 ---
 
 ## Part B — RAG integration contract
@@ -226,6 +255,68 @@ Byte-level check (optional, for audits) follows `how_to_verify`:
 
 A failed citation check means: drop the claim, or abstain.
 
+### B.6a Database-backed document and chunk storage (shared, single store)
+
+RAG text chunks live in the shared PostgreSQL table `document_chunks`. There is no second chunk table and no separate ingestion. A vector index, such as Qdrant, stores only `chunk_id` and its vector, and keeps the text in this table.
+
+| Column | Type | Rule |
+|---|---|---|
+| `chunk_id` | UUID PK | **must** be `app.data_platform.ids.chunk_id(artifact_id, chunker_version, chunk_index)` |
+| `artifact_id` | UUID FK → `source_artifacts` | the registered file the text came from; no chunk without a registered artifact |
+| `investigation_id` | FK → `investigations`, nullable | |
+| `combustion_regime` | string, nullable | copy from the investigation |
+| `page_or_section` | string | e.g. `p.19 Appendix A.1` |
+| `chunk_index` | int | 0-based order within (artifact, chunker_version) |
+| `text` | text | verbatim extracted text |
+| `chunker_version` | string | bump it when chunking rules change; old and new chunks coexist |
+
+`UNIQUE (artifact_id, chunker_version, chunk_index)` prevents duplicates. Rerunning the same chunker produces the same `chunk_id`s, so writes are upserts.
+
+Ownership:
+
+- Data engineering registers and loads artifacts: it adds the registry row, the manifest row with SHA-256, and the `source_artifacts` row.
+- RAG writes only `document_chunks` rows for artifacts that already exist, using the `DocumentChunk` model from `app.data_platform.models` in its own transaction.
+- RAG never downloads, hashes or registers NASA files itself.
+- There is no HTTP write or read API for chunks yet. The table and model are the contract. A read endpoint can be added when the RAG branch defines its access pattern.
+
+Citations to text use `chunk_id`. A text citation is valid only if its chunk exists and its artifact belongs to an investigation with status `ACQUIRED` or `VERIFIED`.
+
+Write pattern for RAG. It is an idempotent upsert, and `test_dp_contract.py::test_rag_chunk_write_pattern` runs this exact code:
+
+```python
+from sqlalchemy.orm import Session
+from app.data_platform import ids
+from app.data_platform.models import DocumentChunk, SourceArtifact
+
+def upsert_chunks(session: Session, artifact_id, chunker_version: str, pieces: list[tuple[str, str]]) -> list:
+    """pieces = [(page_or_section, verbatim_text), ...] in document order."""
+    artifact = session.get(SourceArtifact, artifact_id)
+    if artifact is None:
+        raise ValueError("artifact not registered: ask data engineering to register and load it first")
+    inv = artifact.investigation
+    out = []
+    for index, (section, text) in enumerate(pieces):
+        out.append(session.merge(DocumentChunk(
+            chunk_id=ids.chunk_id(artifact_id, chunker_version, index), artifact_id=artifact_id,
+            investigation_id=inv.investigation_id, combustion_regime=inv.combustion_regime,
+            page_or_section=section, chunk_index=index, text=text, chunker_version=chunker_version)))
+    session.commit()
+    return out
+```
+
+Read-back for citation verification. It returns no row when the chunk is unknown or its source is not usable:
+
+```sql
+SELECT c.chunk_id, c.page_or_section, c.text, a.file_name, a.sha256, a.source_url, a.license_id,
+       i.investigation_id, i.registry_status
+FROM document_chunks c
+JOIN source_artifacts a ON a.artifact_id = c.artifact_id
+JOIN investigations i   ON i.investigation_id = a.investigation_id
+WHERE c.chunk_id = :chunk_id AND i.registry_status IN ('ACQUIRED', 'VERIFIED');
+```
+
+The chunk's provenance is its artifact, so the `sha256`, `source_url` and licence are the same fields that measurements expose. Registering a new document (for example NASA/TP-2015-216046, once approved) goes through data engineering: registry row, manifest row with SHA-256, then the `source_artifacts` row. RAG then chunks it with the pattern above.
+
 ### B.6 Writing analysis results (Science, and RAG tool outputs)
 
 Persist results only through `app.data_platform.analysis_store.record_analysis_result(...)`. It refuses (before writing) when:
@@ -269,5 +360,8 @@ Scenario 6 acceptance checklist for the RAG branch:
 
 1. **RAG branch unavailable.** `feat/rag-scientific-copilot` exists neither on `origin` nor locally, so scenario 6 and the RAG side of this contract are unverified.
 2. **Existing analysis endpoint.** `POST /api/v1/analysis/droplet/burning-rate-constant` takes a D(t) series in the request body, not measurement ids. It refuses quarantined or not-acquired registry sources, but computes unregistered `source_id`s with a "not traceable" warning. PSI-69 has no D(t) series, so this endpoint is not fed from the database. Wiring it to `record_analysis_result` needs the science owner.
-3. **Frontend.** No change required: it calls only `/health` and the static dataset. Moving to the API is optional and can be done run by run through `source_record_key`.
+3. **Frontend branch `feat/scientific-exploration-ui` (9406868) will reject `/sources`.** Its `frontend/src/api/validation.ts` accepts only 5 statuses and throws on `RESOURCE_RECORDED`, which `CHALLENGE-RESOURCE-01` carries. `parseList` then fails the whole sources panel. Required frontend change (owned by the frontend developer):
+   - add `'RESOURCE_RECORDED'` to `VERIFICATION_STATUSES` in `validation.ts`;
+   - add `'RESOURCE_RECORDED'` to the `VerificationStatus` union in `contracts.ts`.
+   That branch's other calls (`/sources`, `/regimes`, `/methods`, `/comparisons/validate`, `/health`) are unchanged on this branch.
 4. **Legacy test failures.** 3 tests fail outside this workstream (doc 14 §8). Not addressed here.

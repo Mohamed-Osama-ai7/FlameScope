@@ -18,7 +18,7 @@ rely on: every stored number resolves to the exact NASA bytes, row, and column i
 | Reproducible data loader | `backend/app/data_platform/extract_flex.py`, `loader.py`, `backend/scripts/load_database.py` | Reload produces identical rows; tampered bytes are refused, and a refused load writes nothing |
 | Data-quality validation | `extract_flex.run_quality_checks` → table `data_quality_checks` | `test_dp_extract.py`; `/api/v1/data-quality/PSI-69` |
 | Provenance-aware API | `backend/app/data_platform/api.py`, `schemas.py` | `test_dp_api.py` |
-| Backend tests | `backend/tests/data_platform_tests/` (71 tests: 69 run everywhere, 2 need PostgreSQL) | `pytest -q` (section 7) |
+| Backend tests | `backend/tests/data_platform_tests/` (73 tests: 71 run everywhere, 2 need PostgreSQL) | `pytest -q` (section 7) |
 | Integration contract (API + RAG) | [15_integration_contract.md](15_integration_contract.md) | `test_dp_contract.py` keeps it in sync with the router |
 | Generated SQL schema | `database/schema.sql` (offline rendering of the migrations) | `test_database_schema_sql_is_in_sync_with_migrations` |
 
@@ -242,6 +242,7 @@ Loader exit codes: `0` loaded, `1` refused (nothing written), `2` configuration 
    - `test_lab_dataset.py::test_provenance_matches_artifacts`: the dataset embeds CRLF hashes for `flex_enrichment_v1_captions.json` and `flex_run_level_v0.2/summary.json`.
    - `test_lab_dataset.py::test_export_is_deterministic`: it regenerates the dataset in place, which exposes the same mismatch, and it also rewrites a tracked file during the test run.
    - Fix: regenerate on LF checkouts and update the pins in one commit by the artefact owner.
+   - Baseline check (2026-11-14): fresh clones of `release/v0.1.0-mvp` (3ffef0a) with the raw PSI files copied in. With an LF checkout the same 3 tests fail. With a Windows CRLF checkout 4 fail; `test_v02_summary_records_provenance_and_scope` also fails there. This branch fails the same 3 as LF. They are pre-existing and not regressions, and `.gitattributes` removes the fourth failure on Windows.
 5. **Frontend not containerised.** The Docker image holds the backend only.
 
 ## 9. Files touched outside `app/data_platform/`
@@ -262,10 +263,10 @@ Loader exit codes: `0` loaded, `1` refused (nothing written), `2` configuration 
 
 | Check | Command (from `backend/` unless noted) | Result |
 |---|---|---|
-| New tests, all layers | `FLAMESCOPE_TEST_DATABASE_URL=… pytest -q tests/data_platform_tests` | 71 passed |
-| Full suite, no PostgreSQL | `pytest -q` | 183 passed, 2 skipped (PostgreSQL layer), 3 failed (pre-existing, section 8 item 4) |
-| Full suite, with PostgreSQL | `FLAMESCOPE_TEST_DATABASE_URL=… pytest -q` | 185 passed, 3 failed (same 3) |
-| Test count | 117 pre-existing + 71 new | 188 collected |
+| New tests, all layers | `FLAMESCOPE_TEST_DATABASE_URL=… pytest -q tests/data_platform_tests` | 73 passed |
+| Full suite, no PostgreSQL | `pytest -q` | 185 passed, 2 skipped (PostgreSQL layer), 3 failed (pre-existing, section 8 item 4) |
+| Full suite, with PostgreSQL | `FLAMESCOPE_TEST_DATABASE_URL=… pytest -q` | 187 passed, 3 failed (same 3) |
+| Test count | 117 pre-existing + 73 new | 190 collected |
 | Lint / types | `ruff check app scripts tests` · `mypy app scripts` | clean · no issues in 36 files |
 | Migration drift | `alembic check` (in `test_dp_postgres.py`) | no differences |
 | Clean start | repo root: `docker compose --profile tools down -v` → `docker compose up -d` | API up, schema `0001`, 0 rows |

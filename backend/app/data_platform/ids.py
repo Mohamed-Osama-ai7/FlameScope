@@ -33,3 +33,12 @@ def run_id(source_id: str, source_row: int) -> str:
     Keyed on the PSI row number, which is unique; FLEX identifiers are not (193F001 appears twice).
     """
     return f"{source_id}-r{source_row:03d}"
+
+
+def chunk_id(artifact: uuid.UUID, chunker_version: str, chunk_index: int) -> uuid.UUID:
+    """Shared id for ``document_chunks`` rows (RAG workstream).
+
+    Same inputs as the table's unique key (artifact_id, chunker_version, chunk_index), so re-chunking the
+    same artifact with the same chunker yields the same ids and a vector index can key on them.
+    """
+    return uuid.uuid5(NAMESPACE, f"chunk|{artifact}|{chunker_version}|{chunk_index}")

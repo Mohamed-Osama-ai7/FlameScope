@@ -105,3 +105,10 @@ def test_repository_registry_records_official_resource_with_evidence():
     psi98 = find_source(records, "PSI-98")
     assert psi98 is not None and psi98.verification_status is VerificationStatus.QUARANTINED
     assert official_resource_recorded(records)
+
+
+def test_chunk_id_is_stable_and_matches_the_table_key():
+    art = ids.artifact_id(SHA, "data/raw/x.pdf")
+    assert ids.chunk_id(art, "c1", 0) == ids.chunk_id(art, "c1", 0)
+    assert len({ids.chunk_id(art, "c1", 0), ids.chunk_id(art, "c1", 1), ids.chunk_id(art, "c2", 0)}) == 3
+    assert ids.chunk_id(art, "c1", 0) != ids.measurement_id(SHA, 0, "c1")
