@@ -24,9 +24,10 @@ The NASA Global Organizing Team stated that teams must use at least one NASA dat
 - Backend: Python + FastAPI + Pydantic
 - Structured storage: PostgreSQL + SQLAlchemy
 - Retrieval (later MVP increment): Qdrant + BM25 + BGE-M3 + a reranker, only after a source corpus and evaluation set exist
-- Scientific computing: NumPy, Pandas, SciPy, Statsmodels, scikit-learn
-- Visualization: Plotly (add after the data contract stabilizes)
-- Testing: Pytest
+- Scientific computing: NumPy 2.x is a core backend dependency; Pandas 2.x is optional for data tooling; SciPy, Statsmodels, and scikit-learn are not installed by the backend package
+- Visualization: Plotly Cartesian engine (`plotly.js-cartesian-dist-min` 2.35.3) with `react-plotly.js` 2.6.0
+- Frontend tests: Vitest 3.0.5 and Playwright 1.65.0 (with axe accessibility checks)
+- Backend tests: Pytest
 
 Keep a modular monolith. Do not add agents, microservices, model fine-tuning, or advanced CFD until a measurable need is demonstrated.
 
@@ -52,6 +53,8 @@ cd frontend
 npm install
 npm run dev
 ```
+
+The frontend API client uses `http://127.0.0.1:8000` by default. Set `VITE_API_BASE_URL` to the backend origin when it runs elsewhere.
 
 ### 3. Audit downloaded files without modifying them
 
@@ -89,9 +92,15 @@ Design, eligibility, evaluation and limitations: [`docs/14_rag_copilot.md`](docs
 ### 6. Checks
 
 ```bash
-cd backend && pytest -q && ruff check app scripts tests && mypy app scripts
-cd frontend && npm run build
+python -m pytest -q backend/tests
+ruff check backend/app backend/scripts backend/tests && mypy backend/app backend/scripts
+npm --prefix frontend run build
+npm --prefix frontend test
+npm --prefix frontend run typecheck:tests
+npm --prefix frontend run test:e2e
 ```
+
+Playwright runs Chromium against the production Vite preview. The browser project uses system Chrome (`channel: chrome`), which must be installed for the E2E command.
 
 Architecture audit, target design and backlog: [`docs/08_architecture_audit.md`](docs/08_architecture_audit.md).
 
@@ -106,7 +115,7 @@ Architecture audit, target design and backlog: [`docs/08_architecture_audit.md`]
 - `backend/app/rag/` — evidence retrieval, ranking, eligibility policy and Scientific Copilot
 - `docker-compose.yml` — PostgreSQL + API + loader for local runs
 - `backend/` — API, deterministic file-audit utility, scientific data platform and Copilot
-- `frontend/` — minimal working project shell; no fabricated scientific results
+- `frontend/` — React + TypeScript scientific exploration lab, searchable FLEX records, source/regime/method API explorer, Plotly charts, typed API client, Vitest and Playwright suites, Evidence & Copilot UI
 
 ## Scientific integrity rules
 

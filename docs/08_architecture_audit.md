@@ -14,9 +14,9 @@ called implemented unless code and a test exist.
 | 5. Copilot & RAG | **Planned** | Nothing in code. |
 | 6. Flame vision & metrology | **Planned** | Nothing in code. |
 | 7. Gap discovery & experiment design | **Planned** | Nothing in code. |
-| 8. Frontend / viz / reporting | **Partial** | Status landing page (React + Vite). No Tailwind, shadcn/ui or Plotly yet. |
-| Infra | **Missing** | No Dockerfile/compose, no CI, no LICENSE, no git repo initialised. |
-| Tests | Backend 3 → 50 pytest tests. No frontend test runner or ESLint configured. |
+| 8. Frontend / viz / reporting | **Partial** | React + TypeScript/Vite scientific exploration lab with Plotly Cartesian charts, a filter-aware Analysis Results view over the audited Python strata export, and a comparison plot shown only after fresh backend validation explicitly allows a shared axis. Includes retryable dataset loading, refreshed API health state, section-change focus management, a keyboard-managed evidence inspector, record-level NASA table/caption citations, acquisition and processing provenance, filters, tables, exports, responsive/theme support, source/regime/method API panels, and searchable FLEX run records (`frontend/src`). The FLEX measurements and analysis strata still come from the versioned static export. |
+| Infra | **Partial** | Git is initialized and `LICENSE` is present; Dockerfile/compose and CI are absent. |
+| Tests | Backend pytest suite; frontend Vitest unit suite (including typed API contract/error cases) and Playwright E2E/accessibility/performance/visual suites. `scientific-exploration.spec.ts` covers registry loading/error/retry, experiment evidence/provenance, and valid/rejected comparison display (`frontend/package.json`, `frontend/tests`). No ESLint configured. |
 
 Defects found at baseline:
 1. `npm run build` failed: missing `src/vite-env.d.ts` (`import.meta.env` untyped). **Fixed.**
@@ -145,6 +145,8 @@ integrity is needed; and SQLAlchemy models plus Alembic migrations generated fro
 | GET | `/api/v1/methods` | `MethodCard[]` |
 | POST | `/api/v1/analysis/droplet/burning-rate-constant` | `DropletSeries` → `BurningRateResult`. Requires `regime=flex_droplet`, `time_unit=s`, `diameter_unit=mm`, `fuel`, `window_selection`, provenance. 422 if the source is registered but not ACQUIRED/VERIFIED (candidate or QUARANTINED); unregistered ids are computed with a "not traceable" warning. The result echoes assumptions, validity limits, warnings and `validation_status`. |
 
+The frontend's `src/api/client.ts` provides typed client methods for sources, regimes, methods and comparison validation. Scientific Explorer consumes the first three endpoints; Compare Runs sends selected FLEX descriptors to the comparison endpoint and displays its classification, reasons, held-constant, differing and unknown fields. Its Plotly K comparison is rendered only for the current run pair after the backend returns `shared_axis_allowed=true`; pending, failed, stale, and rejected validation states show no shared chart. The comparison plot also has a table alternative with evidence-inspector actions. Analysis Results displays descriptive Spearman statistics and source PSI-row links from the versioned Python export; it does not calculate statistics in the browser. Existing Plotly panels cover burning-rate trends, oxygen, pressure and diluent conditions, experimental distributions, and coverage counts. Dataset loading can be retried, API health is rechecked while the page is visible, and section navigation moves keyboard focus to the new main content. FLEX measurements continue to load from the versioned static export. Unknown apparatus metadata is left unset so the backend classifies the pair conservatively. The evidence inspector links records to NASA report pages and exposes source DOI, dataset file/version, retrieval date, raw-file hash, and collapsible processing fingerprints from the exported provenance contract.
+
 ## 5. RAG / AI review (no code yet, so these are design constraints)
 
 - Pipeline: metadata filter (investigation, regime) → BM25 + BGE-M3 → RRF fusion → BGE reranker
@@ -174,7 +176,7 @@ integrity is needed; and SQLAlchemy models plus Alembic migrations generated fro
 2. ~~Download and profile the three PSI experimental tables~~ **Done 2026-11-13**; see [09_psi_table_profile.md](09_psi_table_profile.md). Both FLEX ambiguities were resolved 2026-11-13 from NASA/TP-2015-216046 (see doc 09).
 3. Choose the MVP regime from that profile. If FLEX provides D(t) or K values, validate the d²-law tool against a published FLEX K before showing it.
 4. SQLAlchemy models + Alembic + docker-compose (Postgres + API). Loader from verified CSVs into `measurements` with quality flags.
-5. Evidence UI: comparison-gate view and a Plotly chart that refuses a shared axis when `shared_axis_allowed=false`, with source links on every point.
+5. Evidence UI: comparison-gate view and record-level source/report citations are implemented; a planned Plotly comparison chart must refuse a shared axis when `shared_axis_allowed=false`, with source links on every point.
 6. BM25 baseline over the PSI publication list and abstracts, plus a labelled evaluation set. Add dense retrieval/reranking only if the evaluation shows a gap.
 7. LLM copilot restricted to the existing tools, with citation verification and abstention.
 8. CV metrology and gap discovery: roadmap only for the hackathon.

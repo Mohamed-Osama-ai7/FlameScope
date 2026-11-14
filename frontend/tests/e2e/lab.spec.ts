@@ -33,7 +33,7 @@ test.describe('Scientific Exploration Lab · verified FLEX v0.2.0 data', () => {
     const dlg = page.getByRole('dialog', { name: /FLEX-/ });
     await expect(dlg).toBeVisible();
     await expect(dlg.getByTestId('inspector-key')).toHaveText(p.key);
-    for (const text of ['PSI-69 row', 'NASA FLEX test', 'Original PSI header', 'Raw SHA-256', 'Enrichment SHA-256', 'Source URL', 'NASA test note', 'Burning rate; mm']) {
+    for (const text of ['PSI-69 row', 'NASA FLEX test', 'Original PSI header', 'Raw file SHA-256', 'Enrichment file', 'Dataset file', 'NASA test note', 'Burning rate; mm']) {
       await expect(dlg).toContainText(text);
     }
     await expect(dlg).toContainText('37c88ce8ae9391b7544ff630a45ce87543d04d317cdbfbed104fe7d5c27e1b96');
