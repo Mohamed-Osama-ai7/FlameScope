@@ -182,18 +182,19 @@ export function FlameVision() {
           <li>
             <strong>Scale-Free Metrology Only (No Spatial Calibration):</strong> No documented mm/px scale exists
             in the PSI-69 calibration archives. All primary metrology is computed in pixels (px, px²/s) or
-            scale-free normalized form (K/D₀² in 1/s), which cancels pixel magnification.
+            scale-free normalized form (K/D₀² in 1/s), which cancels pixel magnification. Inferred optical ratios
+            (0.057–0.059 mm/px) are strictly uncalibrated consistency checks and never used to output physical millimeter values.
           </li>
           <li>
-            <strong>Systematic 15–22% Gap vs NASA Reported Rate:</strong> Vision burning rates are systematically
-            15–22% lower than NASA's single reported K/D₀² values. Plausible unresolved causes include:
-            (1) igniter obscuration exclusion [0, 1.5s] omitting early fast burning; (2) droplet-side regime break
-            vs visible-flame camera extinction; and (3) NASA ±50 µm D₀ uncertainty.
+            <strong>Systematic 15–22% Gap vs NASA Reported Rate (Unresolved Hypotheses):</strong> Vision burning rates are systematically
+            15–22% lower than NASA's single reported K/D₀² values. Plausible working hypotheses (not confirmed causes) under scientific study include:
+            (1) hypothesis that igniter obscuration exclusion [0, 1.5s] omits early transient fast burning; (2) hypothesis that droplet-side regime break
+            does not coincide with visible-flame camera extinction; and (3) hypothesis that NASA's stated ±50 µm D₀ uncertainty propagates into K/D₀².
           </li>
           <li>
             <strong>Goodness-of-Fit ≠ Physical Accuracy:</strong> High linear fit quality (R² ≥ 0.993) confirms
             strict d²-law linearity over the droplet-evaporation window, but does not validate equivalence to
-            NASA's reported value.
+            NASA's reported value. Fit quality measures regression consistency to pixel history, not absolute measurement accuracy.
           </li>
           <li>
             <strong>Scientific Abstention on Sooting Fuels:</strong> On heptane tests (e.g. 30CAL06), soot shell
@@ -273,7 +274,7 @@ export function FlameVision() {
                     <td><strong style={{ color: 'var(--accent)' }}>{formatPercent(evaluation.relative_difference_mean)}</strong></td>
                   </tr>
                   <tr>
-                    <td>Implied Scale Range:</td>
+                    <td>Inferred Scale Range (Uncalibrated):</td>
                     <td>
                       {formatNum(evaluation.implied_scale_range_mm_per_px[0], 4)} –{' '}
                       {formatNum(evaluation.implied_scale_range_mm_per_px[1], 4)} mm/px
@@ -290,9 +291,8 @@ export function FlameVision() {
                 {evaluation.verdict}
               </p>
               <div className="callout info" style={{ marginTop: '8px', fontSize: '12px' }}>
-                Implied camera scale agrees within 2.7% across tests (0.057–0.059 mm/px), well inside NASA's
-                ±50 µm droplet measurement uncertainty. This confirms geometric camera stability without assuming
-                a spatial calibration.
+                Inferred (uncalibrated) camera scale ratio agrees within 2.7% across tests (0.057–0.059 mm/px), well inside NASA's
+                ±50 µm droplet measurement uncertainty. This is reported strictly as an uncalibrated consistency check and is never used to produce physical millimeter values.
               </div>
             </div>
           </div>
@@ -312,7 +312,7 @@ export function FlameVision() {
                   <th>Vision K/D₀² (1/s)</th>
                   <th>NASA K/D₀² (1/s)</th>
                   <th>Diff (%)</th>
-                  <th>Implied Scale</th>
+                  <th>Implied Scale (Uncalibrated)</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -369,7 +369,7 @@ export function FlameVision() {
                       )}
                     </td>
                     <td>
-                      {t.computable ? `${formatNum(t.implied_mm_per_px_from_nasa_d0, 4)} mm/px` : '—'}
+                      {t.computable ? `${formatNum(t.implied_mm_per_px_from_nasa_d0, 4)} mm/px (inferred)` : '—'}
                     </td>
                     <td>
                       <button
@@ -533,7 +533,7 @@ export function FlameVision() {
                         </td>
                       </tr>
                       <tr>
-                        <td>Implied Scale (D₀/D₀_px):</td>
+                        <td>Inferred Scale (D₀/D₀_px, Uncalibrated):</td>
                         <td>{formatNum(activeSummary.comparison?.implied_mm_per_px_from_nasa_d0, 4)} mm/px</td>
                       </tr>
                       <tr>
@@ -550,6 +550,9 @@ export function FlameVision() {
                 <div className="physics-card">
                   <span className="eyebrow">REGRESSION FIT & WINDOWS</span>
                   <h3>Linear Fit (R² = {formatNum(activeSummary.results?.fit?.r_squared, 4)})</h3>
+                  <p style={{ fontSize: '11.5px', color: 'var(--text-3)', margin: '0 0 6px' }}>
+                    Note: High R² indicates regression linearity over the pixel series, not physical agreement with NASA.
+                  </p>
                   <table className="compact-table" style={{ width: '100%', fontSize: '12.5px' }}>
                     <tbody>
                       <tr>
@@ -1074,3 +1077,4 @@ export function FlameVision() {
     </section>
   );
 }
+
