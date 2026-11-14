@@ -303,5 +303,28 @@ blockquote { margin: 0; padding: 10px 12px; border-left: 3px solid var(--accent)
 .exclusion-list li { display: flex; align-items: baseline; gap: 8px; }
 
 .flagged-section, .all-runs-section, .abstained-section { margin-top: 20px; }
-.status-badges { display: flex; align-items: center; gap: 8px; }
+.status-badges { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+/* Flame Vision & Shared UI Utilities */
+.link-btn { background: none; border: none; padding: 0; color: var(--accent); font: inherit; text-decoration: underline; cursor: pointer; }
+.link-btn:hover { color: var(--text-1); }
+.btn-sm { padding: 4px 8px; font-size: 12px; border-radius: 6px; }
+.btn-secondary { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 6px 12px; font-size: 13px; font-weight: 500; cursor: pointer; }
+.btn-secondary:hover { border-color: var(--accent); color: var(--text-1); }
+
+.compact-table { border-collapse: collapse; }
+.compact-table td, .compact-table th { padding: 4px 8px; border-bottom: 1px solid var(--border); }
+.compact-table tr:last-child td { border-bottom: none; }
+
+.badge { display: inline-flex; align-items: center; padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+.badge.info { background: rgba(56, 139, 253, 0.15); color: #58a6ff; border: 1px solid rgba(56, 139, 253, 0.3); }
+.badge.success { background: rgba(46, 160, 67, 0.15); color: #3fb950; border: 1px solid rgba(46, 160, 67, 0.3); }
+.badge.warning { background: rgba(210, 153, 34, 0.15); color: #d29922; border: 1px solid rgba(210, 153, 34, 0.3); }
+.badge.error { background: rgba(248, 81, 73, 0.15); color: #f85149; border: 1px solid rgba(248, 81, 73, 0.3); }
+.badge.neutral { background: var(--surface-1); color: var(--text-2); border: 1px solid var(--border); }
+
+.vision-section { margin-bottom: 40px; }
+.tab-pane { animation: fadeIn 0.15s ease-in-out; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
 

@@ -15,6 +15,9 @@ import type {
   SearchResponse,
   RegimeRecord,
   SourceRecord,
+  VisionEvaluation,
+  VisionFrame,
+  VisionTestSummary,
 } from './contracts';
 import {
   parseDataPlatformStatus,
@@ -27,6 +30,7 @@ import {
 import { parseD2Consistency, parseOxygenEffect } from './physicsValidation';
 import { parseCopilotResponse, parseRagSource, parseSearchResponse } from './ragValidation';
 import { parseComparison, parseList, parseMethod, parseRegime, parseSource } from './validation';
+import { parseVisionEvaluation, parseVisionFrameList, parseVisionTestSummary } from './visionValidation';
 
 export const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? 'http://127.0.0.1:8000')
   .replace(/\/+$/, '');
@@ -193,6 +197,23 @@ export const api = {
     const payload = await requestJson(`/physics/oxygen-effect${qs ? `?${qs}` : ''}`, { signal });
     return parseOxygenEffect(payload);
   },
+  // ---- Flame Vision & Metrology (/vision/method, /vision/evaluation, /vision/tests) ----
+  async getVisionMethod(signal?: AbortSignal): Promise<MethodCard> {
+    const payload = await requestJson('/vision/method', { signal });
+    return parseMethod(payload);
+  },
+  async getVisionEvaluation(signal?: AbortSignal): Promise<VisionEvaluation> {
+    const payload = await requestJson('/vision/evaluation', { signal });
+    return parseVisionEvaluation(payload);
+  },
+  async getVisionTest(testPoint: string, signal?: AbortSignal): Promise<VisionTestSummary> {
+    const payload = await requestJson(`/vision/tests/${encodeURIComponent(testPoint)}`, { signal });
+    return parseVisionTestSummary(payload);
+  },
+  async getVisionTestSeries(testPoint: string, signal?: AbortSignal): Promise<VisionFrame[]> {
+    const payload = await requestJson(`/vision/tests/${encodeURIComponent(testPoint)}/series`, { signal });
+    return parseVisionFrameList(payload);
+  },
 };
 
 /** Load the precomputed verified physics baseline when the live backend is offline. */
@@ -208,6 +229,41 @@ export async function loadOfflinePhysicsBaseline(): Promise<{
   return {
     d2_consistency: parseD2Consistency(data.d2_consistency),
     oxygen_effect: parseOxygenEffect(data.oxygen_effect),
+  };
+}
+
+export interface OfflineVisionBaseline {
+  evaluation: VisionEvaluation;
+  tests: Record<string, VisionTestSummary>;
+  series: Record<string, VisionFrame[]>;
+  method: MethodCard;
+}
+
+/** Load the precomputed verified flame vision baseline when the live backend is offline. */
+export async function loadOfflineVisionBaseline(): Promise<OfflineVisionBaseline> {
+  const base = import.meta.env.BASE_URL ?? '/';
+  const prefix = base.endsWith('/') ? base : `${base}/`;
+  const res = await fetch(`${prefix}data/flame_vision_baseline_v1.0.0.json`);
+  if (!res.ok) throw new Error(`Failed to load offline vision baseline: ${res.statusText}`);
+  const data = (await res.json()) as {
+    evaluation: unknown;
+    tests: Record<string, unknown>;
+    series: Record<string, unknown>;
+    method: unknown;
+  };
+  const tests: Record<string, VisionTestSummary> = {};
+  for (const [k, v] of Object.entries(data.tests)) {
+    tests[k] = parseVisionTestSummary(v);
+  }
+  const series: Record<string, VisionFrame[]> = {};
+  for (const [k, v] of Object.entries(data.series)) {
+    series[k] = parseVisionFrameList(v);
+  }
+  return {
+    evaluation: parseVisionEvaluation(data.evaluation),
+    tests,
+    series,
+    method: parseMethod(data.method),
   };
 }
 

@@ -417,3 +417,152 @@ export interface OxygenEffectResponse {
   limitations: string[];
 }
 
+// ---- Flame Vision Metrology (/vision/method, /vision/evaluation, /vision/tests) ----
+
+export interface VisionThresholdSensitivity {
+  '0.4': number;
+  '0.5': number;
+  '0.6': number;
+}
+
+export interface VisionEvalTest {
+  test_point: string;
+  run_id: string;
+  fuel: string;
+  test_end: string;
+  computable: boolean;
+  // Present when computable === true
+  fit_frames?: number;
+  fit_r_squared?: number;
+  fit_window_coverage?: number;
+  vision_k_over_d0sq_per_s?: number;
+  vision_rel_uncertainty_1sigma?: number;
+  threshold_sensitivity?: VisionThresholdSensitivity;
+  nasa_k_over_d0sq_per_s?: number;
+  relative_difference?: number;
+  implied_mm_per_px_from_nasa_d0?: number;
+  // Present when computable === false
+  abstention_reason?: string;
+}
+
+export interface VisionEvaluation {
+  method_id: string;
+  method_version: string;
+  tests: VisionEvalTest[];
+  n_tests: number;
+  n_computable: number;
+  n_abstained: number;
+  relative_difference_mean: number;
+  relative_difference_range: [number, number];
+  implied_scale_range_mm_per_px: [number, number];
+  verdict: string;
+}
+
+export interface VisionFitResult {
+  slope: number;
+  intercept: number;
+  slope_se: number;
+  slope_ci95: [number, number];
+  r_squared: number;
+  n: number;
+  t_start: number;
+  t_end: number;
+  slope_px2_per_s: number;
+}
+
+export interface VisionNasaReference {
+  run_id: string;
+  flex_identifier: string;
+  fuel: string;
+  test_end: string;
+  reported_k_mm2_per_s: number;
+  reported_d0_mm: number;
+  reported_extinction_diameter_mm: number | null;
+  reported_burn_time_s: number;
+  reported_k_over_d0sq_per_s: number;
+  reported_dext_over_d0: number | null;
+  value_origin: string;
+}
+
+export interface VisionComparison {
+  nasa_k_over_d0sq_per_s: number;
+  vision_k_over_d0sq_per_s: number;
+  relative_difference: number;
+  nasa_dext_over_d0: number | null;
+  implied_mm_per_px_from_nasa_d0: number;
+  implied_scale_note: string;
+  vision_regime_break_diameter_ratio_proxy: number;
+  note: string;
+}
+
+export interface VisionTestSummary {
+  test_point: string;
+  method: {
+    method_id: string;
+    version: string;
+    status: string;
+  };
+  camera?: Record<string, string>;
+  physical_units: null;
+  physical_units_reason: string;
+  computable?: boolean;
+  abstention_reason?: string;
+  results?: {
+    d0_px: number;
+    d0_mad_px: number;
+    d0_frames: number;
+    fit_window_coverage: number;
+    fit: VisionFitResult;
+    k_px2_per_s: number;
+    k_over_d0sq_per_s: number;
+    k_over_d0sq_rel_uncertainty_1sigma: number;
+    k_over_d0sq_first_half_per_s: number;
+    k_over_d0sq_second_half_per_s: number;
+    regime_break_t_s: number;
+    regime_break_diameter_ratio: number;
+    windows_s: {
+      d0: [number, number];
+      excluded_igniters: [number, number];
+      fit: [number, number];
+    };
+    threshold_sensitivity_k_over_d0sq: VisionThresholdSensitivity;
+    frame_status_counts: Record<string, number>;
+    measured_frames_with_flags: number;
+    segmentation_params: {
+      threshold_fraction: number;
+      min_area_px: number;
+      max_aspect_ratio: number;
+      min_circularity: number;
+      border_margin_px: number;
+    };
+  };
+  nasa_reference: VisionNasaReference;
+  comparison?: VisionComparison;
+  provenance: Array<{
+    source_id: string;
+    test_point: string;
+    role: string;
+    file_name: string;
+    relative_path: string;
+    byte_size: string;
+    sha256: string;
+    source_url: string;
+    license: string;
+    retrieved_at_utc: string;
+  }>;
+  generated_at_utc: string;
+}
+
+export interface VisionFrame {
+  frame: string;
+  t_s: number | null;
+  status: string;
+  diameter_px: number | null;
+  area_px: number | null;
+  circularity: number | null;
+  centroid_x_px: number | null;
+  centroid_y_px: number | null;
+  candidates: number | null;
+  flags: string[];
+}
+
