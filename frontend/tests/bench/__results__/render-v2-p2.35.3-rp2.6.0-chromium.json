@@ -1,0 +1,291 @@
+{
+  "label": "v2-p2.35.3-rp2.6.0",
+  "warmup": 2,
+  "reps": {
+    "1000": {
+      "render": 15,
+      "update": 15,
+      "exp": 10
+    },
+    "10000": {
+      "render": 10,
+      "update": 10,
+      "exp": 5
+    },
+    "50000": {
+      "render": 5,
+      "update": 5,
+      "exp": 3
+    }
+  },
+  "env": {
+    "browser": "chromium",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "hardwareConcurrency": 12,
+    "deviceMemoryGB": 32,
+    "webglRenderer": "ANGLE (Intel, Intel(R) UHD Graphics (0x00009BC4) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "preciseMemory": true,
+    "gcExposed": true
+  },
+  "scatter_1000": {
+    "points": 1000,
+    "svgNodes": 1270,
+    "specMs": {
+      "n": 15,
+      "median": 2.1,
+      "p95": 2.3,
+      "min": 1.9,
+      "max": 2.3
+    },
+    "initialRenderToReadyMs": {
+      "n": 15,
+      "median": 51.8,
+      "p95": 52.9,
+      "min": 47.6,
+      "max": 52.9
+    },
+    "initialRenderToPaintMs": {
+      "n": 15,
+      "median": 55.8,
+      "p95": 57,
+      "min": 51.9,
+      "max": 57
+    },
+    "filterUpdateToReadyMs": {
+      "n": 15,
+      "median": 24.5,
+      "p95": 35.8,
+      "min": 21.8,
+      "max": 35.8
+    },
+    "filterUpdateToPaintMs": {
+      "n": 15,
+      "median": 32.2,
+      "p95": 42.1,
+      "min": 26.7,
+      "max": 42.1
+    },
+    "selectUpdateToReadyMs": {
+      "n": 15,
+      "median": 33.9,
+      "p95": 44.8,
+      "min": 31.2,
+      "max": 44.8
+    },
+    "selectUpdateToPaintMs": {
+      "n": 15,
+      "median": 40,
+      "p95": 51.1,
+      "min": 37.1,
+      "max": 51.1
+    },
+    "exportSvgMs": {
+      "n": 10,
+      "median": 41.5,
+      "p95": 66.9,
+      "min": 39.5,
+      "max": 66.9
+    },
+    "exportPngMs": {
+      "n": 10,
+      "median": 91.2,
+      "p95": 114.6,
+      "min": 86.5,
+      "max": 114.6
+    },
+    "svgExportKB": 380,
+    "pngExportKB": 304,
+    "retainedHeapMBPerMount": {
+      "n": 15,
+      "median": 0.8,
+      "p95": 1.2,
+      "min": 0.1,
+      "max": 1.2
+    },
+    "retainedDomNodesPerMount": {
+      "n": 15,
+      "median": 1330,
+      "p95": 1330,
+      "min": 31,
+      "max": 1330
+    },
+    "leakCheck": {
+      "heapMBAfterUnmountVsBefore": 1.9,
+      "domNodesAfterUnmountVsBefore": -2
+    }
+  },
+  "scatter_10000": {
+    "points": 10000,
+    "svgNodes": 10270,
+    "specMs": {
+      "n": 10,
+      "median": 22.6,
+      "p95": 26,
+      "min": 17.6,
+      "max": 26
+    },
+    "initialRenderToReadyMs": {
+      "n": 10,
+      "median": 346.4,
+      "p95": 402.3,
+      "min": 325.5,
+      "max": 402.3
+    },
+    "initialRenderToPaintMs": {
+      "n": 10,
+      "median": 380.9,
+      "p95": 437.9,
+      "min": 358.8,
+      "max": 437.9
+    },
+    "filterUpdateToReadyMs": {
+      "n": 10,
+      "median": 196.8,
+      "p95": 236.2,
+      "min": 148.2,
+      "max": 236.2
+    },
+    "filterUpdateToPaintMs": {
+      "n": 10,
+      "median": 251.3,
+      "p95": 278.7,
+      "min": 211.6,
+      "max": 278.7
+    },
+    "selectUpdateToReadyMs": {
+      "n": 10,
+      "median": 233.9,
+      "p95": 268.5,
+      "min": 223.3,
+      "max": 268.5
+    },
+    "selectUpdateToPaintMs": {
+      "n": 10,
+      "median": 285.8,
+      "p95": 333,
+      "min": 265.5,
+      "max": 333
+    },
+    "exportSvgMs": {
+      "n": 5,
+      "median": 303.3,
+      "p95": 368,
+      "min": 301.8,
+      "max": 368
+    },
+    "exportPngMs": {
+      "n": 5,
+      "median": 632.3,
+      "p95": 653.6,
+      "min": 607.7,
+      "max": 653.6
+    },
+    "svgExportKB": 3561,
+    "pngExportKB": 311,
+    "retainedHeapMBPerMount": {
+      "n": 10,
+      "median": 6.7,
+      "p95": 6.9,
+      "min": 6.4,
+      "max": 6.9
+    },
+    "retainedDomNodesPerMount": {
+      "n": 10,
+      "median": 10330,
+      "p95": 10330,
+      "min": 10330,
+      "max": 10330
+    },
+    "leakCheck": {
+      "heapMBAfterUnmountVsBefore": 1.5,
+      "domNodesAfterUnmountVsBefore": 0
+    }
+  },
+  "scatter_50000": {
+    "points": 50000,
+    "svgNodes": 50270,
+    "specMs": {
+      "n": 5,
+      "median": 109.6,
+      "p95": 161.9,
+      "min": 108.2,
+      "max": 161.9
+    },
+    "initialRenderToReadyMs": {
+      "n": 5,
+      "median": 1419.3,
+      "p95": 1427.5,
+      "min": 1387.8,
+      "max": 1427.5
+    },
+    "initialRenderToPaintMs": {
+      "n": 5,
+      "median": 1634.5,
+      "p95": 1641.7,
+      "min": 1605.8,
+      "max": 1641.7
+    },
+    "filterUpdateToReadyMs": {
+      "n": 5,
+      "median": 763.6,
+      "p95": 1119.6,
+      "min": 734.9,
+      "max": 1119.6
+    },
+    "filterUpdateToPaintMs": {
+      "n": 5,
+      "median": 1132.5,
+      "p95": 1349.7,
+      "min": 1057.2,
+      "max": 1349.7
+    },
+    "selectUpdateToReadyMs": {
+      "n": 5,
+      "median": 1082.3,
+      "p95": 1095.1,
+      "min": 1072.3,
+      "max": 1095.1
+    },
+    "selectUpdateToPaintMs": {
+      "n": 5,
+      "median": 1341.7,
+      "p95": 1354.7,
+      "min": 1288.2,
+      "max": 1354.7
+    },
+    "exportSvgMs": {
+      "n": 3,
+      "median": 1577.7,
+      "p95": 1747.8,
+      "min": 1491.3,
+      "max": 1747.8
+    },
+    "exportPngMs": {
+      "n": 3,
+      "median": 3097.1,
+      "p95": 3204,
+      "min": 2987.1,
+      "max": 3204
+    },
+    "svgExportKB": 17699,
+    "pngExportKB": 313,
+    "retainedHeapMBPerMount": {
+      "n": 5,
+      "median": 31.4,
+      "p95": 31.7,
+      "min": 31.4,
+      "max": 31.7
+    },
+    "retainedDomNodesPerMount": {
+      "n": 5,
+      "median": 50330,
+      "p95": 50330,
+      "min": 50330,
+      "max": 50330
+    },
+    "leakCheck": {
+      "heapMBAfterUnmountVsBefore": 1.3,
+      "domNodesAfterUnmountVsBefore": 0
+    }
+  }
+}

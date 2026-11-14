@@ -1,0 +1,1 @@
+{"extends":"./tsconfig.json","compilerOptions":{"types":["node"]},"include":["src","bench","tests","playwright.config.ts","playwright.bench.config.ts","vitest.config.ts","vite.bench.config.ts"]}

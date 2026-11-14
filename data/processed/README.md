@@ -1,0 +1,1 @@
+Store derived/extracted artifacts here. Every derived record must retain source artifact ID, page/table/frame reference, extraction method/version, unit, and transformation history. Never present derived values without their provenance.

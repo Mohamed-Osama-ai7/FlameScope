@@ -1,0 +1,849 @@
+{
+ "dataset": "backend/eval/copilot_uncertainty_v5.jsonl",
+ "split": "diagnostic",
+ "label": "baseline",
+ "code_revision": "ff0fecb",
+ "provider": "extractive (deterministic; no LLM)",
+ "summary": {
+  "n": 14,
+  "status_accuracy": 0.9286,
+  "by_category": {
+   "comparison": "2/2",
+   "conflicting": "1/1",
+   "missing": "2/2",
+   "numeric": "3/3",
+   "ood": "2/3",
+   "qualified": "2/2",
+   "unsupported_conclusion": "1/1"
+  },
+  "abstention": {
+   "precision": 1.0,
+   "recall": 0.75,
+   "false_abstentions": 0,
+   "missed_abstentions": 1
+  },
+  "ood_abstention_rate": 0.6667,
+  "factual_accuracy": 1.0,
+  "uncertainty_code_recall": 1.0,
+  "items_with_all_required_codes": 1.0,
+  "unsupported_explanations": 0,
+  "contradictory_codes": 0,
+  "forbidden_terms": 0,
+  "selective": {
+   "coverage": 1.0,
+   "selective_accuracy": 1.0,
+   "risk_on_unanswerable": 0.25
+  },
+  "calibration": "not computed: no probabilities are produced and no model self-confidence is used",
+  "failures": [
+   {
+    "id": "U24",
+    "category": "ood",
+    "question": "What would the burning-rate constant of methanol be at 5 atm?",
+    "expected": "abstained",
+    "got": "answered",
+    "abstention_reason": null,
+    "missing_codes": [],
+    "unsupported_explanations": [],
+    "contradictory_codes": [],
+    "forbidden_terms": [],
+    "factual_correct": null
+   }
+  ]
+ },
+ "items": [
+  {
+   "id": "U01",
+   "split": "diagnostic",
+   "category": "numeric",
+   "question": "How long did FLEX-120 burn?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "refused": false,
+   "should_refuse": false,
+   "abstention_reason": null,
+   "facts": [
+    "FLEX-120 burn time: 1.43 s"
+   ],
+   "factual_correct": true,
+   "required": [
+    "data:source_pending_verification",
+    "measurement:no_reported_uncertainty"
+   ],
+   "produced": [
+    "data:not_verified_against_database",
+    "data:source_pending_verification",
+    "measurement:no_reported_uncertainty"
+   ],
+   "missing_codes": [],
+   "unsupported_explanations": [],
+   "contradictory_codes": [],
+   "forbidden_terms": [],
+   "uncertainty": [
+    {
+     "kind": "data",
+     "code": "source_pending_verification",
+     "detail": "PSI-69 is PENDING_VERIFICATION: cited as evidence, not presented as verified",
+     "evidence": [
+      "PSI-69"
+     ]
+    },
+    {
+     "kind": "measurement",
+     "code": "no_reported_uncertainty",
+     "detail": "the PSI-69 table reports this value without an uncertainty; none is assumed or added",
+     "evidence": [
+      "2310756f-e5dc-5a3f-9749-511aa700d62f"
+     ]
+    },
+    {
+     "kind": "data",
+     "code": "not_verified_against_database",
+     "detail": "measurement ids follow the Data Platform contract but were not checked against its database",
+     "evidence": [
+      "2310756f-e5dc-5a3f-9749-511aa700d62f"
+     ]
+    }
+   ],
+   "answer": "FLEX-120 burn time: 1.43 s (reported in the source)."
+  },
+  {
+   "id": "U03",
+   "split": "diagnostic",
+   "category": "numeric",
+   "question": "What burning-rate constant was given for FLEX-276?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "refused": false,
+   "should_refuse": false,
+   "abstention_reason": null,
+   "facts": [
+    "FLEX-276 reported burning-rate constant K: 1.06 mm^2/s"
+   ],
+   "factual_correct": true,
+   "required": [
+    "data:source_pending_verification",
+    "measurement:no_reported_uncertainty",
+    "model:reported_fit_value"
+   ],
+   "produced": [
+    "data:not_verified_against_database",
+    "data:source_pending_verification",
+    "measurement:no_reported_uncertainty",
+    "model:reported_fit_value"
+   ],
+   "missing_codes": [],
+   "unsupported_explanations": [],
+   "contradictory_codes": [],
+   "forbidden_terms": [],
+   "uncertainty": [
+    {
+     "kind": "data",
+     "code": "source_pending_verification",
+     "detail": "PSI-69 is PENDING_VERIFICATION: cited as evidence, not presented as verified",
+     "evidence": [
+      "PSI-69"
+     ]
+    },
+    {
+     "kind": "measurement",
+     "code": "no_reported_uncertainty",
+     "detail": "the PSI-69 table reports this value without an uncertainty; none is assumed or added",
+     "evidence": [
+      "4de88c7a-0137-5ac9-b128-05c0d7b264f3"
+     ]
+    },
+    {
+     "kind": "model",
+     "code": "reported_fit_value",
+     "detail": "K is the FLEX team's average burning-rate constant from a linear fit of D^2 versus t (NASA/TP-2015-216046 App. A.1, cited for column semantics); it is reported, not recomputed, and no fit uncertainty is given",
+     "evidence": [
+      "4de88c7a-0137-5ac9-b128-05c0d7b264f3"
+     ]
+    },
+    {
+     "kind": "data",
+     "code": "not_verified_against_database",
+     "detail": "measurement ids follow the Data Platform contract but were not checked against its database",
+     "evidence": [
+      "4de88c7a-0137-5ac9-b128-05c0d7b264f3"
+     ]
+    }
+   ],
+   "answer": "FLEX-276 reported burning-rate constant K: 1.06 mm^2/s (reported by the FLEX team, not calculated here)."
+  },
+  {
+   "id": "U05",
+   "split": "diagnostic",
+   "category": "numeric",
+   "question": "What oxygen mole fraction was used in FLEX-166?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "refused": false,
+   "should_refuse": false,
+   "abstention_reason": null,
+   "facts": [
+    "FLEX-166 O2 mole fraction: 0.18 mole fraction"
+   ],
+   "factual_correct": true,
+   "required": [
+    "data:source_pending_verification",
+    "measurement:no_reported_uncertainty"
+   ],
+   "produced": [
+    "data:not_verified_against_database",
+    "data:source_pending_verification",
+    "measurement:no_reported_uncertainty"
+   ],
+   "missing_codes": [],
+   "unsupported_explanations": [],
+   "contradictory_codes": [],
+   "forbidden_terms": [],
+   "uncertainty": [
+    {
+     "kind": "data",
+     "code": "source_pending_verification",
+     "detail": "PSI-69 is PENDING_VERIFICATION: cited as evidence, not presented as verified",
+     "evidence": [
+      "PSI-69"
+     ]
+    },
+    {
+     "kind": "measurement",
+     "code": "no_reported_uncertainty",
+     "detail": "the PSI-69 table reports this value without an uncertainty; none is assumed or added",
+     "evidence": [
+      "89047d33-7d76-5815-81d7-bacb50b5e51b",
+      "bb648f3c-8e83-5ce0-a00c-b8f61bf0c3b5"
+     ]
+    },
+    {
+     "kind": "data",
+     "code": "not_verified_against_database",
+     "detail": "measurement ids follow the Data Platform contract but were not checked against its database",
+     "evidence": [
+      "89047d33-7d76-5815-81d7-bacb50b5e51b",
+      "bb648f3c-8e83-5ce0-a00c-b8f61bf0c3b5"
+     ]
+    }
+   ],
+   "answer": "FLEX-166 O2 mole fraction: 0.18 mole fraction (reported in the source). FLEX-166 He mole fraction: 0 mole fraction (reported in the source)."
+  },
+  {
+   "id": "U07",
+   "split": "diagnostic",
+   "category": "qualified",
+   "question": "What burn time is listed for FLEX-227?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "refused": false,
+   "should_refuse": false,
+   "abstention_reason": null,
+   "facts": [
+    "FLEX-227 burn time: ~6 s, QUALIFIED"
+   ],
+   "factual_correct": true,
+   "required": [
+    "measurement:qualified_value"
+   ],
+   "produced": [
+    "data:not_verified_against_database",
+    "data:source_pending_verification",
+    "measurement:no_reported_uncertainty",
+    "measurement:qualified_value"
+   ],
+   "missing_codes": [],
+   "unsupported_explanations": [],
+   "contradictory_codes": [],
+   "forbidden_terms": [],
+   "uncertainty": [
+    {
+     "kind": "data",
+     "code": "source_pending_verification",
+     "detail": "PSI-69 is PENDING_VERIFICATION: cited as evidence, not presented as verified",
+     "evidence": [
+      "PSI-69"
+     ]
+    },
+    {
+     "kind": "measurement",
+     "code": "no_reported_uncertainty",
+     "detail": "the PSI-69 table reports this value without an uncertainty; none is assumed or added",
+     "evidence": [
+      "67cd512f-f3e5-5998-95af-d6c3308ca38c"
+     ]
+    },
+    {
+     "kind": "measurement",
+     "code": "qualified_value",
+     "detail": "value carries a quality flag: approximate",
+     "evidence": [
+      "67cd512f-f3e5-5998-95af-d6c3308ca38c"
+     ]
+    },
+    {
+     "kind": "data",
+     "code": "not_verified_against_database",
+     "detail": "measurement ids follow the Data Platform contract but were not checked against its database",
+     "evidence": [
+      "67cd512f-f3e5-5998-95af-d6c3308ca38c"
+     ]
+    }
+   ],
+   "answer": "FLEX-227 burn time: ~6 s, QUALIFIED (marked approximate in the source); reported in the source."
+  },
+  {
+   "id": "U09",
+   "split": "diagnostic",
+   "category": "qualified",
+   "question": "Under what ambient pressure was FLEX-114 run?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "refused": false,
+   "should_refuse": false,
+   "abstention_reason": null,
+   "facts": [
+    "FLEX-114 ambient pressure: FLAGGED INVALID"
+   ],
+   "factual_correct": true,
+   "required": [
+    "measurement:invalid_value"
+   ],
+   "produced": [
+    "data:not_verified_against_database",
+    "data:source_pending_verification",
+    "measurement:invalid_value"
+   ],
+   "missing_codes": [],
+   "unsupported_explanations": [],
+   "contradictory_codes": [],
+   "forbidden_terms": [],
+   "uncertainty": [
+    {
+     "kind": "data",
+     "code": "source_pending_verification",
+     "detail": "PSI-69 is PENDING_VERIFICATION: cited as evidence, not presented as verified",
+     "evidence": [
+      "PSI-69"
+     ]
+    },
+    {
+     "kind": "measurement",
+     "code": "invalid_value",
+     "detail": "value flagged invalid: invalid_nonpositive_pressure",
+     "evidence": [
+      "ce5330a1-3d97-5a8e-a092-4015f0cbdd69"
+     ]
+    },
+    {
+     "kind": "data",
+     "code": "not_verified_against_database",
+     "detail": "measurement ids follow the Data Platform contract but were not checked against its database",
+     "evidence": [
+      "ce5330a1-3d97-5a8e-a092-4015f0cbdd69"
+     ]
+    }
+   ],
+   "answer": "FLEX-114 ambient pressure: FLAGGED INVALID (an ambient pressure of zero or below is physically invalid); the source cell reads '0' mmHg, which is not usable as a measured value."
+  },
+  {
+   "id": "U10",
+   "split": "diagnostic",
+   "category": "missing",
+   "question": "What extinction diameter was measured in FLEX-260?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "refused": false,
+   "should_refuse": false,
+   "abstention_reason": null,
+   "facts": [
+    "FLEX-260 visible flame extinction diameter: MISSING in the source"
+   ],
+   "factual_correct": true,
+   "required": [
+    "data:missing_value"
+   ],
+   "produced": [
+    "data:missing_value",
+    "data:not_verified_against_database",
+    "data:source_pending_verification",
+    "retrieval:partial_evidence"
+   ],
+   "missing_codes": [],
+   "unsupported_explanations": [],
+   "contradictory_codes": [],
+   "forbidden_terms": [],
+   "uncertainty": [
+    {
+     "kind": "data",
+     "code": "source_pending_verification",
+     "detail": "PSI-69 is PENDING_VERIFICATION: cited as evidence, not presented as verified",
+     "evidence": [
+      "PSI-69"
+     ]
+    },
+    {
+     "kind": "data",
+     "code": "missing_value",
+     "detail": "the source has no value for this cell",
+     "evidence": [
+      "85ef3fdb-7270-5e8d-aa90-cd63060e305a"
+     ]
+    },
+    {
+     "kind": "data",
+     "code": "not_verified_against_database",
+     "detail": "measurement ids follow the Data Platform contract but were not checked against its database",
+     "evidence": [
+      "85ef3fdb-7270-5e8d-aa90-cd63060e305a"
+     ]
+    },
+    {
+     "kind": "retrieval",
+     "code": "partial_evidence",
+     "detail": "part of the question is not covered: PSI-69-r254 extinction_diameter: no value in the source",
+     "evidence": []
+    }
+   ],
+   "answer": "FLEX-260 visible flame extinction diameter: MISSING in the source (blank cell in the source); no value exists and none is substituted."
+  },
+  {
+   "id": "U12",
+   "split": "diagnostic",
+   "category": "missing",
+   "question": "What burning-rate constant was reported for FLEX-081?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "refused": false,
+   "should_refuse": false,
+   "abstention_reason": null,
+   "facts": [
+    "FLEX-081 reported burning-rate constant K: MISSING in the source"
+   ],
+   "factual_correct": true,
+   "required": [
+    "data:missing_value"
+   ],
+   "produced": [
+    "data:missing_value",
+    "data:not_verified_against_database",
+    "data:source_pending_verification",
+    "retrieval:partial_evidence"
+   ],
+   "missing_codes": [],
+   "unsupported_explanations": [],
+   "contradictory_codes": [],
+   "forbidden_terms": [],
+   "uncertainty": [
+    {
+     "kind": "data",
+     "code": "source_pending_verification",
+     "detail": "PSI-69 is PENDING_VERIFICATION: cited as evidence, not presented as verified",
+     "evidence": [
+      "PSI-69"
+     ]
+    },
+    {
+     "kind": "data",
+     "code": "missing_value",
+     "detail": "the source has no value for this cell",
+     "evidence": [
+      "1cc90907-8eef-518b-a543-1513fae60845"
+     ]
+    },
+    {
+     "kind": "data",
+     "code": "not_verified_against_database",
+     "detail": "measurement ids follow the Data Platform contract but were not checked against its database",
+     "evidence": [
+      "1cc90907-8eef-518b-a543-1513fae60845"
+     ]
+    },
+    {
+     "kind": "retrieval",
+     "code": "partial_evidence",
+     "detail": "part of the question is not covered: PSI-69-r081 burning_rate_constant_mm2_s: no value in the source",
+     "evidence": []
+    }
+   ],
+   "answer": "FLEX-081 reported burning-rate constant K: MISSING in the source (blank cell in the source); no value exists and none is substituted."
+  },
+  {
+   "id": "U14",
+   "split": "diagnostic",
+   "category": "conflicting",
+   "question": "What burning-rate constant was reported for identifier 193F001?",
+   "expected": "answered",
+   "got": "answered_with_ambiguity",
+   "status_ok": true,
+   "refused": false,
+   "should_refuse": false,
+   "abstention_reason": null,
+   "facts": [
+    "FLEX-070 reported burning-rate constant K: 0.41 mm^2/s",
+    "FLEX-073 reported burning-rate constant K: 0.56 mm^2/s"
+   ],
+   "factual_correct": true,
+   "required": [
+    "data:duplicate_identifier_records"
+   ],
+   "produced": [
+    "data:duplicate_identifier_records",
+    "data:not_verified_against_database",
+    "data:source_pending_verification",
+    "measurement:no_reported_uncertainty",
+    "model:reported_fit_value"
+   ],
+   "missing_codes": [],
+   "unsupported_explanations": [],
+   "contradictory_codes": [],
+   "forbidden_terms": [],
+   "uncertainty": [
+    {
+     "kind": "data",
+     "code": "source_pending_verification",
+     "detail": "PSI-69 is PENDING_VERIFICATION: cited as evidence, not presented as verified",
+     "evidence": [
+      "PSI-69"
+     ]
+    },
+    {
+     "kind": "measurement",
+     "code": "no_reported_uncertainty",
+     "detail": "the PSI-69 table reports this value without an uncertainty; none is assumed or added",
+     "evidence": [
+      "458f15d3-b2a4-5574-a4fa-6d07cc1b0524",
+      "6428e3b4-0235-5a05-89bf-31fadce83039"
+     ]
+    },
+    {
+     "kind": "model",
+     "code": "reported_fit_value",
+     "detail": "K is the FLEX team's average burning-rate constant from a linear fit of D^2 versus t (NASA/TP-2015-216046 App. A.1, cited for column semantics); it is reported, not recomputed, and no fit uncertainty is given",
+     "evidence": [
+      "458f15d3-b2a4-5574-a4fa-6d07cc1b0524",
+      "6428e3b4-0235-5a05-89bf-31fadce83039"
+     ]
+    },
+    {
+     "kind": "data",
+     "code": "duplicate_identifier_records",
+     "detail": "one source identifier maps to several records with different values; they are reported separately",
+     "evidence": [
+      "35323c3a-7546-5302-8881-e173801d04e1",
+      "ede63c0a-d309-5ce3-9fc9-9c95c112913d"
+     ]
+    },
+    {
+     "kind": "data",
+     "code": "not_verified_against_database",
+     "detail": "measurement ids follow the Data Platform contract but were not checked against its database",
+     "evidence": [
+      "458f15d3-b2a4-5574-a4fa-6d07cc1b0524",
+      "6428e3b4-0235-5a05-89bf-31fadce83039"
+     ]
+    }
+   ],
+   "answer": "FLEX-070 reported burning-rate constant K: 0.41 mm^2/s (reported by the FLEX team, not calculated here). FLEX-073 reported burning-rate constant K: 0.56 mm^2/s (reported by the FLEX team, not calculated here)."
+  },
+  {
+   "id": "U16",
+   "split": "diagnostic",
+   "category": "comparison",
+   "question": "Compare the burn times of FLEX-120 and FLEX-121.",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "refused": false,
+   "should_refuse": false,
+   "abstention_reason": null,
+   "facts": [
+    "FLEX-120 burn time: 1.43 s",
+    "FLEX-121 burn time: 8 s"
+   ],
+   "factual_correct": true,
+   "required": [
+    "data:source_pending_verification",
+    "measurement:no_reported_uncertainty"
+   ],
+   "produced": [
+    "data:not_verified_against_database",
+    "data:source_pending_verification",
+    "measurement:no_reported_uncertainty"
+   ],
+   "missing_codes": [],
+   "unsupported_explanations": [],
+   "contradictory_codes": [],
+   "forbidden_terms": [],
+   "uncertainty": [
+    {
+     "kind": "data",
+     "code": "source_pending_verification",
+     "detail": "PSI-69 is PENDING_VERIFICATION: cited as evidence, not presented as verified",
+     "evidence": [
+      "PSI-69"
+     ]
+    },
+    {
+     "kind": "measurement",
+     "code": "no_reported_uncertainty",
+     "detail": "the PSI-69 table reports this value without an uncertainty; none is assumed or added",
+     "evidence": [
+      "2310756f-e5dc-5a3f-9749-511aa700d62f",
+      "4c442878-5385-5a5b-b55d-cb8515439edd"
+     ]
+    },
+    {
+     "kind": "data",
+     "code": "not_verified_against_database",
+     "detail": "measurement ids follow the Data Platform contract but were not checked against its database",
+     "evidence": [
+      "2310756f-e5dc-5a3f-9749-511aa700d62f",
+      "4c442878-5385-5a5b-b55d-cb8515439edd"
+     ]
+    }
+   ],
+   "answer": "FLEX-121 burn time: 8 s (reported in the source). FLEX-120 burn time: 1.43 s (reported in the source)."
+  },
+  {
+   "id": "U18",
+   "split": "diagnostic",
+   "category": "comparison",
+   "question": "How do the burning-rate constants of FLEX-007 and FLEX-240 compare?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "refused": false,
+   "should_refuse": false,
+   "abstention_reason": null,
+   "facts": [
+    "FLEX-007 reported burning-rate constant K: 0.67 mm^2/s",
+    "FLEX-240 reported burning-rate constant K: 0.51 mm^2/s"
+   ],
+   "factual_correct": true,
+   "required": [
+    "data:source_pending_verification",
+    "measurement:no_reported_uncertainty",
+    "model:reported_fit_value"
+   ],
+   "produced": [
+    "data:not_verified_against_database",
+    "data:source_pending_verification",
+    "measurement:no_reported_uncertainty",
+    "model:reported_fit_value"
+   ],
+   "missing_codes": [],
+   "unsupported_explanations": [],
+   "contradictory_codes": [],
+   "forbidden_terms": [],
+   "uncertainty": [
+    {
+     "kind": "data",
+     "code": "source_pending_verification",
+     "detail": "PSI-69 is PENDING_VERIFICATION: cited as evidence, not presented as verified",
+     "evidence": [
+      "PSI-69"
+     ]
+    },
+    {
+     "kind": "measurement",
+     "code": "no_reported_uncertainty",
+     "detail": "the PSI-69 table reports this value without an uncertainty; none is assumed or added",
+     "evidence": [
+      "340fb36b-3c62-5b96-aae0-fbdff4945c70",
+      "8e8b80b4-84e6-5cc0-839d-3e06c11f08ad"
+     ]
+    },
+    {
+     "kind": "model",
+     "code": "reported_fit_value",
+     "detail": "K is the FLEX team's average burning-rate constant from a linear fit of D^2 versus t (NASA/TP-2015-216046 App. A.1, cited for column semantics); it is reported, not recomputed, and no fit uncertainty is given",
+     "evidence": [
+      "340fb36b-3c62-5b96-aae0-fbdff4945c70",
+      "8e8b80b4-84e6-5cc0-839d-3e06c11f08ad"
+     ]
+    },
+    {
+     "kind": "data",
+     "code": "not_verified_against_database",
+     "detail": "measurement ids follow the Data Platform contract but were not checked against its database",
+     "evidence": [
+      "340fb36b-3c62-5b96-aae0-fbdff4945c70",
+      "8e8b80b4-84e6-5cc0-839d-3e06c11f08ad"
+     ]
+    }
+   ],
+   "answer": "FLEX-007 reported burning-rate constant K: 0.67 mm^2/s (reported by the FLEX team, not calculated here). FLEX-240 reported burning-rate constant K: 0.51 mm^2/s (reported by the FLEX team, not calculated here)."
+  },
+  {
+   "id": "U20",
+   "split": "diagnostic",
+   "category": "ood",
+   "question": "What is the boiling point of n-heptane?",
+   "expected": "abstained",
+   "got": "abstained",
+   "status_ok": true,
+   "refused": true,
+   "should_refuse": true,
+   "abstention_reason": "the question uses terms absent from the evidence corpus: boiling",
+   "facts": [],
+   "factual_correct": null,
+   "required": [],
+   "produced": [
+    "retrieval:out_of_corpus_terms"
+   ],
+   "missing_codes": [],
+   "unsupported_explanations": [],
+   "contradictory_codes": [],
+   "forbidden_terms": [],
+   "uncertainty": [
+    {
+     "kind": "retrieval",
+     "code": "out_of_corpus_terms",
+     "detail": "the question uses terms absent from the evidence corpus: boiling",
+     "evidence": []
+    }
+   ],
+   "answer": ""
+  },
+  {
+   "id": "U22",
+   "split": "diagnostic",
+   "category": "ood",
+   "question": "What was the total cost of the FLEX experiment?",
+   "expected": "abstained",
+   "got": "abstained",
+   "status_ok": true,
+   "refused": true,
+   "should_refuse": true,
+   "abstention_reason": "the question uses terms absent from the evidence corpus: cost",
+   "facts": [],
+   "factual_correct": null,
+   "required": [],
+   "produced": [
+    "retrieval:out_of_corpus_terms"
+   ],
+   "missing_codes": [],
+   "unsupported_explanations": [],
+   "contradictory_codes": [],
+   "forbidden_terms": [],
+   "uncertainty": [
+    {
+     "kind": "retrieval",
+     "code": "out_of_corpus_terms",
+     "detail": "the question uses terms absent from the evidence corpus: cost",
+     "evidence": []
+    }
+   ],
+   "answer": ""
+  },
+  {
+   "id": "U24",
+   "split": "diagnostic",
+   "category": "ood",
+   "question": "What would the burning-rate constant of methanol be at 5 atm?",
+   "expected": "abstained",
+   "got": "answered",
+   "status_ok": false,
+   "refused": false,
+   "should_refuse": true,
+   "abstention_reason": null,
+   "facts": [],
+   "factual_correct": null,
+   "required": [],
+   "produced": [
+    "data:not_verified_against_database",
+    "data:source_pending_verification",
+    "measurement:no_reported_uncertainty",
+    "model:reported_fit_value",
+    "retrieval:sentences_withheld"
+   ],
+   "missing_codes": [],
+   "unsupported_explanations": [],
+   "contradictory_codes": [],
+   "forbidden_terms": [],
+   "uncertainty": [
+    {
+     "kind": "data",
+     "code": "source_pending_verification",
+     "detail": "PSI-69 is PENDING_VERIFICATION: cited as evidence, not presented as verified",
+     "evidence": [
+      "PSI-69"
+     ]
+    },
+    {
+     "kind": "measurement",
+     "code": "no_reported_uncertainty",
+     "detail": "the PSI-69 table reports this value without an uncertainty; none is assumed or added",
+     "evidence": [
+      "00a1417a-0006-547c-b510-7e38c5dc1842",
+      "2c19e6d7-dd62-5dba-9362-754768a11bea"
+     ]
+    },
+    {
+     "kind": "model",
+     "code": "reported_fit_value",
+     "detail": "K is the FLEX team's average burning-rate constant from a linear fit of D^2 versus t (NASA/TP-2015-216046 App. A.1, cited for column semantics); it is reported, not recomputed, and no fit uncertainty is given",
+     "evidence": [
+      "00a1417a-0006-547c-b510-7e38c5dc1842",
+      "2c19e6d7-dd62-5dba-9362-754768a11bea"
+     ]
+    },
+    {
+     "kind": "data",
+     "code": "not_verified_against_database",
+     "detail": "measurement ids follow the Data Platform contract but were not checked against its database",
+     "evidence": [
+      "00a1417a-0006-547c-b510-7e38c5dc1842",
+      "2c19e6d7-dd62-5dba-9362-754768a11bea"
+     ]
+    },
+    {
+     "kind": "retrieval",
+     "code": "sentences_withheld",
+     "detail": "1 retrieved sentence(s) withheld: they do not address the question's terms",
+     "evidence": []
+    }
+   ],
+   "answer": "FLEX-163 reported burning-rate constant K: 0.37 mm^2/s (reported by the FLEX team, not calculated here). FLEX-088 reported burning-rate constant K: 0.53 mm^2/s (reported by the FLEX team, not calculated here)."
+  },
+  {
+   "id": "U26",
+   "split": "diagnostic",
+   "category": "unsupported_conclusion",
+   "question": "Did FLEX prove that SF6 is the best fire suppressant?",
+   "expected": "abstained",
+   "got": "abstained",
+   "status_ok": true,
+   "refused": true,
+   "should_refuse": true,
+   "abstention_reason": "the question uses terms absent from the evidence corpus: best",
+   "facts": [],
+   "factual_correct": null,
+   "required": [],
+   "produced": [
+    "retrieval:out_of_corpus_terms"
+   ],
+   "missing_codes": [],
+   "unsupported_explanations": [],
+   "contradictory_codes": [],
+   "forbidden_terms": [],
+   "uncertainty": [
+    {
+     "kind": "retrieval",
+     "code": "out_of_corpus_terms",
+     "detail": "the question uses terms absent from the evidence corpus: best",
+     "evidence": []
+    }
+   ],
+   "answer": ""
+  }
+ ]
+}

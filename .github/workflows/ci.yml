@@ -1,0 +1,182 @@
+name: FlameScope CI
+
+on:
+  push:
+    branches:
+      - main
+      - 'release/**'
+      - 'feat/**'
+      - 'integration/**'
+  pull_request:
+    branches:
+      - main
+      - 'release/**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend-checks:
+    name: Backend Lint, Types & Pytest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install backend dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e "backend[dev,data,rag,vision]"
+
+      - name: Run Ruff Lint Check
+        working-directory: backend
+        run: ruff check app scripts tests
+
+      - name: Run Mypy Static Type Analysis
+        working-directory: backend
+        run: mypy app scripts
+
+      - name: Provision PSI Sources & Metadata for Backend Tests
+        run: |
+          python backend/scripts/fetch_psi_table.py PSI-69 PSI-25 PSI-98 --root . --timeout 60 --attempts 3
+
+      - name: Run Pytest Test Suite
+        working-directory: backend
+        run: pytest -v
+
+  postgres-service-tests:
+    name: PostgreSQL 16 Migration & Loader Tests
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install backend dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e "backend[dev,data]"
+
+      - name: Run PostgreSQL 16 Migration & Schema Round-Trip Tests
+        working-directory: backend
+        env:
+          FLAMESCOPE_TEST_DATABASE_URL: postgresql+psycopg://postgres:password@localhost:5432/postgres
+        run: |
+          pytest -v tests/data_platform_tests/test_dp_postgres.py -k "test_postgres_migration_has_no_drift_and_round_trips"
+
+      - name: Provision PSI-69 Experimental Data for Loader Test
+        run: |
+          python backend/scripts/fetch_psi_table.py PSI-69 --root . --timeout 60 --attempts 3
+
+      - name: Run PostgreSQL 16 Idempotent Loader & JSONB Tests
+        working-directory: backend
+        env:
+          FLAMESCOPE_TEST_DATABASE_URL: postgresql+psycopg://postgres:password@localhost:5432/postgres
+          FLAMESCOPE_REQUIRE_RAW_DATA: '1'
+        run: |
+          pytest -v tests/data_platform_tests/test_dp_postgres.py -k "test_postgres_load_is_idempotent_and_jsonb_filters_work"
+
+  frontend-checks:
+    name: Frontend Vitest, Types & Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Run Vitest Unit Tests
+        working-directory: frontend
+        run: npx vitest run
+
+      - name: Run App TypeScript Check
+        working-directory: frontend
+        run: npm run typecheck
+
+      - name: Run Tests TypeScript Check
+        working-directory: frontend
+        run: npm run typecheck:tests
+
+      - name: Run Production Vite Build
+        working-directory: frontend
+        run: npm run build
+
+      - name: Run Bundle Size & Quality Check
+        working-directory: frontend
+        run: npm run check:bundle
+
+  frontend-e2e:
+    name: Frontend Playwright E2E Tests
+    runs-on: ubuntu-latest
+    needs: [frontend-checks]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Install Playwright Chromium Browser
+        working-directory: frontend
+        run: npx playwright install --with-deps chromium
+
+      - name: Build frontend for E2E preview
+        working-directory: frontend
+        run: npm run build
+
+      - name: Run Playwright E2E Tests
+        working-directory: frontend
+        run: npx playwright test
+
+      - name: Upload Playwright Artifacts on Failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-test-results
+          path: frontend/test-results/
+          retention-days: 7
+

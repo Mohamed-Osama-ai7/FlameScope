@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 500" width="980" height="500" font-family="Inter, Segoe UI, system-ui, sans-serif" role="img" aria-label="Reported burning-rate constant vs He (He-added atmospheres)">
+<rect width="980" height="500" fill="#fcfcfb"/>
+<text x="70" y="28" font-size="17" font-weight="600" fill="#0b0b0b">Reported burning-rate constant vs He (He-added atmospheres)</text>
+<text x="70" y="49" font-size="12.5" fill="#52514e">O2 also varies between runs here; see fixed-O2 strata in the summary. Colour = pressure cluster. Free-floating droplets only; not</text>
+<text x="70" y="65" font-size="12.5" fill="#52514e">shown: fiber/unknown-support runs (methanol 7, heptane 2).</text>
+<circle cx="75.0" cy="88.0" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>~0.7 atm nominal (526.3-544.4 mmHg)</title></circle>
+<text x="85" y="92" font-size="12" fill="#52514e">~0.7 atm nominal (526.3-544.4 mmHg)</text>
+<rect x="362.5" y="83.5" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>~1 atm nominal (752-774.1 mmHg)</title></rect>
+<text x="377.0" y="92" font-size="12" fill="#52514e">~1 atm nominal (752-774.1 mmHg)</text>
+<text x="70.0" y="118" font-size="13" font-weight="600" fill="#0b0b0b">Methanol (n = 19)</text>
+<line x1="70.0" x2="490.0" y1="416.0" y2="416.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="62.0" y="420.0" font-size="11" text-anchor="end" fill="#52514e">0</text>
+<line x1="70.0" x2="490.0" y1="344.0" y2="344.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="62.0" y="348.0" font-size="11" text-anchor="end" fill="#52514e">0.2</text>
+<line x1="70.0" x2="490.0" y1="272.0" y2="272.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="62.0" y="276.0" font-size="11" text-anchor="end" fill="#52514e">0.4</text>
+<line x1="70.0" x2="490.0" y1="200.0" y2="200.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="62.0" y="204.0" font-size="11" text-anchor="end" fill="#52514e">0.6</text>
+<line x1="70.0" x2="490.0" y1="128.0" y2="128.0" stroke="#e4e3df" stroke-width="1"/>
+<text x="62.0" y="132.0" font-size="11" text-anchor="end" fill="#52514e">0.8</text>
+<line x1="70.0" x2="70.0" y1="416" y2="420" stroke="#9a9893"/>
+<text x="70.0" y="434" font-size="11" text-anchor="middle" fill="#52514e">0</text>
+<line x1="154.0" x2="154.0" y1="416" y2="420" stroke="#9a9893"/>
+<text x="154.0" y="434" font-size="11" text-anchor="middle" fill="#52514e">0.1</text>
+<line x1="238.0" x2="238.0" y1="416" y2="420" stroke="#9a9893"/>
+<text x="238.0" y="434" font-size="11" text-anchor="middle" fill="#52514e">0.2</text>
+<line x1="322.0" x2="322.0" y1="416" y2="420" stroke="#9a9893"/>
+<text x="322.0" y="434" font-size="11" text-anchor="middle" fill="#52514e">0.3</text>
+<line x1="406.0" x2="406.0" y1="416" y2="420" stroke="#9a9893"/>
+<text x="406.0" y="434" font-size="11" text-anchor="middle" fill="#52514e">0.4</text>
+<line x1="490.0" x2="490.0" y1="416" y2="420" stroke="#9a9893"/>
+<text x="490.0" y="434" font-size="11" text-anchor="middle" fill="#52514e">0.5</text>
+<line x1="70.0" x2="490.0" y1="416" y2="416" stroke="#9a9893"/>
+<text x="280.0" y="456" font-size="12" text-anchor="middle" fill="#0b0b0b">He mole fraction</text>
+<circle cx="238.0" cy="192.8" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r251|FLEX-257|H10M101|11/18/11|14:48:10 | free_floating | Methanol | X_O2=0.24 X_CO2=0.0 X_He=0.2 | P=534.3 mmHg | D0=2.82 mm | K=0.62 mm2/s | Dext=1.03 | Extinction</title></circle>
+<circle cx="280.0" cy="200.0" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r253|FLEX-259|H11M101|11/18/11|16:59:20 | free_floating | Methanol | X_O2=0.23 X_CO2=0.0 X_He=0.25 | P=531.7 mmHg | D0=2.45 mm | K=0.6 mm2/s | Dext=0.86 | Extinction</title></circle>
+<circle cx="322.0" cy="214.4" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r255|FLEX-261|H12M101|11/18/11|18:53:50 | free_floating | Methanol | X_O2=0.21 X_CO2=0.0 X_He=0.3 | P=531.9 mmHg | D0=3.22 mm | K=0.56 mm2/s | Dext=None | Extinction</title></circle>
+<circle cx="322.0" cy="182.0" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r256|FLEX-262|H12M102|11/18/11|21:29:35 | free_floating | Methanol | X_O2=0.21 X_CO2=0.0 X_He=0.3 | P=531.2 mmHg | D0=3.25 mm | K=0.65 mm2/s | Dext=1.78 | Extinction</title></circle>
+<circle cx="364.0" cy="200.0" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r262|FLEX-268|H13M102|11/28/11|13:13:31 | free_floating | Methanol | X_O2=0.2 X_CO2=0.0 X_He=0.35 | P=527.6 mmHg | D0=3.87 mm | K=0.6 mm2/s | Dext=2.24 | Extinction</title></circle>
+<circle cx="364.0" cy="189.2" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r263|FLEX-269|H13M201|11/28/11|13:24:55 | free_floating | Methanol | X_O2=0.2 X_CO2=0.0 X_He=0.35 | P=527.9 mmHg | D0=2.95 mm | K=0.63 mm2/s | Dext=1.5 | Extinction</title></circle>
+<circle cx="406.0" cy="203.6" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r264|FLEX-270|H14M101|11/28/11|15:07:28 | free_floating | Methanol | X_O2=0.18 X_CO2=0.0 X_He=0.4 | P=532.4 mmHg | D0=3.5 mm | K=0.59 mm2/s | Dext=2.67 | Extinction</title></circle>
+<circle cx="406.0" cy="189.2" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r265|FLEX-271|H14M201|11/28/11|15:35:38 | free_floating | Methanol | X_O2=0.18 X_CO2=0.0 X_He=0.4 | P=532.9 mmHg | D0=2.7 mm | K=0.63 mm2/s | Dext=1.92 | Extinction</title></circle>
+<circle cx="448.0" cy="189.2" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r271|FLEX-277|H15M102|12/5/2011|22:54:10 | free_floating | Methanol | X_O2=0.17 X_CO2=0.0 X_He=0.45 | P=530.4 mmHg | D0=2.79 mm | K=0.63 mm2/s | Dext=2.3 | Extinction</title></circle>
+<rect x="107.5" y="227.9" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r222|FLEX-226|H01M102|9/9/2011|17:41:47 | free_floating | Methanol | X_O2=0.2 X_CO2=0.0 X_He=0.05 | P=759.2 mmHg | D0=2.91 mm | K=0.51 mm2/s | Dext=1.12 | Extinction</title></rect>
+<rect x="149.5" y="206.3" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r225|FLEX-231|H02M101|9/21/2011|22:28:54 | free_floating | Methanol | X_O2=0.19 X_CO2=0.0 X_He=0.1 | P=753.4 mmHg | D0=2.78 mm | K=0.57 mm2/s | Dext=None | Extinction</title></rect>
+<rect x="191.5" y="227.9" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r226|FLEX-232|H03M101|9/22/2011|0:02:52 | free_floating | Methanol | X_O2=0.18 X_CO2=0.0 X_He=0.15 | P=759.2 mmHg | D0=2.79 mm | K=0.51 mm2/s | Dext=1.3 | Extinction</title></rect>
+<rect x="233.5" y="235.1" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r239|FLEX-245|H04M101|10/1/2011|0:34:58 | free_floating | Methanol | X_O2=0.17 X_CO2=0.0 X_He=0.2 | P=754.2 mmHg | D0=2.99 mm | K=0.49 mm2/s | Dext=None | Extinction</title></rect>
+<rect x="233.5" y="227.9" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r240|FLEX-246|H04M202|10/1/2011|1:21:41 | free_floating | Methanol | X_O2=0.17 X_CO2=0.0 X_He=0.2 | P=757.0 mmHg | D0=2.9 mm | K=0.51 mm2/s | Dext=1.42 | Extinction</title></rect>
+<rect x="275.5" y="227.9" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r241|FLEX-247|H05M102|10/1/2011|2:58:40 | free_floating | Methanol | X_O2=0.16 X_CO2=0.0 X_He=0.25 | P=759.9 mmHg | D0=3.4 mm | K=0.51 mm2/s | Dext=2.79 | Extinction</title></rect>
+<rect x="317.5" y="209.9" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r245|FLEX-251|H06M201|10/7/2011|13:00:56 | free_floating | Methanol | X_O2=0.15 X_CO2=0.0 X_He=0.3 | P=756.7 mmHg | D0=2.52 mm | K=0.56 mm2/s | Dext=2.06 | Extinction</title></rect>
+<rect x="359.5" y="209.9" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r246|FLEX-252|H07M101|10/7/2011|14:25:42 | free_floating | Methanol | X_O2=0.14 X_CO2=0.0 X_He=0.35 | P=759.2 mmHg | D0=2.44 mm | K=0.56 mm2/s | Dext=2.26 | Extinction</title></rect>
+<rect x="359.5" y="202.7" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r247|FLEX-253|H07M202|10/7/2011|15:06:17 | free_floating | Methanol | X_O2=0.14 X_CO2=0.0 X_He=0.35 | P=759.8 mmHg | D0=1.88 mm | K=0.58 mm2/s | Dext=1.73 | Extinction</title></rect>
+<rect x="401.5" y="227.9" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r248|FLEX-254|H08M101|10/11/11|12:11:56 | free_floating | Methanol | X_O2=0.13 X_CO2=0.0 X_He=0.4 | P=763.5 mmHg | D0=3.56 mm | K=0.51 mm2/s | Dext=3.54 | Extinction</title></rect>
+<text x="540.0" y="118" font-size="13" font-weight="600" fill="#0b0b0b">Heptane (n = 19)</text>
+<line x1="540.0" x2="960.0" y1="416.0" y2="416.0" stroke="#e4e3df" stroke-width="1"/>
+<line x1="540.0" x2="960.0" y1="344.0" y2="344.0" stroke="#e4e3df" stroke-width="1"/>
+<line x1="540.0" x2="960.0" y1="272.0" y2="272.0" stroke="#e4e3df" stroke-width="1"/>
+<line x1="540.0" x2="960.0" y1="200.0" y2="200.0" stroke="#e4e3df" stroke-width="1"/>
+<line x1="540.0" x2="960.0" y1="128.0" y2="128.0" stroke="#e4e3df" stroke-width="1"/>
+<line x1="540.0" x2="540.0" y1="416" y2="420" stroke="#9a9893"/>
+<text x="540.0" y="434" font-size="11" text-anchor="middle" fill="#52514e">0</text>
+<line x1="624.0" x2="624.0" y1="416" y2="420" stroke="#9a9893"/>
+<text x="624.0" y="434" font-size="11" text-anchor="middle" fill="#52514e">0.1</text>
+<line x1="708.0" x2="708.0" y1="416" y2="420" stroke="#9a9893"/>
+<text x="708.0" y="434" font-size="11" text-anchor="middle" fill="#52514e">0.2</text>
+<line x1="792.0" x2="792.0" y1="416" y2="420" stroke="#9a9893"/>
+<text x="792.0" y="434" font-size="11" text-anchor="middle" fill="#52514e">0.3</text>
+<line x1="876.0" x2="876.0" y1="416" y2="420" stroke="#9a9893"/>
+<text x="876.0" y="434" font-size="11" text-anchor="middle" fill="#52514e">0.4</text>
+<line x1="960.0" x2="960.0" y1="416" y2="420" stroke="#9a9893"/>
+<text x="960.0" y="434" font-size="11" text-anchor="middle" fill="#52514e">0.5</text>
+<line x1="540.0" x2="960.0" y1="416" y2="416" stroke="#9a9893"/>
+<text x="750.0" y="456" font-size="12" text-anchor="middle" fill="#0b0b0b">He mole fraction</text>
+<circle cx="708.0" cy="156.8" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r249|FLEX-255|H10H101|10/12/11|20:16:43 | free_floating | Heptane | X_O2=0.24 X_CO2=0.0 X_He=0.2 | P=534.0 mmHg | D0=3.78 mm | K=0.72 mm2/s | Dext=2.52 | Extinction</title></circle>
+<circle cx="750.0" cy="160.4" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r250|FLEX-256|H11H101|10/12/11|21:58:55 | free_floating | Heptane | X_O2=0.23 X_CO2=0.0 X_He=0.25 | P=532.2 mmHg | D0=2.8 mm | K=0.71 mm2/s | Dext=0.12 | Completion</title></circle>
+<circle cx="792.0" cy="174.8" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r258|FLEX-264|H12H101|11/22/11|13:04:17 | free_floating | Heptane | X_O2=0.21 X_CO2=0.0 X_He=0.3 | P=529.6 mmHg | D0=3.23 mm | K=0.67 mm2/s | Dext=2.33 | Extinction</title></circle>
+<circle cx="792.0" cy="164.0" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r259|FLEX-265|H12H201|11/22/11|15:49:36 | free_floating | Heptane | X_O2=0.21 X_CO2=0.0 X_He=0.3 | P=529.0 mmHg | D0=2.86 mm | K=0.7 mm2/s | Dext=0.71 | Extinction</title></circle>
+<circle cx="834.0" cy="196.4" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r260|FLEX-266|H13H101|11/22/11|20:40:42 | free_floating | Heptane | X_O2=0.2 X_CO2=0.0 X_He=0.35 | P=532.5 mmHg | D0=3.69 mm | K=0.61 mm2/s | Dext=3.32 | Extinction</title></circle>
+<circle cx="834.0" cy="174.8" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r261|FLEX-267|H13H201|11/22/11|20:58:21 | free_floating | Heptane | X_O2=0.2 X_CO2=0.0 X_He=0.35 | P=532.0 mmHg | D0=3.08 mm | K=0.67 mm2/s | Dext=1.69 | Extinction</title></circle>
+<circle cx="876.0" cy="160.4" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r267|FLEX-273|H14H101|11/30/11|8:39:18 | free_floating | Heptane | X_O2=0.18 X_CO2=0.0 X_He=0.4 | P=528.0 mmHg | D0=2.27 mm | K=0.71 mm2/s | Dext=1.64 | Extinction</title></circle>
+<circle cx="876.0" cy="138.8" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r268|FLEX-274|H14H201|11/30/11|9:49:07 | free_floating | Heptane | X_O2=0.18 X_CO2=0.0 X_He=0.4 | P=530.3 mmHg | D0=1.86 mm | K=0.77 mm2/s | Dext=0.84 | Extinction</title></circle>
+<circle cx="918.0" cy="142.4" r="5" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r269|FLEX-275|H15H101|11/30/11|11:30:51 | free_floating | Heptane | X_O2=0.17 X_CO2=0.0 X_He=0.45 | P=532.2 mmHg | D0=2.22 mm | K=0.76 mm2/s | Dext=1.86 | Extinction</title></circle>
+<rect x="577.5" y="206.3" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r224|FLEX-229|H01H102|9/13/2011|11:55:40 | free_floating | Heptane | X_O2=0.2 X_CO2=0.0 X_He=0.05 | P=755.3 mmHg | D0=2.25 mm | K=0.57 mm2/s | Dext=None | Completion</title></rect>
+<rect x="619.5" y="217.1" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r231|FLEX-237|H02H101|9/24/2011|2:44:09 | free_floating | Heptane | X_O2=0.19 X_CO2=0.0 X_He=0.1 | P=758.8 mmHg | D0=2.59 mm | K=0.54 mm2/s | Dext=None | Disruption</title></rect>
+<rect x="661.5" y="263.9" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r232|FLEX-238|H03H101|9/27/2011|12:08:14 | free_floating | Heptane | X_O2=0.18 X_CO2=0.0 X_He=0.15 | P=763.7 mmHg | D0=3.52 mm | K=0.41 mm2/s | Dext=3.28 | Extinction</title></rect>
+<rect x="661.5" y="235.1" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r233|FLEX-239|H03H201|9/27/2011|13:00:54 | free_floating | Heptane | X_O2=0.18 X_CO2=0.0 X_He=0.15 | P=765.9 mmHg | D0=2.3 mm | K=0.49 mm2/s | Dext=None | Completion</title></rect>
+<rect x="661.5" y="227.9" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r234|FLEX-240|H03H202|9/27/2011|13:25:07 | free_floating | Heptane | X_O2=0.18 X_CO2=0.0 X_He=0.15 | P=766.5 mmHg | D0=2.27 mm | K=0.51 mm2/s | Dext=None | Completion</title></rect>
+<rect x="703.5" y="245.9" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r235|FLEX-241|H04H101|9/27/2011|15:00:33 | free_floating | Heptane | X_O2=0.17 X_CO2=0.0 X_He=0.2 | P=759.3 mmHg | D0=2.85 mm | K=0.46 mm2/s | Dext=2.6 | Extinction</title></rect>
+<rect x="703.5" y="199.1" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r236|FLEX-242|H04H201|9/27/2011|15:12:24 | free_floating | Heptane | X_O2=0.17 X_CO2=0.0 X_He=0.2 | P=759.3 mmHg | D0=2.12 mm | K=0.59 mm2/s | Dext=1.39 | Extinction</title></rect>
+<rect x="745.5" y="195.5" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r243|FLEX-249|H05H103|10/5/2011|14:58:32 | free_floating | Heptane | X_O2=0.16 X_CO2=0.0 X_He=0.25 | P=757.9 mmHg | D0=1.49 mm | K=0.6 mm2/s | Dext=0.69 | Extinction</title></rect>
+<rect x="661.5" y="213.5" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r273|FLEX-279|H19H101|12/8/2011|22:29:44 | free_floating | Heptane | X_O2=0.21 X_CO2=0.0 X_He=0.15 | P=764.7 mmHg | D0=3.54 mm | K=0.55 mm2/s | Dext=2.91 | Extinction</title></rect>
+<rect x="661.5" y="177.5" width="9" height="9" rx="1.5" fill="#eb6834" stroke="#fcfcfb" stroke-width="2"><title>PSI69-r274|FLEX-280|H19H201|12/8/2011|23:41:45 | free_floating | Heptane | X_O2=0.21 X_CO2=0.0 X_He=0.15 | P=766.2 mmHg | D0=2.82 mm | K=0.65 mm2/s | Dext=0.73 | Extinction</title></rect>
+<text transform="translate(18 272) rotate(-90)" font-size="12" text-anchor="middle" fill="#0b0b0b">Reported K (mm2/s)</text>
+<text x="70" y="476" font-size="11" fill="#52514e">Source: NASA PSI-69 (FLEX), DOI 10.60555/mbq8-0451, CC0. NASA-reported values; descriptive and observational only - no causal claim, not a safety</text>
+<text x="70" y="490" font-size="11" fill="#52514e">limit. Hover a point for its record.</text>
+</svg>

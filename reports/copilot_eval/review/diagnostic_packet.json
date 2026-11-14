@@ -1,0 +1,62 @@
+[
+ {
+  "id": "A19",
+  "question": "On which hardware were the FLEX experiments run?",
+  "claims": [
+   {
+    "claim": "For the slow flow tests (in the flight experiment), the configuration of the flight hardware did not allow for adequate diagnostics over the entire test for a droplet in a uniform, steady convective flow.",
+    "cited_chunk_text": [
+     "PSI-69 FLEX - approach: Instead of observing flame extinction, however, the procedure involved an iterative sequence of tests (burn to completion followed by a no ignition test) with progressively smaller increments in ambient oxygen mole fraction to determine the LOI . For the slow flow tests (in the flight experiment), the configuration of the flight hardware did not allow for adequate diagnostics over the entire test for a droplet in a uniform, steady convective flow. In these tests, the procedure will be to duplicate tests above which yield finite-sized extinction droplet diameters."
+    ]
+   },
+   {
+    "claim": "Hardware: Combustion Integrated Rack (CIR)-Fluids and Combustion Facility (FCF), Multi-user Droplet Combustion Appartatus (MDCA).",
+    "cited_chunk_text": [
+     "PSI-69 (FLEX) Flame Extinguishment Experiment. Proposal title: Droplet Flame Extinguishment in Microgravity. Hardware: Combustion Integrated Rack (CIR)-Fluids and Combustion Facility (FCF), Multi-user Droplet Combustion Appartatus (MDCA). Flight program: International Space Station (ISS). Managing centre: Glenn Research Center (GRC). Investigation dates in PSI record: 08-01-2007 to 07-31-2016. DOI: 10.60555/mbq8-0451. PSI licence: CC0-1.0. PSI record modified: 06-Jun-2025."
+    ]
+   }
+  ]
+ },
+ {
+  "id": "A21",
+  "question": "How was the LOI determined when extinction droplets were too small to observe?",
+  "claims": [
+   {
+    "claim": "PSI-69 FLEX - approach: There were ambient conditions where the extinction droplet sizes at all ambient oxygen mole fractions were too small to either be observed or measured with the available diagnostics.",
+    "cited_chunk_text": [
+     "PSI-69 FLEX - approach: There were ambient conditions where the extinction droplet sizes at all ambient oxygen mole fractions were too small to either be observed or measured with the available diagnostics. In this case, the determination of the LOI is similar, but more iterative. Instead of observing flame extinction, however, the procedure involved an iterative sequence of tests (burn to completion followed by a no ignition test) with progressively smaller increments in ambient oxygen mole fraction to determine the LOI ."
+    ]
+   },
+   {
+    "claim": "There were ambient conditions where the extinction droplet sizes at all ambient oxygen mole fractions were too small to either be observed or measured with the available diagnostics.",
+    "cited_chunk_text": [
+     "PSI-69 FLEX - approach: 4. Perform a droplet combustion test. 5. Increase the droplet size or repeat the test (if finite extinction diameter at flame extinction observed). 6. Continue steps 4 and 5 until flame exists for only a short time after ignition (radiative extinction). 7. Continue steps 4 thru 6 at a decreased ambient oxygen mole fraction. 8. Continue step 7 to an ambient oxygen mole fraction where the droplet does not ignite. There were ambient conditions where the extinction droplet sizes at all ambient oxygen mole fractions were too small to either be observed or measured with the available diagnostics."
+    ]
+   }
+  ]
+ },
+ {
+  "id": "A23",
+  "question": "How does FLEX contribute to crew safety on future space missions?",
+  "claims": [
+   {
+    "claim": "By enhancing our understanding of microgravity combustion, the mission directly contributes to improved fire safety protocols for future space missions, ensuring the safety of crew members in environments where traditional fire suppression methods may be ineffective.",
+    "cited_chunk_text": [
+     "PSI-69 FLEX - researchImpacts: The research impacts and Earth benefits of the FLEX mission are significant and multifaceted. By enhancing our understanding of microgravity combustion, the mission directly contributes to improved fire safety protocols for future space missions, ensuring the safety of crew members in environments where traditional fire suppression methods may be ineffective. On Earth, the insights gained from these experiments have the potential to advance fire safety in confined and reduced-gravity environments, such as submarines or high-altitude aircraft."
+    ]
+   },
+   {
+    "claim": "These investigations are essential for advancing the fundamental understanding of combustion processes in microgravity and enhancing fire safety protocols for future space missions.",
+    "cited_chunk_text": [
+     "PSI-69 FLEX - objective: Key flight experiment goals include obtaining high-resolution measurements of droplet burning rates, flame extinction behavior, heat radiation, soot levels, and temperature profiles, while systematically analyzing the effects of different ambient conditions and suppressant concentrations. These investigations are essential for advancing the fundamental understanding of combustion processes in microgravity and enhancing fire safety protocols for future space missions."
+    ]
+   },
+   {
+    "claim": "Overall, the FLEX mission's contributions to combustion science have the potential to enhance both space exploration safety and terrestrial fire safety technologies.",
+    "cited_chunk_text": [
+     "PSI-69 FLEX - researchImpacts: Additionally, the study of ''cool flames'' and low-temperature combustion processes observed in microgravity can inform the design of advanced combustion engines, leading to improved fuel efficiency and reduced emissions in automotive and industrial applications. Overall, the FLEX mission's contributions to combustion science have the potential to enhance both space exploration safety and terrestrial fire safety technologies."
+    ]
+   }
+  ]
+ }
+]

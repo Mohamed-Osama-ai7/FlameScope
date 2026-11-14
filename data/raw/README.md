@@ -1,0 +1,1 @@
+Place original downloaded source files here, organized by source ID. Never edit originals. Record retrieval date, official URL, version, license and SHA-256 in the metadata registry/inventory. Do not commit large or restricted source files without checking license and repository policy.

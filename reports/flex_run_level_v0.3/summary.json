@@ -1,0 +1,6378 @@
+{
+  "analysis": "FLEX run-level exploratory analysis",
+  "analysis_version": "0.3.0",
+  "source": {
+    "source_id": "PSI-69",
+    "doi": "10.60555/mbq8-0451",
+    "file_name": "PSI-69_Experimental table_FLEX.csv",
+    "source_url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-69/download?file=PSI-69_Experimental+table_FLEX.csv&version=1&redirect=false",
+    "psi_file_version": "1",
+    "psi_s3_version_id": "TParjCiGvSeDqRYFafCSaXSv1jLiimyd",
+    "sha256": "37c88ce8ae9391b7544ff630a45ce87543d04d317cdbfbed104fe7d5c27e1b96",
+    "sha256_verified_before_analysis": true,
+    "byte_size": 24776,
+    "license": "CC0-1.0",
+    "retrieved_at_utc": "2026-11-13T01:17:04Z",
+    "schema_reference": "NASA/TP-2015-216046 Appendix A.1 and Table IX (https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf)"
+  },
+  "scope": {
+    "psi_rows_analysed": 274,
+    "nasa_report_states_tests": 284,
+    "note": "274 PSI rows are not the 284 tests stated by NASA/TP-2015-216046; difference unresolved (see data/metadata/flex_report_reconciliation.json). Results describe the 274 PSI rows only."
+  },
+  "enrichment": {
+    "file": "data/derived/flex_enrichment_v1.csv",
+    "sha256": "fd929d6ffac8465f78c5b428d14bda5c26b6baa6688a89dc9aec3533e4b54bff",
+    "built_by": "backend/scripts/build_flex_enrichment.py from NASA/TP-2015-216046 (PDF sha256 b4f6ca983e2792c33a0b92220a791a818f426bb635b94f7fd33dc8c9c471e79d)"
+  },
+  "supersedes_interpretation_of": "v0.1.0 (reports/flex_run_level/, outputs kept unchanged); see docs/11",
+  "value_origin": "reported_in_source (burning_rate_constant_mm2_s); d2-law calculator NOT used",
+  "multiple_comparisons": {
+    "strata_total": 82,
+    "strata_with_rho": 34,
+    "statement": "Many strata were examined; no correction for multiple comparisons is applied and no coefficient is a test of significance. All strata are reported, none selected."
+  },
+  "analysis_choices": {
+    "pressure_cluster_gap_mmHg": 100.0,
+    "composition_sum_tolerance_report_only": 0.02,
+    "min_n_for_spearman": 5,
+    "min_n_meaning": "reporting floor only; n >= 5 is not evidence of reliability",
+    "pressure_cluster_justification": "clusters identical for gap rules 25-200 mmHg and labelled by NASA nominal design levels 0.70/1.00/2.03/2.72/3.05 atm",
+    "support_mode_stratification": "NOT used: support modes come only from NASA/TP-2015-216046 captions (unregistered); strata pool support modes and are labelled support_mode='not_controlled', so support mode is an uncontrolled confounder in every K and Dext stratum",
+    "sensitivity_rows": [
+      "shutter_1_30s_period",
+      "reported_K_0.05_short_translated_burn"
+    ],
+    "statistic": "Spearman rank correlation (descriptive; no p-values, no regression, no prediction)",
+    "compositional_rule": "O2 only within N2-only runs; CO2/He only at fixed O2 (with N2-only zero-diluent runs at the same O2 and pressure cluster as reference)"
+  },
+  "quality": {
+    "rows_total": 274,
+    "rows_by_fuel": {
+      "Methanol": 157,
+      "Heptane": 117
+    },
+    "rows_by_test_end": {
+      "Disruption": 61,
+      "Extinction": 186,
+      "Completion": 27
+    },
+    "rows_by_diluent_family": {
+      "Methanol": {
+        "N2_only": 54,
+        "CO2_added": 75,
+        "He_added": 28
+      },
+      "Heptane": {
+        "N2_only": 47,
+        "CO2_added": 48,
+        "He_added": 22
+      }
+    },
+    "pressure_clusters": {
+      "~1 atm nominal (752-774.1 mmHg)": 161,
+      "~3.05 atm nominal (2318.8-2319.9 mmHg)": 3,
+      "~2.72 atm nominal (2055.6-2074.2 mmHg)": 4,
+      "~2.03 atm nominal (1545.7-1553.8 mmHg)": 2,
+      "~0.7 atm nominal (526.3-544.4 mmHg)": 103,
+      "pressure_invalid": 1
+    },
+    "row_flag_counts": {
+      "missing_test_time_gmt": 1,
+      "composition_sum_deviation": 6,
+      "duplicate_source_identifier": 2,
+      "dext_exceeds_d0": 1
+    },
+    "variable_coverage_by_fuel": {
+      "Methanol": {
+        "P_mmHg": {
+          "rows": 157,
+          "usable": 156,
+          "invalid_nonpositive_pressure": 1
+        },
+        "X_O2": {
+          "rows": 157,
+          "usable": 157
+        },
+        "X_N2": {
+          "rows": 157,
+          "usable": 157
+        },
+        "X_CO2": {
+          "rows": 157,
+          "usable": 157
+        },
+        "X_He": {
+          "rows": 157,
+          "usable": 157
+        },
+        "D0_mm": {
+          "rows": 157,
+          "usable": 154,
+          "missing_dash_marker": 1,
+          "missing_blank": 2
+        },
+        "Dext_mm": {
+          "rows": 157,
+          "usable": 117,
+          "missing_blank": 24,
+          "missing_dash_marker": 16
+        },
+        "K_reported_mm2_s": {
+          "rows": 157,
+          "usable": 151,
+          "missing_blank": 6
+        },
+        "burn_time_s": {
+          "rows": 157,
+          "usable": 156,
+          "missing_blank": 1,
+          "approximate": 1
+        }
+      },
+      "Heptane": {
+        "P_mmHg": {
+          "rows": 117,
+          "usable": 117
+        },
+        "X_O2": {
+          "rows": 117,
+          "usable": 117
+        },
+        "X_N2": {
+          "rows": 117,
+          "usable": 117
+        },
+        "X_CO2": {
+          "rows": 117,
+          "usable": 117
+        },
+        "X_He": {
+          "rows": 117,
+          "usable": 117
+        },
+        "D0_mm": {
+          "rows": 117,
+          "usable": 108,
+          "missing_blank": 4,
+          "missing_dash_marker": 5
+        },
+        "Dext_mm": {
+          "rows": 117,
+          "usable": 80,
+          "missing_blank": 25,
+          "zero_value_meaning_unconfirmed": 8,
+          "missing_dash_marker": 12
+        },
+        "K_reported_mm2_s": {
+          "rows": 117,
+          "usable": 107,
+          "missing_blank": 10
+        },
+        "burn_time_s": {
+          "rows": 117,
+          "usable": 112,
+          "missing_blank": 5,
+          "approximate": 1
+        }
+      }
+    },
+    "pressure_distribution": {
+      "valid_min_mmHg": 526.3,
+      "valid_max_mmHg": 2319.9,
+      "by_fuel_family_cluster": {
+        "Methanol": {
+          "N2_only | ~1 atm nominal (752-774.1 mmHg)": 42,
+          "CO2_added | ~3.05 atm nominal (2318.8-2319.9 mmHg)": 2,
+          "CO2_added | ~2.72 atm nominal (2055.6-2074.2 mmHg)": 4,
+          "CO2_added | ~2.03 atm nominal (1545.7-1553.8 mmHg)": 1,
+          "N2_only | ~0.7 atm nominal (526.3-544.4 mmHg)": 12,
+          "CO2_added | ~0.7 atm nominal (526.3-544.4 mmHg)": 38,
+          "CO2_added | pressure_invalid": 1,
+          "CO2_added | ~1 atm nominal (752-774.1 mmHg)": 29,
+          "He_added | ~1 atm nominal (752-774.1 mmHg)": 14,
+          "He_added | ~0.7 atm nominal (526.3-544.4 mmHg)": 14
+        },
+        "Heptane": {
+          "N2_only | ~1 atm nominal (752-774.1 mmHg)": 37,
+          "CO2_added | ~3.05 atm nominal (2318.8-2319.9 mmHg)": 1,
+          "CO2_added | ~2.03 atm nominal (1545.7-1553.8 mmHg)": 1,
+          "N2_only | ~0.7 atm nominal (526.3-544.4 mmHg)": 10,
+          "CO2_added | ~0.7 atm nominal (526.3-544.4 mmHg)": 19,
+          "CO2_added | ~1 atm nominal (752-774.1 mmHg)": 27,
+          "He_added | ~1 atm nominal (752-774.1 mmHg)": 12,
+          "He_added | ~0.7 atm nominal (526.3-544.4 mmHg)": 10
+        }
+      },
+      "records_above_1000_mmHg": [
+        {
+          "psi_row": 10,
+          "flex": 10,
+          "fuel": "Methanol",
+          "P_mmHg": 2319.7,
+          "composition": [
+            0.21,
+            0.09,
+            0.7,
+            0.0
+          ],
+          "K": 0.37,
+          "test_end": "Extinction"
+        },
+        {
+          "psi_row": 11,
+          "flex": 11,
+          "fuel": "Methanol",
+          "P_mmHg": 2318.8,
+          "composition": [
+            0.21,
+            0.09,
+            0.7,
+            0.0
+          ],
+          "K": 0.4,
+          "test_end": "Extinction"
+        },
+        {
+          "psi_row": 12,
+          "flex": 12,
+          "fuel": "Heptane",
+          "P_mmHg": 2319.9,
+          "composition": [
+            0.21,
+            0.09,
+            0.7,
+            0.0
+          ],
+          "K": null,
+          "test_end": "Disruption"
+        },
+        {
+          "psi_row": 13,
+          "flex": 13,
+          "fuel": "Methanol",
+          "P_mmHg": 2074.2,
+          "composition": [
+            0.21,
+            0.09,
+            0.7,
+            0.0
+          ],
+          "K": 0.49,
+          "test_end": "Extinction"
+        },
+        {
+          "psi_row": 14,
+          "flex": 14,
+          "fuel": "Methanol",
+          "P_mmHg": 2055.6,
+          "composition": [
+            0.21,
+            0.09,
+            0.7,
+            0.0
+          ],
+          "K": null,
+          "test_end": "Extinction"
+        },
+        {
+          "psi_row": 15,
+          "flex": 15,
+          "fuel": "Methanol",
+          "P_mmHg": 2066.6,
+          "composition": [
+            0.21,
+            0.09,
+            0.7,
+            0.0
+          ],
+          "K": null,
+          "test_end": "Extinction"
+        },
+        {
+          "psi_row": 16,
+          "flex": 16,
+          "fuel": "Methanol",
+          "P_mmHg": 2072.1,
+          "composition": [
+            0.21,
+            0.09,
+            0.7,
+            0.0
+          ],
+          "K": 0.53,
+          "test_end": "Extinction"
+        },
+        {
+          "psi_row": 17,
+          "flex": 17,
+          "fuel": "Methanol",
+          "P_mmHg": 1545.7,
+          "composition": [
+            0.21,
+            0.09,
+            0.7,
+            0.0
+          ],
+          "K": null,
+          "test_end": "Disruption"
+        },
+        {
+          "psi_row": 18,
+          "flex": 18,
+          "fuel": "Heptane",
+          "P_mmHg": 1553.8,
+          "composition": [
+            0.21,
+            0.09,
+            0.7,
+            0.0
+          ],
+          "K": 0.61,
+          "test_end": "Extinction"
+        }
+      ],
+      "invalid": [
+        {
+          "psi_row": 114,
+          "flex": 114,
+          "raw": "0",
+          "source_conflict": "Table IX/PSI 0 mmHg vs matrix Table VI 0.7 atm"
+        }
+      ]
+    },
+    "support_mode_by_fuel": {
+      "Methanol": {
+        "free_floating": 121,
+        "fiber_translated": 17,
+        "fiber_translation_not_stated": 18,
+        "conflicting_sources": 1
+      },
+      "Heptane": {
+        "free_floating": 88,
+        "fiber_translated": 13,
+        "fiber_translation_not_stated": 15,
+        "conflicting_sources": 1
+      }
+    },
+    "dext_origin_by_fuel": {
+      "Methanol": {
+        "value_with_non_extinction_end_semantics_unclear": 14,
+        "reported_extinction_no_extrapolation_noted": 84,
+        "not_listed_insufficient_view_per_A1": 24,
+        "not_applicable_no_extinction_per_A1": 11,
+        "reported_extinction_extrapolation_noted_in_caption": 19,
+        "inconsistent_dash_with_extinction_end": 5
+      },
+      "Heptane": {
+        "not_listed_insufficient_view_per_A1": 25,
+        "reported_extinction_no_extrapolation_noted": 54,
+        "zero_semantics_unconfirmed": 8,
+        "not_applicable_no_extinction_per_A1": 12,
+        "value_with_non_extinction_end_semantics_unclear": 16,
+        "reported_extinction_extrapolation_noted_in_caption": 2
+      }
+    },
+    "sensitivity_rows": {
+      "shutter_1_30s_period": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "reported_K_0.05_short_translated_burn": [
+        130
+      ]
+    }
+  },
+  "descriptive_by_fuel": {
+    "Methanol": {
+      "P_mmHg": {
+        "n": 156,
+        "min": 526.3,
+        "q1": 536.1750000000001,
+        "median": 759.1500000000001,
+        "q3": 765.5,
+        "max": 2319.7,
+        "mean": 728.1948717948718,
+        "sd": 315.19341461822
+      },
+      "X_O2": {
+        "n": 157,
+        "min": 0.12,
+        "q1": 0.16,
+        "median": 0.2,
+        "q3": 0.21,
+        "max": 0.34,
+        "mean": 0.19554140127388533,
+        "sd": 0.04942483161402906
+      },
+      "X_N2": {
+        "n": 157,
+        "min": 0.09,
+        "q1": 0.5,
+        "median": 0.63,
+        "q3": 0.79,
+        "max": 0.88,
+        "mean": 0.6117197452229299,
+        "sd": 0.18952091537357357
+      },
+      "X_CO2": {
+        "n": 157,
+        "min": 0.0,
+        "q1": 0.0,
+        "median": 0.0,
+        "q3": 0.25,
+        "max": 0.7,
+        "mean": 0.14267515923566879,
+        "sd": 0.19286763817017064
+      },
+      "X_He": {
+        "n": 157,
+        "min": 0.0,
+        "q1": 0.0,
+        "median": 0.0,
+        "q3": 0.0,
+        "max": 0.45,
+        "mean": 0.049044585987261156,
+        "sd": 0.11539665950532431
+      },
+      "D0_mm": {
+        "n": 154,
+        "min": 1.61,
+        "q1": 2.645,
+        "median": 3.05,
+        "q3": 3.5525,
+        "max": 4.53,
+        "mean": 3.0841558441558443,
+        "sd": 0.6392036521228515
+      },
+      "Dext_mm": {
+        "n": 117,
+        "min": 0.4,
+        "q1": 1.29,
+        "median": 1.66,
+        "q3": 2.32,
+        "max": 3.96,
+        "mean": 1.8473504273504273,
+        "sd": 0.7890220847859635
+      },
+      "K_reported_mm2_s": {
+        "n": 151,
+        "min": 0.2,
+        "q1": 0.385,
+        "median": 0.46,
+        "q3": 0.53,
+        "max": 0.74,
+        "mean": 0.47152317880794714,
+        "sd": 0.10944556238526902
+      },
+      "burn_time_s": {
+        "n": 156,
+        "min": 0.3,
+        "q1": 7.8,
+        "median": 11.899999999999999,
+        "q3": 17.85,
+        "max": 39.2,
+        "mean": 13.51044871794872,
+        "sd": 7.90855831590454
+      }
+    },
+    "Heptane": {
+      "P_mmHg": {
+        "n": 117,
+        "min": 528.0,
+        "q1": 537.2,
+        "median": 759.9,
+        "q3": 765.9,
+        "max": 2319.9,
+        "mean": 707.517094017094,
+        "sd": 201.7012391575455
+      },
+      "X_O2": {
+        "n": 117,
+        "min": 0.13,
+        "q1": 0.18,
+        "median": 0.2,
+        "q3": 0.23,
+        "max": 0.34,
+        "mean": 0.20752136752136757,
+        "sd": 0.045332221601804855
+      },
+      "X_N2": {
+        "n": 117,
+        "min": 0.09,
+        "q1": 0.56,
+        "median": 0.67,
+        "q3": 0.79,
+        "max": 0.86,
+        "mean": 0.6547008547008547,
+        "sd": 0.1527708033667826
+      },
+      "X_CO2": {
+        "n": 117,
+        "min": 0.0,
+        "q1": 0.0,
+        "median": 0.0,
+        "q3": 0.2,
+        "max": 0.7,
+        "mean": 0.09017094017094018,
+        "sd": 0.1413053852719955
+      },
+      "X_He": {
+        "n": 117,
+        "min": 0.0,
+        "q1": 0.0,
+        "median": 0.0,
+        "q3": 0.0,
+        "max": 0.45,
+        "mean": 0.04615384615384616,
+        "sd": 0.10790997328429613
+      },
+      "D0_mm": {
+        "n": 108,
+        "min": 1.1,
+        "q1": 2.4075,
+        "median": 2.92,
+        "q3": 3.4375,
+        "max": 4.67,
+        "mean": 2.8840740740740745,
+        "sd": 0.7559323475602295
+      },
+      "Dext_mm": {
+        "n": 80,
+        "min": 0.0,
+        "q1": 0.705,
+        "median": 2.3200000000000003,
+        "q3": 2.995,
+        "max": 4.6,
+        "mean": 2.0006250000000003,
+        "sd": 1.3152131691781932
+      },
+      "K_reported_mm2_s": {
+        "n": 107,
+        "min": 0.05,
+        "q1": 0.435,
+        "median": 0.54,
+        "q3": 0.635,
+        "max": 1.06,
+        "mean": 0.5447663551401869,
+        "sd": 0.16057882208631186
+      },
+      "burn_time_s": {
+        "n": 112,
+        "min": 0.55,
+        "q1": 3.35,
+        "median": 7.5,
+        "q3": 11.225,
+        "max": 24.0,
+        "mean": 7.938214285714286,
+        "sd": 5.717642873224946
+      }
+    }
+  },
+  "reported_K_by_fuel_and_support_mode": "not computed in v0.3.0 (support mode is not an input)",
+  "sensitivity_reported_K_0.05_FLEX_130": {
+    "primary_retains_source_value": true,
+    "heptane_K_all_rows": {
+      "n": 107,
+      "min": 0.05,
+      "q1": 0.435,
+      "median": 0.54,
+      "q3": 0.635,
+      "max": 1.06,
+      "mean": 0.5447663551401869,
+      "sd": 0.16057882208631186
+    },
+    "heptane_K_without_FLEX_130": {
+      "n": 106,
+      "min": 0.24,
+      "q1": 0.445,
+      "median": 0.54,
+      "q3": 0.6375,
+      "max": 1.06,
+      "mean": 0.5494339622641509,
+      "sd": 0.15387583237130018
+    },
+    "context": "Table IX value confirmed visually; caption: fiber-supported, translating 3 mm/s, very short burn, radiative extinction soon after translation began (burn time 0.6 s)."
+  },
+  "results": {
+    "strata": [
+      {
+        "analysis": "A1_O2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "diluent_family": "N2_only",
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "X_O2",
+        "y": "K_reported_mm2_s",
+        "n": 12,
+        "rho_spearman": 0.7778877190879672,
+        "x_summary": {
+          "n": 12,
+          "min": 0.2,
+          "q1": 0.275,
+          "median": 0.3,
+          "q3": 0.34,
+          "max": 0.34,
+          "mean": 0.2916666666666667,
+          "sd": 0.05812734192088848
+        },
+        "y_summary": {
+          "n": 12,
+          "min": 0.41,
+          "q1": 0.5125000000000001,
+          "median": 0.635,
+          "q3": 0.6525000000000001,
+          "max": 0.72,
+          "mean": 0.5941666666666667,
+          "sd": 0.10492060490358095
+        },
+        "psi_rows": [
+          20,
+          21,
+          22,
+          25,
+          26,
+          36,
+          37,
+          38,
+          40,
+          41,
+          54,
+          55
+        ],
+        "note": "pressure varies within cluster; D0 and test date vary",
+        "n_values_in_x_ties": 12,
+        "n_values_in_y_ties": 5,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A1_O2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "diluent_family": "N2_only",
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "X_O2",
+        "y": "K_reported_mm2_s",
+        "n": 41,
+        "rho_spearman": 0.817739793130696,
+        "x_summary": {
+          "n": 41,
+          "min": 0.12,
+          "q1": 0.13,
+          "median": 0.15,
+          "q3": 0.21,
+          "max": 0.3,
+          "mean": 0.17658536585365853,
+          "sd": 0.05397266697586663
+        },
+        "y_summary": {
+          "n": 41,
+          "min": 0.27,
+          "q1": 0.36,
+          "median": 0.4,
+          "q3": 0.51,
+          "max": 0.74,
+          "mean": 0.43975609756097556,
+          "sd": 0.11192604265491675
+        },
+        "psi_rows": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          29,
+          30,
+          33,
+          34,
+          44,
+          45,
+          46,
+          48,
+          58,
+          59,
+          60,
+          61,
+          65,
+          66,
+          67,
+          68,
+          71,
+          75,
+          76,
+          77,
+          78,
+          82,
+          84,
+          85,
+          86,
+          87,
+          202,
+          203,
+          215,
+          216,
+          217,
+          218,
+          219,
+          220,
+          221
+        ],
+        "note": "pressure varies within cluster; D0 and test date vary",
+        "n_values_in_x_ties": 41,
+        "n_values_in_y_ties": 24,
+        "sensitivity_rows": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "rho_without_sensitivity_rows": 0.7527025146889894,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.15,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 4,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 4,
+          "min": 0.5,
+          "q1": 0.5,
+          "median": 0.5,
+          "q3": 0.5,
+          "max": 0.5,
+          "mean": 0.5,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 4,
+          "min": 0.2,
+          "q1": 0.275,
+          "median": 0.32999999999999996,
+          "q3": 0.3675,
+          "max": 0.39,
+          "mean": 0.3125,
+          "sd": 0.08381527307120104
+        },
+        "psi_rows": [
+          140,
+          141,
+          142,
+          143
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 4,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.17,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 5,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 5,
+          "min": 0.45,
+          "q1": 0.45,
+          "median": 0.45,
+          "q3": 0.45,
+          "max": 0.45,
+          "mean": 0.45,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 5,
+          "min": 0.35,
+          "q1": 0.38,
+          "median": 0.39,
+          "q3": 0.4,
+          "max": 0.4,
+          "mean": 0.384,
+          "sd": 0.02073644135332774
+        },
+        "psi_rows": [
+          125,
+          126,
+          127,
+          128,
+          147
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 5,
+        "n_values_in_y_ties": 2,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.18,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 4,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 4,
+          "min": 0.4,
+          "q1": 0.4,
+          "median": 0.4,
+          "q3": 0.4,
+          "max": 0.4,
+          "mean": 0.4,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 4,
+          "min": 0.3,
+          "q1": 0.33,
+          "median": 0.345,
+          "q3": 0.365,
+          "max": 0.41,
+          "mean": 0.35000000000000003,
+          "sd": 0.04546060565661951
+        },
+        "psi_rows": [
+          121,
+          122,
+          123,
+          124
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 4,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.2,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 3
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 6,
+        "rho_spearman": 0.3015113445777636,
+        "x_summary": {
+          "n": 6,
+          "min": 0.0,
+          "q1": 0.0,
+          "median": 0.175,
+          "q3": 0.35,
+          "max": 0.35,
+          "mean": 0.17499999999999996,
+          "sd": 0.1917028951268081
+        },
+        "y_summary": {
+          "n": 6,
+          "min": 0.41,
+          "q1": 0.42,
+          "median": 0.455,
+          "q3": 0.46,
+          "max": 0.49,
+          "mean": 0.4466666666666666,
+          "sd": 0.03141125063837267
+        },
+        "psi_rows": [
+          36,
+          54,
+          55,
+          113,
+          115,
+          116
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 6,
+        "n_values_in_y_ties": 4,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.21,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 4,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 4,
+          "min": 0.3,
+          "q1": 0.3,
+          "median": 0.3,
+          "q3": 0.3,
+          "max": 0.3,
+          "mean": 0.3,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 4,
+          "min": 0.42,
+          "q1": 0.4275,
+          "median": 0.44,
+          "q3": 0.45,
+          "max": 0.45,
+          "mean": 0.4375,
+          "sd": 0.015000000000000012
+        },
+        "psi_rows": [
+          109,
+          110,
+          111,
+          112
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 4,
+        "n_values_in_y_ties": 2,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.23,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 12,
+        "rho_spearman": 0.18212048219818958,
+        "x_summary": {
+          "n": 12,
+          "min": 0.2,
+          "q1": 0.2,
+          "median": 0.25,
+          "q3": 0.25,
+          "max": 0.25,
+          "mean": 0.2333333333333333,
+          "sd": 0.024618298195866542
+        },
+        "y_summary": {
+          "n": 12,
+          "min": 0.42,
+          "q1": 0.47,
+          "median": 0.5,
+          "q3": 0.5125,
+          "max": 0.53,
+          "mean": 0.4891666666666666,
+          "sd": 0.03342789617107608
+        },
+        "psi_rows": [
+          97,
+          98,
+          99,
+          104,
+          105,
+          106,
+          107,
+          108,
+          183,
+          184,
+          185,
+          186
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 12,
+        "n_values_in_y_ties": 8,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.24,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 0.2,
+          "q1": 0.2,
+          "median": 0.2,
+          "q3": 0.2,
+          "max": 0.2,
+          "mean": 0.2,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.46,
+          "q1": 0.47500000000000003,
+          "median": 0.49,
+          "q3": 0.505,
+          "max": 0.52,
+          "mean": 0.49,
+          "sd": 0.042426406871192854
+        },
+        "psi_rows": [
+          176,
+          177
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.25,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 4,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 4,
+          "min": 0.15,
+          "q1": 0.15,
+          "median": 0.15,
+          "q3": 0.15,
+          "max": 0.15,
+          "mean": 0.15,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 4,
+          "min": 0.51,
+          "q1": 0.51,
+          "median": 0.52,
+          "q3": 0.53,
+          "max": 0.53,
+          "mean": 0.52,
+          "sd": 0.011547005383792526
+        },
+        "psi_rows": [
+          88,
+          89,
+          90,
+          91
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 4,
+        "n_values_in_y_ties": 4,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.14,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 4
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 6,
+        "rho_spearman": -0.2070196678027063,
+        "x_summary": {
+          "n": 6,
+          "min": 0.0,
+          "q1": 0.0,
+          "median": 0.0,
+          "q3": 0.27,
+          "max": 0.36,
+          "mean": 0.12,
+          "sd": 0.18590320061795598
+        },
+        "y_summary": {
+          "n": 6,
+          "min": 0.28,
+          "q1": 0.31,
+          "median": 0.345,
+          "q3": 0.365,
+          "max": 0.38,
+          "mean": 0.33666666666666667,
+          "sd": 0.039327683210007
+        },
+        "psi_rows": [
+          77,
+          78,
+          166,
+          167,
+          215,
+          216
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 6,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.15,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 5
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 9,
+        "rho_spearman": -0.2620001293828119,
+        "x_summary": {
+          "n": 9,
+          "min": 0.0,
+          "q1": 0.0,
+          "median": 0.0,
+          "q3": 0.32,
+          "max": 0.32,
+          "mean": 0.14222222222222222,
+          "sd": 0.16865480854231357
+        },
+        "y_summary": {
+          "n": 9,
+          "min": 0.28,
+          "q1": 0.37,
+          "median": 0.38,
+          "q3": 0.4,
+          "max": 0.42,
+          "mean": 0.3744444444444444,
+          "sd": 0.04003470716488104
+        },
+        "psi_rows": [
+          65,
+          66,
+          67,
+          68,
+          71,
+          161,
+          162,
+          163,
+          164
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 9,
+        "n_values_in_y_ties": 4,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.16,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 4,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 4,
+          "min": 0.25,
+          "q1": 0.25,
+          "median": 0.25,
+          "q3": 0.25,
+          "max": 0.25,
+          "mean": 0.25,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 4,
+          "min": 0.3,
+          "q1": 0.3525,
+          "median": 0.375,
+          "q3": 0.38,
+          "max": 0.38,
+          "mean": 0.35749999999999993,
+          "sd": 0.03862210075418823
+        },
+        "psi_rows": [
+          157,
+          158,
+          159,
+          160
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 4,
+        "n_values_in_y_ties": 2,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.17,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 0.2,
+          "q1": 0.2,
+          "median": 0.2,
+          "q3": 0.2,
+          "max": 0.2,
+          "mean": 0.2,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.39,
+          "q1": 0.3925,
+          "median": 0.395,
+          "q3": 0.3975,
+          "max": 0.4,
+          "mean": 0.395,
+          "sd": 0.007071067811865481
+        },
+        "psi_rows": [
+          192,
+          193
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.18,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 4
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 10,
+        "rho_spearman": 0.10825317547305482,
+        "x_summary": {
+          "n": 10,
+          "min": 0.0,
+          "q1": 0.0,
+          "median": 0.15,
+          "q3": 0.15,
+          "max": 0.15,
+          "mean": 0.09,
+          "sd": 0.07745966692414834
+        },
+        "y_summary": {
+          "n": 10,
+          "min": 0.36,
+          "q1": 0.42,
+          "median": 0.425,
+          "q3": 0.445,
+          "max": 0.5,
+          "mean": 0.43,
+          "sd": 0.03620926830400072
+        },
+        "psi_rows": [
+          58,
+          59,
+          60,
+          61,
+          151,
+          152,
+          153,
+          189,
+          190,
+          191
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 10,
+        "n_values_in_y_ties": 5,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.19,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 0.1,
+          "q1": 0.1,
+          "median": 0.1,
+          "q3": 0.1,
+          "max": 0.1,
+          "mean": 0.1,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.46,
+          "q1": 0.4625,
+          "median": 0.46499999999999997,
+          "q3": 0.46749999999999997,
+          "max": 0.47,
+          "mean": 0.46499999999999997,
+          "sd": 0.007071067811865442
+        },
+        "psi_rows": [
+          187,
+          188
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.2,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 6,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 6,
+          "min": 0.05,
+          "q1": 0.05,
+          "median": 0.05,
+          "q3": 0.05,
+          "max": 0.05,
+          "mean": 0.049999999999999996,
+          "sd": 7.601177430610146e-18
+        },
+        "y_summary": {
+          "n": 6,
+          "min": 0.41,
+          "q1": 0.45,
+          "median": 0.45999999999999996,
+          "q3": 0.4775,
+          "max": 0.49,
+          "mean": 0.4583333333333333,
+          "sd": 0.028577380332470412
+        },
+        "psi_rows": [
+          144,
+          145,
+          146,
+          199,
+          200,
+          201
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 6,
+        "n_values_in_y_ties": 2,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.21,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 12
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 15,
+        "rho_spearman": -0.25232493379009535,
+        "x_summary": {
+          "n": 15,
+          "min": 0.0,
+          "q1": 0.0,
+          "median": 0.0,
+          "q3": 0.0,
+          "max": 0.15,
+          "mean": 0.029999999999999995,
+          "sd": 0.06210590034081187
+        },
+        "y_summary": {
+          "n": 15,
+          "min": 0.27,
+          "q1": 0.475,
+          "median": 0.51,
+          "q3": 0.53,
+          "max": 0.6,
+          "mean": 0.4973333333333333,
+          "sd": 0.07977348885318683
+        },
+        "psi_rows": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          33,
+          34,
+          46,
+          48,
+          168,
+          169,
+          170,
+          202,
+          203
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 15,
+        "n_values_in_y_ties": 9,
+        "sensitivity_rows": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "rho_without_sensitivity_rows": 0.045834924851410566,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~2.72 atm nominal (2055.6-2074.2 mmHg)",
+          "X_O2_fixed": 0.21,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 0.7,
+          "q1": 0.7,
+          "median": 0.7,
+          "q3": 0.7,
+          "max": 0.7,
+          "mean": 0.7,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.49,
+          "q1": 0.5,
+          "median": 0.51,
+          "q3": 0.52,
+          "max": 0.53,
+          "mean": 0.51,
+          "sd": 0.028284271247461926
+        },
+        "psi_rows": [
+          13,
+          16
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~3.05 atm nominal (2318.8-2319.9 mmHg)",
+          "X_O2_fixed": 0.21,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 0.7,
+          "q1": 0.7,
+          "median": 0.7,
+          "q3": 0.7,
+          "max": 0.7,
+          "mean": 0.7,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.37,
+          "q1": 0.3775,
+          "median": 0.385,
+          "q3": 0.3925,
+          "max": 0.4,
+          "mean": 0.385,
+          "sd": 0.021213203435596444
+        },
+        "psi_rows": [
+          10,
+          11
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.17,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 0.45,
+          "q1": 0.45,
+          "median": 0.45,
+          "q3": 0.45,
+          "max": 0.45,
+          "mean": 0.45,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.63,
+          "q1": 0.6375,
+          "median": 0.645,
+          "q3": 0.6525000000000001,
+          "max": 0.66,
+          "mean": 0.645,
+          "sd": 0.021213203435596444
+        },
+        "psi_rows": [
+          271,
+          272
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.18,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 3,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 3,
+          "min": 0.4,
+          "q1": 0.4,
+          "median": 0.4,
+          "q3": 0.4,
+          "max": 0.4,
+          "mean": 0.4000000000000001,
+          "sd": 6.798699777552591e-17
+        },
+        "y_summary": {
+          "n": 3,
+          "min": 0.59,
+          "q1": 0.605,
+          "median": 0.62,
+          "q3": 0.625,
+          "max": 0.63,
+          "mean": 0.6133333333333333,
+          "sd": 0.020816659994661344
+        },
+        "psi_rows": [
+          264,
+          265,
+          266
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 3,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.2,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 3
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 5,
+        "rho_spearman": 0.8660254037844386,
+        "x_summary": {
+          "n": 5,
+          "min": 0.0,
+          "q1": 0.0,
+          "median": 0.0,
+          "q3": 0.35,
+          "max": 0.35,
+          "mean": 0.13999999999999999,
+          "sd": 0.19170289512680813
+        },
+        "y_summary": {
+          "n": 5,
+          "min": 0.41,
+          "q1": 0.45,
+          "median": 0.46,
+          "q3": 0.6,
+          "max": 0.63,
+          "mean": 0.51,
+          "sd": 0.0982344135219425
+        },
+        "psi_rows": [
+          36,
+          54,
+          55,
+          262,
+          263
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 5,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.21,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 3,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 3,
+          "min": 0.3,
+          "q1": 0.3,
+          "median": 0.3,
+          "q3": 0.3,
+          "max": 0.3,
+          "mean": 0.3,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 3,
+          "min": 0.56,
+          "q1": 0.605,
+          "median": 0.65,
+          "q3": 0.675,
+          "max": 0.7,
+          "mean": 0.6366666666666666,
+          "sd": 0.07094598884597583
+        },
+        "psi_rows": [
+          255,
+          256,
+          257
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 3,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.23,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 0.25,
+          "q1": 0.25,
+          "median": 0.25,
+          "q3": 0.25,
+          "max": 0.25,
+          "mean": 0.25,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.6,
+          "q1": 0.6325,
+          "median": 0.665,
+          "q3": 0.6975,
+          "max": 0.73,
+          "mean": 0.665,
+          "sd": 0.09192388155425117
+        },
+        "psi_rows": [
+          253,
+          254
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.24,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 0.2,
+          "q1": 0.2,
+          "median": 0.2,
+          "q3": 0.2,
+          "max": 0.2,
+          "mean": 0.2,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.62,
+          "q1": 0.64,
+          "median": 0.6599999999999999,
+          "q3": 0.6799999999999999,
+          "max": 0.7,
+          "mean": 0.6599999999999999,
+          "sd": 0.056568542494923775
+        },
+        "psi_rows": [
+          251,
+          252
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.13,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 5
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 6,
+        "rho_spearman": 0.674199862463242,
+        "x_summary": {
+          "n": 6,
+          "min": 0.0,
+          "q1": 0.0,
+          "median": 0.0,
+          "q3": 0.0,
+          "max": 0.4,
+          "mean": 0.06666666666666667,
+          "sd": 0.16329931618554522
+        },
+        "y_summary": {
+          "n": 6,
+          "min": 0.35,
+          "q1": 0.3525,
+          "median": 0.365,
+          "q3": 0.37,
+          "max": 0.51,
+          "mean": 0.385,
+          "sd": 0.06188699378706322
+        },
+        "psi_rows": [
+          75,
+          76,
+          82,
+          217,
+          218,
+          248
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 5,
+        "n_values_in_y_ties": 4,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.14,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 4
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 6,
+        "rho_spearman": 0.8280786712108252,
+        "x_summary": {
+          "n": 6,
+          "min": 0.0,
+          "q1": 0.0,
+          "median": 0.0,
+          "q3": 0.26249999999999996,
+          "max": 0.35,
+          "mean": 0.11666666666666665,
+          "sd": 0.18073922282301277
+        },
+        "y_summary": {
+          "n": 6,
+          "min": 0.3,
+          "q1": 0.3425,
+          "median": 0.365,
+          "q3": 0.515,
+          "max": 0.58,
+          "mean": 0.4183333333333333,
+          "sd": 0.12040210407906778
+        },
+        "psi_rows": [
+          77,
+          78,
+          215,
+          216,
+          246,
+          247
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 6,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.15,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 5
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 7,
+        "rho_spearman": 0.7977240352174656,
+        "x_summary": {
+          "n": 7,
+          "min": 0.0,
+          "q1": 0.0,
+          "median": 0.0,
+          "q3": 0.15,
+          "max": 0.3,
+          "mean": 0.08571428571428572,
+          "sd": 0.14638501094227999
+        },
+        "y_summary": {
+          "n": 7,
+          "min": 0.36,
+          "q1": 0.385,
+          "median": 0.4,
+          "q3": 0.41500000000000004,
+          "max": 0.56,
+          "mean": 0.41714285714285715,
+          "sd": 0.0665117247093287
+        },
+        "psi_rows": [
+          65,
+          66,
+          67,
+          68,
+          71,
+          244,
+          245
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 7,
+        "n_values_in_y_ties": 2,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.16,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 1,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 1,
+          "min": 0.25,
+          "q1": 0.25,
+          "median": 0.25,
+          "q3": 0.25,
+          "max": 0.25,
+          "mean": 0.25,
+          "sd": null
+        },
+        "y_summary": {
+          "n": 1,
+          "min": 0.51,
+          "q1": 0.51,
+          "median": 0.51,
+          "q3": 0.51,
+          "max": 0.51,
+          "mean": 0.51,
+          "sd": null
+        },
+        "psi_rows": [
+          241
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.17,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 0.2,
+          "q1": 0.2,
+          "median": 0.2,
+          "q3": 0.2,
+          "max": 0.2,
+          "mean": 0.2,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.49,
+          "q1": 0.495,
+          "median": 0.5,
+          "q3": 0.505,
+          "max": 0.51,
+          "mean": 0.5,
+          "sd": 0.014142135623730963
+        },
+        "psi_rows": [
+          239,
+          240
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.18,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 4
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 6,
+        "rho_spearman": 0.8280786712108252,
+        "x_summary": {
+          "n": 6,
+          "min": 0.0,
+          "q1": 0.0,
+          "median": 0.0,
+          "q3": 0.11249999999999999,
+          "max": 0.15,
+          "mean": 0.049999999999999996,
+          "sd": 0.07745966692414834
+        },
+        "y_summary": {
+          "n": 6,
+          "min": 0.41,
+          "q1": 0.4225,
+          "median": 0.44,
+          "q3": 0.495,
+          "max": 0.53,
+          "mean": 0.4583333333333333,
+          "sd": 0.04996665554814199
+        },
+        "psi_rows": [
+          58,
+          59,
+          60,
+          61,
+          226,
+          227
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 6,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.19,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 1,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 1,
+          "min": 0.1,
+          "q1": 0.1,
+          "median": 0.1,
+          "q3": 0.1,
+          "max": 0.1,
+          "mean": 0.1,
+          "sd": null
+        },
+        "y_summary": {
+          "n": 1,
+          "min": 0.57,
+          "q1": 0.57,
+          "median": 0.57,
+          "q3": 0.57,
+          "max": 0.57,
+          "mean": 0.57,
+          "sd": null
+        },
+        "psi_rows": [
+          225
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.2,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 1,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 1,
+          "min": 0.05,
+          "q1": 0.05,
+          "median": 0.05,
+          "q3": 0.05,
+          "max": 0.05,
+          "mean": 0.05,
+          "sd": null
+        },
+        "y_summary": {
+          "n": 1,
+          "min": 0.51,
+          "q1": 0.51,
+          "median": 0.51,
+          "q3": 0.51,
+          "max": 0.51,
+          "mean": 0.51,
+          "sd": null
+        },
+        "psi_rows": [
+          222
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A4_P_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "diluent_family": "N2_only",
+          "X_O2_fixed": 0.3,
+          "support_mode": "not_controlled",
+          "by_pressure_cluster": {
+            "~0.7 atm nominal (526.3-544.4 mmHg)": {
+              "n": 4,
+              "min": 0.62,
+              "q1": 0.62,
+              "median": 0.635,
+              "q3": 0.65,
+              "max": 0.65,
+              "mean": 0.635,
+              "sd": 0.017320508075688787
+            },
+            "~1 atm nominal (752-774.1 mmHg)": {
+              "n": 4,
+              "min": 0.59,
+              "q1": 0.62,
+              "median": 0.6799999999999999,
+              "q3": 0.7324999999999999,
+              "max": 0.74,
+              "mean": 0.6725,
+              "sd": 0.07410578025138571
+            }
+          }
+        },
+        "x": "P_mmHg",
+        "y": "K_reported_mm2_s",
+        "n": 8,
+        "rho_spearman": 0.0,
+        "x_summary": {
+          "n": 8,
+          "min": 534.3,
+          "q1": 536.75,
+          "median": 652.5999999999999,
+          "q3": 767.25,
+          "max": 769.2,
+          "mean": 652.0374999999999,
+          "sd": 123.76389893087334
+        },
+        "y_summary": {
+          "n": 8,
+          "min": 0.59,
+          "q1": 0.62,
+          "median": 0.64,
+          "q3": 0.67,
+          "max": 0.74,
+          "mean": 0.65375,
+          "sd": 0.053702221289519965
+        },
+        "psi_rows": [
+          25,
+          26,
+          29,
+          30,
+          40,
+          41,
+          44,
+          45
+        ],
+        "note": "",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 4,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A5_D0_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "diluent_family": "CO2_added",
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "D0_mm",
+        "y": "K_reported_mm2_s",
+        "n": 38,
+        "rho_spearman": 0.0018649600120658294,
+        "x_summary": {
+          "n": 38,
+          "min": 1.86,
+          "q1": 3.0124999999999997,
+          "median": 3.485,
+          "q3": 3.915,
+          "max": 4.53,
+          "mean": 3.422894736842105,
+          "sd": 0.6130601482537875
+        },
+        "y_summary": {
+          "n": 38,
+          "min": 0.2,
+          "q1": 0.3925,
+          "median": 0.45,
+          "q3": 0.51,
+          "max": 0.53,
+          "mean": 0.4371052631578947,
+          "sd": 0.07717680280025481
+        },
+        "psi_rows": [
+          88,
+          89,
+          90,
+          91,
+          97,
+          98,
+          99,
+          104,
+          105,
+          106,
+          107,
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          115,
+          116,
+          121,
+          122,
+          123,
+          124,
+          125,
+          126,
+          127,
+          128,
+          140,
+          141,
+          142,
+          143,
+          147,
+          176,
+          177,
+          183,
+          184,
+          185,
+          186
+        ],
+        "note": "confounded: O2 and diluent level vary within stratum",
+        "n_values_in_x_ties": 6,
+        "n_values_in_y_ties": 33,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A5_D0_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "diluent_family": "CO2_added",
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "D0_mm",
+        "y": "K_reported_mm2_s",
+        "n": 29,
+        "rho_spearman": -0.29300616237320837,
+        "x_summary": {
+          "n": 29,
+          "min": 1.76,
+          "q1": 2.71,
+          "median": 3.05,
+          "q3": 3.53,
+          "max": 4.35,
+          "mean": 3.116896551724138,
+          "sd": 0.6005777185836261
+        },
+        "y_summary": {
+          "n": 29,
+          "min": 0.28,
+          "q1": 0.37,
+          "median": 0.42,
+          "q3": 0.46,
+          "max": 0.51,
+          "mean": 0.41482758620689664,
+          "sd": 0.06248546629046586
+        },
+        "psi_rows": [
+          144,
+          145,
+          146,
+          151,
+          152,
+          153,
+          157,
+          158,
+          159,
+          160,
+          161,
+          162,
+          163,
+          164,
+          166,
+          167,
+          168,
+          169,
+          170,
+          187,
+          188,
+          189,
+          190,
+          191,
+          192,
+          193,
+          199,
+          200,
+          201
+        ],
+        "note": "confounded: O2 and diluent level vary within stratum",
+        "n_values_in_x_ties": 10,
+        "n_values_in_y_ties": 20,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A5_D0_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "diluent_family": "CO2_added",
+          "pressure_cluster": "~2.72 atm nominal (2055.6-2074.2 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "D0_mm",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 1.66,
+          "q1": 1.8924999999999998,
+          "median": 2.125,
+          "q3": 2.3575,
+          "max": 2.59,
+          "mean": 2.125,
+          "sd": 0.6576093065034891
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.49,
+          "q1": 0.5,
+          "median": 0.51,
+          "q3": 0.52,
+          "max": 0.53,
+          "mean": 0.51,
+          "sd": 0.028284271247461926
+        },
+        "psi_rows": [
+          13,
+          16
+        ],
+        "note": "confounded: O2 and diluent level vary within stratum",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A5_D0_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "diluent_family": "CO2_added",
+          "pressure_cluster": "~3.05 atm nominal (2318.8-2319.9 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "D0_mm",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 3.03,
+          "q1": 3.2375,
+          "median": 3.445,
+          "q3": 3.6525,
+          "max": 3.86,
+          "mean": 3.445,
+          "sd": 0.5868986283848344
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.37,
+          "q1": 0.3775,
+          "median": 0.385,
+          "q3": 0.3925,
+          "max": 0.4,
+          "mean": 0.385,
+          "sd": 0.021213203435596444
+        },
+        "psi_rows": [
+          10,
+          11
+        ],
+        "note": "confounded: O2 and diluent level vary within stratum",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A5_D0_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "diluent_family": "He_added",
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "D0_mm",
+        "y": "K_reported_mm2_s",
+        "n": 14,
+        "rho_spearman": -0.4024479281601881,
+        "x_summary": {
+          "n": 14,
+          "min": 1.84,
+          "q1": 2.6725,
+          "median": 2.79,
+          "q3": 3.1525000000000003,
+          "max": 3.87,
+          "mean": 2.867142857142857,
+          "sd": 0.48795378992164934
+        },
+        "y_summary": {
+          "n": 14,
+          "min": 0.56,
+          "q1": 0.605,
+          "median": 0.63,
+          "q3": 0.6575,
+          "max": 0.73,
+          "mean": 0.6371428571428571,
+          "sd": 0.04713786187321208
+        },
+        "psi_rows": [
+          251,
+          252,
+          253,
+          254,
+          255,
+          256,
+          257,
+          262,
+          263,
+          264,
+          265,
+          266,
+          271,
+          272
+        ],
+        "note": "confounded: O2 and diluent level vary within stratum",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 9,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A5_D0_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "diluent_family": "He_added",
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "D0_mm",
+        "y": "K_reported_mm2_s",
+        "n": 12,
+        "rho_spearman": -0.8318203267990026,
+        "x_summary": {
+          "n": 12,
+          "min": 1.88,
+          "q1": 2.715,
+          "median": 2.9050000000000002,
+          "q3": 3.0925000000000002,
+          "max": 3.67,
+          "mean": 2.8991666666666664,
+          "sd": 0.49654182893164994
+        },
+        "y_summary": {
+          "n": 12,
+          "min": 0.43,
+          "q1": 0.51,
+          "median": 0.51,
+          "q3": 0.56,
+          "max": 0.58,
+          "mean": 0.5225000000000001,
+          "sd": 0.04136863106707347
+        },
+        "psi_rows": [
+          222,
+          225,
+          226,
+          227,
+          239,
+          240,
+          241,
+          244,
+          245,
+          246,
+          247,
+          248
+        ],
+        "note": "confounded: O2 and diluent level vary within stratum",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 7,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A5_D0_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "diluent_family": "N2_only",
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "D0_mm",
+        "y": "K_reported_mm2_s",
+        "n": 12,
+        "rho_spearman": -0.01763737008548439,
+        "x_summary": {
+          "n": 12,
+          "min": 2.4,
+          "q1": 3.34,
+          "median": 3.4450000000000003,
+          "q3": 3.5675,
+          "max": 3.77,
+          "mean": 3.330833333333333,
+          "sd": 0.41161452252260866
+        },
+        "y_summary": {
+          "n": 12,
+          "min": 0.41,
+          "q1": 0.5125000000000001,
+          "median": 0.635,
+          "q3": 0.6525000000000001,
+          "max": 0.72,
+          "mean": 0.5941666666666667,
+          "sd": 0.10492060490358095
+        },
+        "psi_rows": [
+          20,
+          21,
+          22,
+          25,
+          26,
+          36,
+          37,
+          38,
+          40,
+          41,
+          54,
+          55
+        ],
+        "note": "confounded: O2 and diluent level vary within stratum",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 5,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A5_D0_vs_K",
+        "fuel": "Methanol",
+        "stratum": {
+          "diluent_family": "N2_only",
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "D0_mm",
+        "y": "K_reported_mm2_s",
+        "n": 41,
+        "rho_spearman": -0.22925432392939132,
+        "x_summary": {
+          "n": 41,
+          "min": 1.61,
+          "q1": 2.4,
+          "median": 2.67,
+          "q3": 3.33,
+          "max": 3.97,
+          "mean": 2.7912195121951218,
+          "sd": 0.6303300529165304
+        },
+        "y_summary": {
+          "n": 41,
+          "min": 0.27,
+          "q1": 0.36,
+          "median": 0.4,
+          "q3": 0.51,
+          "max": 0.74,
+          "mean": 0.43975609756097556,
+          "sd": 0.11192604265491675
+        },
+        "psi_rows": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          29,
+          30,
+          33,
+          34,
+          44,
+          45,
+          46,
+          48,
+          58,
+          59,
+          60,
+          61,
+          65,
+          66,
+          67,
+          68,
+          71,
+          75,
+          76,
+          77,
+          78,
+          82,
+          84,
+          85,
+          86,
+          87,
+          202,
+          203,
+          215,
+          216,
+          217,
+          218,
+          219,
+          220,
+          221
+        ],
+        "note": "confounded: O2 and diluent level vary within stratum",
+        "n_values_in_x_ties": 4,
+        "n_values_in_y_ties": 24,
+        "sensitivity_rows": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "rho_without_sensitivity_rows": 0.030126370439175536,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A6_O2_vs_Dext",
+        "fuel": "Methanol",
+        "stratum": {
+          "diluent_family": "N2_only",
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "X_O2",
+        "y": "Dext_mm",
+        "n": 1,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 1,
+          "min": 0.2,
+          "q1": 0.2,
+          "median": 0.2,
+          "q3": 0.2,
+          "max": 0.2,
+          "mean": 0.2,
+          "sd": null
+        },
+        "y_summary": {
+          "n": 1,
+          "min": 1.67,
+          "q1": 1.67,
+          "median": 1.67,
+          "q3": 1.67,
+          "max": 1.67,
+          "mean": 1.67,
+          "sd": null
+        },
+        "psi_rows": [
+          36
+        ],
+        "note": "D0 also varies; extinction diameter depends on D0",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A6_O2_vs_Dext",
+        "fuel": "Methanol",
+        "stratum": {
+          "diluent_family": "N2_only",
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "X_O2",
+        "y": "Dext_mm",
+        "n": 24,
+        "rho_spearman": -0.6361698825884137,
+        "x_summary": {
+          "n": 24,
+          "min": 0.12,
+          "q1": 0.13,
+          "median": 0.16499999999999998,
+          "q3": 0.21,
+          "max": 0.3,
+          "mean": 0.1775,
+          "sd": 0.05168886853506064
+        },
+        "y_summary": {
+          "n": 24,
+          "min": 0.81,
+          "q1": 1.2650000000000001,
+          "median": 1.44,
+          "q3": 2.0225,
+          "max": 3.3,
+          "mean": 1.7154166666666668,
+          "sd": 0.7084274021083395
+        },
+        "psi_rows": [
+          2,
+          3,
+          5,
+          6,
+          30,
+          33,
+          34,
+          45,
+          59,
+          61,
+          66,
+          67,
+          68,
+          75,
+          76,
+          77,
+          82,
+          87,
+          202,
+          203,
+          216,
+          217,
+          218,
+          219
+        ],
+        "note": "D0 also varies; extinction diameter depends on D0",
+        "n_values_in_x_ties": 24,
+        "n_values_in_y_ties": 4,
+        "sensitivity_rows": [
+          2,
+          3,
+          5,
+          6
+        ],
+        "rho_without_sensitivity_rows": -0.5737182837534327,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A1_O2_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "diluent_family": "N2_only",
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "X_O2",
+        "y": "K_reported_mm2_s",
+        "n": 9,
+        "rho_spearman": 0.8767140075192094,
+        "x_summary": {
+          "n": 9,
+          "min": 0.2,
+          "q1": 0.3,
+          "median": 0.3,
+          "q3": 0.34,
+          "max": 0.34,
+          "mean": 0.2911111111111111,
+          "sd": 0.05487359211051444
+        },
+        "y_summary": {
+          "n": 9,
+          "min": 0.44,
+          "q1": 0.58,
+          "median": 0.64,
+          "q3": 0.78,
+          "max": 0.9,
+          "mean": 0.6722222222222222,
+          "sd": 0.14368174708168205
+        },
+        "psi_rows": [
+          19,
+          23,
+          27,
+          28,
+          39,
+          42,
+          43,
+          56,
+          57
+        ],
+        "note": "pressure varies within cluster; D0 and test date vary",
+        "n_values_in_x_ties": 9,
+        "n_values_in_y_ties": 2,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A1_O2_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "diluent_family": "N2_only",
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "X_O2",
+        "y": "K_reported_mm2_s",
+        "n": 32,
+        "rho_spearman": 0.4879803790980323,
+        "x_summary": {
+          "n": 32,
+          "min": 0.13,
+          "q1": 0.15,
+          "median": 0.21,
+          "q3": 0.21,
+          "max": 0.3,
+          "mean": 0.19406249999999997,
+          "sd": 0.04507050927659474
+        },
+        "y_summary": {
+          "n": 32,
+          "min": 0.24,
+          "q1": 0.42,
+          "median": 0.52,
+          "q3": 0.655,
+          "max": 0.94,
+          "mean": 0.5415625000000001,
+          "sd": 0.16457392446224045
+        },
+        "psi_rows": [
+          7,
+          8,
+          31,
+          32,
+          35,
+          47,
+          49,
+          50,
+          51,
+          52,
+          62,
+          63,
+          64,
+          69,
+          70,
+          72,
+          73,
+          74,
+          79,
+          204,
+          205,
+          206,
+          207,
+          208,
+          209,
+          211,
+          212,
+          213,
+          214,
+          228,
+          229,
+          230
+        ],
+        "note": "pressure varies within cluster; D0 and test date vary",
+        "n_values_in_x_ties": 31,
+        "n_values_in_y_ties": 13,
+        "sensitivity_rows": [
+          7,
+          8
+        ],
+        "rho_without_sensitivity_rows": 0.47194087898780845,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.17,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 0.45,
+          "q1": 0.45,
+          "median": 0.45,
+          "q3": 0.45,
+          "max": 0.45,
+          "mean": 0.45,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.05,
+          "q1": 0.12000000000000001,
+          "median": 0.19,
+          "q3": 0.26,
+          "max": 0.33,
+          "mean": 0.19,
+          "sd": 0.19798989873223333
+        },
+        "psi_rows": [
+          129,
+          130
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [
+          130
+        ],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.18,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 0.4,
+          "q1": 0.4,
+          "median": 0.4,
+          "q3": 0.4,
+          "max": 0.4,
+          "mean": 0.4,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.37,
+          "q1": 0.3725,
+          "median": 0.375,
+          "q3": 0.3775,
+          "max": 0.38,
+          "mean": 0.375,
+          "sd": 0.007071067811865481
+        },
+        "psi_rows": [
+          119,
+          120
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.2,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 2
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 4,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 4,
+          "min": 0.0,
+          "q1": 0.0,
+          "median": 0.175,
+          "q3": 0.35,
+          "max": 0.35,
+          "mean": 0.175,
+          "sd": 0.202072594216369
+        },
+        "y_summary": {
+          "n": 4,
+          "min": 0.25,
+          "q1": 0.34750000000000003,
+          "median": 0.41000000000000003,
+          "q3": 0.465,
+          "max": 0.54,
+          "mean": 0.4025,
+          "sd": 0.1212091855705114
+        },
+        "psi_rows": [
+          56,
+          57,
+          117,
+          118
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 4,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.21,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 0.3,
+          "q1": 0.3,
+          "median": 0.3,
+          "q3": 0.3,
+          "max": 0.3,
+          "mean": 0.3,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.33,
+          "q1": 0.335,
+          "median": 0.33999999999999997,
+          "q3": 0.345,
+          "max": 0.35,
+          "mean": 0.33999999999999997,
+          "sd": 0.014142135623730925
+        },
+        "psi_rows": [
+          102,
+          103
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.23,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 4,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 4,
+          "min": 0.25,
+          "q1": 0.25,
+          "median": 0.25,
+          "q3": 0.25,
+          "max": 0.25,
+          "mean": 0.25,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 4,
+          "min": 0.34,
+          "q1": 0.46,
+          "median": 0.5,
+          "q3": 0.5175,
+          "max": 0.57,
+          "mean": 0.47750000000000004,
+          "sd": 0.09742518497116986
+        },
+        "psi_rows": [
+          100,
+          101,
+          178,
+          179
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 4,
+        "n_values_in_y_ties": 2,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.24,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 4,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 4,
+          "min": 0.2,
+          "q1": 0.2,
+          "median": 0.2,
+          "q3": 0.2,
+          "max": 0.2,
+          "mean": 0.2,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 4,
+          "min": 0.51,
+          "q1": 0.54,
+          "median": 0.555,
+          "q3": 0.5650000000000001,
+          "max": 0.58,
+          "mean": 0.55,
+          "sd": 0.029439202887759478
+        },
+        "psi_rows": [
+          94,
+          95,
+          174,
+          175
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 4,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.25,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 0.15,
+          "q1": 0.15,
+          "median": 0.15,
+          "q3": 0.15,
+          "max": 0.15,
+          "mean": 0.15,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.55,
+          "q1": 0.5900000000000001,
+          "median": 0.63,
+          "q3": 0.6699999999999999,
+          "max": 0.71,
+          "mean": 0.63,
+          "sd": 0.11313708498984755
+        },
+        "psi_rows": [
+          92,
+          93
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.17,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 0.2,
+          "q1": 0.2,
+          "median": 0.2,
+          "q3": 0.2,
+          "max": 0.2,
+          "mean": 0.2,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.29,
+          "q1": 0.3075,
+          "median": 0.32499999999999996,
+          "q3": 0.34249999999999997,
+          "max": 0.36,
+          "mean": 0.32499999999999996,
+          "sd": 0.04949747468305833
+        },
+        "psi_rows": [
+          194,
+          195
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.18,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 3
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 10,
+        "rho_spearman": -0.3810249640493438,
+        "x_summary": {
+          "n": 10,
+          "min": 0.0,
+          "q1": 0.0375,
+          "median": 0.15,
+          "q3": 0.15,
+          "max": 0.15,
+          "mean": 0.10499999999999998,
+          "sd": 0.07245688373094719
+        },
+        "y_summary": {
+          "n": 10,
+          "min": 0.34,
+          "q1": 0.39,
+          "median": 0.47,
+          "q3": 0.5075000000000001,
+          "max": 0.6,
+          "mean": 0.45599999999999996,
+          "sd": 0.08604908160140028
+        },
+        "psi_rows": [
+          62,
+          63,
+          64,
+          154,
+          155,
+          156,
+          165,
+          171,
+          172,
+          173
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 10,
+        "n_values_in_y_ties": 2,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.19,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 3,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 3,
+          "min": 0.1,
+          "q1": 0.1,
+          "median": 0.1,
+          "q3": 0.1,
+          "max": 0.1,
+          "mean": 0.10000000000000002,
+          "sd": 1.6996749443881478e-17
+        },
+        "y_summary": {
+          "n": 3,
+          "min": 0.41,
+          "q1": 0.44999999999999996,
+          "median": 0.49,
+          "q3": 0.515,
+          "max": 0.54,
+          "mean": 0.48,
+          "sd": 0.06557438524302003
+        },
+        "psi_rows": [
+          180,
+          181,
+          182
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 3,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.2,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 6,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 6,
+          "min": 0.05,
+          "q1": 0.05,
+          "median": 0.05,
+          "q3": 0.05,
+          "max": 0.05,
+          "mean": 0.049999999999999996,
+          "sd": 7.601177430610146e-18
+        },
+        "y_summary": {
+          "n": 6,
+          "min": 0.46,
+          "q1": 0.4975,
+          "median": 0.525,
+          "q3": 0.53,
+          "max": 0.54,
+          "mean": 0.5116666666666667,
+          "sd": 0.030605010483034753
+        },
+        "psi_rows": [
+          148,
+          149,
+          150,
+          196,
+          197,
+          198
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 6,
+        "n_values_in_y_ties": 2,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.24,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 8,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 8,
+          "min": 0.2,
+          "q1": 0.2,
+          "median": 0.2,
+          "q3": 0.2,
+          "max": 0.2,
+          "mean": 0.2,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 8,
+          "min": 0.51,
+          "q1": 0.5575000000000001,
+          "median": 0.575,
+          "q3": 0.6025,
+          "max": 0.63,
+          "mean": 0.57625,
+          "sd": 0.03852179346069663
+        },
+        "psi_rows": [
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          139
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 8,
+        "n_values_in_y_ties": 2,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A2_CO2_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~2.03 atm nominal (1545.7-1553.8 mmHg)",
+          "X_O2_fixed": 0.21,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_CO2",
+        "y": "K_reported_mm2_s",
+        "n": 1,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 1,
+          "min": 0.7,
+          "q1": 0.7,
+          "median": 0.7,
+          "q3": 0.7,
+          "max": 0.7,
+          "mean": 0.7,
+          "sd": null
+        },
+        "y_summary": {
+          "n": 1,
+          "min": 0.61,
+          "q1": 0.61,
+          "median": 0.61,
+          "q3": 0.61,
+          "max": 0.61,
+          "mean": 0.61,
+          "sd": null
+        },
+        "psi_rows": [
+          18
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.17,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 0.45,
+          "q1": 0.45,
+          "median": 0.45,
+          "q3": 0.45,
+          "max": 0.45,
+          "mean": 0.45,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.76,
+          "q1": 0.835,
+          "median": 0.91,
+          "q3": 0.9850000000000001,
+          "max": 1.06,
+          "mean": 0.91,
+          "sd": 0.21213203435596428
+        },
+        "psi_rows": [
+          269,
+          270
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.18,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 0.4,
+          "q1": 0.4,
+          "median": 0.4,
+          "q3": 0.4,
+          "max": 0.4,
+          "mean": 0.4,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.71,
+          "q1": 0.725,
+          "median": 0.74,
+          "q3": 0.755,
+          "max": 0.77,
+          "mean": 0.74,
+          "sd": 0.04242640687119289
+        },
+        "psi_rows": [
+          267,
+          268
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.2,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 2
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 4,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 4,
+          "min": 0.0,
+          "q1": 0.0,
+          "median": 0.175,
+          "q3": 0.35,
+          "max": 0.35,
+          "mean": 0.175,
+          "sd": 0.202072594216369
+        },
+        "y_summary": {
+          "n": 4,
+          "min": 0.44,
+          "q1": 0.515,
+          "median": 0.575,
+          "q3": 0.625,
+          "max": 0.67,
+          "mean": 0.565,
+          "sd": 0.09882644720249063
+        },
+        "psi_rows": [
+          56,
+          57,
+          260,
+          261
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 4,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.21,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 2,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 2,
+          "min": 0.3,
+          "q1": 0.3,
+          "median": 0.3,
+          "q3": 0.3,
+          "max": 0.3,
+          "mean": 0.3,
+          "sd": 0.0
+        },
+        "y_summary": {
+          "n": 2,
+          "min": 0.67,
+          "q1": 0.6775,
+          "median": 0.685,
+          "q3": 0.6925,
+          "max": 0.7,
+          "mean": 0.685,
+          "sd": 0.021213203435596368
+        },
+        "psi_rows": [
+          258,
+          259
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.23,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 1,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 1,
+          "min": 0.25,
+          "q1": 0.25,
+          "median": 0.25,
+          "q3": 0.25,
+          "max": 0.25,
+          "mean": 0.25,
+          "sd": null
+        },
+        "y_summary": {
+          "n": 1,
+          "min": 0.71,
+          "q1": 0.71,
+          "median": 0.71,
+          "q3": 0.71,
+          "max": 0.71,
+          "mean": 0.71,
+          "sd": null
+        },
+        "psi_rows": [
+          250
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "X_O2_fixed": 0.24,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 1,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 1,
+          "min": 0.2,
+          "q1": 0.2,
+          "median": 0.2,
+          "q3": 0.2,
+          "max": 0.2,
+          "mean": 0.2,
+          "sd": null
+        },
+        "y_summary": {
+          "n": 1,
+          "min": 0.72,
+          "q1": 0.72,
+          "median": 0.72,
+          "q3": 0.72,
+          "max": 0.72,
+          "mean": 0.72,
+          "sd": null
+        },
+        "psi_rows": [
+          249
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.16,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 2
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 3,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 3,
+          "min": 0.0,
+          "q1": 0.0,
+          "median": 0.0,
+          "q3": 0.125,
+          "max": 0.25,
+          "mean": 0.08333333333333333,
+          "sd": 0.14433756729740646
+        },
+        "y_summary": {
+          "n": 3,
+          "min": 0.34,
+          "q1": 0.38,
+          "median": 0.42,
+          "q3": 0.51,
+          "max": 0.6,
+          "mean": 0.4533333333333333,
+          "sd": 0.13316656236958785
+        },
+        "psi_rows": [
+          209,
+          211,
+          243
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.17,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 3,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 3,
+          "min": 0.2,
+          "q1": 0.2,
+          "median": 0.2,
+          "q3": 0.2,
+          "max": 0.2,
+          "mean": 0.20000000000000004,
+          "sd": 3.3993498887762956e-17
+        },
+        "y_summary": {
+          "n": 3,
+          "min": 0.46,
+          "q1": 0.525,
+          "median": 0.59,
+          "q3": 0.75,
+          "max": 0.91,
+          "mean": 0.6533333333333333,
+          "sd": 0.2315887159024233
+        },
+        "psi_rows": [
+          235,
+          236,
+          238
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 3,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.18,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 3
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 6,
+        "rho_spearman": -0.19802950859533489,
+        "x_summary": {
+          "n": 6,
+          "min": 0.0,
+          "q1": 0.0,
+          "median": 0.075,
+          "q3": 0.15,
+          "max": 0.15,
+          "mean": 0.075,
+          "sd": 0.0821583836257749
+        },
+        "y_summary": {
+          "n": 6,
+          "min": 0.39,
+          "q1": 0.43,
+          "median": 0.5,
+          "q3": 0.51,
+          "max": 0.6,
+          "mean": 0.48499999999999993,
+          "sd": 0.0763544366752843
+        },
+        "psi_rows": [
+          62,
+          63,
+          64,
+          232,
+          233,
+          234
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 6,
+        "n_values_in_y_ties": 2,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.19,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 1,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 1,
+          "min": 0.1,
+          "q1": 0.1,
+          "median": 0.1,
+          "q3": 0.1,
+          "max": 0.1,
+          "mean": 0.1,
+          "sd": null
+        },
+        "y_summary": {
+          "n": 1,
+          "min": 0.54,
+          "q1": 0.54,
+          "median": 0.54,
+          "q3": 0.54,
+          "max": 0.54,
+          "mean": 0.54,
+          "sd": null
+        },
+        "psi_rows": [
+          231
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.2,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 0
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 1,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 1,
+          "min": 0.05,
+          "q1": 0.05,
+          "median": 0.05,
+          "q3": 0.05,
+          "max": 0.05,
+          "mean": 0.05,
+          "sd": null
+        },
+        "y_summary": {
+          "n": 1,
+          "min": 0.57,
+          "q1": 0.57,
+          "median": 0.57,
+          "q3": 0.57,
+          "max": 0.57,
+          "mean": 0.57,
+          "sd": null
+        },
+        "psi_rows": [
+          224
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A3_He_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "X_O2_fixed": 0.21,
+          "support_mode": "not_controlled",
+          "includes_zero_diluent_reference_runs": 15
+        },
+        "x": "X_He",
+        "y": "K_reported_mm2_s",
+        "n": 17,
+        "rho_spearman": 0.16822127404312012,
+        "x_summary": {
+          "n": 17,
+          "min": 0.0,
+          "q1": 0.0,
+          "median": 0.0,
+          "q3": 0.0,
+          "max": 0.15,
+          "mean": 0.01764705882352941,
+          "sd": 0.049815837311630355
+        },
+        "y_summary": {
+          "n": 17,
+          "min": 0.42,
+          "q1": 0.5,
+          "median": 0.55,
+          "q3": 0.65,
+          "max": 0.79,
+          "mean": 0.5641176470588235,
+          "sd": 0.10099868956633867
+        },
+        "psi_rows": [
+          7,
+          8,
+          35,
+          47,
+          49,
+          50,
+          51,
+          204,
+          205,
+          206,
+          207,
+          208,
+          228,
+          229,
+          230,
+          273,
+          274
+        ],
+        "note": "confounded: N2 varies with the added diluent; reference runs from other test days; pressure varies in cluster",
+        "n_values_in_x_ties": 17,
+        "n_values_in_y_ties": 10,
+        "sensitivity_rows": [
+          7,
+          8
+        ],
+        "rho_without_sensitivity_rows": 0.29637448918190956,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A4_P_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "diluent_family": "N2_only",
+          "X_O2_fixed": 0.3,
+          "support_mode": "not_controlled",
+          "by_pressure_cluster": {
+            "~0.7 atm nominal (526.3-544.4 mmHg)": {
+              "n": 4,
+              "min": 0.58,
+              "q1": 0.625,
+              "median": 0.64,
+              "q3": 0.675,
+              "max": 0.78,
+              "mean": 0.6599999999999999,
+              "sd": 0.08485281374238572
+            },
+            "~1 atm nominal (752-774.1 mmHg)": {
+              "n": 3,
+              "min": 0.68,
+              "q1": 0.69,
+              "median": 0.7,
+              "q3": 0.7749999999999999,
+              "max": 0.85,
+              "mean": 0.7433333333333333,
+              "sd": 0.09291573243177567
+            }
+          }
+        },
+        "x": "P_mmHg",
+        "y": "K_reported_mm2_s",
+        "n": 7,
+        "rho_spearman": 0.2702812388086677,
+        "x_summary": {
+          "n": 7,
+          "min": 534.9,
+          "q1": 537.35,
+          "median": 540.7,
+          "q3": 770.75,
+          "max": 771.1,
+          "mean": 637.5571428571429,
+          "sd": 124.71853453734475
+        },
+        "y_summary": {
+          "n": 7,
+          "min": 0.58,
+          "q1": 0.64,
+          "median": 0.68,
+          "q3": 0.74,
+          "max": 0.85,
+          "mean": 0.6957142857142857,
+          "sd": 0.09198861213163705
+        },
+        "psi_rows": [
+          27,
+          28,
+          31,
+          32,
+          42,
+          43,
+          52
+        ],
+        "note": "",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 2,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A5_D0_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "diluent_family": "CO2_added",
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "D0_mm",
+        "y": "K_reported_mm2_s",
+        "n": 18,
+        "rho_spearman": -0.3950370393352115,
+        "x_summary": {
+          "n": 18,
+          "min": 2.07,
+          "q1": 2.67,
+          "median": 3.325,
+          "q3": 3.5925000000000002,
+          "max": 4.14,
+          "mean": 3.1966666666666668,
+          "sd": 0.6087499245077861
+        },
+        "y_summary": {
+          "n": 18,
+          "min": 0.05,
+          "q1": 0.3425,
+          "median": 0.44,
+          "q3": 0.55,
+          "max": 0.71,
+          "mean": 0.43388888888888894,
+          "sd": 0.15378131489377217
+        },
+        "psi_rows": [
+          92,
+          93,
+          94,
+          95,
+          100,
+          101,
+          102,
+          103,
+          117,
+          118,
+          119,
+          120,
+          129,
+          130,
+          174,
+          175,
+          178,
+          179
+        ],
+        "note": "confounded: O2 and diluent level vary within stratum",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 8,
+        "sensitivity_rows": [
+          130
+        ],
+        "rho_without_sensitivity_rows": -0.48034543023548343,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A5_D0_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "diluent_family": "CO2_added",
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "D0_mm",
+        "y": "K_reported_mm2_s",
+        "n": 26,
+        "rho_spearman": -0.39609759836627595,
+        "x_summary": {
+          "n": 26,
+          "min": 1.34,
+          "q1": 2.1425,
+          "median": 2.755,
+          "q3": 3.1675,
+          "max": 3.76,
+          "mean": 2.6765384615384624,
+          "sd": 0.7402050651417745
+        },
+        "y_summary": {
+          "n": 26,
+          "min": 0.29,
+          "q1": 0.46,
+          "median": 0.515,
+          "q3": 0.5475000000000001,
+          "max": 0.63,
+          "mean": 0.49346153846153845,
+          "sd": 0.08912653062662353
+        },
+        "psi_rows": [
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          139,
+          148,
+          149,
+          150,
+          154,
+          155,
+          156,
+          165,
+          171,
+          172,
+          173,
+          180,
+          181,
+          182,
+          194,
+          195,
+          196,
+          197,
+          198
+        ],
+        "note": "confounded: O2 and diluent level vary within stratum",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 11,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A5_D0_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "diluent_family": "CO2_added",
+          "pressure_cluster": "~2.03 atm nominal (1545.7-1553.8 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "D0_mm",
+        "y": "K_reported_mm2_s",
+        "n": 1,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 1,
+          "min": 2.74,
+          "q1": 2.74,
+          "median": 2.74,
+          "q3": 2.74,
+          "max": 2.74,
+          "mean": 2.74,
+          "sd": null
+        },
+        "y_summary": {
+          "n": 1,
+          "min": 0.61,
+          "q1": 0.61,
+          "median": 0.61,
+          "q3": 0.61,
+          "max": 0.61,
+          "mean": 0.61,
+          "sd": null
+        },
+        "psi_rows": [
+          18
+        ],
+        "note": "confounded: O2 and diluent level vary within stratum",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A5_D0_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "diluent_family": "He_added",
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "D0_mm",
+        "y": "K_reported_mm2_s",
+        "n": 10,
+        "rho_spearman": -0.737818594316116,
+        "x_summary": {
+          "n": 10,
+          "min": 1.61,
+          "q1": 2.2325,
+          "median": 2.83,
+          "q3": 3.1925,
+          "max": 3.78,
+          "mean": 2.7399999999999998,
+          "sd": 0.7378949036881125
+        },
+        "y_summary": {
+          "n": 10,
+          "min": 0.61,
+          "q1": 0.6775,
+          "median": 0.71,
+          "q3": 0.75,
+          "max": 1.06,
+          "mean": 0.7379999999999999,
+          "sd": 0.12209286083414816
+        },
+        "psi_rows": [
+          249,
+          250,
+          258,
+          259,
+          260,
+          261,
+          267,
+          268,
+          269,
+          270
+        ],
+        "note": "confounded: O2 and diluent level vary within stratum",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 4,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A5_D0_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "diluent_family": "He_added",
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "D0_mm",
+        "y": "K_reported_mm2_s",
+        "n": 11,
+        "rho_spearman": -0.6000000000000001,
+        "x_summary": {
+          "n": 11,
+          "min": 1.49,
+          "q1": 2.185,
+          "median": 2.3,
+          "q3": 2.835,
+          "max": 3.54,
+          "mean": 2.4872727272727273,
+          "sd": 0.6682228806182995
+        },
+        "y_summary": {
+          "n": 11,
+          "min": 0.41,
+          "q1": 0.5,
+          "median": 0.55,
+          "q3": 0.595,
+          "max": 0.91,
+          "mean": 0.5709090909090908,
+          "sd": 0.13125963168122523
+        },
+        "psi_rows": [
+          224,
+          231,
+          232,
+          233,
+          234,
+          235,
+          236,
+          238,
+          243,
+          273,
+          274
+        ],
+        "note": "confounded: O2 and diluent level vary within stratum",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A5_D0_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "diluent_family": "N2_only",
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "D0_mm",
+        "y": "K_reported_mm2_s",
+        "n": 9,
+        "rho_spearman": -0.2928895930645031,
+        "x_summary": {
+          "n": 9,
+          "min": 2.91,
+          "q1": 2.97,
+          "median": 3.1,
+          "q3": 3.39,
+          "max": 3.87,
+          "mean": 3.2322222222222226,
+          "sd": 0.3339827008161418
+        },
+        "y_summary": {
+          "n": 9,
+          "min": 0.44,
+          "q1": 0.58,
+          "median": 0.64,
+          "q3": 0.78,
+          "max": 0.9,
+          "mean": 0.6722222222222222,
+          "sd": 0.14368174708168205
+        },
+        "psi_rows": [
+          19,
+          23,
+          27,
+          28,
+          39,
+          42,
+          43,
+          56,
+          57
+        ],
+        "note": "confounded: O2 and diluent level vary within stratum",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 2,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A5_D0_vs_K",
+        "fuel": "Heptane",
+        "stratum": {
+          "diluent_family": "N2_only",
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "D0_mm",
+        "y": "K_reported_mm2_s",
+        "n": 32,
+        "rho_spearman": -0.27554584560572726,
+        "x_summary": {
+          "n": 32,
+          "min": 1.1,
+          "q1": 2.4925,
+          "median": 3.0149999999999997,
+          "q3": 3.5374999999999996,
+          "max": 4.67,
+          "mean": 2.969375,
+          "sd": 0.8927049778170584
+        },
+        "y_summary": {
+          "n": 32,
+          "min": 0.24,
+          "q1": 0.42,
+          "median": 0.52,
+          "q3": 0.655,
+          "max": 0.94,
+          "mean": 0.5415625000000001,
+          "sd": 0.16457392446224045
+        },
+        "psi_rows": [
+          7,
+          8,
+          31,
+          32,
+          35,
+          47,
+          49,
+          50,
+          51,
+          52,
+          62,
+          63,
+          64,
+          69,
+          70,
+          72,
+          73,
+          74,
+          79,
+          204,
+          205,
+          206,
+          207,
+          208,
+          209,
+          211,
+          212,
+          213,
+          214,
+          228,
+          229,
+          230
+        ],
+        "note": "confounded: O2 and diluent level vary within stratum",
+        "n_values_in_x_ties": 2,
+        "n_values_in_y_ties": 13,
+        "sensitivity_rows": [
+          7,
+          8
+        ],
+        "rho_without_sensitivity_rows": -0.24677069926071724,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A6_O2_vs_Dext",
+        "fuel": "Heptane",
+        "stratum": {
+          "diluent_family": "N2_only",
+          "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "X_O2",
+        "y": "Dext_mm",
+        "n": 1,
+        "rho_spearman": null,
+        "x_summary": {
+          "n": 1,
+          "min": 0.2,
+          "q1": 0.2,
+          "median": 0.2,
+          "q3": 0.2,
+          "max": 0.2,
+          "mean": 0.2,
+          "sd": null
+        },
+        "y_summary": {
+          "n": 1,
+          "min": 2.49,
+          "q1": 2.49,
+          "median": 2.49,
+          "q3": 2.49,
+          "max": 2.49,
+          "mean": 2.49,
+          "sd": null
+        },
+        "psi_rows": [
+          57
+        ],
+        "note": "D0 also varies; extinction diameter depends on D0",
+        "n_values_in_x_ties": 0,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      },
+      {
+        "analysis": "A6_O2_vs_Dext",
+        "fuel": "Heptane",
+        "stratum": {
+          "diluent_family": "N2_only",
+          "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+          "support_mode": "not_controlled"
+        },
+        "x": "X_O2",
+        "y": "Dext_mm",
+        "n": 14,
+        "rho_spearman": -0.3734647355597017,
+        "x_summary": {
+          "n": 14,
+          "min": 0.13,
+          "q1": 0.15,
+          "median": 0.16999999999999998,
+          "q3": 0.21,
+          "max": 0.21,
+          "mean": 0.175,
+          "sd": 0.03006403422440431
+        },
+        "y_summary": {
+          "n": 14,
+          "min": 1.37,
+          "q1": 2.4275,
+          "median": 2.92,
+          "q3": 3.3,
+          "max": 4.6,
+          "mean": 3.0264285714285712,
+          "sd": 0.9361016310936883
+        },
+        "psi_rows": [
+          35,
+          49,
+          50,
+          62,
+          64,
+          70,
+          73,
+          79,
+          209,
+          211,
+          212,
+          213,
+          228,
+          230
+        ],
+        "note": "D0 also varies; extinction diameter depends on D0",
+        "n_values_in_x_ties": 12,
+        "n_values_in_y_ties": 0,
+        "sensitivity_rows": [],
+        "rho_without_sensitivity_rows": null,
+        "evidence_class": "descriptive_exploratory"
+      }
+    ],
+    "exclusions": {
+      "A1_O2_vs_K": {
+        "Methanol": {
+          "K_reported_mm2_s:missing_blank": 6,
+          "P_mmHg:invalid_nonpositive_pressure": 1
+        },
+        "Heptane": {
+          "K_reported_mm2_s:missing_blank": 10
+        }
+      },
+      "A2_CO2_vs_K": {
+        "Methanol": {
+          "K_reported_mm2_s:missing_blank": 6,
+          "P_mmHg:invalid_nonpositive_pressure": 1
+        },
+        "Heptane": {
+          "K_reported_mm2_s:missing_blank": 10
+        }
+      },
+      "A3_He_vs_K": {
+        "Methanol": {
+          "K_reported_mm2_s:missing_blank": 6,
+          "P_mmHg:invalid_nonpositive_pressure": 1
+        },
+        "Heptane": {
+          "K_reported_mm2_s:missing_blank": 10
+        }
+      },
+      "A4_P_vs_K": {
+        "Methanol": {
+          "K_reported_mm2_s:missing_blank": 6,
+          "P_mmHg:invalid_nonpositive_pressure": 1
+        },
+        "Heptane": {
+          "K_reported_mm2_s:missing_blank": 10
+        }
+      },
+      "A5_D0_vs_K": {
+        "Methanol": {
+          "K_reported_mm2_s:missing_blank": 6,
+          "D0_mm:missing_dash_marker": 1,
+          "P_mmHg:invalid_nonpositive_pressure": 1,
+          "D0_mm:missing_blank": 2
+        },
+        "Heptane": {
+          "K_reported_mm2_s:missing_blank": 10,
+          "D0_mm:missing_blank": 4,
+          "D0_mm:missing_dash_marker": 5
+        }
+      },
+      "A6_O2_vs_Dext": {
+        "Methanol": {
+          "dext_origin:value_with_non_extinction_end_semantics_unclear": 14,
+          "dext_origin:not_listed_insufficient_view_per_A1": 24,
+          "dext_origin:not_applicable_no_extinction_per_A1": 11,
+          "dext_origin:reported_extinction_extrapolation_noted_in_caption": 19,
+          "dext_origin:inconsistent_dash_with_extinction_end": 5,
+          "P_mmHg:invalid_nonpositive_pressure": 1
+        },
+        "Heptane": {
+          "dext_origin:not_listed_insufficient_view_per_A1": 25,
+          "dext_origin:zero_semantics_unconfirmed": 8,
+          "dext_origin:not_applicable_no_extinction_per_A1": 12,
+          "dext_origin:value_with_non_extinction_end_semantics_unclear": 16,
+          "dext_origin:reported_extinction_extrapolation_noted_in_caption": 2
+        }
+      }
+    },
+    "outcomes": {
+      "counts_by_family_and_pressure_cluster": {
+        "Methanol": {
+          "CO2_added | pressure_invalid": {
+            "Extinction": 1
+          },
+          "CO2_added | ~0.7 atm nominal (526.3-544.4 mmHg)": {
+            "Disruption": 7,
+            "Completion": 4,
+            "Extinction": 27
+          },
+          "CO2_added | ~1 atm nominal (752-774.1 mmHg)": {
+            "Extinction": 27,
+            "Completion": 1,
+            "Disruption": 1
+          },
+          "CO2_added | ~2.03 atm nominal (1545.7-1553.8 mmHg)": {
+            "Disruption": 1
+          },
+          "CO2_added | ~2.72 atm nominal (2055.6-2074.2 mmHg)": {
+            "Extinction": 4
+          },
+          "CO2_added | ~3.05 atm nominal (2318.8-2319.9 mmHg)": {
+            "Extinction": 2
+          },
+          "He_added | ~0.7 atm nominal (526.3-544.4 mmHg)": {
+            "Extinction": 12,
+            "Disruption": 2
+          },
+          "He_added | ~1 atm nominal (752-774.1 mmHg)": {
+            "Extinction": 14
+          },
+          "N2_only | ~0.7 atm nominal (526.3-544.4 mmHg)": {
+            "Completion": 2,
+            "Disruption": 8,
+            "Extinction": 2
+          },
+          "N2_only | ~1 atm nominal (752-774.1 mmHg)": {
+            "Disruption": 4,
+            "Extinction": 37,
+            "Completion": 1
+          }
+        },
+        "Heptane": {
+          "CO2_added | ~0.7 atm nominal (526.3-544.4 mmHg)": {
+            "Disruption": 6,
+            "Extinction": 13
+          },
+          "CO2_added | ~1 atm nominal (752-774.1 mmHg)": {
+            "Disruption": 11,
+            "Extinction": 13,
+            "Completion": 3
+          },
+          "CO2_added | ~2.03 atm nominal (1545.7-1553.8 mmHg)": {
+            "Extinction": 1
+          },
+          "CO2_added | ~3.05 atm nominal (2318.8-2319.9 mmHg)": {
+            "Disruption": 1
+          },
+          "He_added | ~0.7 atm nominal (526.3-544.4 mmHg)": {
+            "Extinction": 8,
+            "Completion": 2
+          },
+          "He_added | ~1 atm nominal (752-774.1 mmHg)": {
+            "Completion": 4,
+            "Disruption": 2,
+            "Extinction": 6
+          },
+          "N2_only | ~0.7 atm nominal (526.3-544.4 mmHg)": {
+            "Disruption": 8,
+            "Completion": 1,
+            "Extinction": 1
+          },
+          "N2_only | ~1 atm nominal (752-774.1 mmHg)": {
+            "Disruption": 10,
+            "Completion": 9,
+            "Extinction": 18
+          }
+        }
+      },
+      "condition_summary_by_outcome": {
+        "Methanol": {
+          "Completion": {
+            "X_O2": {
+              "n": 8,
+              "min": 0.18,
+              "q1": 0.21,
+              "median": 0.23,
+              "q3": 0.3,
+              "max": 0.34,
+              "mean": 0.25,
+              "sd": 0.056061191058138816
+            },
+            "D0_mm": {
+              "n": 8,
+              "min": 2.57,
+              "q1": 3.1775,
+              "median": 3.575,
+              "q3": 3.8925,
+              "max": 4.25,
+              "mean": 3.47375,
+              "sd": 0.6200216010061954
+            },
+            "P_mmHg": {
+              "n": 8,
+              "min": 530.7,
+              "q1": 536.225,
+              "median": 537.8,
+              "q3": 595.25,
+              "max": 766.9,
+              "mean": 593.2874999999999,
+              "sd": 105.83921009180455
+            },
+            "X_CO2": {
+              "n": 8,
+              "min": 0.0,
+              "q1": 0.0,
+              "median": 0.175,
+              "q3": 0.2625,
+              "max": 0.3,
+              "mean": 0.15,
+              "sd": 0.1336306209562122
+            },
+            "X_He": {
+              "n": 8,
+              "min": 0.0,
+              "q1": 0.0,
+              "median": 0.0,
+              "q3": 0.0,
+              "max": 0.0,
+              "mean": 0.0,
+              "sd": 0.0
+            }
+          },
+          "Disruption": {
+            "X_O2": {
+              "n": 23,
+              "min": 0.2,
+              "q1": 0.22,
+              "median": 0.25,
+              "q3": 0.3,
+              "max": 0.34,
+              "mean": 0.25956521739130445,
+              "sd": 0.04884839821227651
+            },
+            "D0_mm": {
+              "n": 23,
+              "min": 1.69,
+              "q1": 3.0199999999999996,
+              "median": 3.37,
+              "q3": 3.605,
+              "max": 4.17,
+              "mean": 3.260869565217391,
+              "sd": 0.5181603213070981
+            },
+            "P_mmHg": {
+              "n": 23,
+              "min": 531.8,
+              "q1": 534.8,
+              "median": 538.3,
+              "q3": 650.1500000000001,
+              "max": 1545.7,
+              "mean": 630.3782608695652,
+              "sd": 221.31595053333666
+            },
+            "X_CO2": {
+              "n": 23,
+              "min": 0.0,
+              "q1": 0.0,
+              "median": 0.0,
+              "q3": 0.15,
+              "max": 0.7,
+              "mean": 0.09130434782608694,
+              "sd": 0.15858190736611008
+            },
+            "X_He": {
+              "n": 23,
+              "min": 0.0,
+              "q1": 0.0,
+              "median": 0.0,
+              "q3": 0.0,
+              "max": 0.25,
+              "mean": 0.01956521739130435,
+              "sd": 0.06526019675600443
+            }
+          },
+          "Extinction": {
+            "X_O2": {
+              "n": 126,
+              "min": 0.12,
+              "q1": 0.15,
+              "median": 0.18,
+              "q3": 0.21,
+              "max": 0.3,
+              "mean": 0.1803968253968254,
+              "sd": 0.03574131041024195
+            },
+            "D0_mm": {
+              "n": 123,
+              "min": 1.61,
+              "q1": 2.59,
+              "median": 2.95,
+              "q3": 3.5,
+              "max": 4.53,
+              "mean": 3.0257723577235773,
+              "sd": 0.650116015031266
+            },
+            "P_mmHg": {
+              "n": 125,
+              "min": 526.3,
+              "q1": 536.5,
+              "median": 760.0,
+              "q3": 765.9,
+              "max": 2319.7,
+              "mean": 754.8271999999998,
+              "sd": 333.4624260344398
+            },
+            "X_CO2": {
+              "n": 126,
+              "min": 0.0,
+              "q1": 0.0,
+              "median": 0.0,
+              "q3": 0.25,
+              "max": 0.7,
+              "mean": 0.1515873015873016,
+              "sd": 0.2010668056081369
+            },
+            "X_He": {
+              "n": 126,
+              "min": 0.0,
+              "q1": 0.0,
+              "median": 0.0,
+              "q3": 0.0,
+              "max": 0.45,
+              "mean": 0.05753968253968254,
+              "sd": 0.12442949173205849
+            }
+          }
+        },
+        "Heptane": {
+          "Completion": {
+            "X_O2": {
+              "n": 19,
+              "min": 0.14,
+              "q1": 0.175,
+              "median": 0.2,
+              "q3": 0.21,
+              "max": 0.3,
+              "mean": 0.19736842105263155,
+              "sd": 0.03827417250185501
+            },
+            "D0_mm": {
+              "n": 19,
+              "min": 1.1,
+              "q1": 1.61,
+              "median": 2.3,
+              "q3": 2.86,
+              "max": 3.56,
+              "mean": 2.3047368421052625,
+              "sd": 0.7679291664459441
+            },
+            "P_mmHg": {
+              "n": 19,
+              "min": 532.2,
+              "q1": 761.25,
+              "median": 765.9,
+              "q3": 767.85,
+              "max": 771.4,
+              "mean": 729.5894736842106,
+              "sd": 86.11810943076853
+            },
+            "X_CO2": {
+              "n": 19,
+              "min": 0.0,
+              "q1": 0.0,
+              "median": 0.0,
+              "q3": 0.0,
+              "max": 0.2,
+              "mean": 0.028947368421052635,
+              "sd": 0.06935374193558583
+            },
+            "X_He": {
+              "n": 19,
+              "min": 0.0,
+              "q1": 0.0,
+              "median": 0.0,
+              "q3": 0.1,
+              "max": 0.45,
+              "mean": 0.06578947368421052,
+              "sd": 0.12253415802559275
+            }
+          },
+          "Disruption": {
+            "X_O2": {
+              "n": 38,
+              "min": 0.17,
+              "q1": 0.21,
+              "median": 0.24,
+              "q3": 0.2875,
+              "max": 0.34,
+              "mean": 0.24394736842105272,
+              "sd": 0.04868761281410574
+            },
+            "D0_mm": {
+              "n": 32,
+              "min": 1.35,
+              "q1": 2.345,
+              "median": 2.895,
+              "q3": 3.2775,
+              "max": 3.87,
+              "mean": 2.7409375000000002,
+              "sd": 0.647831914555102
+            },
+            "P_mmHg": {
+              "n": 38,
+              "min": 531.7,
+              "q1": 539.25,
+              "median": 759.8,
+              "q3": 765.95,
+              "max": 2319.9,
+              "mean": 721.1421052631579,
+              "sd": 288.2546843402493
+            },
+            "X_CO2": {
+              "n": 38,
+              "min": 0.0,
+              "q1": 0.0,
+              "median": 0.0,
+              "q3": 0.2,
+              "max": 0.7,
+              "mean": 0.09078947368421052,
+              "sd": 0.13599247950087748
+            },
+            "X_He": {
+              "n": 38,
+              "min": 0.0,
+              "q1": 0.0,
+              "median": 0.0,
+              "q3": 0.0,
+              "max": 0.2,
+              "mean": 0.007894736842105265,
+              "sd": 0.03587952022464205
+            }
+          },
+          "Extinction": {
+            "X_O2": {
+              "n": 60,
+              "min": 0.13,
+              "q1": 0.17,
+              "median": 0.18,
+              "q3": 0.21,
+              "max": 0.24,
+              "mean": 0.18766666666666668,
+              "sd": 0.028604057236613828
+            },
+            "D0_mm": {
+              "n": 57,
+              "min": 1.49,
+              "q1": 2.73,
+              "median": 3.23,
+              "q3": 3.65,
+              "max": 4.67,
+              "mean": 3.157543859649123,
+              "sd": 0.6842991218908229
+            },
+            "P_mmHg": {
+              "n": 60,
+              "min": 528.0,
+              "q1": 534.275,
+              "median": 759.55,
+              "q3": 764.625,
+              "max": 1553.8,
+              "mean": 691.8983333333332,
+              "sd": 158.40697263765247
+            },
+            "X_CO2": {
+              "n": 60,
+              "min": 0.0,
+              "q1": 0.0,
+              "median": 0.0,
+              "q3": 0.2,
+              "max": 0.7,
+              "mean": 0.10916666666666668,
+              "sd": 0.156901044780165
+            },
+            "X_He": {
+              "n": 60,
+              "min": 0.0,
+              "q1": 0.0,
+              "median": 0.0,
+              "q3": 0.0,
+              "max": 0.45,
+              "mean": 0.06416666666666666,
+              "sd": 0.126923060461195
+            }
+          }
+        }
+      },
+      "contamination_caveats": {
+        "Methanol": "NASA/TP-2015-216046 sec. 5.2 item 4: disruptive extinction of methanol is probably due to needle-coating contamination (all tests in the report used coated needles). Methanol disruption counts must not be read as a response to ambient conditions.",
+        "Heptane": "sec. 5.2 item 5: heptane disruption may be due to the contaminant; NASA states no conclusion can be drawn regarding disruptive burning for heptane in these tests."
+      }
+    },
+    "replicate_groups": [
+      {
+        "fuel": "Methanol",
+        "psi_rows": [
+          4,
+          5,
+          6
+        ],
+        "environment": {
+          "P_mmHg": 760.0,
+          "X_O2": 0.21,
+          "X_N2": 0.79,
+          "X_CO2": 0.0,
+          "X_He": 0.0
+        },
+        "K_reported_mm2_s": [
+          0.6,
+          0.48,
+          0.51
+        ],
+        "D0_mm": [
+          2.06,
+          1.92,
+          2.54
+        ],
+        "test_end": [
+          "Extinction",
+          "Extinction",
+          "Extinction"
+        ]
+      },
+      {
+        "fuel": "Methanol",
+        "psi_rows": [
+          85,
+          87
+        ],
+        "environment": {
+          "P_mmHg": 771.2,
+          "X_O2": 0.12,
+          "X_N2": 0.87,
+          "X_CO2": 0.0,
+          "X_He": 0.0
+        },
+        "K_reported_mm2_s": [
+          0.35,
+          0.38
+        ],
+        "D0_mm": [
+          2.4,
+          2.64
+        ],
+        "test_end": [
+          "Extinction",
+          "Extinction"
+        ]
+      },
+      {
+        "fuel": "Methanol",
+        "psi_rows": [
+          106,
+          108
+        ],
+        "environment": {
+          "P_mmHg": 538.3,
+          "X_O2": 0.23,
+          "X_N2": 0.52,
+          "X_CO2": 0.25,
+          "X_He": 0.0
+        },
+        "K_reported_mm2_s": [
+          0.51,
+          0.47
+        ],
+        "D0_mm": [
+          3.08,
+          3.75
+        ],
+        "test_end": [
+          "Disruption",
+          "Completion"
+        ]
+      },
+      {
+        "fuel": "Methanol",
+        "psi_rows": [
+          256,
+          257
+        ],
+        "environment": {
+          "P_mmHg": 531.2,
+          "X_O2": 0.21,
+          "X_N2": 0.49,
+          "X_CO2": 0.0,
+          "X_He": 0.3
+        },
+        "K_reported_mm2_s": [
+          0.65,
+          0.7
+        ],
+        "D0_mm": [
+          3.25,
+          2.67
+        ],
+        "test_end": [
+          "Extinction",
+          "Extinction"
+        ]
+      },
+      {
+        "fuel": "Heptane",
+        "psi_rows": [
+          35,
+          229
+        ],
+        "environment": {
+          "P_mmHg": 768.1,
+          "X_O2": 0.21,
+          "X_N2": 0.79,
+          "X_CO2": 0.0,
+          "X_He": 0.0
+        },
+        "K_reported_mm2_s": [
+          0.43,
+          0.57
+        ],
+        "D0_mm": [
+          3.85,
+          2.39
+        ],
+        "test_end": [
+          "Extinction",
+          "Disruption"
+        ]
+      },
+      {
+        "fuel": "Heptane",
+        "psi_rows": [
+          47,
+          50
+        ],
+        "environment": {
+          "P_mmHg": 770.1,
+          "X_O2": 0.21,
+          "X_N2": 0.79,
+          "X_CO2": 0.0,
+          "X_He": 0.0
+        },
+        "K_reported_mm2_s": [
+          0.5,
+          0.52
+        ],
+        "D0_mm": [
+          3.36,
+          3.57
+        ],
+        "test_end": [
+          "Completion",
+          "Extinction"
+        ]
+      },
+      {
+        "fuel": "Heptane",
+        "psi_rows": [
+          70,
+          73
+        ],
+        "environment": {
+          "P_mmHg": 761.0,
+          "X_O2": 0.15,
+          "X_N2": 0.84,
+          "X_CO2": 0.0,
+          "X_He": 0.0
+        },
+        "K_reported_mm2_s": [
+          0.41,
+          0.56
+        ],
+        "D0_mm": [
+          4.67,
+          4.64
+        ],
+        "test_end": [
+          "Extinction",
+          "Extinction"
+        ]
+      },
+      {
+        "fuel": "Heptane",
+        "psi_rows": [
+          135,
+          137
+        ],
+        "environment": {
+          "P_mmHg": 768.2,
+          "X_O2": 0.24,
+          "X_N2": 0.56,
+          "X_CO2": 0.2,
+          "X_He": 0.0
+        },
+        "K_reported_mm2_s": [
+          0.59,
+          0.55
+        ],
+        "D0_mm": [
+          2.78,
+          3.13
+        ],
+        "test_end": [
+          "Completion",
+          "Disruption"
+        ]
+      },
+      {
+        "fuel": "Heptane",
+        "psi_rows": [
+          235,
+          236
+        ],
+        "environment": {
+          "P_mmHg": 759.3,
+          "X_O2": 0.17,
+          "X_N2": 0.63,
+          "X_CO2": 0.0,
+          "X_He": 0.2
+        },
+        "K_reported_mm2_s": [
+          0.46,
+          0.59
+        ],
+        "D0_mm": [
+          2.85,
+          2.12
+        ],
+        "test_end": [
+          "Extinction",
+          "Extinction"
+        ]
+      }
+    ],
+    "cross_fuel_gate_check": {
+      "pairs": 18369,
+      "classification_counts": {
+        "contextual": 18369
+      },
+      "shared_axis_allowed_pairs": 0
+    }
+  },
+  "charts": [
+    {
+      "file": "fig1_K_vs_O2_N2only.svg",
+      "title": "Reported burning-rate constant vs O2 (N2-only atmospheres)",
+      "n_by_fuel": {
+        "Methanol": 53,
+        "Heptane": 41
+      },
+      "not_shown_non_free_floating": {
+        "Methanol": 0,
+        "Heptane": 0
+      },
+      "groups": [
+        "~0.7 atm nominal (526.3-544.4 mmHg)",
+        "~1 atm nominal (752-774.1 mmHg)"
+      ],
+      "plotted_record_keys": {
+        "Methanol": [
+          "PSI69-r001|FLEX-001|20CAL08|3/5/2009|17:22:03",
+          "PSI69-r002|FLEX-002|20CAL10|3/5/2009|19:20:06",
+          "PSI69-r003|FLEX-003|20CAL12|3/5/2009|21:17:46",
+          "PSI69-r004|FLEX-004|30CAL02|3/31/2009|17:16:18",
+          "PSI69-r005|FLEX-005|30CAL03|3/31/2009|19:00:48",
+          "PSI69-r006|FLEX-006|40CAL01|3/31/2009|20:05:49",
+          "PSI69-r020|FLEX-020|192F001|10/24/09|14:09:04",
+          "PSI69-r021|FLEX-021|192F002|10/24/09|15:15:24",
+          "PSI69-r022|FLEX-022|192F003|10/24/09|15:39:48",
+          "PSI69-r025|FLEX-025|191R001|11/9/2009|11:42:23",
+          "PSI69-r026|FLEX-026|191F001|11/9/2009|11:59:59",
+          "PSI69-r029|FLEX-029|178R001|11/13/09|13:11:23",
+          "PSI69-r030|FLEX-030|178F001|11/13/09|14:03:46",
+          "PSI69-r033|FLEX-033|177R002|11/27/09|10:02:15",
+          "PSI69-r034|FLEX-034|177F001|11/27/09|11:15:38",
+          "PSI69-r036|FLEX-036|190R002|12/15/09|10:39:35",
+          "PSI69-r037|FLEX-037|220R001|1/7/2010|19:08:46",
+          "PSI69-r038|FLEX-038|220R002|1/7/2010|19:20:38",
+          "PSI69-r040|FLEX-040|219R001|1/8/2010|5:02:52",
+          "PSI69-r041|FLEX-041|219F001|1/8/2010|4:41:55",
+          "PSI69-r044|FLEX-044|206F001|1/11/2010|10:33:22",
+          "PSI69-r045|FLEX-045|206R001|1/11/2010|10:54:25",
+          "PSI69-r046|FLEX-046|205R001|1/12/2010|13:14:25",
+          "PSI69-r048|FLEX-048|205F001|1/12/2010|12:14:55",
+          "PSI69-r054|FLEX-054|190F003|1/29/2010|11:27:01",
+          "PSI69-r055|FLEX-055|218F001|1/29/2010|16:06:50",
+          "PSI69-r058|FLEX-058|176F001|2/4/2010|2:32:01",
+          "PSI69-r059|FLEX-059|176R001|2/4/2010|0:26:28",
+          "PSI69-r060|FLEX-060|204F001|2/4/2010|3:26:05",
+          "PSI69-r061|FLEX-061|204R001|2/4/2010|3:52:39",
+          "PSI69-r065|FLEX-065|189R001|3/19/2010|8:42:53",
+          "PSI69-r066|FLEX-066|189F001|3/19/2010|9:26:45",
+          "PSI69-r067|FLEX-067|189F002|3/19/2010|10:17:06",
+          "PSI69-r068|FLEX-068|189R003|3/19/2010|12:04:45",
+          "PSI69-r071|FLEX-071|189R002|3/19/2010|11:19:22",
+          "PSI69-r075|FLEX-075|203R002|3/29/2010|21:06:40",
+          "PSI69-r076|FLEX-076|203F001|3/29/2010|19:24:36",
+          "PSI69-r077|FLEX-077|175R001|3/29/2010|18:39:20",
+          "PSI69-r078|FLEX-078|175F001|3/29/2010|17:49:23",
+          "PSI69-r082|FLEX-082|304F001|4/19/2010|17:19:17",
+          "PSI69-r084|FLEX-084|304R001|4/19/2010|17:51:24",
+          "PSI69-r085|FLEX-085|304R002|4/19/2010|20:12:58",
+          "PSI69-r086|FLEX-086|305F002|4/19/2010|19:16:37",
+          "PSI69-r087|FLEX-087|305F003|4/19/2010|20:38:54",
+          "PSI69-r202|FLEX-203|N01M101|8/24/2011|21:05:01",
+          "PSI69-r203|FLEX-204|N01M201|8/24/2011|21:58:36",
+          "PSI69-r215|FLEX-219|N04M101|9/8/2011|17:00:27",
+          "PSI69-r216|FLEX-220|N04M201|9/8/2011|17:21:15",
+          "PSI69-r217|FLEX-221|N05M101|9/8/2011|19:00:48",
+          "PSI69-r218|FLEX-222|N05M201|9/8/2011|20:24:20",
+          "PSI69-r219|FLEX-223|N06M101|9/9/2011|13:09:53",
+          "PSI69-r220|FLEX-224|N06M201|9/9/2011|13:28:43",
+          "PSI69-r221|FLEX-225|N06M202|9/9/2011|14:26:07"
+        ],
+        "Heptane": [
+          "PSI69-r007|FLEX-007|20CAL13|4/10/2009|13:26:11",
+          "PSI69-r008|FLEX-008|30CAL06|4/10/2009|18:07:15",
+          "PSI69-r019|FLEX-019|196F001|8/26/2009|19:07:28",
+          "PSI69-r023|FLEX-023|196F002|10/24/09|18:29:53",
+          "PSI69-r027|FLEX-027|195F001|11/9/2009|14:04:11",
+          "PSI69-r028|FLEX-028|195F002|11/9/2009|14:56:05",
+          "PSI69-r031|FLEX-031|182F001|11/13/09|18:33:39",
+          "PSI69-r032|FLEX-032|182F002|11/13/09|19:04:33",
+          "PSI69-r035|FLEX-035|181F001|11/27/09|13:01:24",
+          "PSI69-r039|FLEX-039|224F001|1/7/2010|21:51:19",
+          "PSI69-r042|FLEX-042|223F001|1/8/2010|1:02:04",
+          "PSI69-r043|FLEX-043|223F002|1/8/2010|3:16:16",
+          "PSI69-r047|FLEX-047|209F001|1/12/2010|15:48:17",
+          "PSI69-r049|FLEX-049|209F003|1/19/2010|9:09:16",
+          "PSI69-r050|FLEX-050|209F004|1/19/2010|14:08:17",
+          "PSI69-r051|FLEX-051|209F005|1/19/2010|16:38:35",
+          "PSI69-r052|FLEX-052|210F002|1/11/2010|13:46:44",
+          "PSI69-r056|FLEX-056|194F001|1/29/2010|19:13:22",
+          "PSI69-r057|FLEX-057|303F001|1/29/2010|19:50:16",
+          "PSI69-r062|FLEX-062|301F001|3/11/2010|21:37:48",
+          "PSI69-r063|FLEX-063|301F002|3/11/2010|23:07:51",
+          "PSI69-r064|FLEX-064|302F001|3/11/2010|22:12:39",
+          "PSI69-r069|FLEX-069|193R002|3/23/2010|10:23:00",
+          "PSI69-r070|FLEX-070|193F001|3/23/2010|7:25:43",
+          "PSI69-r072|FLEX-072|193R001|3/23/2010|9:06:37",
+          "PSI69-r073|FLEX-073|193F001|3/23/2010|7:25:43",
+          "PSI69-r074|FLEX-074|221F001|3/23/2010|9:44:36",
+          "PSI69-r079|FLEX-079|179F001|3/30/2010|0:40:16",
+          "PSI69-r204|FLEX-206|N01H101|8/29/2011|19:04:50",
+          "PSI69-r205|FLEX-207|N01H102|8/29/2011|19:21:49",
+          "PSI69-r206|FLEX-208|N01H201|8/29/2011|20:28:30",
+          "PSI69-r207|FLEX-209|N01H202|8/29/2011|21:54:40",
+          "PSI69-r208|FLEX-210|N01H301|8/29/2011|22:19:47",
+          "PSI69-r209|FLEX-211|N02H101|8/29/2011|23:36:18",
+          "PSI69-r211|FLEX-214|N02H203|8/30/2011|0:58:06",
+          "PSI69-r212|FLEX-215|N03H101|9/1/2011|19:44:42",
+          "PSI69-r213|FLEX-217|N04H101|9/1/2011|22:54:16",
+          "PSI69-r214|FLEX-218|N04H201|9/1/2011|23:17:17",
+          "PSI69-r228|FLEX-234|N01H401|9/23/2011|23:18:09",
+          "PSI69-r229|FLEX-235|N01H502|9/24/2011|0:06:41",
+          "PSI69-r230|FLEX-236|N01H601|9/24/2011|1:06:33"
+        ]
+      }
+    },
+    {
+      "file": "fig2_K_vs_CO2.svg",
+      "title": "Reported burning-rate constant vs CO2 (CO2-added atmospheres)",
+      "n_by_fuel": {
+        "Methanol": 71,
+        "Heptane": 45
+      },
+      "not_shown_non_free_floating": {
+        "Methanol": 0,
+        "Heptane": 0
+      },
+      "groups": [
+        "~0.7 atm nominal (526.3-544.4 mmHg)",
+        "~1 atm nominal (752-774.1 mmHg)",
+        ">= 1545.7 mmHg (3 clusters)"
+      ],
+      "plotted_record_keys": {
+        "Methanol": [
+          "PSI69-r010|FLEX-010|256F002|5/22/2009|14:53:27",
+          "PSI69-r011|FLEX-011|256R001|5/22/2009|15:33:47",
+          "PSI69-r013|FLEX-013|256R002|6/25/2009|15:33:05",
+          "PSI69-r016|FLEX-016|256F009|6/29/2009|15:34:58",
+          "PSI69-r088|FLEX-088|053R001|5/5/2010|22:37:54",
+          "PSI69-r089|FLEX-089|053F001|5/5/2010|22:19:33",
+          "PSI69-r090|FLEX-090|141R001|5/6/2010|0:07:51",
+          "PSI69-r091|FLEX-091|141F001|5/5/2010|23:10:01",
+          "PSI69-r097|FLEX-097|C08M101|6/16/2010|22:43:35",
+          "PSI69-r098|FLEX-098|C09M201|6/21/2010|14:21:26",
+          "PSI69-r099|FLEX-099|C09M101|6/21/2010|12:57:34",
+          "PSI69-r104|FLEX-104|C08M201|6/16/2010|23:04:00",
+          "PSI69-r105|FLEX-105|C08M301|6/16/2010|23:29:19",
+          "PSI69-r106|FLEX-106|C09M401|6/21/2010|15:52:51",
+          "PSI69-r107|FLEX-107|C08M401|6/16/2010|23:51:26",
+          "PSI69-r108|FLEX-108|C09M301|6/21/2010|15:35:57",
+          "PSI69-r109|FLEX-109|C10M102|8/31/2010|5:38:01",
+          "PSI69-r110|FLEX-110|C10M201|8/31/2010|7:16:40",
+          "PSI69-r111|FLEX-111|C10M303|8/31/2010|8:58:24",
+          "PSI69-r112|FLEX-112|C10M401|9/1/2010|15:27:44",
+          "PSI69-r113|FLEX-113|C11M101|9/1/2010|19:17:58",
+          "PSI69-r115|FLEX-115|C11M301|9/1/2010|20:40:16",
+          "PSI69-r116|FLEX-116|C11M401|9/1/2010|20:57:41",
+          "PSI69-r121|FLEX-121|C12M101|9/8/2010|19:21:31",
+          "PSI69-r122|FLEX-122|C12M201|9/8/2010|21:44:37",
+          "PSI69-r123|FLEX-123|C12M301|9/8/2010|22:16:51",
+          "PSI69-r124|FLEX-124|C12M401|9/8/2010|22:45:54",
+          "PSI69-r125|FLEX-125|C13M103|9/13/2010|21:07:02",
+          "PSI69-r126|FLEX-126|C13M201|9/13/2010|18:11:39",
+          "PSI69-r127|FLEX-127|C13M301|9/13/2010|19:22:49",
+          "PSI69-r128|FLEX-128|C13M401|9/13/2010|19:49:24",
+          "PSI69-r140|FLEX-140|C14M101|11/4/2010|16:52:39",
+          "PSI69-r141|FLEX-141|C14M201|11/4/2010|18:07:51",
+          "PSI69-r142|FLEX-142|C14M301|11/4/2010|19:11:39",
+          "PSI69-r143|FLEX-143|C14M302|11/4/2010|20:19:22",
+          "PSI69-r144|FLEX-144|C01M101|11/16/10|9:42:08",
+          "PSI69-r145|FLEX-145|C01M201|11/16/10|10:21:24",
+          "PSI69-r146|FLEX-146|C01M301|11/16/10|10:54:23",
+          "PSI69-r147|FLEX-147|C13M102|9/13/2010|17:35:49",
+          "PSI69-r151|FLEX-151|C03M101|12/8/2010|18:31:22",
+          "PSI69-r152|FLEX-152|C03M201|12/8/2010|20:10:32",
+          "PSI69-r153|FLEX-153|C03M301|12/8/2010|21:08:17",
+          "PSI69-r157|FLEX-158|C05M101|12/14/10|13:41:00",
+          "PSI69-r158|FLEX-159|C05M201|12/14/10|14:30:46",
+          "PSI69-r159|FLEX-160|C05M301|12/14/10|15:17:59",
+          "PSI69-r160|FLEX-161|C05M401|12/14/10|17:51:58",
+          "PSI69-r161|FLEX-162|C06M101|12/28/10|11:41:39",
+          "PSI69-r162|FLEX-163|C06M201|12/28/10|12:05:23",
+          "PSI69-r163|FLEX-164|C06M301|12/28/10|13:00:43",
+          "PSI69-r164|FLEX-165|C06M401|12/28/10|13:36:43",
+          "PSI69-r166|FLEX-167|C07M101|1/12/2011|21:56:45",
+          "PSI69-r167|FLEX-168|C07M201|1/12/2011|22:11:40",
+          "PSI69-r168|FLEX-169|C15M101|1/18/2011|12:54:25",
+          "PSI69-r169|FLEX-170|C15M201|1/18/2011|14:19:29",
+          "PSI69-r170|FLEX-171|C15M301|1/18/2011|15:58:46",
+          "PSI69-r176|FLEX-177|C08M501|4/18/2011|20:27:36",
+          "PSI69-r177|FLEX-178|C08M601|4/18/2011|20:52:24",
+          "PSI69-r183|FLEX-184|C09M501|8/8/2011|13:14:11",
+          "PSI69-r184|FLEX-185|C09M502|8/8/2011|13:30:14",
+          "PSI69-r185|FLEX-186|C09M601|8/8/2011|13:42:04",
+          "PSI69-r186|FLEX-187|C09M701|8/8/2011|14:52:15",
+          "PSI69-r187|FLEX-188|C02M101|8/8/2011|16:16:48",
+          "PSI69-r188|FLEX-189|C02M201|8/8/2011|17:49:19",
+          "PSI69-r189|FLEX-190|C03M501|8/9/2011|10:53:21",
+          "PSI69-r190|FLEX-191|C03M601|8/9/2011|12:28:41",
+          "PSI69-r191|FLEX-192|C03M701|8/9/2011|12:46:53",
+          "PSI69-r192|FLEX-193|C04M101|8/9/2011|17:07:27",
+          "PSI69-r193|FLEX-194|C04M201|8/9/2011|18:26:45",
+          "PSI69-r199|FLEX-200|C01M501|8/24/2011|15:07:47",
+          "PSI69-r200|FLEX-201|C01M602|8/24/2011|15:56:17",
+          "PSI69-r201|FLEX-202|C01M603|8/24/2011|16:18:58"
+        ],
+        "Heptane": [
+          "PSI69-r018|FLEX-018|248F001|7/1/2009|16:28:56",
+          "PSI69-r092|FLEX-092|061F002|6/14/2010|22:54:56",
+          "PSI69-r093|FLEX-093|149F001|6/15/2010|0:32:31",
+          "PSI69-r094|FLEX-094|C08H101|6/15/2010|2:10:43",
+          "PSI69-r095|FLEX-095|C08H201|6/15/2010|3:22:41",
+          "PSI69-r100|FLEX-100|C09H101|6/29/2010|8:30:46",
+          "PSI69-r101|FLEX-101|C09H201|6/29/2010|9:38:10",
+          "PSI69-r102|FLEX-102|C10H101|6/29/2010|11:21:09",
+          "PSI69-r103|FLEX-103|C10H201|6/29/2010|11:56:02",
+          "PSI69-r117|FLEX-117|C11H101|9/6/2010|18:14:53",
+          "PSI69-r118|FLEX-118|C11H201|9/6/2010|19:14:22",
+          "PSI69-r119|FLEX-119|C12H103|9/7/2010|1:50:01",
+          "PSI69-r120|FLEX-120|C12H201|9/7/2010|1:08:26",
+          "PSI69-r129|FLEX-129|C13H102|9/17/2010|1:32:49",
+          "PSI69-r130|FLEX-130|C13H201|9/17/2010|3:55:59",
+          "PSI69-r131|FLEX-131|C21H101|10/6/2010|11:28:52",
+          "PSI69-r132|FLEX-132|C21H201|10/6/2010|12:59:06",
+          "PSI69-r133|FLEX-133|C21H301|10/6/2010|13:59:59",
+          "PSI69-r134|FLEX-134|C21H401|10/6/2010|14:57:06",
+          "PSI69-r135|FLEX-135|C21H501|10/6/2010|16:22:15",
+          "PSI69-r136|FLEX-136|C21H302|10/6/2010|17:30:58",
+          "PSI69-r137|FLEX-137|C21H303|10/6/2010|17:53:35",
+          "PSI69-r139|FLEX-139|C21H305|10/6/2010|19:09:45",
+          "PSI69-r148|FLEX-148|C01H101|11/18/10|8:39:27",
+          "PSI69-r149|FLEX-149|C01H201|11/18/10|9:25:38",
+          "PSI69-r150|FLEX-150|C01H302|11/18/10|10:17:02",
+          "PSI69-r154|FLEX-154|C03H101|12/9/2010|16:02:14",
+          "PSI69-r155|FLEX-155|C03H201|12/9/2010|17:49:08",
+          "PSI69-r156|FLEX-157|C03H401|12/9/2010|19:12:27",
+          "PSI69-r165|FLEX-166|C03H302|12/9/2010|18:51:34",
+          "PSI69-r171|FLEX-172|C03H501|2/21/2011|17:56:40",
+          "PSI69-r172|FLEX-173|C03H601|2/21/2011|19:07:48",
+          "PSI69-r173|FLEX-174|C03H701|2/21/2011|19:17:37",
+          "PSI69-r174|FLEX-175|C08H502|2/21/2011|22:15:54",
+          "PSI69-r175|FLEX-176|C08H601|2/21/2011|22:43:37",
+          "PSI69-r178|FLEX-179|C09H501|4/20/2011|17:56:25",
+          "PSI69-r179|FLEX-180|C09H601|4/20/2011|18:22:58",
+          "PSI69-r180|FLEX-181|C02H101|4/20/2011|20:00:24",
+          "PSI69-r181|FLEX-182|C02H201|4/20/2011|21:14:08",
+          "PSI69-r182|FLEX-183|C02H202|4/20/2011|21:26:02",
+          "PSI69-r194|FLEX-195|C04H101|8/17/2011|22:31:20",
+          "PSI69-r195|FLEX-196|C04H201|8/17/2011|22:53:58",
+          "PSI69-r196|FLEX-197|C01H501|8/18/2011|0:24:31",
+          "PSI69-r197|FLEX-198|C01H601|8/18/2011|1:38:10",
+          "PSI69-r198|FLEX-199|C01H701|8/18/2011|1:55:56"
+        ]
+      }
+    },
+    {
+      "file": "fig3_K_vs_He.svg",
+      "title": "Reported burning-rate constant vs He (He-added atmospheres)",
+      "n_by_fuel": {
+        "Methanol": 26,
+        "Heptane": 21
+      },
+      "not_shown_non_free_floating": {
+        "Methanol": 0,
+        "Heptane": 0
+      },
+      "groups": [
+        "~0.7 atm nominal (526.3-544.4 mmHg)",
+        "~1 atm nominal (752-774.1 mmHg)"
+      ],
+      "plotted_record_keys": {
+        "Methanol": [
+          "PSI69-r222|FLEX-226|H01M102|9/9/2011|17:41:47",
+          "PSI69-r225|FLEX-231|H02M101|9/21/2011|22:28:54",
+          "PSI69-r226|FLEX-232|H03M101|9/22/2011|0:02:52",
+          "PSI69-r227|FLEX-233|H03M201|9/22/2011|0:44:55",
+          "PSI69-r239|FLEX-245|H04M101|10/1/2011|0:34:58",
+          "PSI69-r240|FLEX-246|H04M202|10/1/2011|1:21:41",
+          "PSI69-r241|FLEX-247|H05M102|10/1/2011|2:58:40",
+          "PSI69-r244|FLEX-250|H06M102|10/7/2011|12:12:14",
+          "PSI69-r245|FLEX-251|H06M201|10/7/2011|13:00:56",
+          "PSI69-r246|FLEX-252|H07M101|10/7/2011|14:25:42",
+          "PSI69-r247|FLEX-253|H07M202|10/7/2011|15:06:17",
+          "PSI69-r248|FLEX-254|H08M101|10/11/11|12:11:56",
+          "PSI69-r251|FLEX-257|H10M101|11/18/11|14:48:10",
+          "PSI69-r252|FLEX-258|H10M102|11/18/11|15:19:28",
+          "PSI69-r253|FLEX-259|H11M101|11/18/11|16:59:20",
+          "PSI69-r254|FLEX-260|H11M102|11/18/11|17:51:23",
+          "PSI69-r255|FLEX-261|H12M101|11/18/11|18:53:50",
+          "PSI69-r256|FLEX-262|H12M102|11/18/11|21:29:35",
+          "PSI69-r257|FLEX-263|H12M201|11/18/11|21:53:16",
+          "PSI69-r262|FLEX-268|H13M102|11/28/11|13:13:31",
+          "PSI69-r263|FLEX-269|H13M201|11/28/11|13:24:55",
+          "PSI69-r264|FLEX-270|H14M101|11/28/11|15:07:28",
+          "PSI69-r265|FLEX-271|H14M201|11/28/11|15:35:38",
+          "PSI69-r266|FLEX-272|H14M202|11/28/11|15:54:09",
+          "PSI69-r271|FLEX-277|H15M102|12/5/2011|22:54:10",
+          "PSI69-r272|FLEX-278|H15M201|12/5/2011|23:39:04"
+        ],
+        "Heptane": [
+          "PSI69-r224|FLEX-229|H01H102|9/13/2011|11:55:40",
+          "PSI69-r231|FLEX-237|H02H101|9/24/2011|2:44:09",
+          "PSI69-r232|FLEX-238|H03H101|9/27/2011|12:08:14",
+          "PSI69-r233|FLEX-239|H03H201|9/27/2011|13:00:54",
+          "PSI69-r234|FLEX-240|H03H202|9/27/2011|13:25:07",
+          "PSI69-r235|FLEX-241|H04H101|9/27/2011|15:00:33",
+          "PSI69-r236|FLEX-242|H04H201|9/27/2011|15:12:24",
+          "PSI69-r238|FLEX-244|H04H303|9/27/2011|16:40:04",
+          "PSI69-r243|FLEX-249|H05H103|10/5/2011|14:58:32",
+          "PSI69-r249|FLEX-255|H10H101|10/12/11|20:16:43",
+          "PSI69-r250|FLEX-256|H11H101|10/12/11|21:58:55",
+          "PSI69-r258|FLEX-264|H12H101|11/22/11|13:04:17",
+          "PSI69-r259|FLEX-265|H12H201|11/22/11|15:49:36",
+          "PSI69-r260|FLEX-266|H13H101|11/22/11|20:40:42",
+          "PSI69-r261|FLEX-267|H13H201|11/22/11|20:58:21",
+          "PSI69-r267|FLEX-273|H14H101|11/30/11|8:39:18",
+          "PSI69-r268|FLEX-274|H14H201|11/30/11|9:49:07",
+          "PSI69-r269|FLEX-275|H15H101|11/30/11|11:30:51",
+          "PSI69-r270|FLEX-276|H15H201|11/30/11|12:09:00",
+          "PSI69-r273|FLEX-279|H19H101|12/8/2011|22:29:44",
+          "PSI69-r274|FLEX-280|H19H201|12/8/2011|23:41:45"
+        ]
+      }
+    },
+    {
+      "file": "fig4_K_vs_pressure_N2only.svg",
+      "title": "Reported burning-rate constant vs ambient pressure (N2-only)",
+      "n_by_fuel": {
+        "Methanol": 53,
+        "Heptane": 41
+      },
+      "not_shown_non_free_floating": {
+        "Methanol": 0,
+        "Heptane": 0
+      },
+      "groups": [
+        "O2 = 0.21",
+        "O2 other"
+      ],
+      "plotted_record_keys": {
+        "Methanol": [
+          "PSI69-r001|FLEX-001|20CAL08|3/5/2009|17:22:03",
+          "PSI69-r002|FLEX-002|20CAL10|3/5/2009|19:20:06",
+          "PSI69-r003|FLEX-003|20CAL12|3/5/2009|21:17:46",
+          "PSI69-r004|FLEX-004|30CAL02|3/31/2009|17:16:18",
+          "PSI69-r005|FLEX-005|30CAL03|3/31/2009|19:00:48",
+          "PSI69-r006|FLEX-006|40CAL01|3/31/2009|20:05:49",
+          "PSI69-r020|FLEX-020|192F001|10/24/09|14:09:04",
+          "PSI69-r021|FLEX-021|192F002|10/24/09|15:15:24",
+          "PSI69-r022|FLEX-022|192F003|10/24/09|15:39:48",
+          "PSI69-r025|FLEX-025|191R001|11/9/2009|11:42:23",
+          "PSI69-r026|FLEX-026|191F001|11/9/2009|11:59:59",
+          "PSI69-r029|FLEX-029|178R001|11/13/09|13:11:23",
+          "PSI69-r030|FLEX-030|178F001|11/13/09|14:03:46",
+          "PSI69-r033|FLEX-033|177R002|11/27/09|10:02:15",
+          "PSI69-r034|FLEX-034|177F001|11/27/09|11:15:38",
+          "PSI69-r036|FLEX-036|190R002|12/15/09|10:39:35",
+          "PSI69-r037|FLEX-037|220R001|1/7/2010|19:08:46",
+          "PSI69-r038|FLEX-038|220R002|1/7/2010|19:20:38",
+          "PSI69-r040|FLEX-040|219R001|1/8/2010|5:02:52",
+          "PSI69-r041|FLEX-041|219F001|1/8/2010|4:41:55",
+          "PSI69-r044|FLEX-044|206F001|1/11/2010|10:33:22",
+          "PSI69-r045|FLEX-045|206R001|1/11/2010|10:54:25",
+          "PSI69-r046|FLEX-046|205R001|1/12/2010|13:14:25",
+          "PSI69-r048|FLEX-048|205F001|1/12/2010|12:14:55",
+          "PSI69-r054|FLEX-054|190F003|1/29/2010|11:27:01",
+          "PSI69-r055|FLEX-055|218F001|1/29/2010|16:06:50",
+          "PSI69-r058|FLEX-058|176F001|2/4/2010|2:32:01",
+          "PSI69-r059|FLEX-059|176R001|2/4/2010|0:26:28",
+          "PSI69-r060|FLEX-060|204F001|2/4/2010|3:26:05",
+          "PSI69-r061|FLEX-061|204R001|2/4/2010|3:52:39",
+          "PSI69-r065|FLEX-065|189R001|3/19/2010|8:42:53",
+          "PSI69-r066|FLEX-066|189F001|3/19/2010|9:26:45",
+          "PSI69-r067|FLEX-067|189F002|3/19/2010|10:17:06",
+          "PSI69-r068|FLEX-068|189R003|3/19/2010|12:04:45",
+          "PSI69-r071|FLEX-071|189R002|3/19/2010|11:19:22",
+          "PSI69-r075|FLEX-075|203R002|3/29/2010|21:06:40",
+          "PSI69-r076|FLEX-076|203F001|3/29/2010|19:24:36",
+          "PSI69-r077|FLEX-077|175R001|3/29/2010|18:39:20",
+          "PSI69-r078|FLEX-078|175F001|3/29/2010|17:49:23",
+          "PSI69-r082|FLEX-082|304F001|4/19/2010|17:19:17",
+          "PSI69-r084|FLEX-084|304R001|4/19/2010|17:51:24",
+          "PSI69-r085|FLEX-085|304R002|4/19/2010|20:12:58",
+          "PSI69-r086|FLEX-086|305F002|4/19/2010|19:16:37",
+          "PSI69-r087|FLEX-087|305F003|4/19/2010|20:38:54",
+          "PSI69-r202|FLEX-203|N01M101|8/24/2011|21:05:01",
+          "PSI69-r203|FLEX-204|N01M201|8/24/2011|21:58:36",
+          "PSI69-r215|FLEX-219|N04M101|9/8/2011|17:00:27",
+          "PSI69-r216|FLEX-220|N04M201|9/8/2011|17:21:15",
+          "PSI69-r217|FLEX-221|N05M101|9/8/2011|19:00:48",
+          "PSI69-r218|FLEX-222|N05M201|9/8/2011|20:24:20",
+          "PSI69-r219|FLEX-223|N06M101|9/9/2011|13:09:53",
+          "PSI69-r220|FLEX-224|N06M201|9/9/2011|13:28:43",
+          "PSI69-r221|FLEX-225|N06M202|9/9/2011|14:26:07"
+        ],
+        "Heptane": [
+          "PSI69-r007|FLEX-007|20CAL13|4/10/2009|13:26:11",
+          "PSI69-r008|FLEX-008|30CAL06|4/10/2009|18:07:15",
+          "PSI69-r019|FLEX-019|196F001|8/26/2009|19:07:28",
+          "PSI69-r023|FLEX-023|196F002|10/24/09|18:29:53",
+          "PSI69-r027|FLEX-027|195F001|11/9/2009|14:04:11",
+          "PSI69-r028|FLEX-028|195F002|11/9/2009|14:56:05",
+          "PSI69-r031|FLEX-031|182F001|11/13/09|18:33:39",
+          "PSI69-r032|FLEX-032|182F002|11/13/09|19:04:33",
+          "PSI69-r035|FLEX-035|181F001|11/27/09|13:01:24",
+          "PSI69-r039|FLEX-039|224F001|1/7/2010|21:51:19",
+          "PSI69-r042|FLEX-042|223F001|1/8/2010|1:02:04",
+          "PSI69-r043|FLEX-043|223F002|1/8/2010|3:16:16",
+          "PSI69-r047|FLEX-047|209F001|1/12/2010|15:48:17",
+          "PSI69-r049|FLEX-049|209F003|1/19/2010|9:09:16",
+          "PSI69-r050|FLEX-050|209F004|1/19/2010|14:08:17",
+          "PSI69-r051|FLEX-051|209F005|1/19/2010|16:38:35",
+          "PSI69-r052|FLEX-052|210F002|1/11/2010|13:46:44",
+          "PSI69-r056|FLEX-056|194F001|1/29/2010|19:13:22",
+          "PSI69-r057|FLEX-057|303F001|1/29/2010|19:50:16",
+          "PSI69-r062|FLEX-062|301F001|3/11/2010|21:37:48",
+          "PSI69-r063|FLEX-063|301F002|3/11/2010|23:07:51",
+          "PSI69-r064|FLEX-064|302F001|3/11/2010|22:12:39",
+          "PSI69-r069|FLEX-069|193R002|3/23/2010|10:23:00",
+          "PSI69-r070|FLEX-070|193F001|3/23/2010|7:25:43",
+          "PSI69-r072|FLEX-072|193R001|3/23/2010|9:06:37",
+          "PSI69-r073|FLEX-073|193F001|3/23/2010|7:25:43",
+          "PSI69-r074|FLEX-074|221F001|3/23/2010|9:44:36",
+          "PSI69-r079|FLEX-079|179F001|3/30/2010|0:40:16",
+          "PSI69-r204|FLEX-206|N01H101|8/29/2011|19:04:50",
+          "PSI69-r205|FLEX-207|N01H102|8/29/2011|19:21:49",
+          "PSI69-r206|FLEX-208|N01H201|8/29/2011|20:28:30",
+          "PSI69-r207|FLEX-209|N01H202|8/29/2011|21:54:40",
+          "PSI69-r208|FLEX-210|N01H301|8/29/2011|22:19:47",
+          "PSI69-r209|FLEX-211|N02H101|8/29/2011|23:36:18",
+          "PSI69-r211|FLEX-214|N02H203|8/30/2011|0:58:06",
+          "PSI69-r212|FLEX-215|N03H101|9/1/2011|19:44:42",
+          "PSI69-r213|FLEX-217|N04H101|9/1/2011|22:54:16",
+          "PSI69-r214|FLEX-218|N04H201|9/1/2011|23:17:17",
+          "PSI69-r228|FLEX-234|N01H401|9/23/2011|23:18:09",
+          "PSI69-r229|FLEX-235|N01H502|9/24/2011|0:06:41",
+          "PSI69-r230|FLEX-236|N01H601|9/24/2011|1:06:33"
+        ]
+      }
+    },
+    {
+      "file": "fig5_K_vs_D0.svg",
+      "title": "Reported burning-rate constant vs initial droplet diameter",
+      "n_by_fuel": {
+        "Methanol": 150,
+        "Heptane": 107
+      },
+      "not_shown_non_free_floating": {
+        "Methanol": 0,
+        "Heptane": 0
+      },
+      "groups": [
+        "N2_only",
+        "CO2_added",
+        "He_added"
+      ],
+      "plotted_record_keys": {
+        "Methanol": [
+          "PSI69-r001|FLEX-001|20CAL08|3/5/2009|17:22:03",
+          "PSI69-r002|FLEX-002|20CAL10|3/5/2009|19:20:06",
+          "PSI69-r003|FLEX-003|20CAL12|3/5/2009|21:17:46",
+          "PSI69-r004|FLEX-004|30CAL02|3/31/2009|17:16:18",
+          "PSI69-r005|FLEX-005|30CAL03|3/31/2009|19:00:48",
+          "PSI69-r006|FLEX-006|40CAL01|3/31/2009|20:05:49",
+          "PSI69-r010|FLEX-010|256F002|5/22/2009|14:53:27",
+          "PSI69-r011|FLEX-011|256R001|5/22/2009|15:33:47",
+          "PSI69-r013|FLEX-013|256R002|6/25/2009|15:33:05",
+          "PSI69-r016|FLEX-016|256F009|6/29/2009|15:34:58",
+          "PSI69-r020|FLEX-020|192F001|10/24/09|14:09:04",
+          "PSI69-r021|FLEX-021|192F002|10/24/09|15:15:24",
+          "PSI69-r022|FLEX-022|192F003|10/24/09|15:39:48",
+          "PSI69-r025|FLEX-025|191R001|11/9/2009|11:42:23",
+          "PSI69-r026|FLEX-026|191F001|11/9/2009|11:59:59",
+          "PSI69-r029|FLEX-029|178R001|11/13/09|13:11:23",
+          "PSI69-r030|FLEX-030|178F001|11/13/09|14:03:46",
+          "PSI69-r033|FLEX-033|177R002|11/27/09|10:02:15",
+          "PSI69-r034|FLEX-034|177F001|11/27/09|11:15:38",
+          "PSI69-r036|FLEX-036|190R002|12/15/09|10:39:35",
+          "PSI69-r037|FLEX-037|220R001|1/7/2010|19:08:46",
+          "PSI69-r038|FLEX-038|220R002|1/7/2010|19:20:38",
+          "PSI69-r040|FLEX-040|219R001|1/8/2010|5:02:52",
+          "PSI69-r041|FLEX-041|219F001|1/8/2010|4:41:55",
+          "PSI69-r044|FLEX-044|206F001|1/11/2010|10:33:22",
+          "PSI69-r045|FLEX-045|206R001|1/11/2010|10:54:25",
+          "PSI69-r046|FLEX-046|205R001|1/12/2010|13:14:25",
+          "PSI69-r048|FLEX-048|205F001|1/12/2010|12:14:55",
+          "PSI69-r054|FLEX-054|190F003|1/29/2010|11:27:01",
+          "PSI69-r055|FLEX-055|218F001|1/29/2010|16:06:50",
+          "PSI69-r058|FLEX-058|176F001|2/4/2010|2:32:01",
+          "PSI69-r059|FLEX-059|176R001|2/4/2010|0:26:28",
+          "PSI69-r060|FLEX-060|204F001|2/4/2010|3:26:05",
+          "PSI69-r061|FLEX-061|204R001|2/4/2010|3:52:39",
+          "PSI69-r065|FLEX-065|189R001|3/19/2010|8:42:53",
+          "PSI69-r066|FLEX-066|189F001|3/19/2010|9:26:45",
+          "PSI69-r067|FLEX-067|189F002|3/19/2010|10:17:06",
+          "PSI69-r068|FLEX-068|189R003|3/19/2010|12:04:45",
+          "PSI69-r071|FLEX-071|189R002|3/19/2010|11:19:22",
+          "PSI69-r075|FLEX-075|203R002|3/29/2010|21:06:40",
+          "PSI69-r076|FLEX-076|203F001|3/29/2010|19:24:36",
+          "PSI69-r077|FLEX-077|175R001|3/29/2010|18:39:20",
+          "PSI69-r078|FLEX-078|175F001|3/29/2010|17:49:23",
+          "PSI69-r082|FLEX-082|304F001|4/19/2010|17:19:17",
+          "PSI69-r084|FLEX-084|304R001|4/19/2010|17:51:24",
+          "PSI69-r085|FLEX-085|304R002|4/19/2010|20:12:58",
+          "PSI69-r086|FLEX-086|305F002|4/19/2010|19:16:37",
+          "PSI69-r087|FLEX-087|305F003|4/19/2010|20:38:54",
+          "PSI69-r088|FLEX-088|053R001|5/5/2010|22:37:54",
+          "PSI69-r089|FLEX-089|053F001|5/5/2010|22:19:33",
+          "PSI69-r090|FLEX-090|141R001|5/6/2010|0:07:51",
+          "PSI69-r091|FLEX-091|141F001|5/5/2010|23:10:01",
+          "PSI69-r097|FLEX-097|C08M101|6/16/2010|22:43:35",
+          "PSI69-r098|FLEX-098|C09M201|6/21/2010|14:21:26",
+          "PSI69-r099|FLEX-099|C09M101|6/21/2010|12:57:34",
+          "PSI69-r104|FLEX-104|C08M201|6/16/2010|23:04:00",
+          "PSI69-r105|FLEX-105|C08M301|6/16/2010|23:29:19",
+          "PSI69-r106|FLEX-106|C09M401|6/21/2010|15:52:51",
+          "PSI69-r107|FLEX-107|C08M401|6/16/2010|23:51:26",
+          "PSI69-r108|FLEX-108|C09M301|6/21/2010|15:35:57",
+          "PSI69-r109|FLEX-109|C10M102|8/31/2010|5:38:01",
+          "PSI69-r110|FLEX-110|C10M201|8/31/2010|7:16:40",
+          "PSI69-r111|FLEX-111|C10M303|8/31/2010|8:58:24",
+          "PSI69-r112|FLEX-112|C10M401|9/1/2010|15:27:44",
+          "PSI69-r113|FLEX-113|C11M101|9/1/2010|19:17:58",
+          "PSI69-r115|FLEX-115|C11M301|9/1/2010|20:40:16",
+          "PSI69-r116|FLEX-116|C11M401|9/1/2010|20:57:41",
+          "PSI69-r121|FLEX-121|C12M101|9/8/2010|19:21:31",
+          "PSI69-r122|FLEX-122|C12M201|9/8/2010|21:44:37",
+          "PSI69-r123|FLEX-123|C12M301|9/8/2010|22:16:51",
+          "PSI69-r124|FLEX-124|C12M401|9/8/2010|22:45:54",
+          "PSI69-r125|FLEX-125|C13M103|9/13/2010|21:07:02",
+          "PSI69-r126|FLEX-126|C13M201|9/13/2010|18:11:39",
+          "PSI69-r127|FLEX-127|C13M301|9/13/2010|19:22:49",
+          "PSI69-r128|FLEX-128|C13M401|9/13/2010|19:49:24",
+          "PSI69-r140|FLEX-140|C14M101|11/4/2010|16:52:39",
+          "PSI69-r141|FLEX-141|C14M201|11/4/2010|18:07:51",
+          "PSI69-r142|FLEX-142|C14M301|11/4/2010|19:11:39",
+          "PSI69-r143|FLEX-143|C14M302|11/4/2010|20:19:22",
+          "PSI69-r144|FLEX-144|C01M101|11/16/10|9:42:08",
+          "PSI69-r145|FLEX-145|C01M201|11/16/10|10:21:24",
+          "PSI69-r146|FLEX-146|C01M301|11/16/10|10:54:23",
+          "PSI69-r147|FLEX-147|C13M102|9/13/2010|17:35:49",
+          "PSI69-r151|FLEX-151|C03M101|12/8/2010|18:31:22",
+          "PSI69-r152|FLEX-152|C03M201|12/8/2010|20:10:32",
+          "PSI69-r153|FLEX-153|C03M301|12/8/2010|21:08:17",
+          "PSI69-r157|FLEX-158|C05M101|12/14/10|13:41:00",
+          "PSI69-r158|FLEX-159|C05M201|12/14/10|14:30:46",
+          "PSI69-r159|FLEX-160|C05M301|12/14/10|15:17:59",
+          "PSI69-r160|FLEX-161|C05M401|12/14/10|17:51:58",
+          "PSI69-r161|FLEX-162|C06M101|12/28/10|11:41:39",
+          "PSI69-r162|FLEX-163|C06M201|12/28/10|12:05:23",
+          "PSI69-r163|FLEX-164|C06M301|12/28/10|13:00:43",
+          "PSI69-r164|FLEX-165|C06M401|12/28/10|13:36:43",
+          "PSI69-r166|FLEX-167|C07M101|1/12/2011|21:56:45",
+          "PSI69-r167|FLEX-168|C07M201|1/12/2011|22:11:40",
+          "PSI69-r168|FLEX-169|C15M101|1/18/2011|12:54:25",
+          "PSI69-r169|FLEX-170|C15M201|1/18/2011|14:19:29",
+          "PSI69-r170|FLEX-171|C15M301|1/18/2011|15:58:46",
+          "PSI69-r176|FLEX-177|C08M501|4/18/2011|20:27:36",
+          "PSI69-r177|FLEX-178|C08M601|4/18/2011|20:52:24",
+          "PSI69-r183|FLEX-184|C09M501|8/8/2011|13:14:11",
+          "PSI69-r184|FLEX-185|C09M502|8/8/2011|13:30:14",
+          "PSI69-r185|FLEX-186|C09M601|8/8/2011|13:42:04",
+          "PSI69-r186|FLEX-187|C09M701|8/8/2011|14:52:15",
+          "PSI69-r187|FLEX-188|C02M101|8/8/2011|16:16:48",
+          "PSI69-r188|FLEX-189|C02M201|8/8/2011|17:49:19",
+          "PSI69-r189|FLEX-190|C03M501|8/9/2011|10:53:21",
+          "PSI69-r190|FLEX-191|C03M601|8/9/2011|12:28:41",
+          "PSI69-r191|FLEX-192|C03M701|8/9/2011|12:46:53",
+          "PSI69-r192|FLEX-193|C04M101|8/9/2011|17:07:27",
+          "PSI69-r193|FLEX-194|C04M201|8/9/2011|18:26:45",
+          "PSI69-r199|FLEX-200|C01M501|8/24/2011|15:07:47",
+          "PSI69-r200|FLEX-201|C01M602|8/24/2011|15:56:17",
+          "PSI69-r201|FLEX-202|C01M603|8/24/2011|16:18:58",
+          "PSI69-r202|FLEX-203|N01M101|8/24/2011|21:05:01",
+          "PSI69-r203|FLEX-204|N01M201|8/24/2011|21:58:36",
+          "PSI69-r215|FLEX-219|N04M101|9/8/2011|17:00:27",
+          "PSI69-r216|FLEX-220|N04M201|9/8/2011|17:21:15",
+          "PSI69-r217|FLEX-221|N05M101|9/8/2011|19:00:48",
+          "PSI69-r218|FLEX-222|N05M201|9/8/2011|20:24:20",
+          "PSI69-r219|FLEX-223|N06M101|9/9/2011|13:09:53",
+          "PSI69-r220|FLEX-224|N06M201|9/9/2011|13:28:43",
+          "PSI69-r221|FLEX-225|N06M202|9/9/2011|14:26:07",
+          "PSI69-r222|FLEX-226|H01M102|9/9/2011|17:41:47",
+          "PSI69-r225|FLEX-231|H02M101|9/21/2011|22:28:54",
+          "PSI69-r226|FLEX-232|H03M101|9/22/2011|0:02:52",
+          "PSI69-r227|FLEX-233|H03M201|9/22/2011|0:44:55",
+          "PSI69-r239|FLEX-245|H04M101|10/1/2011|0:34:58",
+          "PSI69-r240|FLEX-246|H04M202|10/1/2011|1:21:41",
+          "PSI69-r241|FLEX-247|H05M102|10/1/2011|2:58:40",
+          "PSI69-r244|FLEX-250|H06M102|10/7/2011|12:12:14",
+          "PSI69-r245|FLEX-251|H06M201|10/7/2011|13:00:56",
+          "PSI69-r246|FLEX-252|H07M101|10/7/2011|14:25:42",
+          "PSI69-r247|FLEX-253|H07M202|10/7/2011|15:06:17",
+          "PSI69-r248|FLEX-254|H08M101|10/11/11|12:11:56",
+          "PSI69-r251|FLEX-257|H10M101|11/18/11|14:48:10",
+          "PSI69-r252|FLEX-258|H10M102|11/18/11|15:19:28",
+          "PSI69-r253|FLEX-259|H11M101|11/18/11|16:59:20",
+          "PSI69-r254|FLEX-260|H11M102|11/18/11|17:51:23",
+          "PSI69-r255|FLEX-261|H12M101|11/18/11|18:53:50",
+          "PSI69-r256|FLEX-262|H12M102|11/18/11|21:29:35",
+          "PSI69-r257|FLEX-263|H12M201|11/18/11|21:53:16",
+          "PSI69-r262|FLEX-268|H13M102|11/28/11|13:13:31",
+          "PSI69-r263|FLEX-269|H13M201|11/28/11|13:24:55",
+          "PSI69-r264|FLEX-270|H14M101|11/28/11|15:07:28",
+          "PSI69-r265|FLEX-271|H14M201|11/28/11|15:35:38",
+          "PSI69-r266|FLEX-272|H14M202|11/28/11|15:54:09",
+          "PSI69-r271|FLEX-277|H15M102|12/5/2011|22:54:10",
+          "PSI69-r272|FLEX-278|H15M201|12/5/2011|23:39:04"
+        ],
+        "Heptane": [
+          "PSI69-r007|FLEX-007|20CAL13|4/10/2009|13:26:11",
+          "PSI69-r008|FLEX-008|30CAL06|4/10/2009|18:07:15",
+          "PSI69-r018|FLEX-018|248F001|7/1/2009|16:28:56",
+          "PSI69-r019|FLEX-019|196F001|8/26/2009|19:07:28",
+          "PSI69-r023|FLEX-023|196F002|10/24/09|18:29:53",
+          "PSI69-r027|FLEX-027|195F001|11/9/2009|14:04:11",
+          "PSI69-r028|FLEX-028|195F002|11/9/2009|14:56:05",
+          "PSI69-r031|FLEX-031|182F001|11/13/09|18:33:39",
+          "PSI69-r032|FLEX-032|182F002|11/13/09|19:04:33",
+          "PSI69-r035|FLEX-035|181F001|11/27/09|13:01:24",
+          "PSI69-r039|FLEX-039|224F001|1/7/2010|21:51:19",
+          "PSI69-r042|FLEX-042|223F001|1/8/2010|1:02:04",
+          "PSI69-r043|FLEX-043|223F002|1/8/2010|3:16:16",
+          "PSI69-r047|FLEX-047|209F001|1/12/2010|15:48:17",
+          "PSI69-r049|FLEX-049|209F003|1/19/2010|9:09:16",
+          "PSI69-r050|FLEX-050|209F004|1/19/2010|14:08:17",
+          "PSI69-r051|FLEX-051|209F005|1/19/2010|16:38:35",
+          "PSI69-r052|FLEX-052|210F002|1/11/2010|13:46:44",
+          "PSI69-r056|FLEX-056|194F001|1/29/2010|19:13:22",
+          "PSI69-r057|FLEX-057|303F001|1/29/2010|19:50:16",
+          "PSI69-r062|FLEX-062|301F001|3/11/2010|21:37:48",
+          "PSI69-r063|FLEX-063|301F002|3/11/2010|23:07:51",
+          "PSI69-r064|FLEX-064|302F001|3/11/2010|22:12:39",
+          "PSI69-r069|FLEX-069|193R002|3/23/2010|10:23:00",
+          "PSI69-r070|FLEX-070|193F001|3/23/2010|7:25:43",
+          "PSI69-r072|FLEX-072|193R001|3/23/2010|9:06:37",
+          "PSI69-r073|FLEX-073|193F001|3/23/2010|7:25:43",
+          "PSI69-r074|FLEX-074|221F001|3/23/2010|9:44:36",
+          "PSI69-r079|FLEX-079|179F001|3/30/2010|0:40:16",
+          "PSI69-r092|FLEX-092|061F002|6/14/2010|22:54:56",
+          "PSI69-r093|FLEX-093|149F001|6/15/2010|0:32:31",
+          "PSI69-r094|FLEX-094|C08H101|6/15/2010|2:10:43",
+          "PSI69-r095|FLEX-095|C08H201|6/15/2010|3:22:41",
+          "PSI69-r100|FLEX-100|C09H101|6/29/2010|8:30:46",
+          "PSI69-r101|FLEX-101|C09H201|6/29/2010|9:38:10",
+          "PSI69-r102|FLEX-102|C10H101|6/29/2010|11:21:09",
+          "PSI69-r103|FLEX-103|C10H201|6/29/2010|11:56:02",
+          "PSI69-r117|FLEX-117|C11H101|9/6/2010|18:14:53",
+          "PSI69-r118|FLEX-118|C11H201|9/6/2010|19:14:22",
+          "PSI69-r119|FLEX-119|C12H103|9/7/2010|1:50:01",
+          "PSI69-r120|FLEX-120|C12H201|9/7/2010|1:08:26",
+          "PSI69-r129|FLEX-129|C13H102|9/17/2010|1:32:49",
+          "PSI69-r130|FLEX-130|C13H201|9/17/2010|3:55:59",
+          "PSI69-r131|FLEX-131|C21H101|10/6/2010|11:28:52",
+          "PSI69-r132|FLEX-132|C21H201|10/6/2010|12:59:06",
+          "PSI69-r133|FLEX-133|C21H301|10/6/2010|13:59:59",
+          "PSI69-r134|FLEX-134|C21H401|10/6/2010|14:57:06",
+          "PSI69-r135|FLEX-135|C21H501|10/6/2010|16:22:15",
+          "PSI69-r136|FLEX-136|C21H302|10/6/2010|17:30:58",
+          "PSI69-r137|FLEX-137|C21H303|10/6/2010|17:53:35",
+          "PSI69-r139|FLEX-139|C21H305|10/6/2010|19:09:45",
+          "PSI69-r148|FLEX-148|C01H101|11/18/10|8:39:27",
+          "PSI69-r149|FLEX-149|C01H201|11/18/10|9:25:38",
+          "PSI69-r150|FLEX-150|C01H302|11/18/10|10:17:02",
+          "PSI69-r154|FLEX-154|C03H101|12/9/2010|16:02:14",
+          "PSI69-r155|FLEX-155|C03H201|12/9/2010|17:49:08",
+          "PSI69-r156|FLEX-157|C03H401|12/9/2010|19:12:27",
+          "PSI69-r165|FLEX-166|C03H302|12/9/2010|18:51:34",
+          "PSI69-r171|FLEX-172|C03H501|2/21/2011|17:56:40",
+          "PSI69-r172|FLEX-173|C03H601|2/21/2011|19:07:48",
+          "PSI69-r173|FLEX-174|C03H701|2/21/2011|19:17:37",
+          "PSI69-r174|FLEX-175|C08H502|2/21/2011|22:15:54",
+          "PSI69-r175|FLEX-176|C08H601|2/21/2011|22:43:37",
+          "PSI69-r178|FLEX-179|C09H501|4/20/2011|17:56:25",
+          "PSI69-r179|FLEX-180|C09H601|4/20/2011|18:22:58",
+          "PSI69-r180|FLEX-181|C02H101|4/20/2011|20:00:24",
+          "PSI69-r181|FLEX-182|C02H201|4/20/2011|21:14:08",
+          "PSI69-r182|FLEX-183|C02H202|4/20/2011|21:26:02",
+          "PSI69-r194|FLEX-195|C04H101|8/17/2011|22:31:20",
+          "PSI69-r195|FLEX-196|C04H201|8/17/2011|22:53:58",
+          "PSI69-r196|FLEX-197|C01H501|8/18/2011|0:24:31",
+          "PSI69-r197|FLEX-198|C01H601|8/18/2011|1:38:10",
+          "PSI69-r198|FLEX-199|C01H701|8/18/2011|1:55:56",
+          "PSI69-r204|FLEX-206|N01H101|8/29/2011|19:04:50",
+          "PSI69-r205|FLEX-207|N01H102|8/29/2011|19:21:49",
+          "PSI69-r206|FLEX-208|N01H201|8/29/2011|20:28:30",
+          "PSI69-r207|FLEX-209|N01H202|8/29/2011|21:54:40",
+          "PSI69-r208|FLEX-210|N01H301|8/29/2011|22:19:47",
+          "PSI69-r209|FLEX-211|N02H101|8/29/2011|23:36:18",
+          "PSI69-r211|FLEX-214|N02H203|8/30/2011|0:58:06",
+          "PSI69-r212|FLEX-215|N03H101|9/1/2011|19:44:42",
+          "PSI69-r213|FLEX-217|N04H101|9/1/2011|22:54:16",
+          "PSI69-r214|FLEX-218|N04H201|9/1/2011|23:17:17",
+          "PSI69-r224|FLEX-229|H01H102|9/13/2011|11:55:40",
+          "PSI69-r228|FLEX-234|N01H401|9/23/2011|23:18:09",
+          "PSI69-r229|FLEX-235|N01H502|9/24/2011|0:06:41",
+          "PSI69-r230|FLEX-236|N01H601|9/24/2011|1:06:33",
+          "PSI69-r231|FLEX-237|H02H101|9/24/2011|2:44:09",
+          "PSI69-r232|FLEX-238|H03H101|9/27/2011|12:08:14",
+          "PSI69-r233|FLEX-239|H03H201|9/27/2011|13:00:54",
+          "PSI69-r234|FLEX-240|H03H202|9/27/2011|13:25:07",
+          "PSI69-r235|FLEX-241|H04H101|9/27/2011|15:00:33",
+          "PSI69-r236|FLEX-242|H04H201|9/27/2011|15:12:24",
+          "PSI69-r238|FLEX-244|H04H303|9/27/2011|16:40:04",
+          "PSI69-r243|FLEX-249|H05H103|10/5/2011|14:58:32",
+          "PSI69-r249|FLEX-255|H10H101|10/12/11|20:16:43",
+          "PSI69-r250|FLEX-256|H11H101|10/12/11|21:58:55",
+          "PSI69-r258|FLEX-264|H12H101|11/22/11|13:04:17",
+          "PSI69-r259|FLEX-265|H12H201|11/22/11|15:49:36",
+          "PSI69-r260|FLEX-266|H13H101|11/22/11|20:40:42",
+          "PSI69-r261|FLEX-267|H13H201|11/22/11|20:58:21",
+          "PSI69-r267|FLEX-273|H14H101|11/30/11|8:39:18",
+          "PSI69-r268|FLEX-274|H14H201|11/30/11|9:49:07",
+          "PSI69-r269|FLEX-275|H15H101|11/30/11|11:30:51",
+          "PSI69-r270|FLEX-276|H15H201|11/30/11|12:09:00",
+          "PSI69-r273|FLEX-279|H19H101|12/8/2011|22:29:44",
+          "PSI69-r274|FLEX-280|H19H201|12/8/2011|23:41:45"
+        ]
+      }
+    },
+    {
+      "file": "fig6_Dext_vs_O2_N2only.svg",
+      "title": "Visible flame extinction diameter vs O2 (N2-only, extinction runs)",
+      "n_by_fuel": {
+        "Methanol": 25,
+        "Heptane": 15
+      },
+      "not_shown_non_free_floating": {
+        "Methanol": 0,
+        "Heptane": 0
+      },
+      "groups": [
+        "~0.7 atm nominal (526.3-544.4 mmHg)",
+        "~1 atm nominal (752-774.1 mmHg)"
+      ],
+      "plotted_record_keys": {
+        "Methanol": [
+          "PSI69-r002|FLEX-002|20CAL10|3/5/2009|19:20:06",
+          "PSI69-r003|FLEX-003|20CAL12|3/5/2009|21:17:46",
+          "PSI69-r005|FLEX-005|30CAL03|3/31/2009|19:00:48",
+          "PSI69-r006|FLEX-006|40CAL01|3/31/2009|20:05:49",
+          "PSI69-r030|FLEX-030|178F001|11/13/09|14:03:46",
+          "PSI69-r033|FLEX-033|177R002|11/27/09|10:02:15",
+          "PSI69-r034|FLEX-034|177F001|11/27/09|11:15:38",
+          "PSI69-r036|FLEX-036|190R002|12/15/09|10:39:35",
+          "PSI69-r045|FLEX-045|206R001|1/11/2010|10:54:25",
+          "PSI69-r059|FLEX-059|176R001|2/4/2010|0:26:28",
+          "PSI69-r061|FLEX-061|204R001|2/4/2010|3:52:39",
+          "PSI69-r066|FLEX-066|189F001|3/19/2010|9:26:45",
+          "PSI69-r067|FLEX-067|189F002|3/19/2010|10:17:06",
+          "PSI69-r068|FLEX-068|189R003|3/19/2010|12:04:45",
+          "PSI69-r075|FLEX-075|203R002|3/29/2010|21:06:40",
+          "PSI69-r076|FLEX-076|203F001|3/29/2010|19:24:36",
+          "PSI69-r077|FLEX-077|175R001|3/29/2010|18:39:20",
+          "PSI69-r082|FLEX-082|304F001|4/19/2010|17:19:17",
+          "PSI69-r087|FLEX-087|305F003|4/19/2010|20:38:54",
+          "PSI69-r202|FLEX-203|N01M101|8/24/2011|21:05:01",
+          "PSI69-r203|FLEX-204|N01M201|8/24/2011|21:58:36",
+          "PSI69-r216|FLEX-220|N04M201|9/8/2011|17:21:15",
+          "PSI69-r217|FLEX-221|N05M101|9/8/2011|19:00:48",
+          "PSI69-r218|FLEX-222|N05M201|9/8/2011|20:24:20",
+          "PSI69-r219|FLEX-223|N06M101|9/9/2011|13:09:53"
+        ],
+        "Heptane": [
+          "PSI69-r035|FLEX-035|181F001|11/27/09|13:01:24",
+          "PSI69-r049|FLEX-049|209F003|1/19/2010|9:09:16",
+          "PSI69-r050|FLEX-050|209F004|1/19/2010|14:08:17",
+          "PSI69-r057|FLEX-057|303F001|1/29/2010|19:50:16",
+          "PSI69-r062|FLEX-062|301F001|3/11/2010|21:37:48",
+          "PSI69-r064|FLEX-064|302F001|3/11/2010|22:12:39",
+          "PSI69-r070|FLEX-070|193F001|3/23/2010|7:25:43",
+          "PSI69-r073|FLEX-073|193F001|3/23/2010|7:25:43",
+          "PSI69-r079|FLEX-079|179F001|3/30/2010|0:40:16",
+          "PSI69-r209|FLEX-211|N02H101|8/29/2011|23:36:18",
+          "PSI69-r211|FLEX-214|N02H203|8/30/2011|0:58:06",
+          "PSI69-r212|FLEX-215|N03H101|9/1/2011|19:44:42",
+          "PSI69-r213|FLEX-217|N04H101|9/1/2011|22:54:16",
+          "PSI69-r228|FLEX-234|N01H401|9/23/2011|23:18:09",
+          "PSI69-r230|FLEX-236|N01H601|9/24/2011|1:06:33"
+        ]
+      }
+    },
+    {
+      "file": "fig7_outcome_by_O2_D0_N2only.svg",
+      "title": "Test outcome by O2 and initial diameter (N2-only)",
+      "n_by_fuel": {
+        "Methanol": 53,
+        "Heptane": 41
+      },
+      "not_shown_non_free_floating": {
+        "Methanol": 0,
+        "Heptane": 0
+      },
+      "groups": [
+        "Extinction",
+        "Disruption",
+        "Completion"
+      ],
+      "plotted_record_keys": {
+        "Methanol": [
+          "PSI69-r001|FLEX-001|20CAL08|3/5/2009|17:22:03",
+          "PSI69-r002|FLEX-002|20CAL10|3/5/2009|19:20:06",
+          "PSI69-r003|FLEX-003|20CAL12|3/5/2009|21:17:46",
+          "PSI69-r004|FLEX-004|30CAL02|3/31/2009|17:16:18",
+          "PSI69-r005|FLEX-005|30CAL03|3/31/2009|19:00:48",
+          "PSI69-r006|FLEX-006|40CAL01|3/31/2009|20:05:49",
+          "PSI69-r020|FLEX-020|192F001|10/24/09|14:09:04",
+          "PSI69-r021|FLEX-021|192F002|10/24/09|15:15:24",
+          "PSI69-r022|FLEX-022|192F003|10/24/09|15:39:48",
+          "PSI69-r025|FLEX-025|191R001|11/9/2009|11:42:23",
+          "PSI69-r026|FLEX-026|191F001|11/9/2009|11:59:59",
+          "PSI69-r029|FLEX-029|178R001|11/13/09|13:11:23",
+          "PSI69-r030|FLEX-030|178F001|11/13/09|14:03:46",
+          "PSI69-r033|FLEX-033|177R002|11/27/09|10:02:15",
+          "PSI69-r034|FLEX-034|177F001|11/27/09|11:15:38",
+          "PSI69-r036|FLEX-036|190R002|12/15/09|10:39:35",
+          "PSI69-r037|FLEX-037|220R001|1/7/2010|19:08:46",
+          "PSI69-r038|FLEX-038|220R002|1/7/2010|19:20:38",
+          "PSI69-r040|FLEX-040|219R001|1/8/2010|5:02:52",
+          "PSI69-r041|FLEX-041|219F001|1/8/2010|4:41:55",
+          "PSI69-r044|FLEX-044|206F001|1/11/2010|10:33:22",
+          "PSI69-r045|FLEX-045|206R001|1/11/2010|10:54:25",
+          "PSI69-r046|FLEX-046|205R001|1/12/2010|13:14:25",
+          "PSI69-r048|FLEX-048|205F001|1/12/2010|12:14:55",
+          "PSI69-r054|FLEX-054|190F003|1/29/2010|11:27:01",
+          "PSI69-r055|FLEX-055|218F001|1/29/2010|16:06:50",
+          "PSI69-r058|FLEX-058|176F001|2/4/2010|2:32:01",
+          "PSI69-r059|FLEX-059|176R001|2/4/2010|0:26:28",
+          "PSI69-r060|FLEX-060|204F001|2/4/2010|3:26:05",
+          "PSI69-r061|FLEX-061|204R001|2/4/2010|3:52:39",
+          "PSI69-r065|FLEX-065|189R001|3/19/2010|8:42:53",
+          "PSI69-r066|FLEX-066|189F001|3/19/2010|9:26:45",
+          "PSI69-r067|FLEX-067|189F002|3/19/2010|10:17:06",
+          "PSI69-r068|FLEX-068|189R003|3/19/2010|12:04:45",
+          "PSI69-r071|FLEX-071|189R002|3/19/2010|11:19:22",
+          "PSI69-r075|FLEX-075|203R002|3/29/2010|21:06:40",
+          "PSI69-r076|FLEX-076|203F001|3/29/2010|19:24:36",
+          "PSI69-r077|FLEX-077|175R001|3/29/2010|18:39:20",
+          "PSI69-r078|FLEX-078|175F001|3/29/2010|17:49:23",
+          "PSI69-r082|FLEX-082|304F001|4/19/2010|17:19:17",
+          "PSI69-r084|FLEX-084|304R001|4/19/2010|17:51:24",
+          "PSI69-r085|FLEX-085|304R002|4/19/2010|20:12:58",
+          "PSI69-r086|FLEX-086|305F002|4/19/2010|19:16:37",
+          "PSI69-r087|FLEX-087|305F003|4/19/2010|20:38:54",
+          "PSI69-r202|FLEX-203|N01M101|8/24/2011|21:05:01",
+          "PSI69-r203|FLEX-204|N01M201|8/24/2011|21:58:36",
+          "PSI69-r215|FLEX-219|N04M101|9/8/2011|17:00:27",
+          "PSI69-r216|FLEX-220|N04M201|9/8/2011|17:21:15",
+          "PSI69-r217|FLEX-221|N05M101|9/8/2011|19:00:48",
+          "PSI69-r218|FLEX-222|N05M201|9/8/2011|20:24:20",
+          "PSI69-r219|FLEX-223|N06M101|9/9/2011|13:09:53",
+          "PSI69-r220|FLEX-224|N06M201|9/9/2011|13:28:43",
+          "PSI69-r221|FLEX-225|N06M202|9/9/2011|14:26:07"
+        ],
+        "Heptane": [
+          "PSI69-r007|FLEX-007|20CAL13|4/10/2009|13:26:11",
+          "PSI69-r008|FLEX-008|30CAL06|4/10/2009|18:07:15",
+          "PSI69-r019|FLEX-019|196F001|8/26/2009|19:07:28",
+          "PSI69-r023|FLEX-023|196F002|10/24/09|18:29:53",
+          "PSI69-r027|FLEX-027|195F001|11/9/2009|14:04:11",
+          "PSI69-r028|FLEX-028|195F002|11/9/2009|14:56:05",
+          "PSI69-r031|FLEX-031|182F001|11/13/09|18:33:39",
+          "PSI69-r032|FLEX-032|182F002|11/13/09|19:04:33",
+          "PSI69-r035|FLEX-035|181F001|11/27/09|13:01:24",
+          "PSI69-r039|FLEX-039|224F001|1/7/2010|21:51:19",
+          "PSI69-r042|FLEX-042|223F001|1/8/2010|1:02:04",
+          "PSI69-r043|FLEX-043|223F002|1/8/2010|3:16:16",
+          "PSI69-r047|FLEX-047|209F001|1/12/2010|15:48:17",
+          "PSI69-r049|FLEX-049|209F003|1/19/2010|9:09:16",
+          "PSI69-r050|FLEX-050|209F004|1/19/2010|14:08:17",
+          "PSI69-r051|FLEX-051|209F005|1/19/2010|16:38:35",
+          "PSI69-r052|FLEX-052|210F002|1/11/2010|13:46:44",
+          "PSI69-r056|FLEX-056|194F001|1/29/2010|19:13:22",
+          "PSI69-r057|FLEX-057|303F001|1/29/2010|19:50:16",
+          "PSI69-r062|FLEX-062|301F001|3/11/2010|21:37:48",
+          "PSI69-r063|FLEX-063|301F002|3/11/2010|23:07:51",
+          "PSI69-r064|FLEX-064|302F001|3/11/2010|22:12:39",
+          "PSI69-r069|FLEX-069|193R002|3/23/2010|10:23:00",
+          "PSI69-r070|FLEX-070|193F001|3/23/2010|7:25:43",
+          "PSI69-r072|FLEX-072|193R001|3/23/2010|9:06:37",
+          "PSI69-r073|FLEX-073|193F001|3/23/2010|7:25:43",
+          "PSI69-r074|FLEX-074|221F001|3/23/2010|9:44:36",
+          "PSI69-r079|FLEX-079|179F001|3/30/2010|0:40:16",
+          "PSI69-r204|FLEX-206|N01H101|8/29/2011|19:04:50",
+          "PSI69-r205|FLEX-207|N01H102|8/29/2011|19:21:49",
+          "PSI69-r206|FLEX-208|N01H201|8/29/2011|20:28:30",
+          "PSI69-r207|FLEX-209|N01H202|8/29/2011|21:54:40",
+          "PSI69-r208|FLEX-210|N01H301|8/29/2011|22:19:47",
+          "PSI69-r209|FLEX-211|N02H101|8/29/2011|23:36:18",
+          "PSI69-r211|FLEX-214|N02H203|8/30/2011|0:58:06",
+          "PSI69-r212|FLEX-215|N03H101|9/1/2011|19:44:42",
+          "PSI69-r213|FLEX-217|N04H101|9/1/2011|22:54:16",
+          "PSI69-r214|FLEX-218|N04H201|9/1/2011|23:17:17",
+          "PSI69-r228|FLEX-234|N01H401|9/23/2011|23:18:09",
+          "PSI69-r229|FLEX-235|N01H502|9/24/2011|0:06:41",
+          "PSI69-r230|FLEX-236|N01H601|9/24/2011|1:06:33"
+        ]
+      }
+    }
+  ],
+  "evidence_eligibility": {
+    "PSI-69": "PENDING_VERIFICATION"
+  },
+  "unregistered_inputs_remaining": "A6 (extinction diameter) eligibility still uses dext_origin, which reads caption extrapolation notes from NASA/TP-2015-216046 (unregistered); FLEX test numbers come from the approved Table IX cross-match. See docs/22."
+}

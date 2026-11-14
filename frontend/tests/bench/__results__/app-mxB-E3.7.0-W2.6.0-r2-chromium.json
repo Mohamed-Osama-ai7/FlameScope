@@ -1,0 +1,41 @@
+{
+  "label": "mxB-E3.7.0-W2.6.0-r2",
+  "dataset": "real FLEX PSI-69 v0.2.0 (274 records)",
+  "warmup": 3,
+  "coldRuns": 10,
+  "reps": 20,
+  "exportReps": 10,
+  "coldLoad": {
+    "browser": "chromium",
+    "shellMs": {
+      "n": 10,
+      "median": 97.1,
+      "p95": 103.1,
+      "min": 93.2,
+      "max": 103.1
+    },
+    "firstChartDrawnMs": {
+      "n": 10,
+      "median": 577.6,
+      "p95": 601.3,
+      "min": 551.1,
+      "max": 601.3
+    },
+    "domContentLoadedMs": {
+      "n": 10,
+      "median": 48.4,
+      "p95": 56.2,
+      "min": 46,
+      "max": 56.2
+    },
+    "firstContentfulPaintMs": {
+      "n": 10,
+      "median": 90,
+      "p95": 96,
+      "min": 80,
+      "max": 96
+    },
+    "resourcesTransferredKB": 615,
+    "plotlyChunkKB": 465
+  }
+}

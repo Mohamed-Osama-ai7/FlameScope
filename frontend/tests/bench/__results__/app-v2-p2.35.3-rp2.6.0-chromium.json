@@ -1,0 +1,100 @@
+{
+  "label": "v2-p2.35.3-rp2.6.0",
+  "dataset": "real FLEX PSI-69 v0.2.0 (274 records)",
+  "warmup": 3,
+  "coldRuns": 10,
+  "reps": 20,
+  "exportReps": 10,
+  "coldLoad": {
+    "browser": "chromium",
+    "shellMs": {
+      "n": 10,
+      "median": 98.3,
+      "p95": 138.8,
+      "min": 94.3,
+      "max": 138.8
+    },
+    "firstChartDrawnMs": {
+      "n": 10,
+      "median": 432.7,
+      "p95": 494.9,
+      "min": 419.9,
+      "max": 494.9
+    },
+    "domContentLoadedMs": {
+      "n": 10,
+      "median": 48.8,
+      "p95": 61.6,
+      "min": 47.1,
+      "max": 61.6
+    },
+    "firstContentfulPaintMs": {
+      "n": 10,
+      "median": 96,
+      "p95": 104,
+      "min": 84,
+      "max": 104
+    },
+    "resourcesTransferredKB": 614,
+    "plotlyChunkKB": 463
+  },
+  "interactions": {
+    "browser": "chromium",
+    "viewSwitchToChartMs": {
+      "n": 40,
+      "median": 20.6,
+      "p95": 29.6,
+      "min": 15.7,
+      "max": 32.8
+    },
+    "filterToggleToChartMs": {
+      "n": 40,
+      "median": 13.6,
+      "p95": 16.6,
+      "min": 9.5,
+      "max": 17.1
+    },
+    "selectionToInspectorOpenMs": {
+      "n": 20,
+      "median": 4.1,
+      "p95": 5.1,
+      "min": 3.7,
+      "max": 5.2
+    },
+    "inspectorCloseMs": {
+      "n": 20,
+      "median": 1.3,
+      "p95": 1.6,
+      "min": 1.2,
+      "max": 1.7
+    },
+    "heapMBBefore": 10.8,
+    "heapMBAfterRepetitions": 11.8,
+    "note": "selection is dispatched as the Plotly plotly_click event the real handler listens to (same code path as a mouse click, without pointer-event latency)"
+  },
+  "exports": {
+    "browser": "chromium",
+    "csvMs": {
+      "n": 10,
+      "median": 49,
+      "p95": 132,
+      "min": 38,
+      "max": 132
+    },
+    "svgMs": {
+      "n": 10,
+      "median": 67,
+      "p95": 113,
+      "min": 61,
+      "max": 113
+    },
+    "pngMs": {
+      "n": 10,
+      "median": 83.5,
+      "p95": 142,
+      "min": 78,
+      "max": 142
+    },
+    "note": "click to download event; includes Playwright overhead; at most 5 downloads per tab (Chrome throttles automatic downloads)"
+  }
+}
