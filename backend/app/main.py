@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.api.rag_routes import admin_router as rag_admin_router
+from app.api.rag_routes import copilot_router
+from app.api.rag_routes import router as rag_router
 from app.api.routes import router
 
 app = FastAPI(
@@ -21,6 +24,9 @@ app.add_middleware(
 )
 
 app.include_router(router, prefix="/api/v1")
+app.include_router(rag_router, prefix="/api/v1")
+app.include_router(copilot_router, prefix="/api/v1")
+app.include_router(rag_admin_router, prefix="/api/v1")
 
 
 @app.get("/health", tags=["system"])

@@ -72,6 +72,18 @@ cd frontend && npm run build
 
 Architecture audit, target design and backlog: [`docs/08_architecture_audit.md`](docs/08_architecture_audit.md).
 
+### 5. Scientific RAG + Copilot (evidence-grounded, abstains when evidence is missing)
+
+```bash
+cd backend && .venv/Scripts/python -m uvicorn app.main:app --port 8000   # then POST /api/v1/copilot/ask
+FLAMESCOPE_DENSE_BACKEND=none .venv/Scripts/python scripts/eval_rag.py --label v2_bm25_hashing   # evaluation + safety suite
+```
+
+Endpoints `/api/v1/rag/{status,sources,search,chunks/{id},tools}` and `/api/v1/copilot/ask`; only eligible evidence
+(today PSI-69, pending final approval) is ever returned. Configuration is environment-only (see [`.env.example`](.env.example)).
+Design, eligibility, evaluation and limitations: [`docs/14_rag_copilot.md`](docs/14_rag_copilot.md); frontend contract:
+[`docs/16_rag_frontend_handoff.md`](docs/16_rag_frontend_handoff.md).
+
 ## Repository map
 
 - `docs/` — problem contract, MVP scope, scientific gates, sprint roles, AI disclosure
@@ -79,7 +91,7 @@ Architecture audit, target design and backlog: [`docs/08_architecture_audit.md`]
 - `data/metadata/source_registry.csv` — sources, official challenge-resource flag, license and verification status
 - `data/metadata/local_file_inventory.csv` — generated local inventory
 - `database/schema.sql` — initial relational model with provenance links
-- `backend/` — API and deterministic file-audit utility
+- `backend/` — API, deterministic file-audit utility and the evidence retrieval / Copilot layer (`backend/app/rag/`)
 - `frontend/` — minimal working project shell; no fabricated scientific results
 
 ## Scientific integrity rules
