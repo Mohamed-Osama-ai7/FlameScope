@@ -109,7 +109,11 @@ def sync_document_chunks(chunks: list[Chunk], engine: Any = None) -> dict[str, i
     """Upsert eligible chunks into document_chunks. Idempotent (deterministic UUIDs)."""
     from sqlalchemy.orm import Session
 
-    from app.data_platform import models  # type: ignore[import-not-found,unused-ignore]
+    from app.data_platform.models import (  # type: ignore[import-not-found,unused-ignore]
+        DocumentChunk,
+        Investigation,
+        SourceArtifact,
+    )
 
     if engine is None:
         engine, _, reason = _platform()
@@ -117,8 +121,8 @@ def sync_document_chunks(chunks: list[Chunk], engine: Any = None) -> dict[str, i
             raise RuntimeError(reason)
     stats = {"written": 0, "skipped_ineligible": 0, "skipped_artifact_not_in_platform": 0}
     with Session(engine) as s:
-        known_artifacts = {str(a) for (a,) in s.query(models.SourceArtifact.artifact_id).all()}
-        known_inv = {i for (i,) in s.query(models.Investigation.investigation_id).all()}
+        known_artifacts = {str(a) for (a,) in s.query(SourceArtifact.artifact_id).all()}
+        known_inv = {i for (i,) in s.query(Investigation.investigation_id).all()}
         for c in chunks:
             if not c.usable_as_evidence:
                 stats["skipped_ineligible"] += 1
@@ -127,7 +131,7 @@ def sync_document_chunks(chunks: list[Chunk], engine: Any = None) -> dict[str, i
                 stats["skipped_artifact_not_in_platform"] += 1
                 continue
             s.merge(
-                models.DocumentChunk(
+                DocumentChunk(
                     chunk_id=uuid.UUID(c.chunk_id),
                     artifact_id=uuid.UUID(c.artifact_id),
                     investigation_id=c.source_id if c.source_id in known_inv else None,
