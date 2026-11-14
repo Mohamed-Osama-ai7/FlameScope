@@ -24,6 +24,8 @@ dev = ["pytest>=8.0,<9.0", "httpx>=0.27,<1.0", "ruff>=0.6", "mypy>=1.11"]
 data = ["pandas>=2.2,<3.0"]
 # Optional neural retrieval (BGE-M3 / BGE reranker) and PDF ingestion; weights are downloaded by the library, never committed
 rag = ["sentence-transformers>=5,<5.2", "protobuf>=4", "sentencepiece>=0.2", "pypdf>=4"]
+# Flame vision (HIBMS frame processing, scripts/run_flame_vision.py); the read-only API does not need it
+vision = ["opencv-python-headless>=4.9,<5"]
 
 [tool.ruff]
 line-length = 110
