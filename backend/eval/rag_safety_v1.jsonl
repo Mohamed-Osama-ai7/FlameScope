@@ -1,0 +1,16 @@
+{"id": "S01", "case": "invalid_measurement", "question": "What was the ambient pressure in FLEX test 114?", "expect_status": "answered", "expect_measurement": {"run_id": "PSI-69-r114", "variable": "ambient_pressure", "evidence_status": "INVALID"}}
+{"id": "S02", "case": "qualified_measurement", "question": "What was the extinction diameter in FLEX test 129?", "expect_status": "answered", "expect_measurement": {"run_id": "PSI-69-r129", "variable": "extinction_diameter", "evidence_status": "QUALIFIED"}}
+{"id": "S03", "case": "missing_measurement", "question": "What was the extinction diameter in FLEX test 4?", "expect_status": "answered", "expect_measurement": {"run_id": "PSI-69-r004", "variable": "extinction_diameter", "evidence_status": "MISSING"}}
+{"id": "S04", "case": "missing_measurement", "question": "What burning-rate constant was reported for FLEX-009?", "expect_status": "answered", "expect_measurement": {"run_id": "PSI-69-r009", "variable": "burning_rate_constant_mm2_s", "evidence_status": "MISSING"}}
+{"id": "S05", "case": "missing_measurement", "question": "What extinction diameter was reported for FLEX-040?", "expect_status": "answered", "expect_measurement": {"run_id": "PSI-69-r040", "variable": "extinction_diameter", "evidence_status": "MISSING"}}
+{"id": "S06", "case": "qualified_measurement", "question": "What extinction diameter was reported for FLEX-039?", "expect_status": "answered", "expect_measurement": {"run_id": "PSI-69-r039", "variable": "extinction_diameter", "evidence_status": "QUALIFIED"}}
+{"id": "S07", "case": "clean_measurement", "question": "What was the initial droplet diameter in FLEX-070?", "expect_status": "answered", "expect_measurement": {"run_id": "PSI-69-r070", "variable": "initial_droplet_diameter", "evidence_status": "CLEAN"}}
+{"id": "S08", "case": "excluded_source", "question": "What hardware housed the BASS-II experiments?", "expect_status": "abstained", "expect_reason": "ACQUIRED_BUT_EXCLUDED"}
+{"id": "S09", "case": "excluded_source", "question": "What fuel sample material was used in BASS-II test B1?", "expect_status": "abstained", "expect_reason": "ACQUIRED_BUT_EXCLUDED"}
+{"id": "S10", "case": "quarantined_source", "question": "What did the SAFFIRE-I experiment measure about smoke?", "expect_status": "abstained", "expect_reason": "QUARANTINED"}
+{"id": "S11", "case": "unregistered_source", "question": "What does the NASA/TP-2015-216046 report say about the error in FLEX-073?", "expect_status": "abstained"}
+{"id": "S12", "case": "invalid_comparison", "question": "Compare the burning rate of FLEX heptane droplets with BASS-II solid samples", "expect_status": "comparison_blocked"}
+{"id": "S13", "case": "invalid_comparison", "question": "Is the FLEX droplet burning rate higher than the SAFFIRE flame spread rate?", "expect_status": "comparison_blocked"}
+{"id": "S14", "case": "unsupported", "question": "What is the burning rate constant of methanol droplets on Mars?", "expect_status": "abstained"}
+{"id": "S15", "case": "unsupported", "question": "What is the extinction diameter of FLEX test 999?", "expect_status": "abstained"}
+{"id": "S16", "case": "unsupported", "question": "What was the reported burning-rate constant for ethanol droplets in FLEX?", "expect_status": "abstained"}

@@ -1,0 +1,548 @@
+{
+ "dataset": "backend/eval/rag_questions_v2.jsonl",
+ "questions": 48,
+ "answerable": 19,
+ "chunks": 724,
+ "usable_chunks": 296,
+ "environment": {
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0"
+ },
+ "provider": "extractive (deterministic; no LLM was used in this evaluation)",
+ "results": {
+  "bm25": {
+   "dense_backend": "none",
+   "mode": "bm25",
+   "rerank": false,
+   "splits": {
+    "dev": {
+     "retrieval": {
+      "n": 13,
+      "recall": {
+       "@1": 0.8077,
+       "@3": 1.0,
+       "@5": 1.0,
+       "@10": 1.0
+      },
+      "hit_rate": {
+       "@1": 0.8462,
+       "@3": 1.0,
+       "@5": 1.0,
+       "@10": 1.0
+      },
+      "mrr": 0.9231,
+      "ndcg@10": 0.9432,
+      "latency_ms": {
+       "median": 0.66,
+       "p95": 1.5
+      },
+      "failures_top5": []
+     },
+     "copilot": {
+      "n_answerable": 13,
+      "n_unanswerable": 18,
+      "answer_rate_on_answerable": 1.0,
+      "false_abstention_rate": 0.0,
+      "correct_abstention_rate_on_unanswerable": 0.9444,
+      "wrong_answer_on_unanswerable": 1,
+      "citation_correctness_any_gold": 1.0,
+      "citation_precision_all_gold": 0.7692,
+      "answer_contains_gold_quote": 0.9231,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 23,
+      "expected_status_match": 0.9677,
+      "problems": [
+       {
+        "id": "Q40",
+        "expected": "abstained",
+        "got": "answered",
+        "reason": null
+       }
+      ]
+     }
+    },
+    "test": {
+     "retrieval": {
+      "n": 6,
+      "recall": {
+       "@1": 1.0,
+       "@3": 1.0,
+       "@5": 1.0,
+       "@10": 1.0
+      },
+      "hit_rate": {
+       "@1": 1.0,
+       "@3": 1.0,
+       "@5": 1.0,
+       "@10": 1.0
+      },
+      "mrr": 1.0,
+      "ndcg@10": 1.0,
+      "latency_ms": {
+       "median": 0.77,
+       "p95": 1.01
+      },
+      "failures_top5": []
+     },
+     "copilot": {
+      "n_answerable": 6,
+      "n_unanswerable": 11,
+      "answer_rate_on_answerable": 0.8333,
+      "false_abstention_rate": 0.1667,
+      "correct_abstention_rate_on_unanswerable": 1.0,
+      "wrong_answer_on_unanswerable": 0,
+      "citation_correctness_any_gold": 1.0,
+      "citation_precision_all_gold": 0.6,
+      "answer_contains_gold_quote": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 7,
+      "expected_status_match": 0.9412,
+      "problems": [
+       {
+        "id": "Q32",
+        "expected": "answered",
+        "got": "abstained",
+        "reason": "retrieved evidence covers only 56% of the question's terms"
+       }
+      ]
+     }
+    },
+    "all": {
+     "retrieval": {
+      "n": 19,
+      "recall": {
+       "@1": 0.8684,
+       "@3": 1.0,
+       "@5": 1.0,
+       "@10": 1.0
+      },
+      "hit_rate": {
+       "@1": 0.8947,
+       "@3": 1.0,
+       "@5": 1.0,
+       "@10": 1.0
+      },
+      "mrr": 0.9474,
+      "ndcg@10": 0.9612,
+      "latency_ms": {
+       "median": 0.74,
+       "p95": 1.49
+      },
+      "failures_top5": []
+     },
+     "copilot": {
+      "n_answerable": 19,
+      "n_unanswerable": 29,
+      "answer_rate_on_answerable": 0.9474,
+      "false_abstention_rate": 0.0526,
+      "correct_abstention_rate_on_unanswerable": 0.9655,
+      "wrong_answer_on_unanswerable": 1,
+      "citation_correctness_any_gold": 1.0,
+      "citation_precision_all_gold": 0.7222,
+      "answer_contains_gold_quote": 0.9444,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 30,
+      "expected_status_match": 0.9583,
+      "problems": [
+       {
+        "id": "Q32",
+        "expected": "answered",
+        "got": "abstained",
+        "reason": "retrieved evidence covers only 56% of the question's terms"
+       },
+       {
+        "id": "Q40",
+        "expected": "abstained",
+        "got": "answered",
+        "reason": null
+       }
+      ]
+     }
+    }
+   }
+  },
+  "dense[hashing]": {
+   "dense_backend": "hashing-ngram-1024 (offline stand-in, not neural)",
+   "mode": "dense",
+   "rerank": false,
+   "splits": {
+    "dev": {
+     "retrieval": {
+      "n": 13,
+      "recall": {
+       "@1": 0.6154,
+       "@3": 0.8462,
+       "@5": 0.9231,
+       "@10": 0.9615
+      },
+      "hit_rate": {
+       "@1": 0.6154,
+       "@3": 0.8462,
+       "@5": 0.9231,
+       "@10": 1.0
+      },
+      "mrr": 0.7482,
+      "ndcg@10": 0.7998,
+      "latency_ms": {
+       "median": 0.59,
+       "p95": 0.8
+      },
+      "failures_top5": [
+       {
+        "id": "Q29",
+        "question": "Which records share the source identifier 193F001?",
+        "gold": [
+         "PSI-69:row:070",
+         "PSI-69:row:073"
+        ],
+        "top5": [
+         "PSI-69:row:078",
+         "PSI-69:row:097",
+         "PSI-69:row:193",
+         "PSI-69:row:032",
+         "PSI-69:row:080"
+        ]
+       }
+      ]
+     },
+     "copilot": {
+      "n_answerable": 13,
+      "n_unanswerable": 18,
+      "answer_rate_on_answerable": 0.9231,
+      "false_abstention_rate": 0.0769,
+      "correct_abstention_rate_on_unanswerable": 0.9444,
+      "wrong_answer_on_unanswerable": 1,
+      "citation_correctness_any_gold": 1.0,
+      "citation_precision_all_gold": 0.8333,
+      "answer_contains_gold_quote": 0.9167,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 21,
+      "expected_status_match": 0.9355,
+      "problems": [
+       {
+        "id": "Q09",
+        "expected": "answered",
+        "got": "abstained",
+        "reason": "no retrieved sentence addresses the question"
+       },
+       {
+        "id": "Q40",
+        "expected": "abstained",
+        "got": "answered",
+        "reason": null
+       }
+      ]
+     }
+    },
+    "test": {
+     "retrieval": {
+      "n": 6,
+      "recall": {
+       "@1": 1.0,
+       "@3": 1.0,
+       "@5": 1.0,
+       "@10": 1.0
+      },
+      "hit_rate": {
+       "@1": 1.0,
+       "@3": 1.0,
+       "@5": 1.0,
+       "@10": 1.0
+      },
+      "mrr": 1.0,
+      "ndcg@10": 1.0,
+      "latency_ms": {
+       "median": 0.63,
+       "p95": 0.77
+      },
+      "failures_top5": []
+     },
+     "copilot": {
+      "n_answerable": 6,
+      "n_unanswerable": 11,
+      "answer_rate_on_answerable": 0.8333,
+      "false_abstention_rate": 0.1667,
+      "correct_abstention_rate_on_unanswerable": 1.0,
+      "wrong_answer_on_unanswerable": 0,
+      "citation_correctness_any_gold": 1.0,
+      "citation_precision_all_gold": 0.6,
+      "answer_contains_gold_quote": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 7,
+      "expected_status_match": 0.9412,
+      "problems": [
+       {
+        "id": "Q32",
+        "expected": "answered",
+        "got": "abstained",
+        "reason": "retrieved evidence covers only 56% of the question's terms"
+       }
+      ]
+     }
+    },
+    "all": {
+     "retrieval": {
+      "n": 19,
+      "recall": {
+       "@1": 0.7368,
+       "@3": 0.8947,
+       "@5": 0.9474,
+       "@10": 0.9737
+      },
+      "hit_rate": {
+       "@1": 0.7368,
+       "@3": 0.8947,
+       "@5": 0.9474,
+       "@10": 1.0
+      },
+      "mrr": 0.8277,
+      "ndcg@10": 0.863,
+      "latency_ms": {
+       "median": 0.63,
+       "p95": 0.79
+      },
+      "failures_top5": [
+       {
+        "id": "Q29",
+        "question": "Which records share the source identifier 193F001?",
+        "gold": [
+         "PSI-69:row:070",
+         "PSI-69:row:073"
+        ],
+        "top5": [
+         "PSI-69:row:078",
+         "PSI-69:row:097",
+         "PSI-69:row:193",
+         "PSI-69:row:032",
+         "PSI-69:row:080"
+        ]
+       }
+      ]
+     },
+     "copilot": {
+      "n_answerable": 19,
+      "n_unanswerable": 29,
+      "answer_rate_on_answerable": 0.8947,
+      "false_abstention_rate": 0.1053,
+      "correct_abstention_rate_on_unanswerable": 0.9655,
+      "wrong_answer_on_unanswerable": 1,
+      "citation_correctness_any_gold": 1.0,
+      "citation_precision_all_gold": 0.7647,
+      "answer_contains_gold_quote": 0.9412,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 28,
+      "expected_status_match": 0.9375,
+      "problems": [
+       {
+        "id": "Q09",
+        "expected": "answered",
+        "got": "abstained",
+        "reason": "no retrieved sentence addresses the question"
+       },
+       {
+        "id": "Q32",
+        "expected": "answered",
+        "got": "abstained",
+        "reason": "retrieved evidence covers only 56% of the question's terms"
+       },
+       {
+        "id": "Q40",
+        "expected": "abstained",
+        "got": "answered",
+        "reason": null
+       }
+      ]
+     }
+    }
+   }
+  },
+  "hybrid-rrf[hashing]": {
+   "dense_backend": "hashing-ngram-1024 (offline stand-in, not neural)",
+   "mode": "hybrid",
+   "rerank": false,
+   "splits": {
+    "dev": {
+     "retrieval": {
+      "n": 13,
+      "recall": {
+       "@1": 0.8077,
+       "@3": 1.0,
+       "@5": 1.0,
+       "@10": 1.0
+      },
+      "hit_rate": {
+       "@1": 0.8462,
+       "@3": 1.0,
+       "@5": 1.0,
+       "@10": 1.0
+      },
+      "mrr": 0.9231,
+      "ndcg@10": 0.9432,
+      "latency_ms": {
+       "median": 1.18,
+       "p95": 2.05
+      },
+      "failures_top5": []
+     },
+     "copilot": {
+      "n_answerable": 13,
+      "n_unanswerable": 18,
+      "answer_rate_on_answerable": 1.0,
+      "false_abstention_rate": 0.0,
+      "correct_abstention_rate_on_unanswerable": 0.9444,
+      "wrong_answer_on_unanswerable": 1,
+      "citation_correctness_any_gold": 1.0,
+      "citation_precision_all_gold": 0.7692,
+      "answer_contains_gold_quote": 0.9231,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 23,
+      "expected_status_match": 0.9677,
+      "problems": [
+       {
+        "id": "Q40",
+        "expected": "abstained",
+        "got": "answered",
+        "reason": null
+       }
+      ]
+     }
+    },
+    "test": {
+     "retrieval": {
+      "n": 6,
+      "recall": {
+       "@1": 1.0,
+       "@3": 1.0,
+       "@5": 1.0,
+       "@10": 1.0
+      },
+      "hit_rate": {
+       "@1": 1.0,
+       "@3": 1.0,
+       "@5": 1.0,
+       "@10": 1.0
+      },
+      "mrr": 1.0,
+      "ndcg@10": 1.0,
+      "latency_ms": {
+       "median": 1.4,
+       "p95": 1.76
+      },
+      "failures_top5": []
+     },
+     "copilot": {
+      "n_answerable": 6,
+      "n_unanswerable": 11,
+      "answer_rate_on_answerable": 0.8333,
+      "false_abstention_rate": 0.1667,
+      "correct_abstention_rate_on_unanswerable": 1.0,
+      "wrong_answer_on_unanswerable": 0,
+      "citation_correctness_any_gold": 1.0,
+      "citation_precision_all_gold": 0.6,
+      "answer_contains_gold_quote": 1.0,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 7,
+      "expected_status_match": 0.9412,
+      "problems": [
+       {
+        "id": "Q32",
+        "expected": "answered",
+        "got": "abstained",
+        "reason": "retrieved evidence covers only 56% of the question's terms"
+       }
+      ]
+     }
+    },
+    "all": {
+     "retrieval": {
+      "n": 19,
+      "recall": {
+       "@1": 0.8684,
+       "@3": 1.0,
+       "@5": 1.0,
+       "@10": 1.0
+      },
+      "hit_rate": {
+       "@1": 0.8947,
+       "@3": 1.0,
+       "@5": 1.0,
+       "@10": 1.0
+      },
+      "mrr": 0.9474,
+      "ndcg@10": 0.9612,
+      "latency_ms": {
+       "median": 1.29,
+       "p95": 2.08
+      },
+      "failures_top5": []
+     },
+     "copilot": {
+      "n_answerable": 19,
+      "n_unanswerable": 29,
+      "answer_rate_on_answerable": 0.9474,
+      "false_abstention_rate": 0.0526,
+      "correct_abstention_rate_on_unanswerable": 0.9655,
+      "wrong_answer_on_unanswerable": 1,
+      "citation_correctness_any_gold": 1.0,
+      "citation_precision_all_gold": 0.7222,
+      "answer_contains_gold_quote": 0.9444,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 30,
+      "expected_status_match": 0.9583,
+      "problems": [
+       {
+        "id": "Q32",
+        "expected": "answered",
+        "got": "abstained",
+        "reason": "retrieved evidence covers only 56% of the question's terms"
+       },
+       {
+        "id": "Q40",
+        "expected": "abstained",
+        "got": "answered",
+        "reason": null
+       }
+      ]
+     }
+    }
+   }
+  }
+ },
+ "safety": {
+  "suite": {
+   "n": 16,
+   "passed": 16,
+   "by_case": {
+    "clean_measurement": "1/1",
+    "excluded_source": "2/2",
+    "invalid_comparison": "2/2",
+    "invalid_measurement": "1/1",
+    "missing_measurement": "3/3",
+    "qualified_measurement": "2/2",
+    "quarantined_source": "1/1",
+    "unregistered_source": "1/1",
+    "unsupported": "3/3"
+   },
+   "failures": []
+  },
+  "flagged_sweep": {
+   "n": 149,
+   "by_status": {
+    "MISSING": 111,
+    "QUALIFIED": 37,
+    "INVALID": 1
+   },
+   "passed": 149,
+   "failures": []
+  }
+ }
+}

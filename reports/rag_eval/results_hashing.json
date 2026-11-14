@@ -1,0 +1,980 @@
+{
+ "dataset": "backend/eval/rag_questions_v1.jsonl",
+ "questions": 48,
+ "answerable": 40,
+ "chunks": 724,
+ "usable_chunks": 711,
+ "environment": {
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0"
+ },
+ "provider": "extractive (deterministic; no LLM was used in this evaluation)",
+ "results": {
+  "bm25": {
+   "dense_backend": "none",
+   "mode": "bm25",
+   "rerank": false,
+   "splits": {
+    "dev": {
+     "retrieval": {
+      "n": 27,
+      "recall": {
+       "@1": 0.7037,
+       "@3": 0.8704,
+       "@5": 0.9259,
+       "@10": 0.963
+      },
+      "hit_rate": {
+       "@1": 0.7037,
+       "@3": 0.8889,
+       "@5": 0.9259,
+       "@10": 0.963
+      },
+      "mrr": 0.8035,
+      "ndcg@10": 0.8454,
+      "latency_ms": {
+       "median": 1.31,
+       "p95": 2.52
+      },
+      "failures_top5": [
+       {
+        "id": "Q22",
+        "question": "What was the calibrated initial O2 percent by volume in BASS-II test B1?",
+        "gold": [
+         "PSI-25:row:001"
+        ],
+        "top5": [
+         "PSI-25:meta:objective:02",
+         "PSI-25:meta:researchImpacts:01",
+         "PSI-25:meta:approach:01",
+         "PSI-25:meta:objective:01",
+         "PSI-25:meta:hypothesis:01"
+        ]
+       },
+       {
+        "id": "Q27",
+        "question": "How did FLEX test 1 end according to the table?",
+        "gold": [
+         "PSI-69:row:001"
+        ],
+        "top5": [
+         "NASA-TP-2015-216046:caption:FLEX-041",
+         "NASA-TP-2015-216046:caption:FLEX-002",
+         "NASA-TP-2015-216046:caption:FLEX-045",
+         "NASA-TP-2015-216046:caption:FLEX-083",
+         "NASA-TP-2015-216046:caption:FLEX-053"
+        ]
+       }
+      ]
+     },
+     "copilot": {
+      "n_answerable": 27,
+      "n_unanswerable": 4,
+      "answer_rate_on_answerable": 1.0,
+      "false_abstention_rate": 0.0,
+      "correct_abstention_rate_on_unanswerable": 1.0,
+      "wrong_answer_on_unanswerable": 0,
+      "citation_correctness_any_gold": 0.963,
+      "citation_precision_all_gold": 0.037,
+      "answer_contains_gold_quote": 0.7037,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 72,
+      "expected_status_match": 1.0,
+      "problems": []
+     }
+    },
+    "test": {
+     "retrieval": {
+      "n": 13,
+      "recall": {
+       "@1": 0.8462,
+       "@3": 0.9231,
+       "@5": 0.9231,
+       "@10": 1.0
+      },
+      "hit_rate": {
+       "@1": 0.8462,
+       "@3": 0.9231,
+       "@5": 0.9231,
+       "@10": 1.0
+      },
+      "mrr": 0.8932,
+      "ndcg@10": 0.9178,
+      "latency_ms": {
+       "median": 1.07,
+       "p95": 1.63
+      },
+      "failures_top5": [
+       {
+        "id": "Q21",
+        "question": "What fuel sample material was used in BASS-II test B1?",
+        "gold": [
+         "PSI-25:row:001"
+        ],
+        "top5": [
+         "PSI-25:meta:researchImpacts:01",
+         "PSI-25:meta:objective:01",
+         "PSI-25:meta:researchImpacts:02",
+         "PSI-25:meta:approach:01",
+         "PSI-25:meta:hypothesis:01"
+        ]
+       }
+      ]
+     },
+     "copilot": {
+      "n_answerable": 13,
+      "n_unanswerable": 4,
+      "answer_rate_on_answerable": 1.0,
+      "false_abstention_rate": 0.0,
+      "correct_abstention_rate_on_unanswerable": 1.0,
+      "wrong_answer_on_unanswerable": 0,
+      "citation_correctness_any_gold": 0.9231,
+      "citation_precision_all_gold": 0.0,
+      "answer_contains_gold_quote": 0.9231,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 34,
+      "expected_status_match": 1.0,
+      "problems": []
+     }
+    },
+    "all": {
+     "retrieval": {
+      "n": 40,
+      "recall": {
+       "@1": 0.75,
+       "@3": 0.8875,
+       "@5": 0.925,
+       "@10": 0.975
+      },
+      "hit_rate": {
+       "@1": 0.75,
+       "@3": 0.9,
+       "@5": 0.925,
+       "@10": 0.975
+      },
+      "mrr": 0.8326,
+      "ndcg@10": 0.869,
+      "latency_ms": {
+       "median": 1.01,
+       "p95": 1.56
+      },
+      "failures_top5": [
+       {
+        "id": "Q21",
+        "question": "What fuel sample material was used in BASS-II test B1?",
+        "gold": [
+         "PSI-25:row:001"
+        ],
+        "top5": [
+         "PSI-25:meta:researchImpacts:01",
+         "PSI-25:meta:objective:01",
+         "PSI-25:meta:researchImpacts:02",
+         "PSI-25:meta:approach:01",
+         "PSI-25:meta:hypothesis:01"
+        ]
+       },
+       {
+        "id": "Q22",
+        "question": "What was the calibrated initial O2 percent by volume in BASS-II test B1?",
+        "gold": [
+         "PSI-25:row:001"
+        ],
+        "top5": [
+         "PSI-25:meta:objective:02",
+         "PSI-25:meta:researchImpacts:01",
+         "PSI-25:meta:approach:01",
+         "PSI-25:meta:objective:01",
+         "PSI-25:meta:hypothesis:01"
+        ]
+       },
+       {
+        "id": "Q27",
+        "question": "How did FLEX test 1 end according to the table?",
+        "gold": [
+         "PSI-69:row:001"
+        ],
+        "top5": [
+         "NASA-TP-2015-216046:caption:FLEX-041",
+         "NASA-TP-2015-216046:caption:FLEX-002",
+         "NASA-TP-2015-216046:caption:FLEX-045",
+         "NASA-TP-2015-216046:caption:FLEX-083",
+         "NASA-TP-2015-216046:caption:FLEX-053"
+        ]
+       }
+      ]
+     },
+     "copilot": {
+      "n_answerable": 40,
+      "n_unanswerable": 8,
+      "answer_rate_on_answerable": 1.0,
+      "false_abstention_rate": 0.0,
+      "correct_abstention_rate_on_unanswerable": 1.0,
+      "wrong_answer_on_unanswerable": 0,
+      "citation_correctness_any_gold": 0.95,
+      "citation_precision_all_gold": 0.025,
+      "answer_contains_gold_quote": 0.775,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 106,
+      "expected_status_match": 1.0,
+      "problems": []
+     }
+    }
+   }
+  },
+  "dense[hashing]": {
+   "dense_backend": "hashing-ngram-1024 (offline stand-in, not neural)",
+   "mode": "dense",
+   "rerank": false,
+   "splits": {
+    "dev": {
+     "retrieval": {
+      "n": 27,
+      "recall": {
+       "@1": 0.5556,
+       "@3": 0.7037,
+       "@5": 0.7778,
+       "@10": 0.8519
+      },
+      "hit_rate": {
+       "@1": 0.5556,
+       "@3": 0.7037,
+       "@5": 0.7778,
+       "@10": 0.8519
+      },
+      "mrr": 0.6584,
+      "ndcg@10": 0.7053,
+      "latency_ms": {
+       "median": 0.86,
+       "p95": 1.2
+      },
+      "failures_top5": [
+       {
+        "id": "Q08",
+        "question": "Which Earth environments could benefit from the FLEX findings?",
+        "gold": [
+         "PSI-69:meta:researchImpacts:02"
+        ],
+        "top5": [
+         "PSI-69:meta:researchImpacts:01",
+         "NASA-TP-2015-216046:caption:FLEX-079",
+         "NASA-TP-2015-216046:caption:FLEX-021",
+         "NASA-TP-2015-216046:caption:FLEX-145",
+         "NASA-TP-2015-216046:caption:FLEX-251"
+        ]
+       },
+       {
+        "id": "Q09",
+        "question": "Which FLEX publication covers activation energy asymptotics for methanol droplet extinction?",
+        "gold": [
+         "PSI-69:meta:publications:02"
+        ],
+        "top5": [
+         "NASA-TP-2015-216046:caption:FLEX-192",
+         "NASA-TP-2015-216046:caption:FLEX-257",
+         "NASA-TP-2015-216046:caption:FLEX-169",
+         "NASA-TP-2015-216046:caption:FLEX-091",
+         "NASA-TP-2015-216046:caption:FLEX-259"
+        ]
+       },
+       {
+        "id": "Q19",
+        "question": "Which BASS-II publication addressed PMMA rods in axial stagnation flow?",
+        "gold": [
+         "PSI-25:meta:publications:01"
+        ],
+        "top5": [
+         "PSI-25:meta:objective:01",
+         "PSI-25:meta:publications:03",
+         "PSI-25:meta:objective:02",
+         "PSI-25:meta:hypothesis:01",
+         "PSI-25:meta:researchImpacts:01"
+        ]
+       },
+       {
+        "id": "Q26",
+        "question": "What burn time was reported for FLEX test 1?",
+        "gold": [
+         "PSI-69:row:001"
+        ],
+        "top5": [
+         "PSI-69:row:080",
+         "PSI-69:row:081",
+         "PSI-69:row:139",
+         "PSI-69:row:019",
+         "PSI-69:row:107"
+        ]
+       },
+       {
+        "id": "Q29",
+        "question": "Which records share the source identifier 193F001?",
+        "gold": [
+         "PSI-69:row:070",
+         "PSI-69:row:073"
+        ],
+        "top5": [
+         "NASA-TP-2015-216046:caption:FLEX-247",
+         "NASA-TP-2015-216046:caption:FLEX-140",
+         "NASA-TP-2015-216046:caption:FLEX-066",
+         "NASA-TP-2015-216046:caption:FLEX-177",
+         "NASA-TP-2015-216046:caption:FLEX-167"
+        ]
+       },
+       {
+        "id": "Q41",
+        "question": "What ambient composition and pressure were used in FLEX-100?",
+        "gold": [
+         "NASA-TP-2015-216046:caption:FLEX-100"
+        ],
+        "top5": [
+         "PSI-69:row:069",
+         "PSI-69:row:074",
+         "PSI-69:row:051",
+         "PSI-69:row:100",
+         "PSI-69:meta:approach:03"
+        ]
+       }
+      ]
+     },
+     "copilot": {
+      "n_answerable": 27,
+      "n_unanswerable": 4,
+      "answer_rate_on_answerable": 0.9259,
+      "false_abstention_rate": 0.0741,
+      "correct_abstention_rate_on_unanswerable": 1.0,
+      "wrong_answer_on_unanswerable": 0,
+      "citation_correctness_any_gold": 0.88,
+      "citation_precision_all_gold": 0.04,
+      "answer_contains_gold_quote": 0.6,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 65,
+      "expected_status_match": 0.9355,
+      "problems": [
+       {
+        "id": "Q09",
+        "expected": "answered",
+        "got": "abstained",
+        "reason": "retrieved evidence covers only 50% of the question's terms"
+       },
+       {
+        "id": "Q22",
+        "expected": "answered",
+        "got": "abstained",
+        "reason": "retrieved evidence covers only 50% of the question's terms"
+       }
+      ]
+     }
+    },
+    "test": {
+     "retrieval": {
+      "n": 13,
+      "recall": {
+       "@1": 0.6154,
+       "@3": 0.6923,
+       "@5": 0.6923,
+       "@10": 0.7692
+      },
+      "hit_rate": {
+       "@1": 0.6154,
+       "@3": 0.6923,
+       "@5": 0.6923,
+       "@10": 0.7692
+      },
+      "mrr": 0.6667,
+      "ndcg@10": 0.6913,
+      "latency_ms": {
+       "median": 0.94,
+       "p95": 1.29
+      },
+      "failures_top5": [
+       {
+        "id": "Q21",
+        "question": "What fuel sample material was used in BASS-II test B1?",
+        "gold": [
+         "PSI-25:row:001"
+        ],
+        "top5": [
+         "PSI-25:meta:researchImpacts:01",
+         "PSI-25:meta:hypothesis:01",
+         "PSI-25:meta:objective:01",
+         "PSI-25:meta:approach:01",
+         "PSI-25:row:015"
+        ]
+       },
+       {
+        "id": "Q25",
+        "question": "What initial droplet diameter was reported for FLEX-002?",
+        "gold": [
+         "PSI-69:row:002"
+        ],
+        "top5": [
+         "PSI-69:row:033",
+         "PSI-69:row:038",
+         "PSI-69:row:036",
+         "PSI-69:row:043",
+         "PSI-69:row:120"
+        ]
+       },
+       {
+        "id": "Q32",
+        "question": "What reported K was recorded for FLEX-130, the fiber-supported heptane run?",
+        "gold": [
+         "PSI-69:row:130"
+        ],
+        "top5": [
+         "NASA-TP-2015-216046:caption:FLEX-243",
+         "NASA-TP-2015-216046:caption:FLEX-130",
+         "NASA-TP-2015-216046:caption:FLEX-111",
+         "NASA-TP-2015-216046:caption:FLEX-081",
+         "NASA-TP-2015-216046:caption:FLEX-096"
+        ]
+       },
+       {
+        "id": "Q35",
+        "question": "How was the droplet supported and moved in FLEX-130?",
+        "gold": [
+         "NASA-TP-2015-216046:caption:FLEX-130"
+        ],
+        "top5": [
+         "NASA-TP-2015-216046:caption:FLEX-112",
+         "NASA-TP-2015-216046:caption:FLEX-111",
+         "PSI-69:meta:approach:06",
+         "NASA-TP-2015-216046:caption:FLEX-272",
+         "NASA-TP-2015-216046:caption:FLEX-135"
+        ]
+       }
+      ]
+     },
+     "copilot": {
+      "n_answerable": 13,
+      "n_unanswerable": 4,
+      "answer_rate_on_answerable": 1.0,
+      "false_abstention_rate": 0.0,
+      "correct_abstention_rate_on_unanswerable": 1.0,
+      "wrong_answer_on_unanswerable": 0,
+      "citation_correctness_any_gold": 0.9231,
+      "citation_precision_all_gold": 0.0,
+      "answer_contains_gold_quote": 0.9231,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 34,
+      "expected_status_match": 1.0,
+      "problems": []
+     }
+    },
+    "all": {
+     "retrieval": {
+      "n": 40,
+      "recall": {
+       "@1": 0.575,
+       "@3": 0.7,
+       "@5": 0.75,
+       "@10": 0.825
+      },
+      "hit_rate": {
+       "@1": 0.575,
+       "@3": 0.7,
+       "@5": 0.75,
+       "@10": 0.825
+      },
+      "mrr": 0.6611,
+      "ndcg@10": 0.7007,
+      "latency_ms": {
+       "median": 0.87,
+       "p95": 1.0
+      },
+      "failures_top5": [
+       {
+        "id": "Q08",
+        "question": "Which Earth environments could benefit from the FLEX findings?",
+        "gold": [
+         "PSI-69:meta:researchImpacts:02"
+        ],
+        "top5": [
+         "PSI-69:meta:researchImpacts:01",
+         "NASA-TP-2015-216046:caption:FLEX-079",
+         "NASA-TP-2015-216046:caption:FLEX-021",
+         "NASA-TP-2015-216046:caption:FLEX-145",
+         "NASA-TP-2015-216046:caption:FLEX-251"
+        ]
+       },
+       {
+        "id": "Q09",
+        "question": "Which FLEX publication covers activation energy asymptotics for methanol droplet extinction?",
+        "gold": [
+         "PSI-69:meta:publications:02"
+        ],
+        "top5": [
+         "NASA-TP-2015-216046:caption:FLEX-192",
+         "NASA-TP-2015-216046:caption:FLEX-257",
+         "NASA-TP-2015-216046:caption:FLEX-169",
+         "NASA-TP-2015-216046:caption:FLEX-091",
+         "NASA-TP-2015-216046:caption:FLEX-259"
+        ]
+       },
+       {
+        "id": "Q19",
+        "question": "Which BASS-II publication addressed PMMA rods in axial stagnation flow?",
+        "gold": [
+         "PSI-25:meta:publications:01"
+        ],
+        "top5": [
+         "PSI-25:meta:objective:01",
+         "PSI-25:meta:publications:03",
+         "PSI-25:meta:objective:02",
+         "PSI-25:meta:hypothesis:01",
+         "PSI-25:meta:researchImpacts:01"
+        ]
+       },
+       {
+        "id": "Q21",
+        "question": "What fuel sample material was used in BASS-II test B1?",
+        "gold": [
+         "PSI-25:row:001"
+        ],
+        "top5": [
+         "PSI-25:meta:researchImpacts:01",
+         "PSI-25:meta:hypothesis:01",
+         "PSI-25:meta:objective:01",
+         "PSI-25:meta:approach:01",
+         "PSI-25:row:015"
+        ]
+       },
+       {
+        "id": "Q25",
+        "question": "What initial droplet diameter was reported for FLEX-002?",
+        "gold": [
+         "PSI-69:row:002"
+        ],
+        "top5": [
+         "PSI-69:row:033",
+         "PSI-69:row:038",
+         "PSI-69:row:036",
+         "PSI-69:row:043",
+         "PSI-69:row:120"
+        ]
+       },
+       {
+        "id": "Q26",
+        "question": "What burn time was reported for FLEX test 1?",
+        "gold": [
+         "PSI-69:row:001"
+        ],
+        "top5": [
+         "PSI-69:row:080",
+         "PSI-69:row:081",
+         "PSI-69:row:139",
+         "PSI-69:row:019",
+         "PSI-69:row:107"
+        ]
+       },
+       {
+        "id": "Q29",
+        "question": "Which records share the source identifier 193F001?",
+        "gold": [
+         "PSI-69:row:070",
+         "PSI-69:row:073"
+        ],
+        "top5": [
+         "NASA-TP-2015-216046:caption:FLEX-247",
+         "NASA-TP-2015-216046:caption:FLEX-140",
+         "NASA-TP-2015-216046:caption:FLEX-066",
+         "NASA-TP-2015-216046:caption:FLEX-177",
+         "NASA-TP-2015-216046:caption:FLEX-167"
+        ]
+       },
+       {
+        "id": "Q32",
+        "question": "What reported K was recorded for FLEX-130, the fiber-supported heptane run?",
+        "gold": [
+         "PSI-69:row:130"
+        ],
+        "top5": [
+         "NASA-TP-2015-216046:caption:FLEX-243",
+         "NASA-TP-2015-216046:caption:FLEX-130",
+         "NASA-TP-2015-216046:caption:FLEX-111",
+         "NASA-TP-2015-216046:caption:FLEX-081",
+         "NASA-TP-2015-216046:caption:FLEX-096"
+        ]
+       },
+       {
+        "id": "Q35",
+        "question": "How was the droplet supported and moved in FLEX-130?",
+        "gold": [
+         "NASA-TP-2015-216046:caption:FLEX-130"
+        ],
+        "top5": [
+         "NASA-TP-2015-216046:caption:FLEX-112",
+         "NASA-TP-2015-216046:caption:FLEX-111",
+         "PSI-69:meta:approach:06",
+         "NASA-TP-2015-216046:caption:FLEX-272",
+         "NASA-TP-2015-216046:caption:FLEX-135"
+        ]
+       },
+       {
+        "id": "Q41",
+        "question": "What ambient composition and pressure were used in FLEX-100?",
+        "gold": [
+         "NASA-TP-2015-216046:caption:FLEX-100"
+        ],
+        "top5": [
+         "PSI-69:row:069",
+         "PSI-69:row:074",
+         "PSI-69:row:051",
+         "PSI-69:row:100",
+         "PSI-69:meta:approach:03"
+        ]
+       }
+      ]
+     },
+     "copilot": {
+      "n_answerable": 40,
+      "n_unanswerable": 8,
+      "answer_rate_on_answerable": 0.95,
+      "false_abstention_rate": 0.05,
+      "correct_abstention_rate_on_unanswerable": 1.0,
+      "wrong_answer_on_unanswerable": 0,
+      "citation_correctness_any_gold": 0.8947,
+      "citation_precision_all_gold": 0.0263,
+      "answer_contains_gold_quote": 0.7105,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 99,
+      "expected_status_match": 0.9583,
+      "problems": [
+       {
+        "id": "Q09",
+        "expected": "answered",
+        "got": "abstained",
+        "reason": "retrieved evidence covers only 50% of the question's terms"
+       },
+       {
+        "id": "Q22",
+        "expected": "answered",
+        "got": "abstained",
+        "reason": "retrieved evidence covers only 50% of the question's terms"
+       }
+      ]
+     }
+    }
+   }
+  },
+  "hybrid-rrf[hashing]": {
+   "dense_backend": "hashing-ngram-1024 (offline stand-in, not neural)",
+   "mode": "hybrid",
+   "rerank": false,
+   "splits": {
+    "dev": {
+     "retrieval": {
+      "n": 27,
+      "recall": {
+       "@1": 0.6667,
+       "@3": 0.8519,
+       "@5": 0.8889,
+       "@10": 0.9259
+      },
+      "hit_rate": {
+       "@1": 0.6667,
+       "@3": 0.8519,
+       "@5": 0.8889,
+       "@10": 0.9259
+      },
+      "mrr": 0.7747,
+      "ndcg@10": 0.8126,
+      "latency_ms": {
+       "median": 1.93,
+       "p95": 3.26
+      },
+      "failures_top5": [
+       {
+        "id": "Q09",
+        "question": "Which FLEX publication covers activation energy asymptotics for methanol droplet extinction?",
+        "gold": [
+         "PSI-69:meta:publications:02"
+        ],
+        "top5": [
+         "PSI-69:meta:publications:01",
+         "NASA-TP-2015-216046:caption:FLEX-257",
+         "NASA-TP-2015-216046:caption:FLEX-169",
+         "NASA-TP-2015-216046:caption:FLEX-259",
+         "NASA-TP-2015-216046:caption:FLEX-192"
+        ]
+       },
+       {
+        "id": "Q27",
+        "question": "How did FLEX test 1 end according to the table?",
+        "gold": [
+         "PSI-69:row:001"
+        ],
+        "top5": [
+         "NASA-TP-2015-216046:caption:FLEX-002",
+         "NASA-TP-2015-216046:caption:FLEX-041",
+         "NASA-TP-2015-216046:caption:FLEX-001",
+         "PSI-69:row:069",
+         "NASA-TP-2015-216046:caption:FLEX-045"
+        ]
+       },
+       {
+        "id": "Q29",
+        "question": "Which records share the source identifier 193F001?",
+        "gold": [
+         "PSI-69:row:070",
+         "PSI-69:row:073"
+        ],
+        "top5": [
+         "NASA-TP-2015-216046:caption:FLEX-070",
+         "NASA-TP-2015-216046:caption:FLEX-073",
+         "NASA-TP-2015-216046:caption:FLEX-247",
+         "NASA-TP-2015-216046:caption:FLEX-167",
+         "PSI-69:meta:summary"
+        ]
+       }
+      ]
+     },
+     "copilot": {
+      "n_answerable": 27,
+      "n_unanswerable": 4,
+      "answer_rate_on_answerable": 0.963,
+      "false_abstention_rate": 0.037,
+      "correct_abstention_rate_on_unanswerable": 1.0,
+      "wrong_answer_on_unanswerable": 0,
+      "citation_correctness_any_gold": 0.9615,
+      "citation_precision_all_gold": 0.0385,
+      "answer_contains_gold_quote": 0.6923,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 69,
+      "expected_status_match": 0.9677,
+      "problems": [
+       {
+        "id": "Q22",
+        "expected": "answered",
+        "got": "abstained",
+        "reason": "retrieved evidence covers only 50% of the question's terms"
+       }
+      ]
+     }
+    },
+    "test": {
+     "retrieval": {
+      "n": 13,
+      "recall": {
+       "@1": 0.6923,
+       "@3": 0.7692,
+       "@5": 0.7692,
+       "@10": 0.8462
+      },
+      "hit_rate": {
+       "@1": 0.6923,
+       "@3": 0.7692,
+       "@5": 0.7692,
+       "@10": 0.8462
+      },
+      "mrr": 0.7308,
+      "ndcg@10": 0.7582,
+      "latency_ms": {
+       "median": 1.94,
+       "p95": 2.5
+      },
+      "failures_top5": [
+       {
+        "id": "Q21",
+        "question": "What fuel sample material was used in BASS-II test B1?",
+        "gold": [
+         "PSI-25:row:001"
+        ],
+        "top5": [
+         "PSI-25:meta:researchImpacts:01",
+         "PSI-25:meta:objective:01",
+         "PSI-25:meta:hypothesis:01",
+         "PSI-25:meta:approach:01",
+         "PSI-25:meta:researchImpacts:02"
+        ]
+       },
+       {
+        "id": "Q25",
+        "question": "What initial droplet diameter was reported for FLEX-002?",
+        "gold": [
+         "PSI-69:row:002"
+        ],
+        "top5": [
+         "PSI-69:row:226",
+         "PSI-69:row:175",
+         "PSI-69:row:033",
+         "PSI-69:row:241",
+         "PSI-69:row:096"
+        ]
+       },
+       {
+        "id": "Q32",
+        "question": "What reported K was recorded for FLEX-130, the fiber-supported heptane run?",
+        "gold": [
+         "PSI-69:row:130"
+        ],
+        "top5": [
+         "NASA-TP-2015-216046:caption:FLEX-130",
+         "NASA-TP-2015-216046:caption:FLEX-243",
+         "NASA-TP-2015-216046:caption:FLEX-111",
+         "NASA-TP-2015-216046:caption:FLEX-043",
+         "NASA-TP-2015-216046:caption:FLEX-096"
+        ]
+       }
+      ]
+     },
+     "copilot": {
+      "n_answerable": 13,
+      "n_unanswerable": 4,
+      "answer_rate_on_answerable": 1.0,
+      "false_abstention_rate": 0.0,
+      "correct_abstention_rate_on_unanswerable": 1.0,
+      "wrong_answer_on_unanswerable": 0,
+      "citation_correctness_any_gold": 0.9231,
+      "citation_precision_all_gold": 0.0,
+      "answer_contains_gold_quote": 0.9231,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 34,
+      "expected_status_match": 1.0,
+      "problems": []
+     }
+    },
+    "all": {
+     "retrieval": {
+      "n": 40,
+      "recall": {
+       "@1": 0.675,
+       "@3": 0.825,
+       "@5": 0.85,
+       "@10": 0.9
+      },
+      "hit_rate": {
+       "@1": 0.675,
+       "@3": 0.825,
+       "@5": 0.85,
+       "@10": 0.9
+      },
+      "mrr": 0.7604,
+      "ndcg@10": 0.7949,
+      "latency_ms": {
+       "median": 1.88,
+       "p95": 2.41
+      },
+      "failures_top5": [
+       {
+        "id": "Q09",
+        "question": "Which FLEX publication covers activation energy asymptotics for methanol droplet extinction?",
+        "gold": [
+         "PSI-69:meta:publications:02"
+        ],
+        "top5": [
+         "PSI-69:meta:publications:01",
+         "NASA-TP-2015-216046:caption:FLEX-257",
+         "NASA-TP-2015-216046:caption:FLEX-169",
+         "NASA-TP-2015-216046:caption:FLEX-259",
+         "NASA-TP-2015-216046:caption:FLEX-192"
+        ]
+       },
+       {
+        "id": "Q21",
+        "question": "What fuel sample material was used in BASS-II test B1?",
+        "gold": [
+         "PSI-25:row:001"
+        ],
+        "top5": [
+         "PSI-25:meta:researchImpacts:01",
+         "PSI-25:meta:objective:01",
+         "PSI-25:meta:hypothesis:01",
+         "PSI-25:meta:approach:01",
+         "PSI-25:meta:researchImpacts:02"
+        ]
+       },
+       {
+        "id": "Q25",
+        "question": "What initial droplet diameter was reported for FLEX-002?",
+        "gold": [
+         "PSI-69:row:002"
+        ],
+        "top5": [
+         "PSI-69:row:226",
+         "PSI-69:row:175",
+         "PSI-69:row:033",
+         "PSI-69:row:241",
+         "PSI-69:row:096"
+        ]
+       },
+       {
+        "id": "Q27",
+        "question": "How did FLEX test 1 end according to the table?",
+        "gold": [
+         "PSI-69:row:001"
+        ],
+        "top5": [
+         "NASA-TP-2015-216046:caption:FLEX-002",
+         "NASA-TP-2015-216046:caption:FLEX-041",
+         "NASA-TP-2015-216046:caption:FLEX-001",
+         "PSI-69:row:069",
+         "NASA-TP-2015-216046:caption:FLEX-045"
+        ]
+       },
+       {
+        "id": "Q29",
+        "question": "Which records share the source identifier 193F001?",
+        "gold": [
+         "PSI-69:row:070",
+         "PSI-69:row:073"
+        ],
+        "top5": [
+         "NASA-TP-2015-216046:caption:FLEX-070",
+         "NASA-TP-2015-216046:caption:FLEX-073",
+         "NASA-TP-2015-216046:caption:FLEX-247",
+         "NASA-TP-2015-216046:caption:FLEX-167",
+         "PSI-69:meta:summary"
+        ]
+       },
+       {
+        "id": "Q32",
+        "question": "What reported K was recorded for FLEX-130, the fiber-supported heptane run?",
+        "gold": [
+         "PSI-69:row:130"
+        ],
+        "top5": [
+         "NASA-TP-2015-216046:caption:FLEX-130",
+         "NASA-TP-2015-216046:caption:FLEX-243",
+         "NASA-TP-2015-216046:caption:FLEX-111",
+         "NASA-TP-2015-216046:caption:FLEX-043",
+         "NASA-TP-2015-216046:caption:FLEX-096"
+        ]
+       }
+      ]
+     },
+     "copilot": {
+      "n_answerable": 40,
+      "n_unanswerable": 8,
+      "answer_rate_on_answerable": 0.975,
+      "false_abstention_rate": 0.025,
+      "correct_abstention_rate_on_unanswerable": 1.0,
+      "wrong_answer_on_unanswerable": 0,
+      "citation_correctness_any_gold": 0.9487,
+      "citation_precision_all_gold": 0.0256,
+      "answer_contains_gold_quote": 0.7692,
+      "faithfulness_lexical_proxy": 1.0,
+      "claims_failing_validation": 0,
+      "claims_generated": 103,
+      "expected_status_match": 0.9792,
+      "problems": [
+       {
+        "id": "Q22",
+        "expected": "answered",
+        "got": "abstained",
+        "reason": "retrieved evidence covers only 50% of the question's terms"
+       }
+      ]
+     }
+    }
+   }
+  }
+ }
+}
