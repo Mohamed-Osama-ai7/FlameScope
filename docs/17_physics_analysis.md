@@ -2,7 +2,7 @@
 
 Branch `feat/physics-analysis-engine` (from `release/v0.1.0-mvp` 8180971). Code: `backend/app/analysis/physics.py`,
 `backend/app/api/physics_routes.py`; method cards in `backend/app/science/method_cards.py`; tests
-`backend/tests/test_physics.py`. Analysis version `physics-0.1.1`.
+`backend/tests/test_physics.py`. Analysis version `physics-0.2.0`.
 
 ## 1. What the data supports (audit)
 
@@ -23,10 +23,11 @@ are flagged for review. **Diagnostic only**: K is the FLEX team's fit from short
 D0 is at igniter-on, and the burn-time definition is not documented in the repository, so r = 1 is not expected.
 
 **O2 association with reported K** (`flex.oxygen_effect_on_reported_k`). Within strata holding fuel, N2-only
-diluent, pressure cluster and support mode fixed (the v0.2.0 strata): K = b0 + b1 X_O2, plus a sensitivity model
-with D0; OLS with HC3 standard errors and Student-t 95% intervals on the residual degrees of freedom
-(statsmodels). Runs need usable O2, K, D0 and ambient pressure (pressure defines the stratum). Abstains when n < 8 or fewer than 3 distinct O2 levels.
-Association, not causation; support mode comes from the unregistered NASA/TP captions and is only a stratifier.
+diluent and pressure cluster fixed: K = b0 + b1 X_O2, plus a sensitivity model with D0; OLS with HC3 standard
+errors and Student-t 95% intervals on the residual degrees of freedom (statsmodels). Runs need usable O2, K, D0 and
+ambient pressure. Abstains when n < 8 or fewer than 3 distinct O2 levels. Association, not causation.
+**Support mode is not used (since physics-0.2.0):** its only source is the unregistered NASA/TP-2015-216046
+captions, so free-floating and fiber-supported runs are pooled and support mode is an uncontrolled confounder.
 
 ## 3. Results on the acquired data (measured 2026-11-14)
 
@@ -35,10 +36,22 @@ rest missing or flagged values). Median r: Heptane 0.949 (95% CI 0.916–0.970, 
 (0.941–0.957, n 100). 9 runs flagged for review, including PSI-69-r130 (FLEX-130, the short translated burn
 already known from the report). Flags are for review; no value is changed.
 
-O2 effect: 2 of 11 strata are computable. Heptane, ~1 atm, free-floating: b1 = 2.37 mm^2/s per unit mole fraction
-(95% CI 1.16–3.57, n 22, R^2 0.52; D0-adjusted 2.39, 1.04–3.74). Methanol, ~1 atm, free-floating: b1 = 1.91
-(1.34–2.47, n 31, R^2 0.83; D0-adjusted 1.89, 1.45–2.34). Equivalently about +0.02 mm^2/s per +0.01 in X_O2.
-The other 9 strata abstain (too few runs or O2 levels). P-values are not corrected for multiple strata.
+O2 effect (physics-0.2.0, support mode not controlled): 4 of 4 strata computable.
+
+| Stratum | n | b1 (mm^2/s per unit mole fraction) | 95% CI | R^2 |
+|---|---|---|---|---|
+| Heptane, ~0.7 atm | 9 | 2.20 | 0.72–3.68 | 0.71 |
+| Heptane, ~1 atm | 30 | 1.97 | 0.89–3.05 | 0.36 |
+| Methanol, ~0.7 atm | 12 | 1.57 | 0.94–2.19 | 0.75 |
+| Methanol, ~1 atm | 39 | 1.82 | 1.43–2.21 | 0.76 |
+
+**Changed from physics-0.1.1** (which stratified by support mode, 2 computable strata, free-floating only):
+heptane ~1 atm 2.37 (1.16–3.57, n 22, R^2 0.52) → 1.97 (n 30); methanol ~1 atm 1.91 (1.34–2.47, n 31) → 1.82
+(n 39); the two ~0.7 atm strata became computable. Why: support mode was removed as an input. Pooling adds
+fiber-supported runs; analysis v0.2.0 showed an opposite-sign O2-K association for fiber-translated heptane at
+~1 atm (rho -0.89, n 5), which is consistent with the lower heptane slope and R^2. The d^2 consistency results are
+unchanged (it never used support mode). Both outputs now carry `evidence_eligibility` (PSI-69 PENDING_VERIFICATION).
+P-values are not corrected for multiple strata.
 
 ## 4. API (prefix `/api/v1`)
 

@@ -16,10 +16,10 @@ verified loader (app.analysis.flex_run_level), the same one the Data Platform ex
    percentile bootstrap 95% CI (fixed seed).
 
 2. oxygen_effect   - association between ambient O2 mole fraction and reported K within strata that hold
-                     diluent (N2 only), pressure cluster and support mode fixed (the strata of analysis v0.2):
+                     fuel, diluent (N2 only) and pressure cluster fixed:
                      K = b0 + b1 X_O2 (+ b2 D0 as a sensitivity model), OLS with HC3 standard errors.
-   Descriptive association only: runs were not randomised, other conditions vary, and support mode comes
-   from the NASA/TP-2015-216046 captions (unregistered source; it is a stratifier, never evidence).
+   Descriptive association only: runs were not randomised and other conditions vary. Support mode is NOT used
+   (its only source is the unregistered NASA/TP-2015-216046 captions), so it is an uncontrolled confounder.
 """
 
 from __future__ import annotations
@@ -27,6 +27,7 @@ from __future__ import annotations
 import math
 from collections import Counter
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any
 
 import numpy as np
@@ -34,8 +35,10 @@ import statsmodels.api as sm
 from scipy import stats
 
 from app.analysis import flex_run_level as fx
+from app.rag.eligibility import EligibilityPolicy
 
-ANALYSIS_VERSION = "physics-0.1.1"
+ANALYSIS_VERSION = "physics-0.2.0"  # 0.2: support mode no longer a stratifier; eligibility in outputs
+NOT_CONTROLLED = "not_controlled"
 PRESSURE = "ambient_pressure"
 D0, DEXT, K, TB, O2 = (
     "initial_droplet_diameter",
@@ -52,6 +55,12 @@ BOOTSTRAP_SEED = 20261114
 MIN_N_SUMMARY = 5  # same floor as v0.2 rank correlations
 MIN_N_REGRESSION = 8
 MIN_DISTINCT_X = 3
+
+
+def _eligibility() -> dict[str, str]:
+    """PSI-69 evidence status, read from data/metadata/source_eligibility.csv (PENDING_VERIFICATION today)."""
+    root = Path(__file__).resolve().parents[3]
+    return {"PSI-69": EligibilityPolicy(root).decision("PSI-69").eligibility.value}
 
 
 def resolution_halfwidth(raw: str) -> float:
@@ -192,6 +201,7 @@ def d2_consistency(
     return {
         "analysis": "d2_consistency",
         "analysis_version": ANALYSIS_VERSION,
+        "evidence_eligibility": _eligibility(),
         "equation": "t_d2 = (D0^2 - Dext^2) / K ;  r = t_d2 / t_burn  (from D^2 = D0^2 - K t)",
         "value_origin": "reported_in_source (PSI-69); t_d2 and r are derived here",
         "n_runs": len(rows),
@@ -262,7 +272,8 @@ def oxygen_effect(runs: list[fx.FlexRun], fuel: str | None = None) -> dict[str, 
     strata: list[dict[str, Any]] = []
     groups: dict[tuple[str, str | None, str], list[fx.FlexRun]] = {}
     for r in kept:
-        groups.setdefault((r.fuel, r.pressure_cluster, r.support_mode), []).append(r)
+        # support mode (unregistered NASA/TP captions) is never an analysis input
+        groups.setdefault((r.fuel, r.pressure_cluster, NOT_CONTROLLED), []).append(r)
     for (f, pc, smode), rows in sorted(groups.items(), key=lambda kv: (kv[0][0], str(kv[0][1]), kv[0][2])):
         x = np.array([r.values[O2] for r in rows], float)
         y = np.array([r.values[K] for r in rows], float)
@@ -300,14 +311,17 @@ def oxygen_effect(runs: list[fx.FlexRun], fuel: str | None = None) -> dict[str, 
         ),
         "units": {"K": "mm^2/s", "X_O2": "mole fraction", "b1": "mm^2/s per unit mole fraction", "D0": "mm"},
         "value_origin": "reported K (FLEX team) and reported conditions (PSI-69); coefficients derived here",
-        "strata_held_fixed": ["fuel", "diluent_family = N2_only", "pressure_cluster", "support_mode"],
+        "strata_held_fixed": ["fuel", "diluent_family = N2_only", "pressure_cluster"],
+        "evidence_eligibility": _eligibility(),
         "excluded": dict(excluded),
         "strata": strata,
         "limitations": [
             "Association within strata, not a causal effect: runs were not randomised and D0 and other "
             "conditions vary (D0-adjusted model given as a sensitivity check).",
-            "Support mode comes from NASA/TP-2015-216046 figure captions (unregistered source, pypdf text "
-            "not visually verified); used only to avoid pooling support modes.",
+            "Support mode is not controlled: its only source is NASA/TP-2015-216046 figure captions "
+            "(unregistered, pypdf text not visually verified), so free-floating and fiber-supported runs are "
+            "pooled. Analysis v0.2.0 showed opposite-sign O2-K associations between support modes in one "
+            "heptane stratum, so pooled slopes may mix different behaviours.",
             "Linear form is a local approximation over the observed O2 range; no extrapolation.",
             "Strata are small; HC3 intervals are wide and p-values are not corrected for multiple strata.",
         ],

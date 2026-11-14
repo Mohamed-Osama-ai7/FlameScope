@@ -160,9 +160,14 @@ def test_real_d2_consistency_regression(real_runs):
 def test_real_oxygen_effect_regression(real_runs):
     out = p.oxygen_effect(real_runs)
     ok = [s for s in out["strata"] if s["computable"]]
-    assert {(s["fuel"], s["support_mode"], s["n"]) for s in ok} == {
-        ("Heptane", "free_floating", 22),
-        ("Methanol", "free_floating", 31),
+    # physics-0.2.0: support mode (unregistered NASA/TP captions) is not a stratifier
+    assert {s["support_mode"] for s in out["strata"]} == {p.NOT_CONTROLLED}
+    assert "support_mode" not in out["strata_held_fixed"]
+    assert {(s["fuel"], s["pressure_cluster"][:6], s["n"]) for s in ok} == {
+        ("Heptane", "~0.7 a", 9),
+        ("Heptane", "~1 atm", 30),
+        ("Methanol", "~0.7 a", 12),
+        ("Methanol", "~1 atm", 39),
     }
     for s in ok:
         lo, hi = s["model_k_on_o2"]["x_o2"]["ci95"]
@@ -238,3 +243,21 @@ def test_api_returns_503_when_data_cannot_be_verified(monkeypatch):
     r = c.get("/api/v1/physics/d2-consistency")
     assert r.status_code == 503 and "hash mismatch" in r.json()["detail"]
     assert c.get("/api/v1/physics/oxygen-effect").status_code == 503
+
+
+def test_outputs_state_pending_verification(real_runs):
+    assert p.d2_consistency(real_runs)["evidence_eligibility"] == {"PSI-69": "PENDING_VERIFICATION"}
+    assert p.oxygen_effect(real_runs)["evidence_eligibility"] == {"PSI-69": "PENDING_VERIFICATION"}
+
+
+def test_support_mode_never_splits_strata():
+    # same conditions, different support modes -> one stratum (support mode is not an input)
+    o2s = [0.15, 0.15, 0.21, 0.21, 0.25, 0.25, 0.30, 0.30]
+    runs = [
+        run(
+            i, k=f"{0.2 + 2.0 * x:.2f}", o2=f"{x:.2f}", smode="free_floating" if i % 2 else "fiber_translated"
+        )
+        for i, x in enumerate(o2s, 1)
+    ]
+    out = p.oxygen_effect(runs)
+    assert len(out["strata"]) == 1 and out["strata"][0]["n"] == 8 and out["strata"][0]["computable"]
