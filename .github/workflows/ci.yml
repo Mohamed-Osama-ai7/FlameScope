@@ -167,21 +167,9 @@ jobs:
         working-directory: frontend
         run: npm run build
 
-      - name: Generate Linux Chromium snapshot baselines
-        working-directory: frontend
-        run: npx playwright test tests/e2e/visual.spec.ts --update-snapshots
-
       - name: Run Playwright E2E Tests
         working-directory: frontend
         run: npx playwright test
-
-      - name: Upload Linux Chromium Baselines
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: linux-chromium-baselines
-          path: frontend/tests/e2e/__screenshots__/visual.spec.ts/chromium/
-          retention-days: 7
 
       - name: Upload Playwright Artifacts on Failure
         if: failure()
