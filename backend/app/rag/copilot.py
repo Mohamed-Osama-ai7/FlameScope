@@ -128,6 +128,22 @@ class ScientificCopilot:
             }
         )
 
+    @staticmethod
+    def _measurement_resolved(qa: QueryAnalysis, hits: list[Chunk]) -> bool:
+        """Every named experiment has a retrieved table row stating every requested variable."""
+        if not (qa.experiment_ids and qa.variables):
+            return False
+        for e in qa.experiment_ids:
+            rows = [
+                c
+                for c in hits
+                if c.doc_type.value == "table_row" and e.lower() in {x.lower() for x in c.experiment_ids}
+            ]
+            have = {m.variable for c in rows for m in c.measurements}
+            if not rows or not set(qa.variables) <= have:
+                return False
+        return True
+
     def _sufficiency(self, qa: QueryAnalysis, hits: list[Chunk]) -> tuple[str | None, list[str]]:
         missing: list[str] = []
         if not hits and qa.experiment_ids:
@@ -169,6 +185,10 @@ class ScientificCopilot:
                 "run only (name a test, or ask for a descriptive summary such as a median or range)",
                 [f"a specific test for {', '.join(qa.variables)}"],
             )
+        if self._measurement_resolved(qa, hits):
+            # the backend states the exact measurement; loose wording cannot change it (v4 diagnostic A03).
+            # The out-of-vocabulary gate above still applies.
+            return None, missing
         pool: set[str] = set()
         for c in hits:
             pool |= set(tokenize(c.text + " " + " ".join(c.experiment_ids)))

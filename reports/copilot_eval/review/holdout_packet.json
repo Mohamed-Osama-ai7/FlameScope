@@ -1,0 +1,44 @@
+[
+ {
+  "id": "A20",
+  "question": "What did FLEX do when a finite extinction diameter was observed?",
+  "claims": [
+   {
+    "claim": "Increase the droplet size or repeat the test (if finite extinction diameter at flame extinction observed).",
+    "cited_chunk_text": [
+     "PSI-69 FLEX - approach: 4. Perform a droplet combustion test. 5. Increase the droplet size or repeat the test (if finite extinction diameter at flame extinction observed). 6. Continue steps 4 and 5 until flame exists for only a short time after ignition (radiative extinction). 7. Continue steps 4 thru 6 at a decreased ambient oxygen mole fraction. 8. Continue step 7 to an ambient oxygen mole fraction where the droplet does not ignite. There were ambient conditions where the extinction droplet sizes at all ambient oxygen mole fractions were too small to either be observed or measured with the available diagnostics."
+    ]
+   },
+   {
+    "claim": "In these tests, the procedure will be to duplicate tests above which yield finite-sized extinction droplet diameters.",
+    "cited_chunk_text": [
+     "PSI-69 FLEX - approach: Instead of observing flame extinction, however, the procedure involved an iterative sequence of tests (burn to completion followed by a no ignition test) with progressively smaller increments in ambient oxygen mole fraction to determine the LOI . For the slow flow tests (in the flight experiment), the configuration of the flight hardware did not allow for adequate diagnostics over the entire test for a droplet in a uniform, steady convective flow. In these tests, the procedure will be to duplicate tests above which yield finite-sized extinction droplet diameters."
+    ]
+   },
+   {
+    "claim": "PSI-69 FLEX - approach: In these tests, the procedure will be to duplicate tests above which yield finite-sized extinction droplet diameters.",
+    "cited_chunk_text": [
+     "PSI-69 FLEX - approach: In these tests, the procedure will be to duplicate tests above which yield finite-sized extinction droplet diameters. Near the end of the tests, prior to flame extinction, the droplet will be subjected to a small, sub-buoyant, convective flow (imparted by translating the droplet at a slow, uniform speed). The goal of the experiment is then to see how the presence of this flow influences the extinction process. Note, a large number of the tests involve free droplets (as opposed to fiber-supported droplets) and a number of these tests will have droplets with a slow drift velocity."
+    ]
+   }
+  ]
+ },
+ {
+  "id": "A34",
+  "question": "Which FLEX test used a propanol droplet?",
+  "claims": [
+   {
+    "claim": "Reduced Gravity Combustion of Propanol Droplets in Oxygen-Inert Environments (DOI 10.1080/00102200903190851)",
+    "cited_chunk_text": [
+     "PSI-69 FLEX - publications listed in the PSI record: [43] Jin Y., Shaw B.D.. Computational modeling of n-heptane droplet combustion in air–diluent environments under reduced-gravity (DOI 10.1016/j.ijheatmasstransfer.2010.08.005) [44] Yan Jin, Shaw Benjamin D.. Numerical Simulation of Unsteady Flows and Shape Oscillations in Liquid Droplets Induced by Deployment Needle Retraction (DOI 10.1007/s12217-008-9096-2) [45] Bae J.H., Avedisian C.T.. Nonane droplet combustion with and without buoyant convection: Flame structure, burning rate and extinction in air and helium (DOI 10.1016/j.proci.2008.06.221) [46] Xiao J.S., Wei J.B., Shaw B.D., Peng Z.. Temperature and fiber optic spectroscopy composition measurements of heated propanol–acetone droplets (DOI 10.1016/j.optlaseng.2009.05.004) [47] Shringi D.S., Shaw B.D., Dwyer H.A.. Laser-induced fluorescence imaging of acetone inside evaporating and burning fuel droplets (DOI 10.1016/j.optlaseng.2008.08.002) [48] Wei J. B., Shaw B. D.. Reduced Gravity Combustion of Propanol Droplets in Oxygen-Inert Environments (DOI 10.1080/00102200903190851)"
+    ]
+   },
+   {
+    "claim": "PROPANOL DROPLET FLAMMABILITY AND COMBUSTION IN AIR-DILUENT ENVIRONMENTS UNDER NORMAL AND REDUCED GRAVITY (DOI 10.1080/00102200601057394) [50] Avedisian C.",
+    "cited_chunk_text": [
+     "PSI-69 FLEX - publications listed in the PSI record: [49] SHAW B. D., WEI J. B.. PROPANOL DROPLET FLAMMABILITY AND COMBUSTION IN AIR-DILUENT ENVIRONMENTS UNDER NORMAL AND REDUCED GRAVITY (DOI 10.1080/00102200601057394) [50] Avedisian C. Thomas. Developing Surrogates for Liquid Transportation Fuels: The Role of Spherically Symmetric Droplet Combustion (DOI 10.1007/978-81-322-2211-8_16) [51] DL Dietrich, VM Bryg, PV Ferkul, FA Williams, FL Dryer, BD Shaw, MY Choi, MV Nayagam, MC Hicks, CT Avedisian. Detailed results from the flame extinugishment experiment (FLEX) - March 2009 to December 2011"
+    ]
+   }
+  ]
+ }
+]

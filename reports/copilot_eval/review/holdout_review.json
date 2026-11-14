@@ -1,0 +1,8 @@
+{
+ "reviewer": "independent LLM reviewer (fresh general-purpose agent, no access to the code or evaluation; not a human expert)",
+ "input": "reports/copilot_eval/review/holdout_packet.json (final holdout answers: answered scientific items and answered unanswerable items)",
+ "labels": [
+  {"id": "A20", "claims": [{"index": 0, "supported": "yes", "relevance": "answers"}, {"index": 1, "supported": "yes", "relevance": "partial"}, {"index": 2, "supported": "yes", "relevance": "partial"}], "answer_verdict": "correct", "reason": "Claim 0 quotes the approach step: when a finite extinction diameter was observed, the droplet size was increased or the test was repeated; the other two claims add slow-flow context that does not contradict it."},
+  {"id": "A34", "claims": [{"index": 0, "supported": "yes", "relevance": "partial"}, {"index": 1, "supported": "yes", "relevance": "partial"}], "answer_verdict": "incorrect", "reason": "Both claims cite titles of propanol droplet papers from the publication list, not any FLEX test run, so the question of which test used propanol goes unanswered and a reader could take a paper for a test."}
+ ]
+}
