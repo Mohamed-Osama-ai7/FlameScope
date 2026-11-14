@@ -67,7 +67,7 @@ test.describe('Flame Vision Metrology E2E', () => {
 
     // Scale-Free Burning Rate
     await expect(page.getByRole('heading', { name: /Scale-Free Burning Rate/i })).toBeVisible();
-    await expect(page.getByText('0.1348')).toBeVisible();
+    await expect(page.getByText('0.1348').first()).toBeVisible();
 
     // Linear fit card
     await expect(page.getByRole('heading', { name: /Linear Fit/i })).toBeVisible();
@@ -109,8 +109,9 @@ test.describe('Flame Vision Metrology E2E', () => {
     // Switch to Method Card tab
     await page.locator('nav.subnav').getByRole('button', { name: /Method Card & Validity/i }).click();
 
-    // Method specification heading
-    await expect(page.getByRole('heading', { name: /Method Specification/i })).toBeVisible();
+    // Method specification heading & eyebrow
+    await expect(page.getByText('METHOD SPECIFICATION')).toBeVisible();
+    await expect(page.getByRole('heading', { name: /Backlit droplet diameter/i })).toBeVisible();
     await expect(page.getByText('vision.hibms_droplet_d2_pixel')).toBeVisible();
     await expect(page.getByRole('heading', { name: /Assumptions/i })).toBeVisible();
     await expect(page.getByRole('heading', { name: /Validity Limits & Failure Modes/i })).toBeVisible();

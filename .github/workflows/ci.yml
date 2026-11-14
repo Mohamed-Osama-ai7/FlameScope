@@ -88,12 +88,13 @@ jobs:
 
       - name: Provision PSI-69 Experimental Data for Loader Test
         run: |
-          python backend/scripts/fetch_psi_table.py PSI-69 --root .
+          python backend/scripts/fetch_psi_table.py PSI-69 --root . --timeout 60 --attempts 3
 
       - name: Run PostgreSQL 16 Idempotent Loader & JSONB Tests
         working-directory: backend
         env:
           FLAMESCOPE_TEST_DATABASE_URL: postgresql+psycopg://postgres:password@localhost:5432/postgres
+          FLAMESCOPE_REQUIRE_RAW_DATA: '1'
         run: |
           pytest -v tests/data_platform_tests/test_dp_postgres.py -k "test_postgres_load_is_idempotent_and_jsonb_filters_work"
 
@@ -173,3 +174,4 @@ jobs:
           name: playwright-report
           path: frontend/playwright-report/
           retention-days: 7
+

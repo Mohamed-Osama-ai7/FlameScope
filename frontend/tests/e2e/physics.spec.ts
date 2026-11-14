@@ -6,36 +6,39 @@ test.describe('Physics Analysis Engine E2E', () => {
     await openLab(page, 'analysis');
 
     // Section heading
-    await expect(page.getByRole('heading', { name: 'Analysis Results', level: 2 })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /Combustion Physics & Published Results/i })).toBeVisible();
 
     // Verification badges
-    await expect(page.locator('.status-badges .status-pill')).toContainText(/Verified Baseline|Live API/i);
-    await expect(page.getByText('FLEX Droplet')).toBeVisible();
+    await expect(page.locator('.status-badges')).toContainText(/Verified Baseline|Live API/i);
+    await expect(page.getByText(/PSI-69 FLEX Evidence/i)).toBeVisible();
 
     // Subnav tabs exist
-    const subnav = page.locator('nav.subnav');
-    await expect(subnav.getByRole('button', { name: /d²-Law Consistency/i })).toBeVisible();
-    await expect(subnav.getByRole('button', { name: /Oxygen Index Effect/i })).toBeVisible();
-    await expect(subnav.getByRole('button', { name: /Published Analysis Strata/i })).toBeVisible();
+    const subnav = page.locator('.subnav');
+    await expect(subnav.getByRole('tab', { name: /d²-Law Consistency/i })).toBeVisible();
+    await expect(subnav.getByRole('tab', { name: /Oxygen Effect on K/i })).toBeVisible();
+    await expect(subnav.getByRole('tab', { name: /Published Correlation Strata/i })).toBeVisible();
   });
 
   test('d2-consistency tab displays fuel summaries and filters runs table', async ({ page }) => {
     await openLab(page, 'analysis');
 
-    // d2 consistency view should be active by default
-    await expect(page.getByRole('heading', { name: /Consistency of Reported FLEX Burning Times/i })).toBeVisible();
+    // d2 consistency view is active by default
+    await expect(page.getByText(/Physics Diagnostic Contract/i)).toBeVisible();
 
     // Summary cards exist for fuels
-    await expect(page.getByRole('heading', { name: 'Heptane' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Methanol' })).toBeVisible();
+    await expect(page.getByText('Heptane Fuel')).toBeVisible();
+    await expect(page.getByText('Methanol Fuel')).toBeVisible();
 
     // Filter controls row exists
-    const fuelSelect = page.locator('.filter-controls-row select').first();
+    const fuelSelect = page.getByLabel(/Filter fuel for d2 consistency/i);
     await expect(fuelSelect).toBeVisible();
 
     // Filter by Heptane
     await fuelSelect.selectOption('Heptane');
-    await expect(page.getByRole('heading', { name: 'Heptane' })).toBeVisible();
+    await expect(page.getByText('Heptane Fuel')).toBeVisible();
+
+    // Expand full table to reveal search
+    await page.getByRole('button', { name: /Expand Full Table/i }).click();
 
     // Search input
     const searchInput = page.getByPlaceholder(/Search run ID/i);
@@ -46,33 +49,34 @@ test.describe('Physics Analysis Engine E2E', () => {
     await fuelSelect.selectOption('all');
 
     // Flagged runs section
-    await expect(page.getByRole('heading', { name: /Flagged for Review/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /Flagged.*Review/i })).toBeVisible();
   });
 
   test('oxygen effect tab displays multivariable regression models and abstentions', async ({ page }) => {
     await openLab(page, 'analysis');
 
-    // Switch to Oxygen Index Effect tab
-    await page.locator('nav.subnav').getByRole('button', { name: /Oxygen Index Effect/i }).click();
+    // Switch to Oxygen Effect tab
+    await page.locator('.subnav').getByRole('tab', { name: /Oxygen Effect on K/i }).click();
 
-    // Heading for oxygen effect
-    await expect(page.getByRole('heading', { name: /Multivariable OLS/i })).toBeVisible();
+    // Contract callout and heading
+    await expect(page.getByText(/Within-Stratum OLS Regression Contract/i)).toBeVisible();
+    await expect(page.getByRole('heading', { name: /Computable Experimental Strata/i })).toBeVisible();
 
     // Stratum cards
     const stratumCards = page.locator('.physics-card');
     await expect(stratumCards.first()).toBeVisible();
 
-    // Scientific limitations callout
-    await expect(page.getByText(/Methodology & Limitations/i)).toBeVisible();
+    // Abstained strata section
+    await expect(page.getByRole('heading', { name: /Abstained Strata/i })).toBeVisible();
   });
 
   test('published strata tab renders baseline strata tables', async ({ page }) => {
     await openLab(page, 'analysis');
 
-    // Switch to Published Analysis Strata tab
-    await page.locator('nav.subnav').getByRole('button', { name: /Published Analysis Strata/i }).click();
+    // Switch to Published Correlation Strata tab
+    await page.locator('.subnav').getByRole('tab', { name: /Published Correlation Strata/i }).click();
 
     // Baseline strata cards exist
-    await expect(page.locator('.physics-card').first()).toBeVisible();
+    await expect(page.locator('.analysis-result-group').first()).toBeVisible();
   });
 });

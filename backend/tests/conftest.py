@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from dataclasses import replace
 from typing import Any
 
@@ -57,3 +58,22 @@ def make_copilot(retriever: HybridRetriever):
         return ScientificCopilot(retriever, provider)
 
     return _make
+
+
+# ------------------------------------------------------------------ strict raw-data mode (release gate)
+
+RAW_REQUIRED_ENV = "FLAMESCOPE_REQUIRE_RAW_DATA"
+
+
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item, call):  # type: ignore[no-untyped-def]
+    """With FLAMESCOPE_REQUIRE_RAW_DATA=1 a skip caused by absent raw NASA data becomes a failure, so a
+    release run cannot pass silently without the data. Other skips (PostgreSQL, BGE) are unaffected."""
+    outcome = yield
+    rep = outcome.get_result()
+    if rep.skipped and os.environ.get(RAW_REQUIRED_ENV) == "1":
+        reason = str(rep.longrepr[-1]) if isinstance(rep.longrepr, tuple) else str(rep.longrepr)
+        if "not present" in reason:
+            rep.outcome = "failed"
+            rep.longrepr = f"{RAW_REQUIRED_ENV}=1 but raw data is missing: {reason}"
+
