@@ -244,3 +244,24 @@ The full backend suite has failures that predate this work (the 3 legacy tests a
 3. **If the report is approved:** record the 32.5 px/mm scale (section 6) in the registry and decide whether to publish mm values with an explicit binning note.
 4. Process the flame cameras (`B`/`D` archives) for extinction times, to test the "regime break = extinction" assumption behind the occlusion test.
 5. Decide how to store vision results (`analysis_results` inputs are `measurements`, which frames are not).
+
+## 12. Evidence status in outputs and the A6 audit (2026-11-14)
+
+* **Status in every output.** `GET /api/v1/vision/evaluation` and `GET /api/v1/vision/tests/{test}` return
+  `evidence_eligibility` (`{"PSI-69": "PENDING_VERIFICATION"}` today) for the sources the K/D0^2 results are derived
+  from, and `reference_eligibility` (`{"NASA-TP-2015-216046": "UNREGISTERED"}`) for the report used only in the
+  exploratory cross-check of section 5. Both are computed at response time from the central policy
+  (`app/domain/eligibility.py`: registry status AND `data/metadata/source_eligibility.csv`), so results written
+  before the fields existed carry them too and a future decision is never stale. The manifest row role
+  (`reference_report`) separates the two. `run_flame_vision.py` also writes both fields into the abstention
+  summaries, the evaluation and the full per-test summaries on its next run; the committed result files were not
+  regenerated (it would change them only by timestamps).
+* **A6 audit (`dext_origin`).** The vision pipeline never reads `dext_origin`, the enrichment file, the caption file
+  or support modes; its NASA reference values (K, D0, extinction diameter, burn time) come only from the registered
+  PSI-69 table through the hash-verified loader. The one place the unregistered report is read is
+  `scripts/nasa_report_crosscheck.py` (its published D^2(t) curves): it labels its own output
+  `UNREGISTERED ... cross-check only`, no result reads its output, and the only link is the text of the evaluation
+  verdict, which already says "unregistered source". Tests pin this (the scan of vision sources, the single reader
+  of the PDF, no code reading the cross-check output, both status fields). No source was registered and no
+  eligibility decision changed; whether to register the report remains the science owner's decision (section 0).
+  The run-level analysis A6 on `feat/integrity-gap-closure` is a separate, unchanged limitation.

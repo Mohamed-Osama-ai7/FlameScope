@@ -18,6 +18,7 @@ from pydantic import BaseModel
 
 from app.data_platform.settings import project_root
 from app.science.method_cards import MethodCard
+from app.vision.eligibility import evidence_eligibility, reference_eligibility
 from app.vision.method_card import HIBMS_DROPLET_CARD
 
 router = APIRouter(prefix="/vision", tags=["flame vision"])
@@ -50,6 +51,18 @@ def _read_json(path: Path, what: str) -> dict[str, Any]:
     return data
 
 
+def _with_eligibility(data: dict[str, Any]) -> dict[str, Any]:
+    """Every result states the evidence status of its sources (PSI-69: PENDING_VERIFICATION), read from the
+    central policy at response time so outputs written before this field existed also carry it."""
+    root = project_root()
+    return {
+        **data,
+        "evidence_eligibility": evidence_eligibility(root),
+        # reports used only for the exploratory cross-check; UNREGISTERED means never evidence
+        "reference_eligibility": reference_eligibility(root),
+    }
+
+
 def _num(v: str) -> float | None:
     return float(v) if v not in ("", "None") else None
 
@@ -62,13 +75,15 @@ def vision_method() -> MethodCard:
 @router.get("/evaluation")
 def vision_evaluation() -> dict[str, Any]:
     """Cross-test comparison of the scale-free K/D0^2 with NASA's reported values, including abstentions."""
-    return _read_json(_out_dir() / "evaluation.json", "evaluation")
+    return _with_eligibility(_read_json(_out_dir() / "evaluation.json", "evaluation"))
 
 
 @router.get("/tests/{test_point}")
 def vision_test(test_point: str = PathParam(pattern=TEST_POINT)) -> dict[str, Any]:
     """Full summary for one test: results, NASA reference, comparison, provenance (or abstention)."""
-    return _read_json(_out_dir() / test_point / "summary.json", f"vision result for {test_point}")
+    return _with_eligibility(
+        _read_json(_out_dir() / test_point / "summary.json", f"vision result for {test_point}")
+    )
 
 
 @router.get("/tests/{test_point}/series", response_model=list[FrameOut])

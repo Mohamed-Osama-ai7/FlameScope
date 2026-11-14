@@ -29,6 +29,7 @@ sys.path.insert(0, str(BACKEND / "scripts"))
 import fetch_psi_table as psi  # noqa: E402
 
 from app.analysis import flex_run_level as flex  # noqa: E402
+from app.vision.eligibility import evidence_eligibility, reference_eligibility  # noqa: E402
 from app.vision.method_card import HIBMS_DROPLET_CARD  # noqa: E402
 from app.vision.metrology import FrameRecord, evaluate  # noqa: E402
 from app.vision.nasa_bundle import HibmsBundle, raw_dir  # noqa: E402
@@ -235,6 +236,8 @@ def write_abstention(test: str, reason: str, files: list[dict[str, str]]) -> Non
             "version": HIBMS_DROPLET_CARD.version,
             "status": HIBMS_DROPLET_CARD.status,
         },  # fmt: skip
+        "evidence_eligibility": evidence_eligibility(ROOT),
+        "reference_eligibility": reference_eligibility(ROOT),
         "computable": False,
         "abstention_reason": reason,
         "nasa_reference": nasa_reference(test),
@@ -321,6 +324,8 @@ def write_evaluation() -> dict:
     out = {
         "method_id": HIBMS_DROPLET_CARD.method_id,
         "method_version": HIBMS_DROPLET_CARD.version,
+        "evidence_eligibility": evidence_eligibility(ROOT),
+        "reference_eligibility": reference_eligibility(ROOT),
         "tests": rows,
         "n_tests": len(rows),
         "n_computable": len(ok),
@@ -380,6 +385,8 @@ def run(tests: list[str]) -> int:
                     "version": HIBMS_DROPLET_CARD.version,
                     "status": HIBMS_DROPLET_CARD.status,
                 },  # fmt: skip
+                "evidence_eligibility": evidence_eligibility(ROOT),
+                "reference_eligibility": reference_eligibility(ROOT),
                 "camera": {
                     k: cam.get(k)
                     for k in (
