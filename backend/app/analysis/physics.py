@@ -35,7 +35,7 @@ import statsmodels.api as sm
 from scipy import stats
 
 from app.analysis import flex_run_level as fx
-from app.rag.eligibility import EligibilityPolicy
+from app.domain.eligibility import EligibilityPolicy
 
 ANALYSIS_VERSION = "physics-0.2.0"  # 0.2: support mode no longer a stratifier; eligibility in outputs
 NOT_CONTROLLED = "not_controlled"

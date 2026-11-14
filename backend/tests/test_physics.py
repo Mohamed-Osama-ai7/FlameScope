@@ -261,3 +261,48 @@ def test_support_mode_never_splits_strata():
     ]
     out = p.oxygen_effect(runs)
     assert len(out["strata"]) == 1 and out["strata"][0]["n"] == 8 and out["strata"][0]["computable"]
+
+
+# ------------------------------------------------------------------ central eligibility and A6 guard
+
+
+def test_routes_use_the_central_eligibility_policy(monkeypatch):
+    from app.api import physics_routes
+    from app.domain.eligibility import Eligibility, SourceDecision
+
+    class Excluded:
+        def __init__(self, root):
+            pass
+
+        def decision(self, sid):
+            return SourceDecision(sid, Eligibility.ACQUIRED_BUT_EXCLUDED, False, "ACQUIRED", "test exclusion")
+
+    physics_routes._runs.cache_clear()
+    monkeypatch.setattr(physics_routes, "EligibilityPolicy", Excluded)
+    try:
+        r = TestClient(app).get("/api/v1/physics/d2-consistency")
+        assert r.status_code == 503 and "ACQUIRED_BUT_EXCLUDED" in r.json()["detail"]
+    finally:
+        physics_routes._runs.cache_clear()
+
+
+def test_unregistered_dext_origin_never_enters_physics(real_runs):
+    import inspect
+    import random
+
+    from app.api.physics_routes import DEXT_ORIGIN_NOT_USED
+
+    # blanked at load (A6 caption notes come from the unregistered NASA/TP report)
+    assert {r.dext_origin for r in real_runs} == {DEXT_ORIGIN_NOT_USED}
+    assert "dext_origin" not in inspect.getsource(p)  # the physics module never reads it
+    # results are invariant to any value of dext_origin
+    import copy
+
+    shuffled = [copy.copy(r) for r in real_runs]
+    rng = random.Random(1)
+    for r in shuffled:
+        r.dext_origin = rng.choice(
+            ["reported_extinction_no_extrapolation_noted", "zero_semantics_unconfirmed", "x"]
+        )
+    assert p.d2_consistency(shuffled) == p.d2_consistency(real_runs)
+    assert p.oxygen_effect(shuffled) == p.oxygen_effect(real_runs)

@@ -88,3 +88,16 @@ regeneration gives identical bytes on every OS (verified: v0.2 outputs regenerat
 two v0.1 JSON pins are now the committed bytes' SHA-256; the lab dataset was regenerated and only its two
 provenance hash fields changed (no record, stratum or value changed). Integrity checks remain exact byte hashes.
 Old clones made before `.gitattributes` keep CRLF working copies and must re-checkout those paths.
+
+## 7. Eligibility and unregistered inputs (2026-11-14)
+
+* **Central eligibility:** `physics_routes` refuses PSI-69 data unless `app/domain/eligibility.py` (registry status
+  AND `data/metadata/source_eligibility.csv`) marks it usable; the same module is the source of the
+  `evidence_eligibility` field (PSI-69 `PENDING_VERIFICATION`) in both outputs. The module is byte-identical to the
+  one on `feat/integrity-gap-closure`, where `app/rag/eligibility.py` becomes a re-export.
+* **A6 / `dext_origin`:** `dext_origin` is derived from NASA/TP-2015-216046 caption notes (unregistered). The
+  physics engine never reads it; `physics_routes` overwrites it at load (`not_used_unregistered_caption_source`) and
+  tests check that results are invariant to it. **Documented limitation (unchanged):** the run-level analysis A6
+  (extinction diameter vs O2, `app/analysis/flex_run_level.py`, v0.2.0 approved outputs and v0.3.0 on
+  `feat/integrity-gap-closure`) still uses `dext_origin` for eligibility; no source was registered and no
+  eligibility decision changed.
