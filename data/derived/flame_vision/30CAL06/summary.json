@@ -6,7 +6,7 @@
     "status": "implemented_compared_with_nasa_reported_values_not_validated"
   },
   "computable": false,
-  "abstention_reason": "too few measured frames after the igniters left the field of view",
+  "abstention_reason": "droplet tracked in only 55% of fit-window frames (< 80%): droplet lost, obscured (e.g. soot shell) or touching the image edge; not measurable here",
   "nasa_reference": {
     "run_id": "PSI-69-r008",
     "flex_identifier": "30CAL06",
@@ -70,5 +70,5 @@
       "retrieved_at_utc": "2026-11-14T06:57:16Z"
     }
   ],
-  "generated_at_utc": "2026-11-14T07:08:22Z"
+  "generated_at_utc": "2026-11-14T08:47:30Z"
 }

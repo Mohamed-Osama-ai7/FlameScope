@@ -1,0 +1,145 @@
+{
+  "source": {
+    "report": "NASA/TP-2015-216046",
+    "ntrs_id": "20150023456",
+    "sha256": "b4f6ca983e2792c33a0b92220a791a818f426bb635b94f7fd33dc8c9c471e79d",
+    "url": "https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf",
+    "status": "UNREGISTERED (data/metadata/source_eligibility.csv); cross-check only"
+  },
+  "method": "red 'Droplet history' markers of the printed figures, 0.05 s median bins; axes calibrated from tick marks; windows aligned on the burning->evaporation kink; K divided by each curve's own plateau",
+  "tolerances": {
+    "axis_scale_rel": 0.005,
+    "kink_alignment_s": 0.15
+  },
+  "tests": {
+    "20CAL10": {
+      "flex_test": 2,
+      "figure": 6,
+      "pdf_page": 36,
+      "printed_page": 30,
+      "run_id": "PSI-69-r002",
+      "published_plateau_d2_mm2": 4.014251781472684,
+      "published_plateau_d_mm": 2.00355977736445,
+      "published_d_mm_at_plot_t0": 1.8609628953480595,
+      "table_d0_mm": 1.86,
+      "published_kink_t_s": 5.099999999999991,
+      "our_kink_t_s": 6.225999999999987,
+      "time_axis_offset_s": 1.125999999999996,
+      "our_window_s": [
+        1.526,
+        6.225999999999987
+      ],
+      "published_axis_window_s": [
+        0.40000000000000413,
+        5.099999999999991
+      ],
+      "published_curve_slope_mm2_per_s": 0.5457525018355501,
+      "published_curve_k_over_plateau_per_s": 0.1359537297471992,
+      "published_curve_k_over_plateau_range_per_s": [
+        0.13324504154922145,
+        0.13828998507404297
+      ],
+      "ours_k_over_d0sq_per_s": 0.13481748898949023,
+      "ours_vs_published_curve": -0.008357554881515683,
+      "ours_vs_published_range": [
+        -0.02511024990489008,
+        0.011801170399935001
+      ],
+      "table_k_mm2_per_s": 0.6,
+      "table_k_over_d0sq_per_s": 0.17343045438779048,
+      "ours_vs_table_ratio": 0.7773576415134007,
+      "gap_decomposition": {
+        "d0_definition": 0.8618293491124263,
+        "tabulated_k_vs_published_curve": 0.9095875030592503,
+        "our_measurement_vs_curve": 0.9916424451184843,
+        "product": 0.7773576415134008
+      }
+    },
+    "20CAL12": {
+      "flex_test": 3,
+      "figure": 7,
+      "pdf_page": 37,
+      "printed_page": 31,
+      "run_id": "PSI-69-r003",
+      "published_plateau_d2_mm2": 2.879598662207358,
+      "published_plateau_d_mm": 1.6969380254468216,
+      "published_d_mm_at_plot_t0": 1.5974477972324927,
+      "table_d0_mm": 1.61,
+      "published_kink_t_s": 3.4333333333333296,
+      "our_kink_t_s": 4.526999999999993,
+      "time_axis_offset_s": 1.0936666666666635,
+      "our_window_s": [
+        1.5270000000000001,
+        4.526999999999993
+      ],
+      "published_axis_window_s": [
+        0.4333333333333367,
+        3.4333333333333296
+      ],
+      "published_curve_slope_mm2_per_s": 0.532251154863716,
+      "published_curve_k_over_plateau_per_s": 0.18483518618379915,
+      "published_curve_k_over_plateau_range_per_s": [
+        0.18008712576309255,
+        0.18847892642781452
+      ],
+      "ours_k_over_d0sq_per_s": 0.1906994025816264,
+      "ours_vs_published_curve": 0.03172673190047215,
+      "ours_vs_published_range": [
+        0.01178103141765452,
+        0.05892857012163355
+      ],
+      "table_k_mm2_per_s": 0.58,
+      "table_k_over_d0sq_per_s": 0.22375679950619184,
+      "ours_vs_table_ratio": 0.8522619335031619,
+      "gap_decomposition": {
+        "d0_definition": 0.9001601626016261,
+        "tabulated_k_vs_published_curve": 0.9176744049374415,
+        "our_measurement_vs_curve": 1.0317267319004721,
+        "product": 0.852261933503162
+      }
+    },
+    "30CAL03": {
+      "flex_test": 5,
+      "figure": 9,
+      "pdf_page": 39,
+      "printed_page": 33,
+      "run_id": "PSI-69-r005",
+      "published_plateau_d2_mm2": 4.053333333333334,
+      "published_plateau_d_mm": 2.0132891827388666,
+      "published_d_mm_at_plot_t0": 1.9229606802474608,
+      "table_d0_mm": 1.92,
+      "published_kink_t_s": 6.533333333333319,
+      "our_kink_t_s": 7.893666666666649,
+      "time_axis_offset_s": 1.3603333333333296,
+      "our_window_s": [
+        1.727,
+        7.893666666666649
+      ],
+      "published_axis_window_s": [
+        0.36666666666667047,
+        6.533333333333319
+      ],
+      "published_curve_slope_mm2_per_s": 0.4829910306844999,
+      "published_curve_k_over_plateau_per_s": 0.11915897138597858,
+      "published_curve_k_over_plateau_range_per_s": [
+        0.11783462730138063,
+        0.12033372672436395
+      ],
+      "ours_k_over_d0sq_per_s": 0.12107588003464939,
+      "ours_vs_published_curve": 0.01608698553180332,
+      "ours_vs_published_range": [
+        0.006167458870325104,
+        0.0275067932703581
+      ],
+      "table_k_mm2_per_s": 0.48,
+      "table_k_over_d0sq_per_s": 0.13020833333333334,
+      "ours_vs_table_ratio": 0.9298627586661072,
+      "gap_decomposition": {
+        "d0_definition": 0.9094736842105262,
+        "tabulated_k_vs_published_curve": 1.0062313139260415,
+        "our_measurement_vs_curve": 1.0160869855318033,
+        "product": 0.9298627586661072
+      }
+    }
+  }
+}

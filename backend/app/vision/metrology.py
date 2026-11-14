@@ -37,7 +37,9 @@ MAX_DRIFT_PX_PER_S = 30.0  # plus slow drift over longer gaps (excluded windows,
 MAX_REL_DIAMETER_STEP = 0.25  # |dD|/D between accepted frames; larger = lost droplet (soot shell, debris)
 MIN_FIT_COVERAGE = 0.8  # usable frames / timestamped frames inside the fit window
 MIN_FIT_R2 = 0.9
+MAX_TAIL_SLOPE_RATIO = 0.3  # post-break D^2 slope / burning slope; larger = no burning->evaporation break
 UNUSABLE_FLAGS = ("tracking_jump", "diameter_jump")
+REANCHOR_FRAMES = 3  # consecutive mutually consistent detections that move a stale track anchor
 SENSITIVITY_FRACTIONS = (0.4, 0.5, 0.6)
 
 
@@ -116,7 +118,10 @@ def regime_break(t: list[float], y: list[float], t_lo: float, t_hi: float, step:
     return best[1]
 
 
-def measure_series(bundle: HibmsBundle, params: SegmentationParams) -> list[FrameRecord]:
+def measure_series(
+    bundle: HibmsBundle, params: SegmentationParams, exclude_igniter_window: bool = True
+) -> list[FrameRecord]:
+    """Per-frame records. ``exclude_igniter_window=False`` is for the occlusion diagnostic only."""
     log = bundle.test_log()
     index = bundle.frame_index()
     t0 = log.event(EVENT_T0)
@@ -124,6 +129,7 @@ def measure_series(bundle: HibmsBundle, params: SegmentationParams) -> list[Fram
     excl_end = (log.event(EVENT_IGNITERS_OUT) - t0).total_seconds() + MARGIN_S
     records: list[FrameRecord] = []
     last: FrameRecord | None = None
+    pending: list[FrameRecord] = []  # position-only jumps that agree with each other (fast drift)
     for name in bundle.frame_names():
         stem = name.rsplit(".", 1)[0]
         stamp: datetime | None = index.get(stem)
@@ -134,7 +140,7 @@ def measure_series(bundle: HibmsBundle, params: SegmentationParams) -> list[Fram
         if t < release:  # droplet still on the dispensing needles: not a free droplet
             records.append(FrameRecord(stem, t, "before_droplet_release"))
             continue
-        if 0.0 <= t <= excl_end:
+        if exclude_igniter_window and 0.0 <= t <= excl_end:
             records.append(FrameRecord(stem, t, "excluded_igniter_window"))
             continue
         img = bundle.read_frame(name)
@@ -173,6 +179,34 @@ def measure_series(bundle: HibmsBundle, params: SegmentationParams) -> list[Fram
         records.append(rec)
         if not any(f in flags for f in UNUSABLE_FLAGS):
             last = rec
+            pending = []
+        elif "diameter_jump" not in flags:
+            # A drifting droplet can move further than the anchor allows across a long gap. Re-anchor
+            # only on REANCHOR_FRAMES consecutive detections that agree in position with each other and
+            # whose diameter already passed the step check; diameter jumps (debris, soot) never qualify.
+            prev = pending[-1] if pending else None
+            if (
+                prev is not None
+                and prev.t_s is not None
+                and prev.centroid_x_px is not None
+                and prev.centroid_y_px is not None
+            ):
+                step = math.hypot(
+                    det.centroid_x_px - prev.centroid_x_px, det.centroid_y_px - prev.centroid_y_px
+                )
+                pending = (
+                    pending + [rec] if step <= MAX_JUMP_PX + MAX_DRIFT_PX_PER_S * (t - prev.t_s) else [rec]
+                )
+            else:
+                pending = [rec]
+            if len(pending) >= REANCHOR_FRAMES:
+                for p in pending:
+                    p.flags = ";".join(
+                        f if f != "tracking_jump" else "reanchored" for f in p.flags.split(";")
+                    )
+                last, pending = pending[-1], []
+        else:
+            pending = []
     return records
 
 
@@ -202,6 +236,7 @@ def analyse(records: list[FrameRecord], bundle: HibmsBundle) -> dict[str, Any]:
     yy = [b for _, b in burn]
     t_break = regime_break(tt, yy, t_fit_start + 1.0, max(tt) - 1.0)
     win = [(a, b) for a, b in burn if a <= t_break]
+    tail = [(a, b) for a, b in burn if a > t_break]
     if len(win) < MIN_FIT_POINTS:
         raise ValueError("fit window has fewer than 10 frames")
     in_window = [r for r in records if r.t_s is not None and t_fit_start <= r.t_s <= t_break]
@@ -209,9 +244,19 @@ def analyse(records: list[FrameRecord], bundle: HibmsBundle) -> dict[str, Any]:
     if coverage < MIN_FIT_COVERAGE:
         raise ValueError(
             f"droplet tracked in only {coverage:.0%} of fit-window frames (< {MIN_FIT_COVERAGE:.0%}): "
-            "droplet lost or obscured (e.g. soot shell), not measurable with this method"
+            "droplet lost, obscured (e.g. soot shell) or touching the image edge; not measurable here"
         )
     fit = fit_line([a for a, _ in win], [b for _, b in win])
+    tail_ratio = (
+        fit_line([a for a, _ in tail], [b for _, b in tail]).slope / fit.slope if len(tail) >= 3 else None
+    )
+    if tail_ratio is None or tail_ratio > MAX_TAIL_SLOPE_RATIO:
+        raise ValueError(
+            "no burning-to-evaporation break in the droplet history (post-break/burning D^2 slope ratio "
+            f"{'n/a' if tail_ratio is None else f'{tail_ratio:.2f}'} > {MAX_TAIL_SLOPE_RATIO}): "
+            "e.g. disruption "
+            "or droplet leaving the view before extinction, so the fit window end is undefined"
+        )
     if fit.slope >= 0 or fit.r_squared < MIN_FIT_R2:
         raise ValueError(
             f"no d^2-law burning segment: slope {fit.slope:.1f} px^2/s, R^2 {fit.r_squared:.3f} "
@@ -230,6 +275,7 @@ def analyse(records: list[FrameRecord], bundle: HibmsBundle) -> dict[str, Any]:
         "d0_mad_px": d0_mad,
         "d0_frames": len(pre),
         "fit_window_coverage": coverage,
+        "post_break_slope_ratio": tail_ratio,
         "fit": {**asdict(fit), "slope_px2_per_s": fit.slope},
         "k_px2_per_s": k_px,
         "k_over_d0sq_per_s": k_norm,
@@ -246,11 +292,59 @@ def analyse(records: list[FrameRecord], bundle: HibmsBundle) -> dict[str, Any]:
     }
 
 
+def diagnostics(bundle: HibmsBundle, params: SegmentationParams, primary: dict[str, Any]) -> dict[str, Any]:
+    """Evidence about the NASA gap. Diagnostic only: never changes the primary result or its windows.
+
+    * occlusion: re-measures the igniter window (exclusion off) and reports which frames show a clean
+      droplet and the longest interval with none (the physically hidden interval). Frames at the edges
+      of that interval can be partly covered, so no rate is computed across it;
+    * edge bias: the fit repeated with every diameter shifted by +/-0.5 px (the segmentation bias
+      bound on synthetic disks) gives that term's effect on K/D0^2, separate from the fit error.
+    """
+    d0 = primary["d0_px"]
+    t_start, t_break = primary["windows_s"]["fit"]
+    recs = measure_series(bundle, params, exclude_igniter_window=False)
+    clean = [
+        (r.t_s, r.diameter_px)
+        for r in recs
+        if r.status == "measured" and not r.flags and r.t_s is not None and r.diameter_px and r.t_s > 0.0
+    ]
+    early = [(t, d) for t, d in clean if t < t_start]
+    gap: dict[str, Any] = {"clean_frames_in_igniter_window": len(early)}
+    seq = [(t, d) for t, d in clean if t <= t_start + 0.5]
+    if len(seq) >= 2:
+        (ta, da), (tb, db) = max(zip(seq, seq[1:], strict=False), key=lambda p: p[1][0] - p[0][0])
+        gap.update(hidden_interval_s=[ta, tb], hidden_duration_s=tb - ta)
+    burn = [
+        (r.t_s, r.diameter_px)
+        for r in recs
+        if _usable(r) and r.t_s is not None and t_start <= r.t_s <= t_break
+    ]
+    edge = {}
+    for shift in (-0.5, 0.5):
+        f = fit_line([t for t, _ in burn], [(d + shift) ** 2 for _, d in burn])  # type: ignore[operator]
+        edge[str(shift)] = -f.slope / (d0 + shift) ** 2
+    bins = []
+    t = t_start
+    while t + 0.5 <= t_break:
+        part = [(a, b * b) for a, b in burn if t <= a < t + 0.5]  # type: ignore[operator]
+        if len(part) >= 5:
+            bins.append(-fit_line([a for a, _ in part], [b for _, b in part]).slope / d0**2)
+        t += 0.5
+    return {
+        "occlusion": gap,
+        "edge_bias_k_over_d0sq": edge,
+        "local_k_over_d0sq_0p5s_bins": bins,
+        "max_local_k_over_d0sq_per_s": max(bins) if bins else None,
+    }
+
+
 def evaluate(bundle: HibmsBundle, params: SegmentationParams | None = None) -> dict[str, Any]:
     """Primary analysis at ``params`` plus threshold sensitivity; returns a JSON-ready summary."""
     base = params or SegmentationParams()
     records = measure_series(bundle, base)
     primary = analyse(records, bundle)
+    primary["diagnostics"] = diagnostics(bundle, base, primary)
     sensitivity = {}
     for frac in SENSITIVITY_FRACTIONS:
         if abs(frac - base.threshold_fraction) < 1e-9:
