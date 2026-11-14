@@ -9,7 +9,7 @@ import type {
 } from './contracts';
 
 const VERIFICATION_STATUSES: VerificationStatus[] = [
-  'NOT_YET_ACQUIRED', 'CANDIDATE_ONLY', 'ACQUIRED', 'VERIFIED', 'QUARANTINED',
+  'NOT_YET_ACQUIRED', 'CANDIDATE_ONLY', 'ACQUIRED', 'VERIFIED', 'QUARANTINED', 'RESOURCE_RECORDED',
 ];
 const REGIMES: CombustionRegime[] = [
   'flex_droplet', 'bass_ii_solid', 'saffire_spacecraft_scale',

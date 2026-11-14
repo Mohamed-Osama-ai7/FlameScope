@@ -5,6 +5,7 @@ import { FilterBar } from './lab/components/FilterBar';
 import { loadDataset } from './lab/data/load';
 import type { LabDataset } from './lab/data/types';
 import { Combustion } from './lab/sections/Combustion';
+import { EvidenceCopilot } from './lab/sections/EvidenceCopilot';
 import { AnalysisResults } from './lab/sections/AnalysisResults';
 import { ComparisonExplorer } from './lab/sections/ComparisonExplorer';
 import { Conditions } from './lab/sections/Conditions';
@@ -20,6 +21,7 @@ const SECTIONS = [
   { id: 'explorer', label: 'Scientific Explorer' },
   { id: 'comparison', label: 'Compare Runs' },
   { id: 'analysis', label: 'Analysis Results' },
+  { id: 'copilot', label: 'Evidence & Copilot' },
   { id: 'combustion', label: 'Combustion Explorer' },
   { id: 'conditions', label: 'Conditions Explorer' },
   { id: 'outcomes', label: 'Outcomes & Extinction' },
@@ -109,6 +111,7 @@ function Shell() {
           {route.section === 'explorer' && <ScientificExplorer />}
           {route.section === 'comparison' && <ComparisonExplorer dataset={dataset} />}
           {route.section === 'analysis' && <AnalysisResults />}
+          {route.section === 'copilot' && <EvidenceCopilot />}
           {route.section === 'combustion' && <Combustion />}
           {route.section === 'conditions' && <Conditions />}
           {route.section === 'outcomes' && <Outcomes />}

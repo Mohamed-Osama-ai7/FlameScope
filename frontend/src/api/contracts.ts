@@ -3,7 +3,8 @@ export type VerificationStatus =
   | 'CANDIDATE_ONLY'
   | 'ACQUIRED'
   | 'VERIFIED'
-  | 'QUARANTINED';
+  | 'QUARANTINED'
+  | 'RESOURCE_RECORDED'; // catalogue or index entry, never evidence on its own (docs/15 A.7)
 
 export type CombustionRegime =
   | 'flex_droplet'
@@ -94,4 +95,113 @@ export interface ComparisonResult {
   held_constant: string[];
   differing: string[];
   unknown: string[];
+}
+
+// ---- Scientific RAG / Copilot (docs/16_rag_frontend_handoff.md) ----
+
+export type Eligibility =
+  | 'VERIFIED_ELIGIBLE'
+  | 'PENDING_VERIFICATION'
+  | 'ACQUIRED_BUT_EXCLUDED'
+  | 'QUARANTINED'
+  | 'UNREGISTERED';
+
+export type EvidenceStatus = 'CLEAN' | 'QUALIFIED' | 'INVALID' | 'MISSING';
+
+export type CopilotStatus = 'answered' | 'answered_with_ambiguity' | 'comparison_blocked' | 'abstained';
+
+export type MeasurementVerification = 'platform' | 'loader_fallback' | 'unavailable' | 'none';
+
+export interface RagSource {
+  source_id: string;
+  eligibility: Eligibility;
+  usable_as_evidence: boolean;
+  registry_status: string;
+  decision_owner: string;
+  decided_on: string;
+}
+
+export interface CitedMeasurement {
+  measurement_id: string;
+  run_id: string;
+  variable: string;
+  unit: string;
+  evidence_status: EvidenceStatus;
+  value: number | null; // null unless the value may be stated (CLEAN / QUALIFIED)
+  quality_flags: string[];
+  source_locator: string;
+  provenance: string; // relative Data Platform route
+}
+
+export interface Citation {
+  chunk_id: string;
+  chunk_key: string;
+  quote: string;
+  source_id: string;
+  source_title: string;
+  source_url: string;
+  doi: string;
+  license: string;
+  locator_text: string;
+  artifact_id: string;
+  source_artifact_sha256: string;
+  verification_status: string;
+  eligibility: Eligibility;
+  quality_flags: string[];
+  measurements: CitedMeasurement[];
+}
+
+export interface CopilotClaim {
+  text: string;
+  evidence_type: 'direct' | 'analogous';
+  citations: Citation[];
+  measurement_ids: string[];
+  measurement_status: EvidenceStatus | null;
+}
+
+export interface CopilotResponse {
+  status: CopilotStatus;
+  answer: string;
+  claims: CopilotClaim[];
+  evidence: { direct: string[]; analogous: string[]; missing: string[]; flagged: string[] };
+  abstention_reason: string | null;
+  warnings: string[];
+  measurement_verification: MeasurementVerification;
+  source_eligibility: Record<string, string>;
+  notice: string;
+}
+
+export interface MeasurementRef {
+  measurement_id: string;
+  variable: string;
+  unit: string;
+  evidence_status: EvidenceStatus;
+  quality_flags: string[];
+  statement: string;
+}
+
+export interface EvidenceChunk {
+  chunk_id: string;
+  chunk_key: string;
+  source_id: string;
+  source_title: string;
+  locator_text: string;
+  text: string;
+  eligibility: Eligibility;
+  verification_status: string;
+  quality_flags: string[];
+  measurements: MeasurementRef[];
+}
+
+export interface SearchHit {
+  rank: number;
+  score: number;
+  chunk: EvidenceChunk;
+}
+
+export interface SearchResponse {
+  query: string;
+  mode: string;
+  hits: SearchHit[];
+  warnings: string[];
 }

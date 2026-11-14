@@ -265,3 +265,17 @@ blockquote { margin: 0; padding: 10px 12px; border-left: 3px solid var(--accent)
 /* Raw/canonical numeric cells must never wrap mid-number in the evidence inspector. */
 .inspector table.data td:nth-child(3), .inspector table.data td:nth-child(4) { white-space: nowrap; }
 .inspector table.data td:nth-child(3) code { word-break: normal; }
+
+/* Evidence & Copilot (live RAG API) */
+.status-resource_recorded { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
+.eligibility-verified_eligible, .measurement-clean, .copilot-answered { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 45%, var(--border)); }
+.eligibility-pending_verification, .measurement-qualified, .measurement-missing,
+.copilot-answered_with_ambiguity, .copilot-comparison_blocked, .copilot-abstained { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 45%, var(--border)); }
+.eligibility-acquired_but_excluded, .eligibility-quarantined, .eligibility-unregistered, .measurement-invalid { color: var(--bad); border-color: color-mix(in srgb, var(--bad) 45%, var(--border)); }
+.ask-form { display: grid; gap: 8px; }
+.ask-form textarea, .ask-form input { font: inherit; color: var(--text-1); background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; width: 100%; box-sizing: border-box; }
+.ask-form button { justify-self: start; }
+.claims { display: grid; gap: 12px; padding-left: 20px; }
+.citations { list-style: none; padding: 0; margin: 6px 0 0; display: grid; gap: 8px; }
+.citation blockquote { margin: 6px 0; padding: 6px 10px; border-left: 3px solid var(--border); color: var(--text-2); font-size: 13px; overflow-wrap: anywhere; }
+.measurement-row { flex-wrap: wrap; align-items: center; }

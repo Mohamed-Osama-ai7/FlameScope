@@ -70,6 +70,9 @@ function SourcesList({ items }: { items: SourceRecord[] }) {
           </div>
           <p className="explorer-meta"><span>{source.source_id}</span><span>{source.source_type}</span></p>
           {source.official_challenge_resource && <span className="source-flag">Official challenge resource</span>}
+          {source.verification_status === 'RESOURCE_RECORDED' && (
+            <p className="small muted">Catalogue entry, not a data file: never evidence on its own; its data enter only through registered child sources.</p>
+          )}
           <div className="explorer-links">
             {source.doi && <span>DOI: {source.doi}</span>}
             {source.version_or_release && <span>{source.version_or_release}</span>}
