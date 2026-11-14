@@ -19,6 +19,7 @@ from app.rag.query_analysis import GENERIC, VALUE_REQUEST, QueryAnalysis, analys
 from app.rag.retriever import HybridRetriever
 from app.rag.schemas import Chunk, MeasurementRef, RetrievalMode, SearchFilter, SearchRequest
 from app.rag.tools import ToolResult, run_tool, tool_catalog
+from app.rag.uncertainty import UncertaintyItem, annotate
 from app.science.droplet import DropletSeries
 
 # Sufficiency gate (tuned on the dev split only; see docs/14 and eval/rag_questions_v1.jsonl).
@@ -77,6 +78,8 @@ class CopilotResponse(BaseModel):
         default_factory=dict
     )  # source_id -> eligibility of cited sources
     measurement_verification: str = "none"  # platform | loader_fallback | unavailable | none
+    # deterministic uncertainty items (app/rag/uncertainty.py); there is deliberately no confidence score
+    uncertainty: list[UncertaintyItem] = Field(default_factory=list)
     notice: str = (
         "Independent research prototype. Answers are limited to retrieved NASA-sourced evidence and "
         "validated "
@@ -294,6 +297,11 @@ class ScientificCopilot:
         return keep, len(claims) - len(keep)
 
     def ask(self, req: CopilotRequest) -> CopilotResponse:
+        resp = self._answer(req)
+        resp.uncertainty = annotate(resp)
+        return resp
+
+    def _answer(self, req: CopilotRequest) -> CopilotResponse:
         qa = analyse(req.question)
         flt = self._filters(req, qa)
         res = self.retriever.search(
