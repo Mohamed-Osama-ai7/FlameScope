@@ -89,7 +89,8 @@ def test_unsupported_and_quarantined_sources_are_reported_not_loaded(loaded_sqli
     with session_factory(loaded_sqlite)() as s:
         report = loader.load_all(s, PROJECT_ROOT, ["PSI-25", "PSI-98", "NOPE"])
     reasons = {r.source_id: (r.loaded, r.reason) for r in report.results}
-    assert reasons["PSI-25"][0] is False and "extractor" in reasons["PSI-25"][1]
+    # PSI-25 is refused centrally by its evidence decision (before the missing-extractor check)
+    assert reasons["PSI-25"][0] is False and "ACQUIRED_BUT_EXCLUDED" in reasons["PSI-25"][1]
     assert reasons["PSI-98"] == (False, "QUARANTINED in source_registry.csv; refused")
     assert reasons["NOPE"] == (False, "not in source_registry.csv")
     with session_factory(loaded_sqlite)() as s:

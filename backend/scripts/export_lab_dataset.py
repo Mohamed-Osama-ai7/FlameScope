@@ -25,6 +25,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "backend"))
 
 from app.analysis import flex_run_level as fx  # noqa: E402
+from app.domain.eligibility import EligibilityPolicy  # noqa: E402
 
 DATASET_VERSION = "lab-1"
 ANALYSIS_VERSION = "0.2.0"
@@ -190,6 +191,17 @@ def main() -> int:
         "synthetic": False,
         "value_origin": "NASA-reported values (burning_rate_constant_mm2_s is the FLEX team's reported K, not a "
         "FlameScope calculation; the d2-law calculator is not used).",
+        # PSI-69 evidence status and the rules every consumer must apply (docs/22)
+        "evidence_status": {
+            "source_id": fx.SOURCE_ID,
+            "eligibility": EligibilityPolicy(ROOT).decision(fx.SOURCE_ID).eligibility.value,
+            "approval_status": "pending_verification",
+            "support_mode": "derived from NASA/TP-2015-216046 figure captions (UNREGISTERED source, pypdf "
+            "text not visually verified); exploration label only, never scientific evidence "
+            "or an analysis input",
+            "consumer_rule": "use a value only when usable[field] is true; INVALID or MISSING cells must be "
+            "rejected even when a number is present in values",
+        },
         "provenance": {
             "source_id": fx.SOURCE_ID,
             "doi": "10.60555/mbq8-0451",
@@ -232,7 +244,7 @@ def main() -> int:
         "strata": strata,
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(  # newline="\n": identical bytes on every OS
+    OUT.write_text(  # newline="\n": identical bytes on every OS (hash is pinned)
         json.dumps(dataset, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8", newline="\n"
     )
     print(f"records={len(records)} strata={len(strata)} -> {OUT.relative_to(ROOT)} sha256={sha(OUT)}")

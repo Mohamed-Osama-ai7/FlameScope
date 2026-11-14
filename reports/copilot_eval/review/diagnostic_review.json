@@ -1,0 +1,10 @@
+{
+ "reviewer": "independent LLM reviewer (fresh general-purpose agent, no access to the code or evaluation; not a human expert)",
+ "input": "reports/copilot_eval/review/diagnostic_packet.json (baseline diagnostic answers, scientific items)",
+ "instructions": "judge each claim only against its cited chunk text: supported yes/no; relevance answers/partial/irrelevant; per question correct/partial/incorrect",
+ "labels": [
+  {"id": "A19", "claims": [{"index": 0, "supported": "yes", "relevance": "partial"}, {"index": 1, "supported": "yes", "relevance": "answers"}], "answer_verdict": "correct", "reason": "Claim 1 names the hardware (CIR/FCF and MDCA) exactly as the cited chunk states it, and no claim contradicts the source."},
+  {"id": "A21", "claims": [{"index": 0, "supported": "yes", "relevance": "partial"}, {"index": 1, "supported": "yes", "relevance": "partial"}], "answer_verdict": "partial", "reason": "Both claims only repeat the condition (extinction droplets too small to observe) and leave out the method: the cited chunk describes an iterative sequence of burn-to-completion and no-ignition tests with progressively smaller oxygen mole fraction increments, and no claim states it."},
+  {"id": "A23", "claims": [{"index": 0, "supported": "yes", "relevance": "answers"}, {"index": 1, "supported": "yes", "relevance": "partial"}, {"index": 2, "supported": "yes", "relevance": "partial"}], "answer_verdict": "correct", "reason": "Claim 0 directly states, as the cited chunk does, that FLEX improves fire safety protocols to protect crews where traditional fire suppression may be ineffective, and no claim contradicts the source."}
+ ]
+}

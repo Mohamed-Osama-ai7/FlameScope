@@ -19,6 +19,7 @@ from app.rag.query_analysis import GENERIC, VALUE_REQUEST, QueryAnalysis, analys
 from app.rag.retriever import HybridRetriever
 from app.rag.schemas import Chunk, MeasurementRef, RetrievalMode, SearchFilter, SearchRequest
 from app.rag.tools import ToolResult, run_tool, tool_catalog
+from app.rag.uncertainty import UncertaintyItem, annotate
 from app.science.droplet import DropletSeries
 
 # Sufficiency gate (tuned on the dev split only; see docs/14 and eval/rag_questions_v1.jsonl).
@@ -29,6 +30,14 @@ COVERAGE_MIN = 0.6
 # the questions on which this behaviour was diagnosed, so those results are not a held-out estimate.
 CLAIM_COVERAGE_MIN = 0.5
 MAX_LLM_TOOL_CALLS = 3
+# questions about a specific test or run (as opposed to publications or the record narrative)
+_RUN_QUESTION = re.compile(r"\b(?:tests?|runs?)\b", re.I)
+# predicted / hypothetical values (extrapolation is refused; only measured values are stated)
+_HYPOTHETICAL = re.compile(
+    r"\b(?:what would|what will|would (?:it |they |the \w+ )?be|will be|predict\w*|forecast\w*|"
+    r"extrapolat\w*|estimate[sd]?)\b",
+    re.I,
+)
 
 
 class Status(str, Enum):
@@ -75,6 +84,8 @@ class CopilotResponse(BaseModel):
         default_factory=dict
     )  # source_id -> eligibility of cited sources
     measurement_verification: str = "none"  # platform | loader_fallback | unavailable | none
+    # deterministic uncertainty items (app/rag/uncertainty.py); there is deliberately no confidence score
+    uncertainty: list[UncertaintyItem] = Field(default_factory=list)
     notice: str = (
         "Independent research prototype. Answers are limited to retrieved NASA-sourced evidence and "
         "validated "
@@ -128,6 +139,22 @@ class ScientificCopilot:
             }
         )
 
+    @staticmethod
+    def _measurement_resolved(qa: QueryAnalysis, hits: list[Chunk]) -> bool:
+        """Every named experiment has a retrieved table row stating every requested variable."""
+        if not (qa.experiment_ids and qa.variables):
+            return False
+        for e in qa.experiment_ids:
+            rows = [
+                c
+                for c in hits
+                if c.doc_type.value == "table_row" and e.lower() in {x.lower() for x in c.experiment_ids}
+            ]
+            have = {m.variable for c in rows for m in c.measurements}
+            if not rows or not set(qa.variables) <= have:
+                return False
+        return True
+
     def _sufficiency(self, qa: QueryAnalysis, hits: list[Chunk]) -> tuple[str | None, list[str]]:
         missing: list[str] = []
         if not hits and qa.experiment_ids:
@@ -142,15 +169,23 @@ class ScientificCopilot:
                 missing.append(f"evidence for experiment '{e}'")
         if missing:
             return "the experiment named in the question was not found in the usable evidence", missing
-        if (
-            qa.numeric_lookup
-        ):  # a reported value needs a table row / caption for the fuel that was asked about
+        # A reported value, or a question about which test/run used a fuel, needs a table row for that fuel.
+        # Without the run clause, "Which FLEX test used a propanol droplet?" was answered with propanol
+        # publication titles that a reader could take for FLEX runs (v4 holdout A34, judged misleading).
+        if qa.numeric_lookup or _RUN_QUESTION.search(qa.question):
             gone = [f for f in qa.fuels if f.lower() not in self.corpus_fuels]
             if gone and len(gone) == len(qa.fuels):
-                return f"no table row or caption for fuel(s) {', '.join(gone)} in the usable evidence", [
-                    f"reported values for {f}" for f in gone
+                return f"no table row for fuel(s) {', '.join(gone)} in the usable evidence", [
+                    f"FLEX runs or reported values for {f}" for f in gone
                 ]
             missing += [f"reported values for {f}" for f in gone]  # partial coverage: answer, but disclose
+        if qa.variables and _HYPOTHETICAL.search(qa.question):
+            # v5 diagnostic U24: "What would K of methanol be at 5 atm?" was answered with two unrelated runs
+            return (
+                "the question asks for a predicted or hypothetical value; FlameScope states measured "
+                "values only and does not extrapolate",
+                [f"measured values of {', '.join(qa.variables)} under the stated conditions"],
+            )
         oov = self._unsupported_terms(qa)
         if oov:
             return f"the question uses terms absent from the evidence corpus: {', '.join(oov)}", [
@@ -169,6 +204,10 @@ class ScientificCopilot:
                 "run only (name a test, or ask for a descriptive summary such as a median or range)",
                 [f"a specific test for {', '.join(qa.variables)}"],
             )
+        if self._measurement_resolved(qa, hits):
+            # the backend states the exact measurement; loose wording cannot change it (v4 diagnostic A03).
+            # The out-of-vocabulary gate above still applies.
+            return None, missing
         pool: set[str] = set()
         for c in hits:
             pool |= set(tokenize(c.text + " " + " ".join(c.experiment_ids)))
@@ -271,6 +310,11 @@ class ScientificCopilot:
         return keep, len(claims) - len(keep)
 
     def ask(self, req: CopilotRequest) -> CopilotResponse:
+        resp = self._answer(req)
+        resp.uncertainty = annotate(resp)
+        return resp
+
+    def _answer(self, req: CopilotRequest) -> CopilotResponse:
         qa = analyse(req.question)
         flt = self._filters(req, qa)
         res = self.retriever.search(

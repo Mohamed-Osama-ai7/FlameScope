@@ -4,9 +4,19 @@ from __future__ import annotations
 
 import uuid
 from datetime import date, datetime
+from functools import lru_cache
 from typing import Any, Generic, TypeVar
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
+
+from app.data_platform.settings import project_root
+from app.domain.eligibility import EligibilityPolicy
+
+
+@lru_cache(maxsize=1)
+def _policy() -> EligibilityPolicy:
+    return EligibilityPolicy(project_root())
+
 
 T = TypeVar("T")
 
@@ -59,6 +69,15 @@ class InvestigationOut(_ORM):
     research_area: str | None
     official_challenge_resource: bool
     registry_status: str
+    # scientific evidence decision (data/metadata/source_eligibility.csv), read at response time;
+    # PSI-69 is PENDING_VERIFICATION, i.e. usable but not scientifically approved
+    evidence_eligibility: str = ""
+
+    @model_validator(mode="after")
+    def _eligibility(self) -> InvestigationOut:
+        if not self.evidence_eligibility:
+            self.evidence_eligibility = _policy().decision(self.investigation_id).eligibility.value
+        return self
 
 
 class InvestigationDetail(InvestigationOut):

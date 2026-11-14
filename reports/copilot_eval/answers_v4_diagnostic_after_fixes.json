@@ -1,0 +1,639 @@
+{
+ "dataset": "backend/eval/copilot_answers_v4.jsonl",
+ "split": "diagnostic",
+ "label": "after_fixes",
+ "code_revision": "03863e9 + uncommitted backend/app changes",
+ "provider": "extractive (deterministic; no LLM)",
+ "retrieval_mode": "bm25",
+ "summary": {
+  "n": 17,
+  "status_accuracy": 1.0,
+  "by_category": {
+   "comparison": "2/2",
+   "flagged": "2/2",
+   "numeric": "5/5",
+   "scientific": "3/3",
+   "unanswerable": "5/5"
+  },
+  "abstention": {
+   "precision": 1.0,
+   "recall": 1.0,
+   "f1": 1.0,
+   "false_abstentions": 0,
+   "missed_abstentions": 0
+  },
+  "factual_accuracy": 0.8889,
+  "claims": 18,
+  "claim_support_rate": 1.0,
+  "unsupported_claims": 0,
+  "off_target_claims": 4,
+  "off_target_rate": 0.2222,
+  "ineligible_citations": 0,
+  "failures": [
+   {
+    "id": "A03",
+    "category": "numeric",
+    "question": "How big was the droplet when its flame went out in FLEX-086?",
+    "expected": "answered",
+    "got": "answered",
+    "reason": null,
+    "missing_facts": [
+     "FLEX-086 visible flame extinction diameter: 2.56 mm"
+    ],
+    "off_target": []
+   },
+   {
+    "id": "A19",
+    "category": "scientific",
+    "question": "On which hardware were the FLEX experiments run?",
+    "expected": "answered",
+    "got": "answered",
+    "reason": null,
+    "missing_facts": [],
+    "off_target": [
+     "For the slow flow tests (in the flight experiment), the configuration of the flight hardware did not allow for adequate diagnostics over the entire test for a d"
+    ]
+   },
+   {
+    "id": "A21",
+    "category": "scientific",
+    "question": "How was the LOI determined when extinction droplets were too small to observe?",
+    "expected": "answered",
+    "got": "answered",
+    "reason": null,
+    "missing_facts": [],
+    "off_target": [
+     "There were ambient conditions where the extinction droplet sizes at all ambient oxygen mole fractions were too small to either be observed or measured with the "
+    ]
+   },
+   {
+    "id": "A23",
+    "category": "scientific",
+    "question": "How does FLEX contribute to crew safety on future space missions?",
+    "expected": "answered",
+    "got": "answered",
+    "reason": null,
+    "missing_facts": [],
+    "off_target": [
+     "These investigations are essential for advancing the fundamental understanding of combustion processes in microgravity and enhancing fire safety protocols for f",
+     "Overall, the FLEX mission's contributions to combustion science have the potential to enhance both space exploration safety and terrestrial fire safety technolo"
+    ]
+   }
+  ]
+ },
+ "items": [
+  {
+   "id": "A01",
+   "split": "diagnostic",
+   "category": "numeric",
+   "question": "How long did the flame last in FLEX-161?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "abstention_reason": null,
+   "refused": false,
+   "should_refuse": false,
+   "facts": [
+    "FLEX-161 burn time: 14.8 s"
+   ],
+   "facts_found": [
+    "FLEX-161 burn time: 14.8 s"
+   ],
+   "factual_correct": true,
+   "gold_quote": null,
+   "gold_quote_in_answer": null,
+   "claims": [
+    {
+     "text": "FLEX-161 burn time: 14.8 s (reported in the source).",
+     "cited": [
+      "PSI-69:row:160"
+     ],
+     "supported": true,
+     "on_gold": true,
+     "measurement_status": "CLEAN",
+     "ineligible": 0
+    }
+   ],
+   "answer": "FLEX-161 burn time: 14.8 s (reported in the source)."
+  },
+  {
+   "id": "A03",
+   "split": "diagnostic",
+   "category": "numeric",
+   "question": "How big was the droplet when its flame went out in FLEX-086?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "abstention_reason": null,
+   "refused": false,
+   "should_refuse": false,
+   "facts": [
+    "FLEX-086 visible flame extinction diameter: 2.56 mm"
+   ],
+   "facts_found": [],
+   "factual_correct": false,
+   "gold_quote": null,
+   "gold_quote_in_answer": null,
+   "claims": [
+    {
+     "text": "FLEX-086 initial droplet diameter: 3.07 mm (reported in the source).",
+     "cited": [
+      "PSI-69:row:086"
+     ],
+     "supported": true,
+     "on_gold": true,
+     "measurement_status": "CLEAN",
+     "ineligible": 0
+    }
+   ],
+   "answer": "FLEX-086 initial droplet diameter: 3.07 mm (reported in the source)."
+  },
+  {
+   "id": "A05",
+   "split": "diagnostic",
+   "category": "numeric",
+   "question": "What was the initial diameter of the FLEX-094 droplet?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "abstention_reason": null,
+   "refused": false,
+   "should_refuse": false,
+   "facts": [
+    "FLEX-094 initial droplet diameter: 3.53 mm"
+   ],
+   "facts_found": [
+    "FLEX-094 initial droplet diameter: 3.53 mm"
+   ],
+   "factual_correct": true,
+   "gold_quote": null,
+   "gold_quote_in_answer": null,
+   "claims": [
+    {
+     "text": "FLEX-094 initial droplet diameter: 3.53 mm (reported in the source).",
+     "cited": [
+      "PSI-69:row:094"
+     ],
+     "supported": true,
+     "on_gold": true,
+     "measurement_status": "CLEAN",
+     "ineligible": 0
+    }
+   ],
+   "answer": "FLEX-094 initial droplet diameter: 3.53 mm (reported in the source)."
+  },
+  {
+   "id": "A07",
+   "split": "diagnostic",
+   "category": "numeric",
+   "question": "What extinction diameter is reported for FLEX-102?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "abstention_reason": null,
+   "refused": false,
+   "should_refuse": false,
+   "facts": [
+    "FLEX-102 visible flame extinction diameter: 3.43 mm"
+   ],
+   "facts_found": [
+    "FLEX-102 visible flame extinction diameter: 3.43 mm"
+   ],
+   "factual_correct": true,
+   "gold_quote": null,
+   "gold_quote_in_answer": null,
+   "claims": [
+    {
+     "text": "FLEX-102 visible flame extinction diameter: 3.43 mm (reported in the source).",
+     "cited": [
+      "PSI-69:row:102"
+     ],
+     "supported": true,
+     "on_gold": true,
+     "measurement_status": "CLEAN",
+     "ineligible": 0
+    }
+   ],
+   "answer": "FLEX-102 visible flame extinction diameter: 3.43 mm (reported in the source)."
+  },
+  {
+   "id": "A09",
+   "split": "diagnostic",
+   "category": "numeric",
+   "question": "How many seconds did FLEX-099 burn?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "abstention_reason": null,
+   "refused": false,
+   "should_refuse": false,
+   "facts": [
+    "FLEX-099 burn time: 33 s"
+   ],
+   "facts_found": [
+    "FLEX-099 burn time: 33 s"
+   ],
+   "factual_correct": true,
+   "gold_quote": null,
+   "gold_quote_in_answer": null,
+   "claims": [
+    {
+     "text": "FLEX-099 burn time: 33 s (reported in the source).",
+     "cited": [
+      "PSI-69:row:099"
+     ],
+     "supported": true,
+     "on_gold": true,
+     "measurement_status": "CLEAN",
+     "ineligible": 0
+    }
+   ],
+   "answer": "FLEX-099 burn time: 33 s (reported in the source)."
+  },
+  {
+   "id": "A11",
+   "split": "diagnostic",
+   "category": "flagged",
+   "question": "What extinction diameter was recorded for FLEX-051?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "abstention_reason": null,
+   "refused": false,
+   "should_refuse": false,
+   "facts": [
+    "FLEX-051 visible flame extinction diameter: 0 mm, QUALIFIED"
+   ],
+   "facts_found": [
+    "FLEX-051 visible flame extinction diameter: 0 mm, QUALIFIED"
+   ],
+   "factual_correct": true,
+   "gold_quote": null,
+   "gold_quote_in_answer": null,
+   "claims": [
+    {
+     "text": "FLEX-051 visible flame extinction diameter: 0 mm, QUALIFIED (the meaning of a zero value is not confirmed by the source); reported in the source.",
+     "cited": [
+      "PSI-69:row:051"
+     ],
+     "supported": true,
+     "on_gold": true,
+     "measurement_status": "QUALIFIED",
+     "ineligible": 0
+    }
+   ],
+   "answer": "FLEX-051 visible flame extinction diameter: 0 mm, QUALIFIED (the meaning of a zero value is not confirmed by the source); reported in the source."
+  },
+  {
+   "id": "A13",
+   "split": "diagnostic",
+   "category": "flagged",
+   "question": "What burning-rate constant was reported for FLEX-014?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "abstention_reason": null,
+   "refused": false,
+   "should_refuse": false,
+   "facts": [
+    "FLEX-014 reported burning-rate constant K: MISSING in the source"
+   ],
+   "facts_found": [
+    "FLEX-014 reported burning-rate constant K: MISSING in the source"
+   ],
+   "factual_correct": true,
+   "gold_quote": null,
+   "gold_quote_in_answer": null,
+   "claims": [
+    {
+     "text": "FLEX-014 reported burning-rate constant K: MISSING in the source (blank cell in the source); no value exists and none is substituted.",
+     "cited": [
+      "PSI-69:row:014"
+     ],
+     "supported": true,
+     "on_gold": true,
+     "measurement_status": "MISSING",
+     "ineligible": 0
+    }
+   ],
+   "answer": "FLEX-014 reported burning-rate constant K: MISSING in the source (blank cell in the source); no value exists and none is substituted."
+  },
+  {
+   "id": "A15",
+   "split": "diagnostic",
+   "category": "comparison",
+   "question": "Compare the burn times of FLEX-161 and FLEX-099.",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "abstention_reason": null,
+   "refused": false,
+   "should_refuse": false,
+   "facts": [
+    "FLEX-161 burn time: 14.8 s",
+    "FLEX-099 burn time: 33 s"
+   ],
+   "facts_found": [
+    "FLEX-161 burn time: 14.8 s",
+    "FLEX-099 burn time: 33 s"
+   ],
+   "factual_correct": true,
+   "gold_quote": null,
+   "gold_quote_in_answer": null,
+   "claims": [
+    {
+     "text": "FLEX-099 burn time: 33 s (reported in the source).",
+     "cited": [
+      "PSI-69:row:099"
+     ],
+     "supported": true,
+     "on_gold": true,
+     "measurement_status": "CLEAN",
+     "ineligible": 0
+    },
+    {
+     "text": "FLEX-161 burn time: 14.8 s (reported in the source).",
+     "cited": [
+      "PSI-69:row:160"
+     ],
+     "supported": true,
+     "on_gold": true,
+     "measurement_status": "CLEAN",
+     "ineligible": 0
+    }
+   ],
+   "answer": "FLEX-099 burn time: 33 s (reported in the source). FLEX-161 burn time: 14.8 s (reported in the source)."
+  },
+  {
+   "id": "A17",
+   "split": "diagnostic",
+   "category": "comparison",
+   "question": "How do the reported burning-rate constants of FLEX-187 and FLEX-043 compare?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "abstention_reason": null,
+   "refused": false,
+   "should_refuse": false,
+   "facts": [
+    "FLEX-187 reported burning-rate constant K: 0.52 mm^2/s",
+    "FLEX-043 reported burning-rate constant K: 0.78 mm^2/s"
+   ],
+   "facts_found": [
+    "FLEX-187 reported burning-rate constant K: 0.52 mm^2/s",
+    "FLEX-043 reported burning-rate constant K: 0.78 mm^2/s"
+   ],
+   "factual_correct": true,
+   "gold_quote": null,
+   "gold_quote_in_answer": null,
+   "claims": [
+    {
+     "text": "FLEX-043 reported burning-rate constant K: 0.78 mm^2/s (reported by the FLEX team, not calculated here).",
+     "cited": [
+      "PSI-69:row:043"
+     ],
+     "supported": true,
+     "on_gold": true,
+     "measurement_status": "CLEAN",
+     "ineligible": 0
+    },
+    {
+     "text": "FLEX-187 reported burning-rate constant K: 0.52 mm^2/s (reported by the FLEX team, not calculated here).",
+     "cited": [
+      "PSI-69:row:186"
+     ],
+     "supported": true,
+     "on_gold": true,
+     "measurement_status": "CLEAN",
+     "ineligible": 0
+    }
+   ],
+   "answer": "FLEX-043 reported burning-rate constant K: 0.78 mm^2/s (reported by the FLEX team, not calculated here). FLEX-187 reported burning-rate constant K: 0.52 mm^2/s (reported by the FLEX team, not calculated here)."
+  },
+  {
+   "id": "A19",
+   "split": "diagnostic",
+   "category": "scientific",
+   "question": "On which hardware were the FLEX experiments run?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "abstention_reason": null,
+   "refused": false,
+   "should_refuse": false,
+   "facts": [],
+   "facts_found": [],
+   "factual_correct": null,
+   "gold_quote": "Multi-user Droplet Combustion Appartatus (MDCA)",
+   "gold_quote_in_answer": true,
+   "claims": [
+    {
+     "text": "For the slow flow tests (in the flight experiment), the configuration of the flight hardware did not allow for adequate diagnostics over the entire test for a droplet in a uniform, steady convective flow.",
+     "cited": [
+      "PSI-69:meta:approach:04"
+     ],
+     "supported": true,
+     "on_gold": false,
+     "measurement_status": null,
+     "ineligible": 0
+    },
+    {
+     "text": "Hardware: Combustion Integrated Rack (CIR)-Fluids and Combustion Facility (FCF), Multi-user Droplet Combustion Appartatus (MDCA).",
+     "cited": [
+      "PSI-69:meta:summary"
+     ],
+     "supported": true,
+     "on_gold": true,
+     "measurement_status": null,
+     "ineligible": 0
+    }
+   ],
+   "answer": "For the slow flow tests (in the flight experiment), the configuration of the flight hardware did not allow for adequate diagnostics over the entire test for a droplet in a uniform, steady convective flow. Hardware: Combustion Integrated Rack (CIR)-Fluids and Combustion Facility (FCF), Multi-user Droplet Combustion Appartatus (MDCA)."
+  },
+  {
+   "id": "A21",
+   "split": "diagnostic",
+   "category": "scientific",
+   "question": "How was the LOI determined when extinction droplets were too small to observe?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "abstention_reason": null,
+   "refused": false,
+   "should_refuse": false,
+   "facts": [],
+   "facts_found": [],
+   "factual_correct": null,
+   "gold_quote": "burn to completion followed by a no ignition test",
+   "gold_quote_in_answer": false,
+   "claims": [
+    {
+     "text": "PSI-69 FLEX - approach: There were ambient conditions where the extinction droplet sizes at all ambient oxygen mole fractions were too small to either be observed or measured with the available diagnostics.",
+     "cited": [
+      "PSI-69:meta:approach:03"
+     ],
+     "supported": true,
+     "on_gold": true,
+     "measurement_status": null,
+     "ineligible": 0
+    },
+    {
+     "text": "There were ambient conditions where the extinction droplet sizes at all ambient oxygen mole fractions were too small to either be observed or measured with the available diagnostics.",
+     "cited": [
+      "PSI-69:meta:approach:02"
+     ],
+     "supported": true,
+     "on_gold": false,
+     "measurement_status": null,
+     "ineligible": 0
+    }
+   ],
+   "answer": "PSI-69 FLEX - approach: There were ambient conditions where the extinction droplet sizes at all ambient oxygen mole fractions were too small to either be observed or measured with the available diagnostics. There were ambient conditions where the extinction droplet sizes at all ambient oxygen mole fractions were too small to either be observed or measured with the available diagnostics."
+  },
+  {
+   "id": "A23",
+   "split": "diagnostic",
+   "category": "scientific",
+   "question": "How does FLEX contribute to crew safety on future space missions?",
+   "expected": "answered",
+   "got": "answered",
+   "status_ok": true,
+   "abstention_reason": null,
+   "refused": false,
+   "should_refuse": false,
+   "facts": [],
+   "facts_found": [],
+   "factual_correct": null,
+   "gold_quote": "improved fire safety protocols for future space missions",
+   "gold_quote_in_answer": true,
+   "claims": [
+    {
+     "text": "By enhancing our understanding of microgravity combustion, the mission directly contributes to improved fire safety protocols for future space missions, ensuring the safety of crew members in environments where traditional fire suppression methods may be ineffective.",
+     "cited": [
+      "PSI-69:meta:researchImpacts:01"
+     ],
+     "supported": true,
+     "on_gold": true,
+     "measurement_status": null,
+     "ineligible": 0
+    },
+    {
+     "text": "These investigations are essential for advancing the fundamental understanding of combustion processes in microgravity and enhancing fire safety protocols for future space missions.",
+     "cited": [
+      "PSI-69:meta:objective:02"
+     ],
+     "supported": true,
+     "on_gold": false,
+     "measurement_status": null,
+     "ineligible": 0
+    },
+    {
+     "text": "Overall, the FLEX mission's contributions to combustion science have the potential to enhance both space exploration safety and terrestrial fire safety technologies.",
+     "cited": [
+      "PSI-69:meta:researchImpacts:03"
+     ],
+     "supported": true,
+     "on_gold": false,
+     "measurement_status": null,
+     "ineligible": 0
+    }
+   ],
+   "answer": "By enhancing our understanding of microgravity combustion, the mission directly contributes to improved fire safety protocols for future space missions, ensuring the safety of crew members in environments where traditional fire suppression methods may be ineffective. These investigations are essential for advancing the fundamental understanding of combustion processes in microgravity and enhancing fire safety protocols for future space missions. Overall, the FLEX mission's contributions to combustion science have the potential to enhance both space exploration safety and terrestrial fire safety technologies."
+  },
+  {
+   "id": "A25",
+   "split": "diagnostic",
+   "category": "unanswerable",
+   "question": "What was the soot temperature in FLEX-187?",
+   "expected": "abstained",
+   "got": "abstained",
+   "status_ok": true,
+   "abstention_reason": "retrieved evidence covers only 50% of the question's terms",
+   "refused": true,
+   "should_refuse": true,
+   "facts": [],
+   "facts_found": [],
+   "factual_correct": null,
+   "gold_quote": null,
+   "gold_quote_in_answer": null,
+   "claims": [],
+   "answer": ""
+  },
+  {
+   "id": "A27",
+   "split": "diagnostic",
+   "category": "unanswerable",
+   "question": "What is the extinction diameter of FLEX test 500?",
+   "expected": "abstained",
+   "got": "abstained",
+   "status_ok": true,
+   "abstention_reason": "the experiment named in the question has no usable evidence",
+   "refused": true,
+   "should_refuse": true,
+   "facts": [],
+   "facts_found": [],
+   "factual_correct": null,
+   "gold_quote": null,
+   "gold_quote_in_answer": null,
+   "claims": [],
+   "answer": ""
+  },
+  {
+   "id": "A29",
+   "split": "diagnostic",
+   "category": "unanswerable",
+   "question": "What was the flame spread rate measured in BASS-II?",
+   "expected": "abstained",
+   "got": "abstained",
+   "status_ok": true,
+   "abstention_reason": "the source named in the question is not available as evidence; PSI-25 is ACQUIRED_BUT_EXCLUDED: Acquired and hash-verified but excluded pending scientific review: no flame-spread rate in the table; 51 free-text material descriptions; negative and right-censored CO values (>500, OR, over); fan and air display readings are not velocities without calibration; ambiguous GMT column. Not loaded by the Data Platform (loader status SKIPPED).",
+   "refused": true,
+   "should_refuse": true,
+   "facts": [],
+   "facts_found": [],
+   "factual_correct": null,
+   "gold_quote": null,
+   "gold_quote_in_answer": null,
+   "claims": [],
+   "answer": ""
+  },
+  {
+   "id": "A31",
+   "split": "diagnostic",
+   "category": "unanswerable",
+   "question": "What does NASA/TP-2015-216046 say about cool flames in FLEX-100?",
+   "expected": "abstained",
+   "got": "abstained",
+   "status_ok": true,
+   "abstention_reason": "retrieved evidence covers only 43% of the question's terms",
+   "refused": true,
+   "should_refuse": true,
+   "facts": [],
+   "facts_found": [],
+   "factual_correct": null,
+   "gold_quote": null,
+   "gold_quote_in_answer": null,
+   "claims": [],
+   "answer": ""
+  },
+  {
+   "id": "A33",
+   "split": "diagnostic",
+   "category": "unanswerable",
+   "question": "Is methanol droplet burning in FLEX faster than PMMA burning in BASS-II?",
+   "expected": "comparison_blocked",
+   "got": "comparison_blocked",
+   "status_ok": true,
+   "abstention_reason": "cross-regime comparison without validated eligibility",
+   "refused": true,
+   "should_refuse": true,
+   "facts": [],
+   "facts_found": [],
+   "factual_correct": null,
+   "gold_quote": null,
+   "gold_quote_in_answer": null,
+   "claims": [],
+   "answer": "These combustion regimes cannot be compared directly: different variable definitions: 'burning_rate_constant_mm2_s' vs 'flame_spread_rate'. Evidence for each regime can only be read separately, as analogous context."
+  }
+ ]
+}

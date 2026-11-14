@@ -58,10 +58,23 @@ _NUMERIC_INTENT = re.compile(
 )
 # Phrases naming a measured variable -> Data Platform variable (most specific first).
 VARIABLE_CUES: tuple[tuple[str, str], ...] = (
-    (r"initial (droplet )?diameter|\bd0\b|droplet initial diameter", "initial_droplet_diameter"),
-    (r"extinction (droplet )?diameter|flame extinction diameter|\bdext\b", "extinction_diameter"),
+    (
+        # checked before the initial-diameter cue: "how big was the droplet when its flame went out" is the
+        # extinction diameter, not D0 (v4 diagnostic A03 answered D0 when the order was reversed)
+        r"extinction (droplet )?diameter|flame extinction diameter|\bdext\b"
+        r"|droplet when (?:its |the )?flame went out|at (?:flame )?extinction",
+        "extinction_diameter",
+    ),
+    (
+        # D0 is measured at igniter-on (PSI-69 / NASA/TP App. A.1); paraphrases from benchmark v3 dev G01, G11
+        r"initial (droplet )?diameter|\bd0\b|droplet initial diameter|droplet at ignition"
+        r"|start(?:ed|ing)? (?:with )?(?:the )?(?:larger |smaller )?droplet"
+        r"|how (?:large|big) was the droplet",
+        "initial_droplet_diameter",
+    ),
     (r"burning[- ]rate constant|burning[- ]rate|\bk value\b|\breported k\b", "burning_rate_constant_mm2_s"),
-    (r"burn time|how long did .* burn", "burn_time"),
+    # "how long did the flame last", "how many seconds did ... burn": v4 diagnostic A01, A09
+    (r"burn time|how long did .* (?:burn|last)|how many seconds did .* burn|burn duration", "burn_time"),
     (r"ambient pressure|\bpressure\b", "ambient_pressure"),
     (r"\boxygen\b|\bo2\b", "ambient_oxygen_mole_fraction"),
     (r"\bnitrogen\b|\bn2\b", "ambient_nitrogen_mole_fraction"),
@@ -136,7 +149,12 @@ def analyse(question: str) -> QueryAnalysis:
         ids.append(m.upper())
     for n in _FLEX_NUM.findall(question):
         ids.append(f"FLEX-{int(n):03d}")
-    toks = [t for t in tokenize(question) if t not in GENERIC and not re.fullmatch(r"\d+", t)]
+    # comparison cue words carry intent, not scientific content (benchmark v3 dev G09)
+    toks = [
+        t
+        for t in tokenize(question)
+        if t not in GENERIC and not re.fullmatch(r"\d+", t) and not _COMPARE.fullmatch(t)
+    ]
     return QueryAnalysis(
         question=question,
         fuels=[f.capitalize() for f in fuels],
