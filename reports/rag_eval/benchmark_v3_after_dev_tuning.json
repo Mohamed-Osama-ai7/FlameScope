@@ -1,0 +1,269 @@
+{
+ "dataset": "backend/eval/rag_golden_v3.jsonl",
+ "label": "after_dev_tuning",
+ "code_revision": "894df0c",
+ "chunks": 724,
+ "usable_chunks": 296,
+ "retrieval_mode": "bm25",
+ "provider": "extractive (deterministic; no LLM)",
+ "environment": {
+  "python": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0"
+ },
+ "results": {
+  "dev": {
+   "retrieval": {
+    "n": 10,
+    "precision": {
+     "@1": 0.9,
+     "@3": 0.4,
+     "@5": 0.24,
+     "@10": 0.12
+    },
+    "recall": {
+     "@1": 0.8,
+     "@3": 1.0,
+     "@5": 1.0,
+     "@10": 1.0
+    },
+    "mrr": 0.95,
+    "ndcg@10": 0.9631,
+    "not_all_gold_in_top5": []
+   },
+   "copilot": {
+    "n": 19,
+    "status_accuracy": 0.9474,
+    "status_accuracy_by_category": {
+     "comparison": "2/2",
+     "direct": "4/4",
+     "ineligible_source": "3/3",
+     "invalid_comparison": "2/2",
+     "scientific": "4/4",
+     "unsupported": "3/4"
+    },
+    "abstention": {
+     "precision": 1.0,
+     "recall": 0.8889,
+     "f1": 0.9412,
+     "false_abstentions": 0,
+     "missed_abstentions": 1
+    },
+    "citation_precision": 0.8333,
+    "citation_recall": 1.0,
+    "answer_support": 1.0,
+    "comparison_completeness": 1.0,
+    "grounding": 1.0,
+    "verbatim_citations": 1.0,
+    "ineligible_citations": 0,
+    "failures": [
+     {
+      "id": "G30",
+      "category": "unsupported",
+      "expected": "abstained",
+      "got": "answered",
+      "reason": null,
+      "gold": [],
+      "cited": [
+       "PSI-69:meta:publications:02"
+      ]
+     }
+    ]
+   }
+  },
+  "test": {
+   "retrieval": {
+    "n": 10,
+    "precision": {
+     "@1": 1.0,
+     "@3": 0.4,
+     "@5": 0.24,
+     "@10": 0.12
+    },
+    "recall": {
+     "@1": 0.9,
+     "@3": 1.0,
+     "@5": 1.0,
+     "@10": 1.0
+    },
+    "mrr": 1.0,
+    "ndcg@10": 1.0,
+    "not_all_gold_in_top5": []
+   },
+   "copilot": {
+    "n": 17,
+    "status_accuracy": 0.7647,
+    "status_accuracy_by_category": {
+     "comparison": "2/2",
+     "direct": "1/4",
+     "ineligible_source": "3/3",
+     "invalid_comparison": "1/1",
+     "scientific": "3/4",
+     "unsupported": "3/3"
+    },
+    "abstention": {
+     "precision": 0.6364,
+     "recall": 1.0,
+     "f1": 0.7778,
+     "false_abstentions": 4,
+     "missed_abstentions": 0
+    },
+    "citation_precision": 0.8056,
+    "citation_recall": 1.0,
+    "answer_support": 1.0,
+    "comparison_completeness": 1.0,
+    "grounding": 1.0,
+    "verbatim_citations": 1.0,
+    "ineligible_citations": 0,
+    "failures": [
+     {
+      "id": "G02",
+      "category": "direct",
+      "expected": "answered",
+      "got": "abstained",
+      "reason": "no retrieved sentence addresses the question",
+      "gold": [
+       "PSI-69:row:124"
+      ],
+      "cited": []
+     },
+     {
+      "id": "G04",
+      "category": "direct",
+      "expected": "answered",
+      "got": "abstained",
+      "reason": "the question uses terms absent from the evidence corpus: chamber",
+      "gold": [
+       "PSI-69:row:259"
+      ],
+      "cited": []
+     },
+     {
+      "id": "G06",
+      "category": "direct",
+      "expected": "answered",
+      "got": "abstained",
+      "reason": "the question uses terms absent from the evidence corpus: tabulated",
+      "gold": [
+       "PSI-69:row:255"
+      ],
+      "cited": []
+     },
+     {
+      "id": "G16",
+      "category": "scientific",
+      "expected": "answered",
+      "got": "abstained",
+      "reason": "the question uses terms absent from the evidence corpus: among",
+      "gold": [
+       "PSI-69:meta:objective:02"
+      ],
+      "cited": []
+     }
+    ]
+   }
+  },
+  "all": {
+   "retrieval": {
+    "n": 20,
+    "precision": {
+     "@1": 0.95,
+     "@3": 0.4,
+     "@5": 0.24,
+     "@10": 0.12
+    },
+    "recall": {
+     "@1": 0.85,
+     "@3": 1.0,
+     "@5": 1.0,
+     "@10": 1.0
+    },
+    "mrr": 0.975,
+    "ndcg@10": 0.9815,
+    "not_all_gold_in_top5": []
+   },
+   "copilot": {
+    "n": 36,
+    "status_accuracy": 0.8611,
+    "status_accuracy_by_category": {
+     "comparison": "4/4",
+     "direct": "5/8",
+     "ineligible_source": "6/6",
+     "invalid_comparison": "3/3",
+     "scientific": "7/8",
+     "unsupported": "6/7"
+    },
+    "abstention": {
+     "precision": 0.7895,
+     "recall": 0.9375,
+     "f1": 0.8571,
+     "false_abstentions": 4,
+     "missed_abstentions": 1
+    },
+    "citation_precision": 0.8229,
+    "citation_recall": 1.0,
+    "answer_support": 1.0,
+    "comparison_completeness": 1.0,
+    "grounding": 1.0,
+    "verbatim_citations": 1.0,
+    "ineligible_citations": 0,
+    "failures": [
+     {
+      "id": "G02",
+      "category": "direct",
+      "expected": "answered",
+      "got": "abstained",
+      "reason": "no retrieved sentence addresses the question",
+      "gold": [
+       "PSI-69:row:124"
+      ],
+      "cited": []
+     },
+     {
+      "id": "G04",
+      "category": "direct",
+      "expected": "answered",
+      "got": "abstained",
+      "reason": "the question uses terms absent from the evidence corpus: chamber",
+      "gold": [
+       "PSI-69:row:259"
+      ],
+      "cited": []
+     },
+     {
+      "id": "G06",
+      "category": "direct",
+      "expected": "answered",
+      "got": "abstained",
+      "reason": "the question uses terms absent from the evidence corpus: tabulated",
+      "gold": [
+       "PSI-69:row:255"
+      ],
+      "cited": []
+     },
+     {
+      "id": "G16",
+      "category": "scientific",
+      "expected": "answered",
+      "got": "abstained",
+      "reason": "the question uses terms absent from the evidence corpus: among",
+      "gold": [
+       "PSI-69:meta:objective:02"
+      ],
+      "cited": []
+     },
+     {
+      "id": "G30",
+      "category": "unsupported",
+      "expected": "abstained",
+      "got": "answered",
+      "reason": null,
+      "gold": [],
+      "cited": [
+       "PSI-69:meta:publications:02"
+      ]
+     }
+    ]
+   }
+  }
+ }
+}
