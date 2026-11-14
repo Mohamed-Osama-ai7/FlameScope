@@ -11,12 +11,20 @@ def test_health():
     assert response.json()["status"] == "ok"
 
 
-def test_status_does_not_claim_data_loaded():
+def test_status_does_not_claim_data_loaded(monkeypatch):
+    # Without a scientific database the status must not claim that data are loaded.
+    from app.data_platform.db import get_engine
+    from app.data_platform.settings import DATABASE_URL_ENV
+
+    monkeypatch.delenv(DATABASE_URL_ENV, raising=False)
+    get_engine.cache_clear()
     response = client.get("/api/v1/status")
     assert response.status_code == 200
     payload = response.json()
     assert payload["scientific_dataset_loaded"] is False
-    assert payload["official_challenge_resource_recorded"] is False
+    assert payload["official_challenge_resource_loaded"] is False
+    # Derived from the registry: CHALLENGE-RESOURCE-01 (PSI Combustion Science) + PSI-69 ACQUIRED.
+    assert payload["official_challenge_resource_recorded"] is True
 
 
 def test_sources_registry_is_available():

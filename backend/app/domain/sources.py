@@ -22,6 +22,10 @@ class VerificationStatus(str, Enum):
     ACQUIRED = "ACQUIRED"  # bytes downloaded, hashed and licensed; content not yet reviewed
     VERIFIED = "VERIFIED"  # content reviewed by a named team member against the source
     QUARANTINED = "QUARANTINED"  # known metadata conflict; must not feed scientific analysis
+    # A resource that is a catalogue or index, not a single file (e.g. the PSI "Combustion Science"
+    # repository named in the challenge Resources tab). Recorded with URL + retrieval time; its data
+    # enter the product only through child rows that are ACQUIRED/VERIFIED with their own SHA-256.
+    RESOURCE_RECORDED = "RESOURCE_RECORDED"
 
 
 class SourceRecord(BaseModel):
@@ -64,6 +68,12 @@ class SourceRecord(BaseModel):
                 )
             if not _SHA256.match(self.sha256):
                 raise ValueError(f"{self.source_id}: sha256 must be 64 lowercase hex characters")
+        if self.verification_status is VerificationStatus.RESOURCE_RECORDED:
+            missing = [n for n in ("source_url", "retrieved_at_utc") if not getattr(self, n)]
+            if missing:
+                raise ValueError(
+                    f"{self.source_id}: status RESOURCE_RECORDED requires " + ", ".join(missing)
+                )
         return self
 
     @property

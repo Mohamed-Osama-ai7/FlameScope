@@ -16,7 +16,7 @@ FlameScope is therefore **not a generic chatbot or a collection of AI features**
 
 ## Important launch gate
 
-The NASA Global Organizing Team stated that teams must use at least one NASA data source listed in the challenge's own **Resources** tab to be eligible for Global Awards. The GO Team answer in nasa/spaceapps discussion #1849 (Nov 6, 2026) says challenge resources become available on **November 12** under the challenge page's Resources tab. As of 2026-11-13 that exact resource list has **not** been imported or verified here (the challenge page failed TLS verification from the audit machine — open it in a normal browser). Add the official resource(s) to `data/metadata/source_registry.csv` as soon as they are available, record the exact resource title/URL/version/license, and verify its actual use in the product. Candidate PSI investigations listed below are supplemental candidates until checked against that official Resources tab.
+The NASA Global Organizing Team stated that teams must use at least one NASA data source listed in the challenge's own **Resources** tab to be eligible for Global Awards. The GO Team answer in nasa/spaceapps discussion #1849 (Nov 6, 2026) says challenge resources become available on **November 12** under the challenge page's Resources tab. **Status 2026-11-13: recorded and in use.** The Resources tab names *PSI Data Repository: Combustion Science* (https://psi.nasa.gov/physci/repo/search?q=combustion) as the source of the data the app is to be based on. It is registered as `CHALLENGE-RESOURCE-01` in `data/metadata/source_registry.csv`. PSI-69 (FLEX), PSI-25 (BASS-II) and PSI-98 have PSI `researchArea = Combustion Science`. PSI-69 is verified by SHA-256 and loaded into the scientific database (`GET /api/v1/data-platform/status` → `official_challenge_resource_loaded: true`). Evidence and its limits: [`docs/14_scientific_data_platform.md`](docs/14_scientific_data_platform.md) §2. The team lead should re-check the live Resources tab before submission; eligibility is decided by the Global Organizing Team.
 
 ## Stack (initial implementation)
 
@@ -66,7 +66,30 @@ python backend/scripts/audit_local_data.py --root data/raw --output data/metadat
 
 The script records file paths, sizes, extensions, and SHA-256 hashes. It does not infer scientific meaning or change original files.
 
-### 4. Checks
+### 4. Scientific database (PostgreSQL)
+
+```bash
+python backend/scripts/fetch_psi_table.py PSI-69 PSI-25 PSI-98 --root .   # raw NASA files (gitignored)
+docker compose up -d --build        # PostgreSQL + API on http://127.0.0.1:8000 (migrations run on start)
+docker compose run --rm loader      # verify SHA-256, validate, load PSI-69 (idempotent)
+```
+
+Every stored measurement links to its NASA artifact (SHA-256), row, column, verbatim source text and
+quality flags: `GET /api/v1/measurements/{id}/provenance`. Details: [`docs/14_scientific_data_platform.md`](docs/14_scientific_data_platform.md).
+
+### 5. Scientific RAG + Copilot (evidence-grounded, abstains when evidence is missing)
+
+```bash
+cd backend && .venv/Scripts/python -m uvicorn app.main:app --port 8000   # then POST /api/v1/copilot/ask
+FLAMESCOPE_DENSE_BACKEND=none .venv/Scripts/python scripts/eval_rag.py --label v2_bm25_hashing   # evaluation + safety suite
+```
+
+Endpoints `/api/v1/rag/{status,sources,search,chunks/{id},tools}` and `/api/v1/copilot/ask`; only eligible evidence
+(today PSI-69, pending final approval) is ever returned. Configuration is environment-only (see [`.env.example`](.env.example)).
+Design, eligibility, evaluation and limitations: [`docs/14_rag_copilot.md`](docs/14_rag_copilot.md); frontend contract:
+[`docs/16_rag_frontend_handoff.md`](docs/16_rag_frontend_handoff.md).
+
+### 6. Checks
 
 ```bash
 python -m pytest -q backend/tests
@@ -87,9 +110,12 @@ Architecture audit, target design and backlog: [`docs/08_architecture_audit.md`]
 - `data/raw/` — untouched source files; never overwrite originals
 - `data/metadata/source_registry.csv` — sources, official challenge-resource flag, license and verification status
 - `data/metadata/local_file_inventory.csv` — generated local inventory
-- `database/schema.sql` — initial relational model with provenance links
-- `backend/` — API and deterministic file-audit utility
-- `frontend/` — React + TypeScript scientific exploration lab, searchable FLEX records, source/regime/method API explorer, Plotly charts, typed API client, Vitest and Playwright suites
+- `database/schema.sql` — PostgreSQL schema rendered from the Alembic migrations (generated; do not edit)
+- `backend/app/data_platform/` — SQLAlchemy models, Alembic migrations, verified loader, data-quality checks, provenance API
+- `backend/app/rag/` — evidence retrieval, ranking, eligibility policy and Scientific Copilot
+- `docker-compose.yml` — PostgreSQL + API + loader for local runs
+- `backend/` — API, deterministic file-audit utility, scientific data platform and Copilot
+- `frontend/` — React + TypeScript scientific exploration lab, searchable FLEX records, source/regime/method API explorer, Plotly charts, typed API client, Vitest and Playwright suites, Evidence & Copilot UI
 
 ## Scientific integrity rules
 
