@@ -10,9 +10,10 @@ from fastapi import APIRouter, HTTPException, Query
 
 from app.analysis import flex_run_level as fx
 from app.analysis import physics
+from app.data_platform.settings import project_root
 from app.domain.eligibility import EligibilityPolicy
 
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
+PROJECT_ROOT = project_root()
 DEXT_ORIGIN_NOT_USED = "not_used_unregistered_caption_source"
 router = APIRouter(prefix="/physics", tags=["physics"])
 Fuel = Literal["Methanol", "Heptane"]

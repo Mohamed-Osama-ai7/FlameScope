@@ -34,7 +34,9 @@ def raw_dir() -> Path:
     value = os.environ.get(RAW_DIR_ENV, "").strip()
     if value:
         return Path(value)
-    return Path(__file__).resolve().parents[3] / "data" / "raw" / "PSI-69" / "calibration"
+    from app.data_platform.settings import project_root
+
+    return project_root() / "data" / "raw" / "PSI-69" / "calibration"
 
 
 @dataclass(frozen=True)

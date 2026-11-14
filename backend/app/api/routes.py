@@ -16,8 +16,10 @@ from app.rag.eligibility import EligibilityPolicy
 from app.science.droplet import BurningRateResult, DropletSeries, fit_burning_rate_constant
 from app.science.method_cards import METHOD_REGISTRY, MethodCard
 
+from app.data_platform.settings import project_root
+
 router = APIRouter()
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
+PROJECT_ROOT = project_root()
 REGISTRY_PATH = PROJECT_ROOT / "data" / "metadata" / "source_registry.csv"
 
 

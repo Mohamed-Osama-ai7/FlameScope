@@ -35,6 +35,7 @@ import statsmodels.api as sm
 from scipy import stats
 
 from app.analysis import flex_run_level as fx
+from app.data_platform.settings import project_root
 from app.domain.eligibility import EligibilityPolicy
 
 ANALYSIS_VERSION = "physics-0.2.0"  # 0.2: support mode no longer a stratifier; eligibility in outputs
@@ -59,7 +60,7 @@ MIN_DISTINCT_X = 3
 
 def _eligibility() -> dict[str, str]:
     """PSI-69 evidence status, read from data/metadata/source_eligibility.csv (PENDING_VERIFICATION today)."""
-    root = Path(__file__).resolve().parents[3]
+    root = project_root()
     return {"PSI-69": EligibilityPolicy(root).decision("PSI-69").eligibility.value}
 
 

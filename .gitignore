@@ -28,3 +28,7 @@ frontend/bench/dist/
 # RAG generated artefacts (embedding caches, indexes) and local env
 data/processed/rag/
 !.env.example
+.vercel
+.env*
+backend/data/
+backend/reports/

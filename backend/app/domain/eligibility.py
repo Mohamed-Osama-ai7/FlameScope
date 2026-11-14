@@ -46,11 +46,19 @@ class SourceDecision:
 
 
 def registry_path(root: Path) -> Path:
-    return root / "data/metadata/source_registry.csv"
+    p = root / "data/metadata/source_registry.csv"
+    if not p.is_file():
+        from app.data_platform.settings import project_root
+        return project_root() / "data/metadata/source_registry.csv"
+    return p
 
 
 def decisions_path(root: Path) -> Path:
-    return root / "data/metadata/source_eligibility.csv"
+    p = root / "data/metadata/source_eligibility.csv"
+    if not p.is_file():
+        from app.data_platform.settings import project_root
+        return project_root() / "data/metadata/source_eligibility.csv"
+    return p
 
 
 def _read_decisions(root: Path) -> dict[str, dict[str, str]]:

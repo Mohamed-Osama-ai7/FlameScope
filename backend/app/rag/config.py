@@ -6,7 +6,9 @@ import os
 from dataclasses import dataclass
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
+from app.data_platform.settings import project_root
+
+PROJECT_ROOT = project_root()
 
 
 def _env(name: str, default: str = "") -> str:

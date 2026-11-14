@@ -20,7 +20,15 @@ def database_url() -> str | None:
 
 def project_root() -> Path:
     value = os.environ.get(DATA_ROOT_ENV, "").strip()
-    return Path(value).resolve() if value else _DEFAULT_ROOT
+    if value:
+        return Path(value).resolve()
+    p3 = Path(__file__).resolve().parents[3]
+    if (p3 / "data").is_dir():
+        return p3
+    p2 = Path(__file__).resolve().parents[2]
+    if (p2 / "data").is_dir():
+        return p2
+    return _DEFAULT_ROOT
 
 
 def registry_path(root: Path | None = None) -> Path:

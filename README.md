@@ -14,6 +14,15 @@ FlameScope is therefore **not a generic chatbot or a collection of AI features**
 
 `Question → Relevant investigations → Source-backed evidence → Validity/comparability checks → Quantitative analysis → Uncertainty & limitations → Research insight`
 
+## Live Public Deployment
+
+FlameScope is deployed as a verified multi-service full-stack web application accessible to NASA judges and researchers:
+
+- **Public Web Application:** [https://flamescope-six.vercel.app](https://flamescope-six.vercel.app)
+- **API Health Endpoint:** [https://flamescope-six.vercel.app/health](https://flamescope-six.vercel.app/health)
+- **Interactive API Documentation:** [https://flamescope-six.vercel.app/docs](https://flamescope-six.vercel.app/docs)
+- **Hosting Architecture:** Multi-service serverless architecture hosted on Vercel with Python 3.12 FastAPI backend + React/Vite SPA frontend. Full CORS support enabled for unauthenticated public evaluation. All science datasets, derived models, and verification gates are bundled into the deployment.
+
 ## Important launch gate
 
 The NASA Global Organizing Team stated that teams must use at least one NASA data source listed in the challenge's own **Resources** tab to be eligible for Global Awards. The GO Team answer in nasa/spaceapps discussion #1849 (Nov 6, 2026) says challenge resources become available on **November 12** under the challenge page's Resources tab. **Status 2026-11-13: recorded and in use.** The Resources tab names *PSI Data Repository: Combustion Science* (https://psi.nasa.gov/physci/repo/search?q=combustion) as the source of the data the app is to be based on. It is registered as `CHALLENGE-RESOURCE-01` in `data/metadata/source_registry.csv`. PSI-69 (FLEX), PSI-25 (BASS-II) and PSI-98 have PSI `researchArea = Combustion Science`. PSI-69 is verified by SHA-256 and loaded into the scientific database (`GET /api/v1/data-platform/status` → `official_challenge_resource_loaded: true`). Evidence and its limits: [`docs/14_scientific_data_platform.md`](docs/14_scientific_data_platform.md) §2. The team lead should re-check the live Resources tab before submission; eligibility is decided by the Global Organizing Team.
