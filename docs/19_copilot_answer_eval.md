@@ -36,6 +36,10 @@ reviewer agent with no access to the code or results judged each claim against i
 | Ineligible citations | 0 | 0 | **0** |
 | Independent review (narrative) | 2 correct, 1 partial | — | A20 correct; A34 **incorrect** |
 
+After the A34 fix (`answers_v4_*_post_holdout_fix.json`): diagnostic unchanged (1.000); holdout status accuracy
+0.882, factual 1.0, claim support 1.0, missed abstentions 0, false abstentions 2 (A22, A24). The held-out figure
+remains the single run above (0.824).
+
 v3 benchmark regression check (not tuned): test status accuracy 0.765 → 0.824 (the "chamber pressure" item is now
 resolved by the measurement rule); retrieval unchanged; safety suite, the 149-cell flagged sweep and all RAG tests pass.
 
@@ -51,12 +55,14 @@ Fixed (chosen on diagnostic only):
    3.07 mm" because the v3-tuned cue "how big was the droplet" fired first. The extinction cue is now checked first.
    A test pins this.
 
-Not fixed (found on holdout; reported, not tuned):
+Found on holdout:
 
 * **A34 "Which FLEX test used a propanol droplet?" — answered, judged incorrect by the reviewer.** The two claims are
   verbatim PSI-69 publication titles about propanol droplets, so they pass every deterministic check, but no FLEX
-  run burned propanol and a reader could take a paper for a test. Proposed fix: apply the fuel gate (named fuel absent
-  from the table rows) to questions asking for a FLEX test or run, not only to numeric questions; measure on a new set.
+  run burned propanol and a reader could take a paper for a test. **Fixed after the holdout run, on request**: the
+  fuel gate (named fuel absent from the table rows) now also applies to questions about a test or run, so these
+  abstain with "no table row for fuel(s) Propanol"; questions about the publication list are still answered. Because
+  the fix was made after seeing this item, the post-fix holdout figures below are **not** a held-out estimate.
 * **A22 "applied", A24 "managed" — false abstentions** by the out-of-vocabulary gate (the corpus has "Managing
   centre"). Same root cause as the open v3 items G02/G06/G16: the gate needs proper stemming or a stop-word list.
 * Off-target narrative claims (extra sentences from neighbouring chunks) were judged related context, not errors.

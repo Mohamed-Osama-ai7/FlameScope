@@ -127,4 +127,15 @@ def test_answer_level_regression_floors(results):
         assert s["claim_support_rate"] == 1.0 and s["unsupported_claims"] == 0, sp
         assert s["ineligible_citations"] == 0 and s["factual_accuracy"] == 1.0, sp
     assert results["diagnostic"]["status_accuracy"] == 1.0
-    assert results["holdout"]["status_accuracy"] >= 0.8235
+    assert results["holdout"]["status_accuracy"] >= 0.8824  # after the A34 fix (post-holdout)
+
+
+def test_run_questions_about_absent_fuels_abstain(make_copilot):
+    """v4 holdout A34 (post-holdout fix): publication titles must not stand in for FLEX runs."""
+    cop = make_copilot(ExtractiveProvider())
+    for q in ("Which FLEX test used a propanol droplet?", "Which FLEX run burned ethanol?"):
+        r = cop.ask(CopilotRequest(question=q))
+        assert r.status is Status.ABSTAINED and "no table row for fuel" in r.abstention_reason
+    # the publication list itself can still be asked about
+    r = cop.ask(CopilotRequest(question="Which publication studied propanol droplet flammability?"))
+    assert r.status is Status.ANSWERED and "PROPANOL DROPLET FLAMMABILITY" in r.answer

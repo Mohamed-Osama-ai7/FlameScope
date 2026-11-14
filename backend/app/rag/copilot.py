@@ -29,6 +29,8 @@ COVERAGE_MIN = 0.6
 # the questions on which this behaviour was diagnosed, so those results are not a held-out estimate.
 CLAIM_COVERAGE_MIN = 0.5
 MAX_LLM_TOOL_CALLS = 3
+# questions about a specific test or run (as opposed to publications or the record narrative)
+_RUN_QUESTION = re.compile(r"\b(?:tests?|runs?)\b", re.I)
 
 
 class Status(str, Enum):
@@ -158,13 +160,14 @@ class ScientificCopilot:
                 missing.append(f"evidence for experiment '{e}'")
         if missing:
             return "the experiment named in the question was not found in the usable evidence", missing
-        if (
-            qa.numeric_lookup
-        ):  # a reported value needs a table row / caption for the fuel that was asked about
+        # A reported value, or a question about which test/run used a fuel, needs a table row for that fuel.
+        # Without the run clause, "Which FLEX test used a propanol droplet?" was answered with propanol
+        # publication titles that a reader could take for FLEX runs (v4 holdout A34, judged misleading).
+        if qa.numeric_lookup or _RUN_QUESTION.search(qa.question):
             gone = [f for f in qa.fuels if f.lower() not in self.corpus_fuels]
             if gone and len(gone) == len(qa.fuels):
-                return f"no table row or caption for fuel(s) {', '.join(gone)} in the usable evidence", [
-                    f"reported values for {f}" for f in gone
+                return f"no table row for fuel(s) {', '.join(gone)} in the usable evidence", [
+                    f"FLEX runs or reported values for {f}" for f in gone
                 ]
             missing += [f"reported values for {f}" for f in gone]  # partial coverage: answer, but disclose
         oov = self._unsupported_terms(qa)
