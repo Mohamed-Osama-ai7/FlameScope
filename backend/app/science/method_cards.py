@@ -179,13 +179,13 @@ OXYGEN_EFFECT_CARD = MethodCard(
     ],
     references=[_TP_REF],
     assumptions=[
-        "Within a stratum (fuel, N2-only diluent, pressure cluster, support mode) O2 is the varied "
-        "condition.",
+        "Within a stratum (fuel, N2-only diluent, pressure cluster) O2 is the varied condition; support "
+        "mode is not controlled (its only source is unregistered), so it may confound the slope.",
         "Linear over the observed O2 range.",
     ],
     validity_limits=[
         "Association, not causation; no extrapolation beyond the observed O2 range.",
-        "Support mode is from unregistered NASA/TP captions and is used only as a stratifier.",
+        "Support mode (unregistered NASA/TP captions) is not used; free-floating and fiber runs are pooled.",
     ],
     required_inputs=["PSI-69 run-level table via the verified loader"],
     uncertainty_method=(

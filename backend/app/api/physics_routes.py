@@ -10,9 +10,10 @@ from fastapi import APIRouter, HTTPException, Query
 
 from app.analysis import flex_run_level as fx
 from app.analysis import physics
-from app.domain.sources import load_registry
+from app.domain.eligibility import EligibilityPolicy
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
+DEXT_ORIGIN_NOT_USED = "not_used_unregistered_caption_source"
 router = APIRouter(prefix="/physics", tags=["physics"])
 Fuel = Literal["Methanol", "Heptane"]
 
@@ -20,12 +21,17 @@ Fuel = Literal["Methanol", "Heptane"]
 @lru_cache(maxsize=1)
 def _runs() -> tuple[fx.FlexRun, ...]:
     man = PROJECT_ROOT / "data/metadata/artifact_manifest.csv"
-    reg = {r.source_id: r for r in load_registry(PROJECT_ROOT / "data/metadata/source_registry.csv")}
-    if "PSI-69" not in reg or not reg["PSI-69"].usable_as_evidence:
-        raise RuntimeError("PSI-69 is not ACQUIRED/VERIFIED in the source registry")
+    # central evidence policy: registry status AND the scientific decision (source_eligibility.csv)
+    decision = EligibilityPolicy(PROJECT_ROOT).decision("PSI-69")
+    if not decision.usable_as_evidence:
+        raise RuntimeError(f"PSI-69 is {decision.eligibility.value}: {decision.reason}")
     entry = fx.manifest_entry(man)
     runs, _ = fx.load_verified(PROJECT_ROOT / entry["relative_path"], man)  # SHA-256 checked
     fx.attach_enrichment(runs, PROJECT_ROOT / "data/derived/flex_enrichment_v1.csv")
+    for r in runs:
+        # dext_origin is derived from NASA/TP-2015-216046 caption notes (unregistered source); physics
+        # never uses it, and it is blanked here so no future calculation can read it by accident.
+        r.dext_origin = DEXT_ORIGIN_NOT_USED
     return tuple(runs)
 
 
