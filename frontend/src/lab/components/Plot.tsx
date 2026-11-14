@@ -25,8 +25,8 @@ interface Props {
 export function Plot({ data, layout, label, onSelect, onReady }: Props) {
   const reduced = useRef(typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
   return (
-    <div className="plot-wrap" role="img" aria-label={label}>
-      <Suspense fallback={<div className="plot-loading" style={{ height: layout.height ?? 420 }}>Loading chart engine…</div>}>
+    <div className="plot-wrap" role="group" aria-label={label}>
+      <Suspense fallback={<div className="plot-loading" role="status" style={{ height: layout.height ?? 420 }}>Loading chart engine…</div>}>
         <LazyPlot
           data={data}
           layout={{ ...layout, autosize: true, transition: reduced.current ? undefined : { duration: 0, easing: 'linear' } }}

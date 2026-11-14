@@ -151,6 +151,22 @@ def fetch(source_id: str, root: Path, timeout: float, attempts: int) -> list[Man
     meta_body, _ = _get(f"{API}/repo/investigations/{source_id}", timeout, attempts)
     meta = json.loads(meta_body)
     license_id = meta.get("licenseIdentifier") or ""
+
+    # Verify and store investigation metadata verbatim with SHA-256 check
+    rel_meta = Path("data") / "raw" / source_id / "metadata" / f"psi_api_investigation_{source_id}.json"
+    snapshot_path = root / "data" / "metadata" / "psi_metadata_snapshot.json"
+    if snapshot_path.exists():
+        snap = json.loads(snapshot_path.read_text(encoding="utf-8"))
+        rec = snap.get("records", {}).get(source_id)
+        if rec and "raw_sha256" in rec:
+            actual_meta_sha = hashlib.sha256(meta_body).hexdigest()
+            if actual_meta_sha != rec["raw_sha256"]:
+                expected_sha = rec["raw_sha256"]
+                raise FetchError(
+                    f"{source_id} metadata sha256 mismatch: got {actual_meta_sha}, expected {expected_sha}"
+                )
+    store_immutable(root / rel_meta, meta_body)
+
     rows: list[ManifestRow] = []
     for entry in meta.get("experimentalTable", []):
         if entry.get("restricted"):

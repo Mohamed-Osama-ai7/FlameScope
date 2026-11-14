@@ -1,0 +1,2935 @@
+{
+  "d2_consistency": {
+    "analysis": "d2_consistency",
+    "analysis_version": "physics-0.1.1",
+    "equation": "t_d2 = (D0^2 - Dext^2) / K ;  r = t_d2 / t_burn  (from D^2 = D0^2 - K t)",
+    "value_origin": "reported_in_source (PSI-69); t_d2 and r are derived here",
+    "n_runs": 154,
+    "excluded": {
+      "test_end:Disruption (d^2 burn to extinction required)": 61,
+      "missing_or_flagged:extinction_diameter": 19,
+      "missing_or_flagged:burning_rate_constant_mm2_s,extinction_diameter": 2,
+      "test_end:Completion (d^2 burn to extinction required)": 27,
+      "row_flag:composition_sum_deviation": 3,
+      "missing_or_flagged:burning_rate_constant_mm2_s,extinction_diameter,initial_droplet_diameter": 4,
+      "missing_or_flagged:burn_time_s": 1,
+      "row_flag:dext_exceeds_d0": 1,
+      "missing_or_flagged:burn_time_s,burning_rate_constant_mm2_s,extinction_diameter,initial_droplet_diameter": 2
+    },
+    "by_fuel": {
+      "Heptane": {
+        "n": 54,
+        "median": 0.9490592423086701,
+        "q1": 0.8894507575757579,
+        "q3": 0.9890900180625439,
+        "min": 0.21640624999999525,
+        "max": 3.8666666666667147,
+        "median_ci95": [
+          0.9158625730994153,
+          0.9700388876429691
+        ],
+        "tukey_fences": [
+          0.7399918668455787,
+          1.138548908792723
+        ],
+        "share_of_intervals_containing_1": 0.5370370370370371
+      },
+      "Methanol": {
+        "n": 100,
+        "median": 0.9511842477375565,
+        "q1": 0.9296993790701197,
+        "q3": 0.968379705400982,
+        "min": 0.8070967741935483,
+        "max": 1.1890603085554,
+        "median_ci95": [
+          0.9407665505226478,
+          0.956810631229236
+        ],
+        "tukey_fences": [
+          0.8716788895738263,
+          1.0264001948972754
+        ],
+        "share_of_intervals_containing_1": 0.46
+      }
+    },
+    "flagged_for_review": [
+      "PSI-69-r100",
+      "PSI-69-r118",
+      "PSI-69-r120",
+      "PSI-69-r130",
+      "PSI-69-r171",
+      "PSI-69-r213",
+      "PSI-69-r261",
+      "PSI-69-r006",
+      "PSI-69-r266"
+    ],
+    "runs": [
+      {
+        "run_id": "PSI-69-r002",
+        "experiment_id": "FLEX-002",
+        "fuel": "Methanol",
+        "d0_mm": 1.86,
+        "dext_mm": 0.94,
+        "k_mm2_s": 0.6,
+        "burn_time_s": 5.0,
+        "t_d2_s": 4.293333333333335,
+        "ratio": 0.8586666666666669,
+        "ratio_interval": [
+          0.712727272727273,
+          1.0521212121212122
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r003",
+        "experiment_id": "FLEX-003",
+        "fuel": "Methanol",
+        "d0_mm": 1.61,
+        "dext_mm": 0.92,
+        "k_mm2_s": 0.58,
+        "burn_time_s": 3.2,
+        "t_d2_s": 3.0098275862068973,
+        "ratio": 0.9405711206896553,
+        "ratio_interval": [
+          0.9048783694937543,
+          0.9777777777777777
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r005",
+        "experiment_id": "FLEX-005",
+        "fuel": "Methanol",
+        "d0_mm": 1.92,
+        "dext_mm": 0.81,
+        "k_mm2_s": 0.48,
+        "burn_time_s": 6.34,
+        "t_d2_s": 6.313124999999999,
+        "ratio": 0.9957610410094636,
+        "ratio_interval": [
+          0.9758475299164048,
+          1.0161093341087524
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r006",
+        "experiment_id": "FLEX-006",
+        "fuel": "Methanol",
+        "d0_mm": 2.54,
+        "dext_mm": 1.53,
+        "k_mm2_s": 0.51,
+        "burn_time_s": 9.6,
+        "t_d2_s": 8.060196078431371,
+        "ratio": 0.8396037581699345,
+        "ratio_interval": [
+          0.8189546757885205,
+          0.8607951894665905
+        ],
+        "review_flag": "outside fuel Tukey fences beyond reporting resolution"
+      },
+      {
+        "run_id": "PSI-69-r016",
+        "experiment_id": "FLEX-016",
+        "fuel": "Methanol",
+        "d0_mm": 1.66,
+        "dext_mm": 1.0,
+        "k_mm2_s": 0.53,
+        "burn_time_s": 3.4,
+        "t_d2_s": 3.3124528301886786,
+        "ratio": 0.9742508324084349,
+        "ratio_interval": [
+          0.2649464987132603,
+          1.4341009239516698
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r018",
+        "experiment_id": "FLEX-018",
+        "fuel": "Heptane",
+        "d0_mm": 2.74,
+        "dext_mm": 1.77,
+        "k_mm2_s": 0.61,
+        "burn_time_s": 8.1,
+        "t_d2_s": 7.171639344262297,
+        "ratio": 0.8853875733657157,
+        "ratio_interval": [
+          0.8638036809815955,
+          0.9075098814229251
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r030",
+        "experiment_id": "FLEX-030",
+        "fuel": "Methanol",
+        "d0_mm": 3.26,
+        "dext_mm": 1.32,
+        "k_mm2_s": 0.59,
+        "burn_time_s": 15.6,
+        "t_d2_s": 15.059661016949152,
+        "ratio": 0.9653628857018687,
+        "ratio_interval": [
+          0.949273767014793,
+          0.9817792068595926
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r033",
+        "experiment_id": "FLEX-033",
+        "fuel": "Methanol",
+        "d0_mm": 2.62,
+        "dext_mm": 1.25,
+        "k_mm2_s": 0.48,
+        "burn_time_s": 11.4,
+        "t_d2_s": 11.045625000000001,
+        "ratio": 0.9689144736842106,
+        "ratio_interval": [
+          0.947769324269572,
+          0.9906051472293069
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r034",
+        "experiment_id": "FLEX-034",
+        "fuel": "Methanol",
+        "d0_mm": 3.89,
+        "dext_mm": 2.0,
+        "k_mm2_s": 0.44,
+        "burn_time_s": 27.3,
+        "t_d2_s": 25.300227272727277,
+        "ratio": 0.9267482517482519,
+        "ratio_interval": [
+          0.7265965532115936,
+          1.090036908151429
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r035",
+        "experiment_id": "FLEX-035",
+        "fuel": "Heptane",
+        "d0_mm": 3.85,
+        "dext_mm": 3.34,
+        "k_mm2_s": 0.43,
+        "burn_time_s": 8.9,
+        "t_d2_s": 8.527674418604656,
+        "ratio": 0.958165665011759,
+        "ratio_interval": [
+          0.9233930520773138,
+          0.9940312396144898
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r036",
+        "experiment_id": "FLEX-036",
+        "fuel": "Methanol",
+        "d0_mm": 2.4,
+        "dext_mm": 1.67,
+        "k_mm2_s": 0.45,
+        "burn_time_s": 7.1,
+        "t_d2_s": 6.602444444444444,
+        "ratio": 0.9299217527386542,
+        "ratio_interval": [
+          0.8351264120494893,
+          1.0296517650808825
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r045",
+        "experiment_id": "FLEX-045",
+        "fuel": "Methanol",
+        "d0_mm": 2.42,
+        "dext_mm": 1.01,
+        "k_mm2_s": 0.73,
+        "burn_time_s": 6.6,
+        "t_d2_s": 6.6250684931506845,
+        "ratio": 1.0037982565379826,
+        "ratio_interval": [
+          0.9824561403508774,
+          1.0256593840484338
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r049",
+        "experiment_id": "FLEX-049",
+        "fuel": "Heptane",
+        "d0_mm": 3.46,
+        "dext_mm": 2.78,
+        "k_mm2_s": 0.59,
+        "burn_time_s": 8.6,
+        "t_d2_s": 7.191864406779664,
+        "ratio": 0.8362633031139145,
+        "ratio_interval": [
+          0.8123184533929183,
+          0.8608187134502924
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r050",
+        "experiment_id": "FLEX-050",
+        "fuel": "Heptane",
+        "d0_mm": 3.57,
+        "dext_mm": 2.98,
+        "k_mm2_s": 0.52,
+        "burn_time_s": 8.4,
+        "t_d2_s": 7.431730769230768,
+        "ratio": 0.8847298534798533,
+        "ratio_interval": [
+          0.8563539025077487,
+          0.9139003546305442
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r057",
+        "experiment_id": "FLEX-057",
+        "fuel": "Heptane",
+        "d0_mm": 3.1,
+        "dext_mm": 2.49,
+        "k_mm2_s": 0.54,
+        "burn_time_s": 6.8,
+        "t_d2_s": 6.31462962962963,
+        "ratio": 0.9286220043572986,
+        "ratio_interval": [
+          0.8243420612067238,
+          1.037667012807199
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r059",
+        "experiment_id": "FLEX-059",
+        "fuel": "Methanol",
+        "d0_mm": 2.93,
+        "dext_mm": 1.39,
+        "k_mm2_s": 0.43,
+        "burn_time_s": 17.7,
+        "t_d2_s": 15.471627906976746,
+        "ratio": 0.8741032715806072,
+        "ratio_interval": [
+          0.8560271976687713,
+          0.8926512247958677
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r061",
+        "experiment_id": "FLEX-061",
+        "fuel": "Methanol",
+        "d0_mm": 3.68,
+        "dext_mm": 2.0,
+        "k_mm2_s": 0.41,
+        "burn_time_s": 25.7,
+        "t_d2_s": 23.274146341463418,
+        "ratio": 0.9056088070608334,
+        "ratio_interval": [
+          0.6789683003860103,
+          1.0905807041609512
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r062",
+        "experiment_id": "FLEX-062",
+        "fuel": "Heptane",
+        "d0_mm": 3.43,
+        "dext_mm": 3.17,
+        "k_mm2_s": 0.39,
+        "burn_time_s": 4.8,
+        "t_d2_s": 4.400000000000003,
+        "ratio": 0.9166666666666673,
+        "ratio_interval": [
+          0.8612814824481285,
+          0.9744360902255639
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r064",
+        "experiment_id": "FLEX-064",
+        "fuel": "Heptane",
+        "d0_mm": 2.69,
+        "dext_mm": 2.07,
+        "k_mm2_s": 0.6,
+        "burn_time_s": 5.5,
+        "t_d2_s": 4.918666666666667,
+        "ratio": 0.8943030303030303,
+        "ratio_interval": [
+          0.8048787248787251,
+          1.0004336947456212
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r066",
+        "experiment_id": "FLEX-066",
+        "fuel": "Methanol",
+        "d0_mm": 2.52,
+        "dext_mm": 1.32,
+        "k_mm2_s": 0.38,
+        "burn_time_s": 12.9,
+        "t_d2_s": 12.126315789473685,
+        "ratio": 0.9400244798041616,
+        "ratio_interval": [
+          0.9165321165321165,
+          0.9642334630350193
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r067",
+        "experiment_id": "FLEX-067",
+        "fuel": "Methanol",
+        "d0_mm": 3.97,
+        "dext_mm": 3.3,
+        "k_mm2_s": 0.36,
+        "burn_time_s": 14.4,
+        "t_d2_s": 13.530277777777785,
+        "ratio": 0.9396026234567906,
+        "ratio_interval": [
+          0.852960136512301,
+          1.0282426264906512
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r068",
+        "experiment_id": "FLEX-068",
+        "fuel": "Methanol",
+        "d0_mm": 2.38,
+        "dext_mm": 1.29,
+        "k_mm2_s": 0.39,
+        "burn_time_s": 10.7,
+        "t_d2_s": 10.257179487179485,
+        "ratio": 0.9586149053438772,
+        "ratio_interval": [
+          0.9334353841624965,
+          0.9845741113346745
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r070",
+        "experiment_id": "FLEX-070",
+        "fuel": "Heptane",
+        "d0_mm": 4.67,
+        "dext_mm": 4.6,
+        "k_mm2_s": 0.41,
+        "burn_time_s": 1.6,
+        "t_d2_s": 1.5826829268292713,
+        "ratio": 0.9891768292682945,
+        "ratio_interval": [
+          0.20405257393210027,
+          1.836917562724019
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r073",
+        "experiment_id": "FLEX-073",
+        "fuel": "Heptane",
+        "d0_mm": 4.64,
+        "dext_mm": 4.58,
+        "k_mm2_s": 0.56,
+        "burn_time_s": 1.5,
+        "t_d2_s": 0.9878571428571371,
+        "ratio": 0.6585714285714247,
+        "ratio_interval": [
+          0.526405937767626,
+          0.8019881950916372
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r077",
+        "experiment_id": "FLEX-077",
+        "fuel": "Methanol",
+        "d0_mm": 3.33,
+        "dext_mm": 2.91,
+        "k_mm2_s": 0.34,
+        "burn_time_s": 8.5,
+        "t_d2_s": 7.708235294117644,
+        "ratio": 0.906851211072664,
+        "ratio_interval": [
+          0.8673277396389526,
+          0.9478760045924223
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r078",
+        "experiment_id": "FLEX-078",
+        "fuel": "Methanol",
+        "d0_mm": 2.66,
+        "dext_mm": 1.66,
+        "k_mm2_s": 0.35,
+        "burn_time_s": 12.9,
+        "t_d2_s": 12.342857142857145,
+        "ratio": 0.956810631229236,
+        "ratio_interval": [
+          0.930295285224863,
+          0.9841989511081035
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r082",
+        "experiment_id": "FLEX-082",
+        "fuel": "Methanol",
+        "d0_mm": 2.84,
+        "dext_mm": 2.39,
+        "k_mm2_s": 0.35,
+        "burn_time_s": 7.5,
+        "t_d2_s": 6.724285714285713,
+        "ratio": 0.8965714285714285,
+        "ratio_interval": [
+          0.8585766253148026,
+          0.9360178970917218
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r084",
+        "experiment_id": "FLEX-084",
+        "fuel": "Methanol",
+        "d0_mm": 2.35,
+        "dext_mm": 1.42,
+        "k_mm2_s": 0.35,
+        "burn_time_s": 10.8,
+        "t_d2_s": 10.017428571428574,
+        "ratio": 0.9275396825396828,
+        "ratio_interval": [
+          0.900473810605569,
+          0.9555240984159084
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r085",
+        "experiment_id": "FLEX-085",
+        "fuel": "Methanol",
+        "d0_mm": 2.4,
+        "dext_mm": 1.77,
+        "k_mm2_s": 0.35,
+        "burn_time_s": 9.3,
+        "t_d2_s": 7.505999999999999,
+        "ratio": 0.8070967741935483,
+        "ratio_interval": [
+          0.7145816072908039,
+          0.9047473560517033
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r086",
+        "experiment_id": "FLEX-086",
+        "fuel": "Methanol",
+        "d0_mm": 3.07,
+        "dext_mm": 2.56,
+        "k_mm2_s": 0.35,
+        "burn_time_s": 9.0,
+        "t_d2_s": 8.203714285714282,
+        "ratio": 0.9115238095238092,
+        "ratio_interval": [
+          0.8346923647146036,
+          0.9983290707587374
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r087",
+        "experiment_id": "FLEX-087",
+        "fuel": "Methanol",
+        "d0_mm": 2.64,
+        "dext_mm": 1.92,
+        "k_mm2_s": 0.38,
+        "burn_time_s": 9.3,
+        "t_d2_s": 8.640000000000002,
+        "ratio": 0.9290322580645163,
+        "ratio_interval": [
+          0.8993957913744012,
+          0.9596540540540541
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r094",
+        "experiment_id": "FLEX-094",
+        "fuel": "Heptane",
+        "d0_mm": 3.53,
+        "dext_mm": 2.76,
+        "k_mm2_s": 0.51,
+        "burn_time_s": 10.1,
+        "t_d2_s": 9.496666666666666,
+        "ratio": 0.9402640264026403,
+        "ratio_interval": [
+          0.9145152805012199,
+          0.9666912959952707
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r095",
+        "experiment_id": "FLEX-095",
+        "fuel": "Heptane",
+        "d0_mm": 3.6,
+        "dext_mm": 3.04,
+        "k_mm2_s": 0.58,
+        "burn_time_s": 8.0,
+        "t_d2_s": 6.411034482758622,
+        "ratio": 0.8013793103448278,
+        "ratio_interval": [
+          0.6697787833081957,
+          0.9533391304347824
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r098",
+        "experiment_id": "FLEX-098",
+        "fuel": "Methanol",
+        "d0_mm": 3.64,
+        "dext_mm": 1.74,
+        "k_mm2_s": 0.47,
+        "burn_time_s": 22.9,
+        "t_d2_s": 21.74893617021277,
+        "ratio": 0.9497352039394222,
+        "ratio_interval": [
+          0.9327554179566566,
+          0.9671113620855982
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r099",
+        "experiment_id": "FLEX-099",
+        "fuel": "Methanol",
+        "d0_mm": 4.28,
+        "dext_mm": 2.32,
+        "k_mm2_s": 0.42,
+        "burn_time_s": 33.0,
+        "t_d2_s": 30.8,
+        "ratio": 0.9333333333333333,
+        "ratio_interval": [
+          0.9039508340649696,
+          0.9640037071362375
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r100",
+        "experiment_id": "FLEX-100",
+        "fuel": "Heptane",
+        "d0_mm": 4.14,
+        "dext_mm": 3.98,
+        "k_mm2_s": 0.34,
+        "burn_time_s": 6.1,
+        "t_d2_s": 3.821176470588227,
+        "ratio": 0.6264223722275782,
+        "ratio_interval": [
+          0.5740544361965358,
+          0.6810904156901433
+        ],
+        "review_flag": "outside fuel Tukey fences beyond reporting resolution"
+      },
+      {
+        "run_id": "PSI-69-r101",
+        "experiment_id": "FLEX-101",
+        "fuel": "Heptane",
+        "d0_mm": 3.88,
+        "dext_mm": 3.45,
+        "k_mm2_s": 0.5,
+        "burn_time_s": 6.5,
+        "t_d2_s": 6.303799999999995,
+        "ratio": 0.9698153846153839,
+        "ratio_interval": [
+          0.8545732130464955,
+          1.1111800172265278
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r102",
+        "experiment_id": "FLEX-102",
+        "fuel": "Heptane",
+        "d0_mm": 3.57,
+        "dext_mm": 3.43,
+        "k_mm2_s": 0.33,
+        "burn_time_s": 4.2,
+        "t_d2_s": 2.9696969696969653,
+        "ratio": 0.707070707070706,
+        "ratio_interval": [
+          0.6391571553994733,
+          0.7784986098239088
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r103",
+        "experiment_id": "FLEX-103",
+        "fuel": "Heptane",
+        "d0_mm": 4.0,
+        "dext_mm": 3.88,
+        "k_mm2_s": 0.35,
+        "burn_time_s": 3.2,
+        "t_d2_s": 2.7017142857142877,
+        "ratio": 0.8442857142857149,
+        "ratio_interval": [
+          0.0,
+          4.816540142627098
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r104",
+        "experiment_id": "FLEX-104",
+        "fuel": "Methanol",
+        "d0_mm": 3.6,
+        "dext_mm": 1.58,
+        "k_mm2_s": 0.49,
+        "burn_time_s": 23.2,
+        "t_d2_s": 21.354285714285712,
+        "ratio": 0.9204433497536946,
+        "ratio_interval": [
+          0.876748126425546,
+          0.9656320277882924
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r110",
+        "experiment_id": "FLEX-110",
+        "fuel": "Methanol",
+        "d0_mm": 2.83,
+        "dext_mm": 1.57,
+        "k_mm2_s": 0.45,
+        "burn_time_s": 13.0,
+        "t_d2_s": 12.32,
+        "ratio": 0.9476923076923077,
+        "ratio_interval": [
+          0.8954008954008955,
+          1.0045842696629212
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r113",
+        "experiment_id": "FLEX-113",
+        "fuel": "Methanol",
+        "d0_mm": 4.2,
+        "dext_mm": 2.85,
+        "k_mm2_s": 0.49,
+        "burn_time_s": 18.2,
+        "t_d2_s": 19.4234693877551,
+        "ratio": 1.0672235927337967,
+        "ratio_interval": [
+          1.0041760066417604,
+          1.132427366447985
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r114",
+        "experiment_id": "FLEX-114",
+        "fuel": "Methanol",
+        "d0_mm": 3.23,
+        "dext_mm": 1.68,
+        "k_mm2_s": 0.42,
+        "burn_time_s": 18.9,
+        "t_d2_s": 18.120238095238097,
+        "ratio": 0.9587427563618042,
+        "ratio_interval": [
+          0.9388669874282168,
+          0.9791441628583298
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r115",
+        "experiment_id": "FLEX-115",
+        "fuel": "Methanol",
+        "d0_mm": 3.97,
+        "dext_mm": 2.61,
+        "k_mm2_s": 0.41,
+        "burn_time_s": 22.9,
+        "t_d2_s": 21.82634146341464,
+        "ratio": 0.9531153477473642,
+        "ratio_interval": [
+          0.9326718639262939,
+          0.9741037901504717
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r116",
+        "experiment_id": "FLEX-116",
+        "fuel": "Methanol",
+        "d0_mm": 3.16,
+        "dext_mm": 1.57,
+        "k_mm2_s": 0.46,
+        "burn_time_s": 16.9,
+        "t_d2_s": 16.34934782608696,
+        "ratio": 0.9674170311294059,
+        "ratio_interval": [
+          0.9481904399403688,
+          0.9871197052205954
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r117",
+        "experiment_id": "FLEX-117",
+        "fuel": "Heptane",
+        "d0_mm": 3.84,
+        "dext_mm": 3.77,
+        "k_mm2_s": 0.25,
+        "burn_time_s": 2.4,
+        "t_d2_s": 2.1308000000000007,
+        "ratio": 0.8878333333333337,
+        "ratio_interval": [
+          0.7308523409363745,
+          1.0574033868866641
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r118",
+        "experiment_id": "FLEX-118",
+        "fuel": "Heptane",
+        "d0_mm": 3.03,
+        "dext_mm": 2.93,
+        "k_mm2_s": 0.38,
+        "burn_time_s": 2.5,
+        "t_d2_s": 1.5684210526315745,
+        "ratio": 0.6273684210526298,
+        "ratio_interval": [
+          0.5463712757830391,
+          0.7135782312925147
+        ],
+        "review_flag": "outside fuel Tukey fences beyond reporting resolution"
+      },
+      {
+        "run_id": "PSI-69-r119",
+        "experiment_id": "FLEX-119",
+        "fuel": "Heptane",
+        "d0_mm": 2.6,
+        "dext_mm": 2.48,
+        "k_mm2_s": 0.37,
+        "burn_time_s": 1.3,
+        "t_d2_s": 1.6475675675675685,
+        "ratio": 1.267359667359668,
+        "ratio_interval": [
+          0.6464691358024729,
+          1.9657534246575334
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r120",
+        "experiment_id": "FLEX-120",
+        "fuel": "Heptane",
+        "d0_mm": 2.45,
+        "dext_mm": 2.39,
+        "k_mm2_s": 0.38,
+        "burn_time_s": 1.43,
+        "t_d2_s": 0.7642105263157918,
+        "ratio": 0.5344129554655886,
+        "ratio_interval": [
+          0.4380288700846225,
+          0.634011695906431
+        ],
+        "review_flag": "outside fuel Tukey fences beyond reporting resolution"
+      },
+      {
+        "run_id": "PSI-69-r121",
+        "experiment_id": "FLEX-121",
+        "fuel": "Methanol",
+        "d0_mm": 4.25,
+        "dext_mm": 3.92,
+        "k_mm2_s": 0.34,
+        "burn_time_s": 8.0,
+        "t_d2_s": 7.929705882352945,
+        "ratio": 0.9912132352941181,
+        "ratio_interval": [
+          0.8915260017050304,
+          1.105592039800994
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r122",
+        "experiment_id": "FLEX-122",
+        "fuel": "Methanol",
+        "d0_mm": 3.46,
+        "dext_mm": 2.58,
+        "k_mm2_s": 0.41,
+        "burn_time_s": 13.9,
+        "t_d2_s": 12.963902439024391,
+        "ratio": 0.9326548517283735,
+        "ratio_interval": [
+          0.9076823422723151,
+          0.9583455898738688
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r123",
+        "experiment_id": "FLEX-123",
+        "fuel": "Methanol",
+        "d0_mm": 4.13,
+        "dext_mm": 3.79,
+        "k_mm2_s": 0.35,
+        "burn_time_s": 8.7,
+        "t_d2_s": 7.6937142857142815,
+        "ratio": 0.8843349753694577,
+        "ratio_interval": [
+          0.841400402414487,
+          0.9288766021613467
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r124",
+        "experiment_id": "FLEX-124",
+        "fuel": "Methanol",
+        "d0_mm": 2.87,
+        "dext_mm": 2.74,
+        "k_mm2_s": 0.3,
+        "burn_time_s": 2.4,
+        "t_d2_s": 2.4309999999999983,
+        "ratio": 1.012916666666666,
+        "ratio_interval": [
+          0.7850728862973758,
+          1.3368510638297844
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r125",
+        "experiment_id": "FLEX-125",
+        "fuel": "Methanol",
+        "d0_mm": 3.63,
+        "dext_mm": 3.37,
+        "k_mm2_s": 0.35,
+        "burn_time_s": 5.7,
+        "t_d2_s": 5.199999999999996,
+        "ratio": 0.9122807017543851,
+        "ratio_interval": [
+          0.8573178199632578,
+          0.9696036937283555
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r126",
+        "experiment_id": "FLEX-126",
+        "fuel": "Methanol",
+        "d0_mm": 2.8,
+        "dext_mm": 1.84,
+        "k_mm2_s": 0.4,
+        "burn_time_s": 11.7,
+        "t_d2_s": 11.135999999999996,
+        "ratio": 0.9517948717948714,
+        "ratio_interval": [
+          0.7864728132387706,
+          1.1662231759656647
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r127",
+        "experiment_id": "FLEX-127",
+        "fuel": "Methanol",
+        "d0_mm": 3.22,
+        "dext_mm": 2.53,
+        "k_mm2_s": 0.38,
+        "burn_time_s": 11.0,
+        "t_d2_s": 10.440789473684216,
+        "ratio": 0.9491626794258378,
+        "ratio_interval": [
+          0.8831168831168839,
+          1.0222222222222224
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r130",
+        "experiment_id": "FLEX-130",
+        "fuel": "Heptane",
+        "d0_mm": 2.91,
+        "dext_mm": 2.89,
+        "k_mm2_s": 0.05,
+        "burn_time_s": 0.6,
+        "t_d2_s": 2.3200000000000287,
+        "ratio": 3.8666666666667147,
+        "ratio_interval": [
+          1.6223776223776671,
+          7.030303030303009
+        ],
+        "review_flag": "outside fuel Tukey fences beyond reporting resolution"
+      },
+      {
+        "run_id": "PSI-69-r134",
+        "experiment_id": "FLEX-134",
+        "fuel": "Heptane",
+        "d0_mm": 3.66,
+        "dext_mm": 2.88,
+        "k_mm2_s": 0.56,
+        "burn_time_s": 9.2,
+        "t_d2_s": 9.109285714285717,
+        "ratio": 0.9901397515527953,
+        "ratio_interval": [
+          0.9635589571872764,
+          1.017397725594447
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r140",
+        "experiment_id": "FLEX-140",
+        "fuel": "Methanol",
+        "d0_mm": 3.98,
+        "dext_mm": 3.95,
+        "k_mm2_s": 0.2,
+        "burn_time_s": 1.3,
+        "t_d2_s": 1.189499999999999,
+        "ratio": 0.9149999999999991,
+        "ratio_interval": [
+          0.46992592592592547,
+          1.691733333333322
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r141",
+        "experiment_id": "FLEX-141",
+        "fuel": "Methanol",
+        "d0_mm": 2.86,
+        "dext_mm": 2.73,
+        "k_mm2_s": 0.3,
+        "burn_time_s": 2.3,
+        "t_d2_s": 2.422333333333331,
+        "ratio": 1.0531884057971004,
+        "ratio_interval": [
+          0.8155623100303974,
+          1.3912888888888864
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r142",
+        "experiment_id": "FLEX-142",
+        "fuel": "Methanol",
+        "d0_mm": 1.86,
+        "dext_mm": 1.48,
+        "k_mm2_s": 0.39,
+        "burn_time_s": 3.4,
+        "t_d2_s": 3.2543589743589756,
+        "ratio": 0.9571644042232281,
+        "ratio_interval": [
+          0.906842781141076,
+          1.0099631711572008
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r143",
+        "experiment_id": "FLEX-143",
+        "fuel": "Methanol",
+        "d0_mm": 2.25,
+        "dext_mm": 2.06,
+        "k_mm2_s": 0.36,
+        "burn_time_s": 2.7,
+        "t_d2_s": 2.274722222222223,
+        "ratio": 0.8424897119341566,
+        "ratio_interval": [
+          0.7729016189290174,
+          0.9162901939941527
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r144",
+        "experiment_id": "FLEX-144",
+        "fuel": "Methanol",
+        "d0_mm": 3.53,
+        "dext_mm": 1.53,
+        "k_mm2_s": 0.45,
+        "burn_time_s": 23.8,
+        "t_d2_s": 22.488888888888887,
+        "ratio": 0.9449112978524742,
+        "ratio_interval": [
+          0.9279056373395995,
+          0.9623276167947957
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r145",
+        "experiment_id": "FLEX-145",
+        "fuel": "Methanol",
+        "d0_mm": 3.33,
+        "dext_mm": 1.61,
+        "k_mm2_s": 0.45,
+        "burn_time_s": 20.0,
+        "t_d2_s": 18.881777777777778,
+        "ratio": 0.9440888888888889,
+        "ratio_interval": [
+          0.905644599303136,
+          0.9848689138576777
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r146",
+        "experiment_id": "FLEX-146",
+        "fuel": "Methanol",
+        "d0_mm": 4.35,
+        "dext_mm": 1.95,
+        "k_mm2_s": 0.41,
+        "burn_time_s": 39.2,
+        "t_d2_s": 36.878048780487795,
+        "ratio": 0.9407665505226478,
+        "ratio_interval": [
+          0.9243803238431432,
+          0.9575705974173403
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r147",
+        "experiment_id": "FLEX-147",
+        "fuel": "Methanol",
+        "d0_mm": 3.02,
+        "dext_mm": 2.49,
+        "k_mm2_s": 0.4,
+        "burn_time_s": 7.8,
+        "t_d2_s": 7.300749999999998,
+        "ratio": 0.9359935897435895,
+        "ratio_interval": [
+          0.8110969568294409,
+          1.096921658986174
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r150",
+        "experiment_id": "FLEX-150",
+        "fuel": "Heptane",
+        "d0_mm": 3.18,
+        "dext_mm": 2.54,
+        "k_mm2_s": 0.46,
+        "burn_time_s": 8.0,
+        "t_d2_s": 7.958260869565219,
+        "ratio": 0.9947826086956524,
+        "ratio_interval": [
+          0.9117267552182168,
+          1.0895238095238096
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r152",
+        "experiment_id": "FLEX-152",
+        "fuel": "Methanol",
+        "d0_mm": 3.33,
+        "dext_mm": 1.23,
+        "k_mm2_s": 0.43,
+        "burn_time_s": 23.2,
+        "t_d2_s": 22.269767441860466,
+        "ratio": 0.9599037690457097,
+        "ratio_interval": [
+          0.9423210975157584,
+          0.9779291068479229
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r153",
+        "experiment_id": "FLEX-153",
+        "fuel": "Methanol",
+        "d0_mm": 2.78,
+        "dext_mm": 1.19,
+        "k_mm2_s": 0.42,
+        "burn_time_s": 15.7,
+        "t_d2_s": 15.029285714285711,
+        "ratio": 0.9572793448589625,
+        "ratio_interval": [
+          0.9370830999066293,
+          0.9780207090342198
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r154",
+        "experiment_id": "FLEX-154",
+        "fuel": "Heptane",
+        "d0_mm": 3.7,
+        "dext_mm": 3.6,
+        "k_mm2_s": 0.34,
+        "burn_time_s": 2.2,
+        "t_d2_s": 2.147058823529413,
+        "ratio": 0.9759358288770058,
+        "ratio_interval": [
+          4.57676480360773e-15,
+          2.0270739326622658
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r155",
+        "experiment_id": "FLEX-155",
+        "fuel": "Heptane",
+        "d0_mm": 2.73,
+        "dext_mm": 2.52,
+        "k_mm2_s": 0.39,
+        "burn_time_s": 2.7,
+        "t_d2_s": 2.8269230769230744,
+        "ratio": 1.047008547008546,
+        "ratio_interval": [
+          0.9666283084004608,
+          1.1320754716981116
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r157",
+        "experiment_id": "FLEX-158",
+        "fuel": "Methanol",
+        "d0_mm": 4.24,
+        "dext_mm": 3.96,
+        "k_mm2_s": 0.3,
+        "burn_time_s": 7.6,
+        "t_d2_s": 7.653333333333343,
+        "ratio": 1.0070175438596505,
+        "ratio_interval": [
+          0.8268907563025225,
+          1.2598675496688743
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r158",
+        "experiment_id": "FLEX-159",
+        "fuel": "Methanol",
+        "d0_mm": 3.7,
+        "dext_mm": 3.22,
+        "k_mm2_s": 0.37,
+        "burn_time_s": 10.1,
+        "t_d2_s": 8.977297297297298,
+        "ratio": 0.8888413165640889,
+        "ratio_interval": [
+          0.7676518883415444,
+          1.0158181694268378
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r159",
+        "experiment_id": "FLEX-160",
+        "fuel": "Methanol",
+        "d0_mm": 2.71,
+        "dext_mm": 1.34,
+        "k_mm2_s": 0.38,
+        "burn_time_s": 14.9,
+        "t_d2_s": 14.601315789473684,
+        "ratio": 0.9799540798304486,
+        "ratio_interval": [
+          0.9569560873908699,
+          1.0036363636363634
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r160",
+        "experiment_id": "FLEX-161",
+        "fuel": "Methanol",
+        "d0_mm": 2.77,
+        "dext_mm": 1.52,
+        "k_mm2_s": 0.38,
+        "burn_time_s": 14.8,
+        "t_d2_s": 14.11184210526316,
+        "ratio": 0.9535028449502134,
+        "ratio_interval": [
+          0.9304473304473305,
+          0.9772474576271185
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r161",
+        "experiment_id": "FLEX-162",
+        "fuel": "Methanol",
+        "d0_mm": 3.72,
+        "dext_mm": 3.5,
+        "k_mm2_s": 0.28,
+        "burn_time_s": 6.0,
+        "t_d2_s": 5.672857142857149,
+        "ratio": 0.9454761904761915,
+        "ratio_interval": [
+          0.6470850202429166,
+          1.304545454545454
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r162",
+        "experiment_id": "FLEX-163",
+        "fuel": "Methanol",
+        "d0_mm": 3.05,
+        "dext_mm": 2.54,
+        "k_mm2_s": 0.37,
+        "burn_time_s": 8.5,
+        "t_d2_s": 7.705135135135131,
+        "ratio": 0.906486486486486,
+        "ratio_interval": [
+          0.8717348927875243,
+          0.9424657534246567
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r163",
+        "experiment_id": "FLEX-164",
+        "fuel": "Methanol",
+        "d0_mm": 2.59,
+        "dext_mm": 1.63,
+        "k_mm2_s": 0.37,
+        "burn_time_s": 11.6,
+        "t_d2_s": 10.94918918918919,
+        "ratio": 0.9438956197576888,
+        "ratio_interval": [
+          0.917653791130186,
+          0.9709778805669215
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r164",
+        "experiment_id": "FLEX-165",
+        "fuel": "Methanol",
+        "d0_mm": 2.59,
+        "dext_mm": 1.79,
+        "k_mm2_s": 0.42,
+        "burn_time_s": 8.9,
+        "t_d2_s": 8.342857142857142,
+        "ratio": 0.9373996789727125,
+        "ratio_interval": [
+          0.9096812356227406,
+          0.9659791709209717
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r165",
+        "experiment_id": "FLEX-166",
+        "fuel": "Heptane",
+        "d0_mm": 1.96,
+        "dext_mm": 1.39,
+        "k_mm2_s": 0.54,
+        "burn_time_s": 3.9,
+        "t_d2_s": 3.536111111111111,
+        "ratio": 0.9066951566951567,
+        "ratio_interval": [
+          0.8714435024968068,
+          0.943318363879111
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r166",
+        "experiment_id": "FLEX-167",
+        "fuel": "Methanol",
+        "d0_mm": 3.22,
+        "dext_mm": 3.08,
+        "k_mm2_s": 0.28,
+        "burn_time_s": 3.4,
+        "t_d2_s": 3.150000000000005,
+        "ratio": 0.9264705882352956,
+        "ratio_interval": [
+          0.8329519450800942,
+          1.0257801899592927
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r167",
+        "experiment_id": "FLEX-168",
+        "fuel": "Methanol",
+        "d0_mm": 2.32,
+        "dext_mm": 1.84,
+        "k_mm2_s": 0.37,
+        "burn_time_s": 5.9,
+        "t_d2_s": 5.396756756756756,
+        "ratio": 0.9147045350435179,
+        "ratio_interval": [
+          0.8762801120448177,
+          0.9546423135464221
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r169",
+        "experiment_id": "FLEX-170",
+        "fuel": "Methanol",
+        "d0_mm": 3.05,
+        "dext_mm": 1.28,
+        "k_mm2_s": 0.51,
+        "burn_time_s": 16.7,
+        "t_d2_s": 15.027647058823526,
+        "ratio": 0.899859105318774,
+        "ratio_interval": [
+          0.8834429792783652,
+          0.9166473404097164
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r170",
+        "experiment_id": "FLEX-171",
+        "fuel": "Methanol",
+        "d0_mm": 3.53,
+        "dext_mm": 1.59,
+        "k_mm2_s": 0.46,
+        "burn_time_s": 23.6,
+        "t_d2_s": 21.593043478260867,
+        "ratio": 0.9149594694178333,
+        "ratio_interval": [
+          0.8985519107049489,
+          0.9317561419472243
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r171",
+        "experiment_id": "FLEX-172",
+        "fuel": "Heptane",
+        "d0_mm": 3.74,
+        "dext_mm": 3.68,
+        "k_mm2_s": 0.35,
+        "burn_time_s": 2.8,
+        "t_d2_s": 1.2720000000000047,
+        "ratio": 0.454285714285716,
+        "ratio_interval": [
+          0.3666913763281465,
+          0.547457180500658
+        ],
+        "review_flag": "outside fuel Tukey fences beyond reporting resolution"
+      },
+      {
+        "run_id": "PSI-69-r172",
+        "experiment_id": "FLEX-173",
+        "fuel": "Heptane",
+        "d0_mm": 2.4,
+        "dext_mm": 1.96,
+        "k_mm2_s": 0.46,
+        "burn_time_s": 4.4,
+        "t_d2_s": 4.170434782608695,
+        "ratio": 0.9478260869565216,
+        "ratio_interval": [
+          0.8028391929443042,
+          1.1016672982190212
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r177",
+        "experiment_id": "FLEX-178",
+        "fuel": "Methanol",
+        "d0_mm": 3.02,
+        "dext_mm": 1.35,
+        "k_mm2_s": 0.52,
+        "burn_time_s": 14.5,
+        "t_d2_s": 14.034423076923076,
+        "ratio": 0.9678912466843501,
+        "ratio_interval": [
+          0.949657993781705,
+          0.9865421439849498
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r178",
+        "experiment_id": "FLEX-179",
+        "fuel": "Heptane",
+        "d0_mm": 3.32,
+        "dext_mm": 2.61,
+        "k_mm2_s": 0.5,
+        "burn_time_s": 8.9,
+        "t_d2_s": 8.4206,
+        "ratio": 0.9461348314606741,
+        "ratio_interval": [
+          0.8432706957846622,
+          1.0720903954802254
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r180",
+        "experiment_id": "FLEX-181",
+        "fuel": "Heptane",
+        "d0_mm": 3.4,
+        "dext_mm": 3.13,
+        "k_mm2_s": 0.41,
+        "burn_time_s": 4.5,
+        "t_d2_s": 4.300243902439024,
+        "ratio": 0.9556097560975609,
+        "ratio_interval": [
+          0.7383953396001601,
+          1.1856706894160067
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r181",
+        "experiment_id": "FLEX-182",
+        "fuel": "Heptane",
+        "d0_mm": 2.48,
+        "dext_mm": 1.68,
+        "k_mm2_s": 0.49,
+        "burn_time_s": 7.0,
+        "t_d2_s": 6.791836734693879,
+        "ratio": 0.9702623906705542,
+        "ratio_interval": [
+          0.8852255892255895,
+          1.068865979381443
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r185",
+        "experiment_id": "FLEX-186",
+        "fuel": "Methanol",
+        "d0_mm": 2.8,
+        "dext_mm": 1.33,
+        "k_mm2_s": 0.51,
+        "burn_time_s": 12.7,
+        "t_d2_s": 11.90411764705882,
+        "ratio": 0.937332098193608,
+        "ratio_interval": [
+          0.8803007805063773,
+          0.9966540132274095
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r186",
+        "experiment_id": "FLEX-187",
+        "fuel": "Methanol",
+        "d0_mm": 2.47,
+        "dext_mm": 1.21,
+        "k_mm2_s": 0.52,
+        "burn_time_s": 9.2,
+        "t_d2_s": 8.916923076923078,
+        "ratio": 0.9692307692307695,
+        "ratio_interval": [
+          0.9472329472329477,
+          0.9917979733672877
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r187",
+        "experiment_id": "FLEX-188",
+        "fuel": "Methanol",
+        "d0_mm": 3.38,
+        "dext_mm": 1.29,
+        "k_mm2_s": 0.47,
+        "burn_time_s": 21.8,
+        "t_d2_s": 20.76659574468085,
+        "ratio": 0.9525961350771032,
+        "ratio_interval": [
+          0.9359123208478862,
+          0.9696700037078234
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r188",
+        "experiment_id": "FLEX-189",
+        "fuel": "Methanol",
+        "d0_mm": 2.47,
+        "dext_mm": 1.08,
+        "k_mm2_s": 0.46,
+        "burn_time_s": 11.0,
+        "t_d2_s": 10.72717391304348,
+        "ratio": 0.9751976284584981,
+        "ratio_interval": [
+          0.9161290322580649,
+          1.0402930402930404
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r189",
+        "experiment_id": "FLEX-190",
+        "fuel": "Methanol",
+        "d0_mm": 3.77,
+        "dext_mm": 1.78,
+        "k_mm2_s": 0.42,
+        "burn_time_s": 30.5,
+        "t_d2_s": 26.29642857142857,
+        "ratio": 0.8621779859484777,
+        "ratio_interval": [
+          0.8463656493694041,
+          0.8783904089263457
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r190",
+        "experiment_id": "FLEX-191",
+        "fuel": "Methanol",
+        "d0_mm": 2.74,
+        "dext_mm": 0.95,
+        "k_mm2_s": 0.5,
+        "burn_time_s": 14.0,
+        "t_d2_s": 13.210200000000002,
+        "ratio": 0.9435857142857145,
+        "ratio_interval": [
+          0.8235987460815049,
+          1.0933333333333335
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r191",
+        "experiment_id": "FLEX-192",
+        "fuel": "Methanol",
+        "d0_mm": 1.76,
+        "dext_mm": 0.81,
+        "k_mm2_s": 0.46,
+        "burn_time_s": 5.5,
+        "t_d2_s": 5.307608695652172,
+        "ratio": 0.9650197628458496,
+        "ratio_interval": [
+          0.9360844715683426,
+          0.9949390059481801
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r193",
+        "experiment_id": "FLEX-194",
+        "fuel": "Methanol",
+        "d0_mm": 2.77,
+        "dext_mm": 1.27,
+        "k_mm2_s": 0.4,
+        "burn_time_s": 15.6,
+        "t_d2_s": 15.15,
+        "ratio": 0.9711538461538461,
+        "ratio_interval": [
+          0.8547532836350727,
+          1.1208819476343592
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r194",
+        "experiment_id": "FLEX-195",
+        "fuel": "Heptane",
+        "d0_mm": 3.76,
+        "dext_mm": 3.71,
+        "k_mm2_s": 0.29,
+        "burn_time_s": 1.6,
+        "t_d2_s": 1.2879310344827586,
+        "ratio": 0.8049568965517241,
+        "ratio_interval": [
+          0.6138674884437595,
+          1.0146010186757135
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r195",
+        "experiment_id": "FLEX-196",
+        "fuel": "Heptane",
+        "d0_mm": 2.9,
+        "dext_mm": 2.79,
+        "k_mm2_s": 0.36,
+        "burn_time_s": 1.9,
+        "t_d2_s": 1.7386111111111102,
+        "ratio": 0.9150584795321633,
+        "ratio_interval": [
+          0.436213558131368,
+          1.4408450704225326
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r196",
+        "experiment_id": "FLEX-197",
+        "fuel": "Heptane",
+        "d0_mm": 3.06,
+        "dext_mm": 2.28,
+        "k_mm2_s": 0.52,
+        "burn_time_s": 8.9,
+        "t_d2_s": 8.01,
+        "ratio": 0.8999999999999999,
+        "ratio_interval": [
+          0.875083798882682,
+          0.9255882836926118
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r197",
+        "experiment_id": "FLEX-198",
+        "fuel": "Heptane",
+        "d0_mm": 3.04,
+        "dext_mm": 2.33,
+        "k_mm2_s": 0.49,
+        "burn_time_s": 8.1,
+        "t_d2_s": 7.781020408163265,
+        "ratio": 0.9606198034769463,
+        "ratio_interval": [
+          0.93177170477784,
+          0.9903054363834282
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r199",
+        "experiment_id": "FLEX-200",
+        "fuel": "Methanol",
+        "d0_mm": 3.37,
+        "dext_mm": 0.98,
+        "k_mm2_s": 0.49,
+        "burn_time_s": 21.0,
+        "t_d2_s": 21.217346938775513,
+        "ratio": 1.0103498542274054,
+        "ratio_interval": [
+          0.9727977448907683,
+          1.050037716872014
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r200",
+        "experiment_id": "FLEX-201",
+        "fuel": "Methanol",
+        "d0_mm": 2.57,
+        "dext_mm": 1.13,
+        "k_mm2_s": 0.47,
+        "burn_time_s": 11.7,
+        "t_d2_s": 11.336170212765957,
+        "ratio": 0.9689034369885434,
+        "ratio_interval": [
+          0.9479955207166855,
+          0.9903548848585535
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r201",
+        "experiment_id": "FLEX-202",
+        "fuel": "Methanol",
+        "d0_mm": 2.4,
+        "dext_mm": 1.05,
+        "k_mm2_s": 0.48,
+        "burn_time_s": 10.2,
+        "t_d2_s": 9.703125,
+        "ratio": 0.9512867647058825,
+        "ratio_interval": [
+          0.8869952225295451,
+          1.018506611355976
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r202",
+        "experiment_id": "FLEX-203",
+        "fuel": "Methanol",
+        "d0_mm": 3.3,
+        "dext_mm": 1.42,
+        "k_mm2_s": 0.47,
+        "burn_time_s": 19.5,
+        "t_d2_s": 18.88,
+        "ratio": 0.9682051282051282,
+        "ratio_interval": [
+          0.9187643020594964,
+          1.0194626420101167
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r203",
+        "experiment_id": "FLEX-204",
+        "fuel": "Methanol",
+        "d0_mm": 2.75,
+        "dext_mm": 1.11,
+        "k_mm2_s": 0.52,
+        "burn_time_s": 12.8,
+        "t_d2_s": 12.173846153846153,
+        "ratio": 0.9510817307692306,
+        "ratio_interval": [
+          0.9326366499907357,
+          0.969960022844089
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r209",
+        "experiment_id": "FLEX-211",
+        "fuel": "Heptane",
+        "d0_mm": 3.34,
+        "dext_mm": 3.18,
+        "k_mm2_s": 0.34,
+        "burn_time_s": 3.4,
+        "t_d2_s": 3.068235294117643,
+        "ratio": 0.9024221453287186,
+        "ratio_interval": [
+          0.8216761184625077,
+          0.9876587213187772
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r211",
+        "experiment_id": "FLEX-214",
+        "fuel": "Heptane",
+        "d0_mm": 2.52,
+        "dext_mm": 2.13,
+        "k_mm2_s": 0.42,
+        "burn_time_s": 4.5,
+        "t_d2_s": 4.317857142857146,
+        "ratio": 0.9595238095238101,
+        "ratio_interval": [
+          0.9137685843568204,
+          1.0071747664816568
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r212",
+        "experiment_id": "FLEX-215",
+        "fuel": "Heptane",
+        "d0_mm": 2.55,
+        "dext_mm": 2.31,
+        "k_mm2_s": 0.37,
+        "burn_time_s": 3.4,
+        "t_d2_s": 3.152432432432431,
+        "ratio": 0.9271860095389503,
+        "ratio_interval": [
+          0.864,
+          0.9936618278470645
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r213",
+        "experiment_id": "FLEX-217",
+        "fuel": "Heptane",
+        "d0_mm": 4.16,
+        "dext_mm": 4.15,
+        "k_mm2_s": 0.24,
+        "burn_time_s": 1.6,
+        "t_d2_s": 0.3462499999999924,
+        "ratio": 0.21640624999999525,
+        "ratio_interval": [
+          0.0,
+          0.456280027453662
+        ],
+        "review_flag": "outside fuel Tukey fences beyond reporting resolution"
+      },
+      {
+        "run_id": "PSI-69-r216",
+        "experiment_id": "FLEX-220",
+        "fuel": "Methanol",
+        "d0_mm": 2.67,
+        "dext_mm": 1.27,
+        "k_mm2_s": 0.38,
+        "burn_time_s": 15.6,
+        "t_d2_s": 14.51578947368421,
+        "ratio": 0.9304993252361673,
+        "ratio_interval": [
+          0.9089415376955311,
+          0.9526945337620577
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r217",
+        "experiment_id": "FLEX-221",
+        "fuel": "Methanol",
+        "d0_mm": 3.46,
+        "dext_mm": 2.96,
+        "k_mm2_s": 0.36,
+        "burn_time_s": 9.5,
+        "t_d2_s": 8.91666666666667,
+        "ratio": 0.9385964912280705,
+        "ratio_interval": [
+          0.9024743598938538,
+          0.9759892689470151
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r218",
+        "experiment_id": "FLEX-222",
+        "fuel": "Methanol",
+        "d0_mm": 2.75,
+        "dext_mm": 1.46,
+        "k_mm2_s": 0.35,
+        "burn_time_s": 16.3,
+        "t_d2_s": 15.516857142857145,
+        "ratio": 0.9519544259421561,
+        "ratio_interval": [
+          0.9284231382176855,
+          0.976231884057971
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r219",
+        "experiment_id": "FLEX-223",
+        "fuel": "Methanol",
+        "d0_mm": 2.6,
+        "dext_mm": 2.09,
+        "k_mm2_s": 0.36,
+        "burn_time_s": 6.9,
+        "t_d2_s": 6.6441666666666706,
+        "ratio": 0.9629227053140101,
+        "ratio_interval": [
+          0.8331428008278317,
+          1.100143929269045
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r220",
+        "experiment_id": "FLEX-224",
+        "fuel": "Methanol",
+        "d0_mm": 1.94,
+        "dext_mm": 1.05,
+        "k_mm2_s": 0.35,
+        "burn_time_s": 7.8,
+        "t_d2_s": 7.603142857142857,
+        "ratio": 0.9747619047619048,
+        "ratio_interval": [
+          0.9441822911994261,
+          1.0064516129032255
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r221",
+        "experiment_id": "FLEX-225",
+        "fuel": "Methanol",
+        "d0_mm": 1.84,
+        "dext_mm": 1.04,
+        "k_mm2_s": 0.38,
+        "burn_time_s": 6.0,
+        "t_d2_s": 6.063157894736842,
+        "ratio": 1.0105263157894737,
+        "ratio_interval": [
+          0.9091708291708295,
+          1.1310545454545453
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r222",
+        "experiment_id": "FLEX-226",
+        "fuel": "Methanol",
+        "d0_mm": 2.91,
+        "dext_mm": 1.12,
+        "k_mm2_s": 0.51,
+        "burn_time_s": 14.4,
+        "t_d2_s": 14.14450980392157,
+        "ratio": 0.9822576252723313,
+        "ratio_interval": [
+          0.9639399334833877,
+          1.0010004484769035
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r226",
+        "experiment_id": "FLEX-232",
+        "fuel": "Methanol",
+        "d0_mm": 2.79,
+        "dext_mm": 1.3,
+        "k_mm2_s": 0.51,
+        "burn_time_s": 12.5,
+        "t_d2_s": 11.94921568627451,
+        "ratio": 0.9559372549019608,
+        "ratio_interval": [
+          0.9180714037055662,
+          0.9939997614219254
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r227",
+        "experiment_id": "FLEX-233",
+        "fuel": "Methanol",
+        "d0_mm": 2.95,
+        "dext_mm": 1.67,
+        "k_mm2_s": 0.53,
+        "burn_time_s": 11.7,
+        "t_d2_s": 11.157735849056605,
+        "ratio": 0.9536526366715048,
+        "ratio_interval": [
+          0.9333704513819846,
+          0.9744206008583691
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r228",
+        "experiment_id": "FLEX-234",
+        "fuel": "Heptane",
+        "d0_mm": 3.32,
+        "dext_mm": 1.37,
+        "k_mm2_s": 0.52,
+        "burn_time_s": 17.5,
+        "t_d2_s": 17.587499999999995,
+        "ratio": 1.0049999999999997,
+        "ratio_interval": [
+          0.9875023741690406,
+          1.0228836898767626
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r230",
+        "experiment_id": "FLEX-236",
+        "fuel": "Heptane",
+        "d0_mm": 3.65,
+        "dext_mm": 2.85,
+        "k_mm2_s": 0.57,
+        "burn_time_s": 9.6,
+        "t_d2_s": 9.12280701754386,
+        "ratio": 0.9502923976608187,
+        "ratio_interval": [
+          0.9254336562288803,
+          0.9757679655284252
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r232",
+        "experiment_id": "FLEX-238",
+        "fuel": "Heptane",
+        "d0_mm": 3.52,
+        "dext_mm": 3.28,
+        "k_mm2_s": 0.41,
+        "burn_time_s": 4.1,
+        "t_d2_s": 3.9804878048780528,
+        "ratio": 0.9708506841165984,
+        "ratio_interval": [
+          0.9081143852518531,
+          1.0364273738759344
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r235",
+        "experiment_id": "FLEX-241",
+        "fuel": "Heptane",
+        "d0_mm": 2.85,
+        "dext_mm": 2.6,
+        "k_mm2_s": 0.46,
+        "burn_time_s": 3.2,
+        "t_d2_s": 2.96195652173913,
+        "ratio": 0.925611413043478,
+        "ratio_interval": [
+          0.7090322580645163,
+          1.1502005930577353
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r236",
+        "experiment_id": "FLEX-242",
+        "fuel": "Heptane",
+        "d0_mm": 2.12,
+        "dext_mm": 1.39,
+        "k_mm2_s": 0.59,
+        "burn_time_s": 4.5,
+        "t_d2_s": 4.342881355932205,
+        "ratio": 0.9650847457627122,
+        "ratio_interval": [
+          0.9334933973589442,
+          0.997752808988764
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r240",
+        "experiment_id": "FLEX-246",
+        "fuel": "Methanol",
+        "d0_mm": 2.9,
+        "dext_mm": 1.42,
+        "k_mm2_s": 0.51,
+        "burn_time_s": 13.1,
+        "t_d2_s": 12.536470588235295,
+        "ratio": 0.9569824876515493,
+        "ratio_interval": [
+          0.8995348665509986,
+          1.0166951177876407
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r241",
+        "experiment_id": "FLEX-247",
+        "fuel": "Methanol",
+        "d0_mm": 3.4,
+        "dext_mm": 2.79,
+        "k_mm2_s": 0.51,
+        "burn_time_s": 7.9,
+        "t_d2_s": 7.4037254901960745,
+        "ratio": 0.9371804417969715,
+        "ratio_interval": [
+          0.8329913903645357,
+          1.0459166298795477
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r243",
+        "experiment_id": "FLEX-249",
+        "fuel": "Heptane",
+        "d0_mm": 1.49,
+        "dext_mm": 0.69,
+        "k_mm2_s": 0.6,
+        "burn_time_s": 2.9,
+        "t_d2_s": 2.9066666666666667,
+        "ratio": 1.0022988505747128,
+        "ratio_interval": [
+          0.8981486310299872,
+          1.1265071770334927
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r244",
+        "experiment_id": "FLEX-250",
+        "fuel": "Methanol",
+        "d0_mm": 3.67,
+        "dext_mm": 3.47,
+        "k_mm2_s": 0.43,
+        "burn_time_s": 3.6,
+        "t_d2_s": 3.3209302325581374,
+        "ratio": 0.9224806201550382,
+        "ratio_interval": [
+          0.8544166273027871,
+          0.9938028169014058
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r245",
+        "experiment_id": "FLEX-251",
+        "fuel": "Methanol",
+        "d0_mm": 2.52,
+        "dext_mm": 2.06,
+        "k_mm2_s": 0.56,
+        "burn_time_s": 4.0,
+        "t_d2_s": 3.762142857142858,
+        "ratio": 0.9405357142857145,
+        "ratio_interval": [
+          0.8106194690265489,
+          1.1081595881595874
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r246",
+        "experiment_id": "FLEX-252",
+        "fuel": "Methanol",
+        "d0_mm": 2.44,
+        "dext_mm": 2.26,
+        "k_mm2_s": 0.56,
+        "burn_time_s": 1.5,
+        "t_d2_s": 1.5107142857142872,
+        "ratio": 1.0071428571428582,
+        "ratio_interval": [
+          0.912360833571227,
+          1.109661385523453
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r247",
+        "experiment_id": "FLEX-253",
+        "fuel": "Methanol",
+        "d0_mm": 1.88,
+        "dext_mm": 1.73,
+        "k_mm2_s": 0.58,
+        "burn_time_s": 1.0,
+        "t_d2_s": 0.9336206896551719,
+        "ratio": 0.9336206896551719,
+        "ratio_interval": [
+          0.5759544159544163,
+          2.009043478260866
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r248",
+        "experiment_id": "FLEX-254",
+        "fuel": "Methanol",
+        "d0_mm": 3.56,
+        "dext_mm": 3.54,
+        "k_mm2_s": 0.51,
+        "burn_time_s": 0.3,
+        "t_d2_s": 0.27843137254901856,
+        "ratio": 0.9281045751633953,
+        "ratio_interval": [
+          0.39389736477115955,
+          1.6871287128712806
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r249",
+        "experiment_id": "FLEX-255",
+        "fuel": "Heptane",
+        "d0_mm": 3.78,
+        "dext_mm": 2.52,
+        "k_mm2_s": 0.72,
+        "burn_time_s": 12.2,
+        "t_d2_s": 11.024999999999999,
+        "ratio": 0.9036885245901639,
+        "ratio_interval": [
+          0.8866995073891626,
+          0.9210049210049208
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r251",
+        "experiment_id": "FLEX-257",
+        "fuel": "Methanol",
+        "d0_mm": 2.82,
+        "dext_mm": 1.03,
+        "k_mm2_s": 0.62,
+        "burn_time_s": 11.2,
+        "t_d2_s": 11.11532258064516,
+        "ratio": 0.9924395161290321,
+        "ratio_interval": [
+          0.9746488888888889,
+          1.0106092092311056
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r253",
+        "experiment_id": "FLEX-259",
+        "fuel": "Methanol",
+        "d0_mm": 2.45,
+        "dext_mm": 0.86,
+        "k_mm2_s": 0.6,
+        "burn_time_s": 8.3,
+        "t_d2_s": 8.771500000000001,
+        "ratio": 1.0568072289156627,
+        "ratio_interval": [
+          0.9635743896821742,
+          1.1671625344352619
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r256",
+        "experiment_id": "FLEX-262",
+        "fuel": "Methanol",
+        "d0_mm": 3.25,
+        "dext_mm": 1.78,
+        "k_mm2_s": 0.65,
+        "burn_time_s": 12.1,
+        "t_d2_s": 11.375538461538461,
+        "ratio": 0.9401271455816911,
+        "ratio_interval": [
+          0.9227908145635032,
+          0.957817877705941
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r257",
+        "experiment_id": "FLEX-263",
+        "fuel": "Methanol",
+        "d0_mm": 2.67,
+        "dext_mm": 1.42,
+        "k_mm2_s": 0.7,
+        "burn_time_s": 7.6,
+        "t_d2_s": 7.303571428571429,
+        "ratio": 0.9609962406015038,
+        "ratio_interval": [
+          0.8839389978213508,
+          1.0501069791136015
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r258",
+        "experiment_id": "FLEX-264",
+        "fuel": "Heptane",
+        "d0_mm": 3.23,
+        "dext_mm": 2.33,
+        "k_mm2_s": 0.67,
+        "burn_time_s": 7.5,
+        "t_d2_s": 7.468656716417909,
+        "ratio": 0.9958208955223878,
+        "ratio_interval": [
+          0.9709884719156242,
+          1.0212645708230303
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r259",
+        "experiment_id": "FLEX-265",
+        "fuel": "Heptane",
+        "d0_mm": 2.86,
+        "dext_mm": 0.71,
+        "k_mm2_s": 0.7,
+        "burn_time_s": 11.0,
+        "t_d2_s": 10.964999999999998,
+        "ratio": 0.9968181818181816,
+        "ratio_interval": [
+          0.8857739130434784,
+          1.1298461538461537
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r260",
+        "experiment_id": "FLEX-266",
+        "fuel": "Heptane",
+        "d0_mm": 3.69,
+        "dext_mm": 3.32,
+        "k_mm2_s": 0.61,
+        "burn_time_s": 4.3,
+        "t_d2_s": 4.251967213114755,
+        "ratio": 0.9888295844452919,
+        "ratio_interval": [
+          0.9433137089991604,
+          1.035994166261546
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r261",
+        "experiment_id": "FLEX-267",
+        "fuel": "Heptane",
+        "d0_mm": 3.08,
+        "dext_mm": 1.69,
+        "k_mm2_s": 0.67,
+        "burn_time_s": 5.4,
+        "t_d2_s": 9.895970149253731,
+        "ratio": 1.8325870646766167,
+        "ratio_interval": [
+          1.789357798165138,
+          1.877029021151008
+        ],
+        "review_flag": "outside fuel Tukey fences beyond reporting resolution"
+      },
+      {
+        "run_id": "PSI-69-r262",
+        "experiment_id": "FLEX-268",
+        "fuel": "Methanol",
+        "d0_mm": 3.87,
+        "dext_mm": 2.24,
+        "k_mm2_s": 0.6,
+        "burn_time_s": 17.4,
+        "t_d2_s": 16.59883333333333,
+        "ratio": 0.953955938697318,
+        "ratio_interval": [
+          0.8726647564469914,
+          1.050081215614357
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r263",
+        "experiment_id": "FLEX-269",
+        "fuel": "Methanol",
+        "d0_mm": 2.95,
+        "dext_mm": 1.5,
+        "k_mm2_s": 0.63,
+        "burn_time_s": 10.6,
+        "t_d2_s": 10.242063492063492,
+        "ratio": 0.9662324049116502,
+        "ratio_interval": [
+          0.927215260064323,
+          1.0054255924170619
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r264",
+        "experiment_id": "FLEX-270",
+        "fuel": "Methanol",
+        "d0_mm": 3.5,
+        "dext_mm": 2.67,
+        "k_mm2_s": 0.59,
+        "burn_time_s": 7.8,
+        "t_d2_s": 8.679830508474577,
+        "ratio": 1.1127987831377664,
+        "ratio_interval": [
+          1.01629823904084,
+          1.2131844499586435
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r265",
+        "experiment_id": "FLEX-271",
+        "fuel": "Methanol",
+        "d0_mm": 2.7,
+        "dext_mm": 1.92,
+        "k_mm2_s": 0.63,
+        "burn_time_s": 5.9,
+        "t_d2_s": 5.7200000000000015,
+        "ratio": 0.969491525423729,
+        "ratio_interval": [
+          0.8778865877059491,
+          1.0653743589743587
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r266",
+        "experiment_id": "FLEX-272",
+        "fuel": "Methanol",
+        "d0_mm": 1.84,
+        "dext_mm": 1.3,
+        "k_mm2_s": 0.62,
+        "burn_time_s": 2.3,
+        "t_d2_s": 2.7348387096774194,
+        "ratio": 1.1890603085554,
+        "ratio_interval": [
+          1.0517276595744687,
+          1.3308220415537488
+        ],
+        "review_flag": "outside fuel Tukey fences beyond reporting resolution"
+      },
+      {
+        "run_id": "PSI-69-r267",
+        "experiment_id": "FLEX-273",
+        "fuel": "Heptane",
+        "d0_mm": 2.27,
+        "dext_mm": 1.64,
+        "k_mm2_s": 0.71,
+        "burn_time_s": 3.5,
+        "t_d2_s": 3.4694366197183104,
+        "ratio": 0.991267605633803,
+        "ratio_interval": [
+          0.9550674677435245,
+          1.0288416075650115
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r268",
+        "experiment_id": "FLEX-274",
+        "fuel": "Heptane",
+        "d0_mm": 1.86,
+        "dext_mm": 0.84,
+        "k_mm2_s": 0.77,
+        "burn_time_s": 3.5,
+        "t_d2_s": 3.576623376623377,
+        "ratio": 1.021892393320965,
+        "ratio_interval": [
+          0.9911858246251708,
+          1.0537084398976981
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r269",
+        "experiment_id": "FLEX-275",
+        "fuel": "Heptane",
+        "d0_mm": 2.22,
+        "dext_mm": 1.86,
+        "k_mm2_s": 0.76,
+        "burn_time_s": 1.9,
+        "t_d2_s": 1.932631578947369,
+        "ratio": 1.0171745152354574,
+        "ratio_interval": [
+          0.9572649572649579,
+          1.080794701986755
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r271",
+        "experiment_id": "FLEX-277",
+        "fuel": "Methanol",
+        "d0_mm": 2.79,
+        "dext_mm": 2.3,
+        "k_mm2_s": 0.63,
+        "burn_time_s": 4.0,
+        "t_d2_s": 3.958888888888891,
+        "ratio": 0.9897222222222227,
+        "ratio_interval": [
+          0.7817060367454077,
+          1.256925714285714
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r272",
+        "experiment_id": "FLEX-278",
+        "fuel": "Methanol",
+        "d0_mm": 2.68,
+        "dext_mm": 2.31,
+        "k_mm2_s": 0.66,
+        "burn_time_s": 2.9,
+        "t_d2_s": 2.797424242424244,
+        "ratio": 0.9646290491118084,
+        "ratio_interval": [
+          0.9157130113419152,
+          1.015776081424936
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r273",
+        "experiment_id": "FLEX-279",
+        "fuel": "Heptane",
+        "d0_mm": 3.54,
+        "dext_mm": 2.91,
+        "k_mm2_s": 0.55,
+        "burn_time_s": 7.6,
+        "t_d2_s": 7.388181818181817,
+        "ratio": 0.9721291866028707,
+        "ratio_interval": [
+          0.9418830595301184,
+          1.0032201227292055
+        ],
+        "review_flag": null
+      },
+      {
+        "run_id": "PSI-69-r274",
+        "experiment_id": "FLEX-280",
+        "fuel": "Heptane",
+        "d0_mm": 2.82,
+        "dext_mm": 0.73,
+        "k_mm2_s": 0.65,
+        "burn_time_s": 11.7,
+        "t_d2_s": 11.414615384615383,
+        "ratio": 0.9756081525312293,
+        "ratio_interval": [
+          0.9594282929998377,
+          0.9921149815350832
+        ],
+        "review_flag": null
+      }
+    ],
+    "uncertainty": {
+      "per_run": "worst-case interval from the reporting resolution of each value",
+      "summary": "median with percentile bootstrap 95% CI (9999 resamples, seed 20261114)"
+    },
+    "limitations": [
+      "Diagnostic of internal consistency, not a validation of the d^2-law or of NASA values.",
+      "K is the FLEX team's fit from shortly after ignition to extinction (excludes heat-up); D0 is at igniter-on; the definition of the tabulated burn time is not documented here, so r = 1 is not expected.",
+      "Reported Dext may be extrapolated in some runs (noted in report captions, unregistered source).",
+      "Flags mark runs for review; no value is corrected or removed from the source."
+    ]
+  },
+  "oxygen_effect": {
+    "analysis": "oxygen_effect",
+    "analysis_version": "physics-0.1.1",
+    "model": "K = b0 + b1 * X_O2 ; sensitivity: K = b0 + b1 * X_O2 + b2 * D0 ; OLS, HC3 standard errors, Student-t 95% CI",
+    "units": {
+      "K": "mm^2/s",
+      "X_O2": "mole fraction",
+      "b1": "mm^2/s per unit mole fraction",
+      "D0": "mm"
+    },
+    "value_origin": "reported K (FLEX team) and reported conditions (PSI-69); coefficients derived here",
+    "strata_held_fixed": [
+      "fuel",
+      "diluent_family = N2_only",
+      "pressure_cluster",
+      "support_mode"
+    ],
+    "excluded": {
+      "missing_or_flagged": 11,
+      "diluent:CO2_added (O2 is the single compositional variable only with N2)": 123,
+      "diluent:He_added (O2 is the single compositional variable only with N2)": 50
+    },
+    "strata": [
+      {
+        "fuel": "Heptane",
+        "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+        "support_mode": "fiber_translated",
+        "n": 3,
+        "x_o2_range": [
+          0.2,
+          0.34
+        ],
+        "n_distinct_o2": 3,
+        "run_ids": [
+          "PSI-69-r039",
+          "PSI-69-r043",
+          "PSI-69-r057"
+        ],
+        "computable": false,
+        "abstention_reason": "needs n >= 8 and >= 3 distinct O2 levels"
+      },
+      {
+        "fuel": "Heptane",
+        "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+        "support_mode": "fiber_translation_not_stated",
+        "n": 1,
+        "x_o2_range": [
+          0.3,
+          0.3
+        ],
+        "n_distinct_o2": 1,
+        "run_ids": [
+          "PSI-69-r042"
+        ],
+        "computable": false,
+        "abstention_reason": "needs n >= 8 and >= 3 distinct O2 levels"
+      },
+      {
+        "fuel": "Heptane",
+        "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+        "support_mode": "free_floating",
+        "n": 5,
+        "x_o2_range": [
+          0.2,
+          0.34
+        ],
+        "n_distinct_o2": 3,
+        "run_ids": [
+          "PSI-69-r019",
+          "PSI-69-r023",
+          "PSI-69-r027",
+          "PSI-69-r028",
+          "PSI-69-r056"
+        ],
+        "computable": false,
+        "abstention_reason": "needs n >= 8 and >= 3 distinct O2 levels"
+      },
+      {
+        "fuel": "Heptane",
+        "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+        "support_mode": "fiber_translated",
+        "n": 4,
+        "x_o2_range": [
+          0.18,
+          0.3
+        ],
+        "n_distinct_o2": 3,
+        "run_ids": [
+          "PSI-69-r049",
+          "PSI-69-r050",
+          "PSI-69-r052",
+          "PSI-69-r064"
+        ],
+        "computable": false,
+        "abstention_reason": "needs n >= 8 and >= 3 distinct O2 levels"
+      },
+      {
+        "fuel": "Heptane",
+        "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+        "support_mode": "fiber_translation_not_stated",
+        "n": 4,
+        "x_o2_range": [
+          0.15,
+          0.21
+        ],
+        "n_distinct_o2": 2,
+        "run_ids": [
+          "PSI-69-r051",
+          "PSI-69-r074",
+          "PSI-69-r208",
+          "PSI-69-r230"
+        ],
+        "computable": false,
+        "abstention_reason": "needs n >= 8 and >= 3 distinct O2 levels"
+      },
+      {
+        "fuel": "Heptane",
+        "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+        "support_mode": "free_floating",
+        "n": 22,
+        "x_o2_range": [
+          0.14,
+          0.3
+        ],
+        "n_distinct_o2": 6,
+        "run_ids": [
+          "PSI-69-r007",
+          "PSI-69-r008",
+          "PSI-69-r031",
+          "PSI-69-r032",
+          "PSI-69-r035",
+          "PSI-69-r047",
+          "PSI-69-r062",
+          "PSI-69-r063",
+          "PSI-69-r070",
+          "PSI-69-r072",
+          "PSI-69-r073",
+          "PSI-69-r204",
+          "PSI-69-r205",
+          "PSI-69-r206",
+          "PSI-69-r207",
+          "PSI-69-r209",
+          "PSI-69-r211",
+          "PSI-69-r212",
+          "PSI-69-r213",
+          "PSI-69-r214",
+          "PSI-69-r228",
+          "PSI-69-r229"
+        ],
+        "computable": true,
+        "model_k_on_o2": {
+          "intercept": {
+            "estimate": 0.04375000000000008,
+            "se_hc3": 0.11093235750286433,
+            "ci95": [
+              -0.187650842870004,
+              0.2751508428700042
+            ],
+            "p_value": 0.697471072801303
+          },
+          "x_o2": {
+            "estimate": 2.3679577464788735,
+            "se_hc3": 0.5777724085234579,
+            "ci95": [
+              1.1627456214601801,
+              3.5731698714975666
+            ],
+            "p_value": 0.0005588769031175725
+          },
+          "r_squared": 0.5219387984003908,
+          "dof_resid": 20.0
+        },
+        "sensitivity_k_on_o2_and_d0": {
+          "intercept": {
+            "estimate": 0.1488683266219923,
+            "se_hc3": 0.11185460343018613,
+            "ci95": [
+              -0.08524604895368942,
+              0.382982702197674
+            ],
+            "p_value": 0.19897061474444505
+          },
+          "x_o2": {
+            "estimate": 2.3903115954622494,
+            "se_hc3": 0.6449015748908464,
+            "ci95": [
+              1.0405170864899065,
+              3.7401061044345925
+            ],
+            "p_value": 0.0014974761213145881
+          },
+          "d0_mm": {
+            "estimate": -0.035703300450074305,
+            "se_hc3": 0.033644263882010604,
+            "ci95": [
+              -0.10612155404798317,
+              0.03471495314783456
+            ],
+            "p_value": 0.30190266898170204
+          },
+          "r_squared": 0.5694146031394575,
+          "dof_resid": 19.0
+        },
+        "spearman_o2_k": 0.6685574478285501
+      },
+      {
+        "fuel": "Methanol",
+        "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+        "support_mode": "fiber_translated",
+        "n": 5,
+        "x_o2_range": [
+          0.2,
+          0.34
+        ],
+        "n_distinct_o2": 3,
+        "run_ids": [
+          "PSI-69-r037",
+          "PSI-69-r038",
+          "PSI-69-r040",
+          "PSI-69-r041",
+          "PSI-69-r055"
+        ],
+        "computable": false,
+        "abstention_reason": "needs n >= 8 and >= 3 distinct O2 levels"
+      },
+      {
+        "fuel": "Methanol",
+        "pressure_cluster": "~0.7 atm nominal (526.3-544.4 mmHg)",
+        "support_mode": "free_floating",
+        "n": 7,
+        "x_o2_range": [
+          0.2,
+          0.34
+        ],
+        "n_distinct_o2": 3,
+        "run_ids": [
+          "PSI-69-r020",
+          "PSI-69-r021",
+          "PSI-69-r022",
+          "PSI-69-r025",
+          "PSI-69-r026",
+          "PSI-69-r036",
+          "PSI-69-r054"
+        ],
+        "computable": false,
+        "abstention_reason": "needs n >= 8 and >= 3 distinct O2 levels"
+      },
+      {
+        "fuel": "Methanol",
+        "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+        "support_mode": "fiber_translated",
+        "n": 5,
+        "x_o2_range": [
+          0.12,
+          0.3
+        ],
+        "n_distinct_o2": 4,
+        "run_ids": [
+          "PSI-69-r044",
+          "PSI-69-r045",
+          "PSI-69-r048",
+          "PSI-69-r060",
+          "PSI-69-r086"
+        ],
+        "computable": false,
+        "abstention_reason": "needs n >= 8 and >= 3 distinct O2 levels"
+      },
+      {
+        "fuel": "Methanol",
+        "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+        "support_mode": "fiber_translation_not_stated",
+        "n": 3,
+        "x_o2_range": [
+          0.12,
+          0.21
+        ],
+        "n_distinct_o2": 3,
+        "run_ids": [
+          "PSI-69-r046",
+          "PSI-69-r061",
+          "PSI-69-r087"
+        ],
+        "computable": false,
+        "abstention_reason": "needs n >= 8 and >= 3 distinct O2 levels"
+      },
+      {
+        "fuel": "Methanol",
+        "pressure_cluster": "~1 atm nominal (752-774.1 mmHg)",
+        "support_mode": "free_floating",
+        "n": 31,
+        "x_o2_range": [
+          0.12,
+          0.3
+        ],
+        "n_distinct_o2": 7,
+        "run_ids": [
+          "PSI-69-r001",
+          "PSI-69-r002",
+          "PSI-69-r003",
+          "PSI-69-r004",
+          "PSI-69-r005",
+          "PSI-69-r006",
+          "PSI-69-r029",
+          "PSI-69-r030",
+          "PSI-69-r033",
+          "PSI-69-r034",
+          "PSI-69-r058",
+          "PSI-69-r059",
+          "PSI-69-r065",
+          "PSI-69-r066",
+          "PSI-69-r067",
+          "PSI-69-r068",
+          "PSI-69-r071",
+          "PSI-69-r077",
+          "PSI-69-r078",
+          "PSI-69-r082",
+          "PSI-69-r084",
+          "PSI-69-r085",
+          "PSI-69-r202",
+          "PSI-69-r203",
+          "PSI-69-r215",
+          "PSI-69-r216",
+          "PSI-69-r217",
+          "PSI-69-r218",
+          "PSI-69-r219",
+          "PSI-69-r220",
+          "PSI-69-r221"
+        ],
+        "computable": true,
+        "model_k_on_o2": {
+          "intercept": {
+            "estimate": 0.10673150368594,
+            "se_hc3": 0.04285942794860573,
+            "ci95": [
+              0.01907413120060071,
+              0.1943888761712793
+            ],
+            "p_value": 0.01874167509402872
+          },
+          "x_o2": {
+            "estimate": 1.906963318234302,
+            "se_hc3": 0.276824760909706,
+            "ci95": [
+              1.3407931115454728,
+              2.4731335249231314
+            ],
+            "p_value": 1.4381732567608016e-07
+          },
+          "r_squared": 0.8277759881151101,
+          "dof_resid": 29.0
+        },
+        "sensitivity_k_on_o2_and_d0": {
+          "intercept": {
+            "estimate": 0.2311784173769083,
+            "se_hc3": 0.04423600223775562,
+            "ci95": [
+              0.14056507446861924,
+              0.3217917602851974
+            ],
+            "p_value": 1.4952791523176863e-05
+          },
+          "x_o2": {
+            "estimate": 1.8933153166558512,
+            "se_hc3": 0.21722098826645062,
+            "ci95": [
+              1.4483582929430325,
+              2.33827234036867
+            ],
+            "p_value": 1.8235745738797106e-09
+          },
+          "d0_mm": {
+            "estimate": -0.04531490703974505,
+            "se_hc3": 0.010498841207244715,
+            "ci95": [
+              -0.06682080834923934,
+              -0.02380900573025076
+            ],
+            "p_value": 0.00017907108189154267
+          },
+          "r_squared": 0.9093459241622986,
+          "dof_resid": 28.0
+        },
+        "spearman_o2_k": 0.8935351757385182
+      }
+    ],
+    "limitations": [
+      "Association within strata, not a causal effect: runs were not randomised and D0 and other conditions vary (D0-adjusted model given as a sensitivity check).",
+      "Support mode comes from NASA/TP-2015-216046 figure captions (unregistered source, pypdf text not visually verified); used only to avoid pooling support modes.",
+      "Linear form is a local approximation over the observed O2 range; no extrapolation.",
+      "Strata are small; HC3 intervals are wide and p-values are not corrected for multiple strata."
+    ]
+  }
+}

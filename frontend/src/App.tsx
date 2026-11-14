@@ -1,20 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { API_BASE_URL } from './api/client';
 import { EvidenceInspector } from './lab/components/EvidenceInspector';
 import { FilterBar } from './lab/components/FilterBar';
 import { loadDataset } from './lab/data/load';
 import type { LabDataset } from './lab/data/types';
 import { Combustion } from './lab/sections/Combustion';
+import { EvidenceCopilot } from './lab/sections/EvidenceCopilot';
+import { AnalysisResults } from './lab/sections/AnalysisResults';
+import { FlameVision } from './lab/sections/FlameVision';
+import { ComparisonExplorer } from './lab/sections/ComparisonExplorer';
 import { Conditions } from './lab/sections/Conditions';
 import { Observations } from './lab/sections/Observations';
 import { Outcomes } from './lab/sections/Outcomes';
 import { Overview } from './lab/sections/Overview';
 import { Quality } from './lab/sections/Quality';
+import { ScientificExplorer } from './lab/sections/ScientificExplorer';
 import { LabProvider, useLab } from './lab/state/LabContext';
-
-const API = import.meta.env.VITE_API_BASE_URL ?? 'http://127.0.0.1:8000';
 
 const SECTIONS = [
   { id: 'overview', label: 'Overview' },
+  { id: 'explorer', label: 'Scientific Explorer' },
+  { id: 'comparison', label: 'Compare Runs' },
+  { id: 'analysis', label: 'Analysis Results' },
+  { id: 'vision', label: 'Flame Vision' },
+  { id: 'copilot', label: 'Evidence & Copilot' },
   { id: 'combustion', label: 'Combustion Explorer' },
   { id: 'conditions', label: 'Conditions Explorer' },
   { id: 'outcomes', label: 'Outcomes & Extinction' },
@@ -32,17 +41,32 @@ function parseHash(): { section: SectionId; param?: string } {
 function ApiStatus() {
   const [state, setState] = useState<'checking' | 'online' | 'offline'>('checking');
   useEffect(() => {
-    const ctl = new AbortController();
-    fetch(`${API}/health`, { signal: ctl.signal }).then((r) => setState(r.ok ? 'online' : 'offline')).catch(() => setState('offline'));
-    return () => ctl.abort();
+    let active = true;
+    let request: AbortController | null = null;
+    const check = () => {
+      if (document.visibilityState === 'hidden') return;
+      request?.abort();
+      const controller = new AbortController();
+      request = controller;
+      fetch(`${API_BASE_URL}/health`, { signal: controller.signal })
+        .then((response) => { if (active && !controller.signal.aborted) setState(response.ok ? 'online' : 'offline'); })
+        .catch(() => { if (active && !controller.signal.aborted) setState('offline'); });
+    };
+    check();
+    const timer = window.setInterval(check, 30_000);
+    document.addEventListener('visibilitychange', check);
+    return () => { active = false; request?.abort(); window.clearInterval(timer); document.removeEventListener('visibilitychange', check); };
   }, []);
-  return <span className="status-pill" title="FastAPI backend health (the lab itself uses the exported static dataset)"><i className={state} aria-hidden="true" />API {state}</span>;
+  return <span className="status-pill" role="status" aria-live="polite" title="FastAPI backend health (the lab itself uses the exported static dataset)"><i className={state} aria-hidden="true" />API {state}</span>;
 }
 
 function Shell() {
   const { theme, setTheme, dataset } = useLab();
   const [route, setRoute] = useState(parseHash);
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const main = useRef<HTMLElement>(null);
+  const routeIdentity = `${route.section}/${route.param ?? ''}`;
+  const previousRoute = useRef(routeIdentity);
   useEffect(() => {
     const on = () => setRoute(parseHash());
     window.addEventListener('hashchange', on);
@@ -50,7 +74,11 @@ function Shell() {
   }, []);
   useEffect(() => {
     document.title = `${SECTIONS.find((s) => s.id === route.section)?.label} · FlameScope Lab`;
-  }, [route.section]);
+    if (previousRoute.current !== routeIdentity) {
+      previousRoute.current = routeIdentity;
+      main.current?.focus();
+    }
+  }, [route.section, route.param, routeIdentity]);
 
   return (
     <div className="app">
@@ -80,8 +108,13 @@ function Shell() {
           </button>
           <div id="filters-panel"><FilterBar /></div>
         </div>
-        <main id="main" tabIndex={-1}>
+        <main ref={main} id="main" tabIndex={-1}>
           {route.section === 'overview' && <Overview />}
+          {route.section === 'explorer' && <ScientificExplorer />}
+          {route.section === 'comparison' && <ComparisonExplorer dataset={dataset} />}
+          {route.section === 'analysis' && <AnalysisResults />}
+          {route.section === 'vision' && <FlameVision />}
+          {route.section === 'copilot' && <EvidenceCopilot />}
           {route.section === 'combustion' && <Combustion />}
           {route.section === 'conditions' && <Conditions />}
           {route.section === 'outcomes' && <Outcomes />}
@@ -101,10 +134,17 @@ function Shell() {
 export default function App() {
   const [dataset, setDataset] = useState<LabDataset | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [loadAttempt, setLoadAttempt] = useState(0);
   useEffect(() => {
-    loadDataset().then(setDataset).catch((e: Error) => setError(e.message));
-  }, []);
-  if (error) return <main className="fatal" role="alert"><h1>FlameScope Lab</h1><p>Dataset could not be loaded: {error}</p></main>;
-  if (!dataset) return <main className="fatal" aria-busy="true"><p>Loading verified FLEX dataset…</p></main>;
+    let active = true;
+    setError(null);
+    setDataset(null);
+    loadDataset().then((loaded) => { if (active) setDataset(loaded); }).catch((loadError: unknown) => {
+      if (active) setError(loadError instanceof Error ? loadError.message : 'The dataset request failed.');
+    });
+    return () => { active = false; };
+  }, [loadAttempt]);
+  if (error) return <main className="fatal" role="alert"><h1>FlameScope Lab</h1><p>Dataset could not be loaded: {error}</p><button type="button" onClick={() => setLoadAttempt((attempt) => attempt + 1)}>Retry dataset load</button></main>;
+  if (!dataset) return <main className="fatal" aria-busy="true" role="status"><p>Loading verified FLEX dataset…</p></main>;
   return <LabProvider dataset={dataset}><Shell /></LabProvider>;
 }

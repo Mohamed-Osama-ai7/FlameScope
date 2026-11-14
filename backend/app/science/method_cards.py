@@ -1,4 +1,5 @@
 """Method-card contract: no calculation is exposed without formula, source, units and limits."""
+
 from __future__ import annotations
 
 from pydantic import BaseModel, Field
@@ -112,4 +113,90 @@ D2_LAW_CARD = MethodCard(
     status="implemented_unvalidated_on_nasa_data",
 )
 
-METHOD_REGISTRY: dict[str, MethodCard] = {D2_LAW_CARD.method_id: D2_LAW_CARD}
+_TP_REF = Reference(
+    citation=(
+        "Dietrich, D.L. et al. (2015). Detailed Results from the Flame Extinguishment Experiment (FLEX) "
+        "March 2009 to December 2011. NASA/TP-2015-216046, NTRS 20150023456 (column definitions, App. A.1; "
+        "cited for semantics only, source not registered)."
+    )
+)
+
+D2_CONSISTENCY_CARD = MethodCard(
+    method_id="flex.d2_consistency_of_reported_values",
+    version="0.1.0",
+    title="Internal consistency of reported D0, Dext, K and burn time with the d^2-law (diagnostic)",
+    regimes=[CombustionRegime.FLEX_DROPLET],
+    formula="t_d2 = (D0^2 - Dext^2) / K ;  r = t_d2 / t_burn   (from D(t)^2 = D0^2 - K t)",
+    variables=[
+        VariableSpec(symbol="D0", name="initial droplet diameter (reported)", unit="mm", role="input"),
+        VariableSpec(
+            symbol="Dext", name="visible flame extinction diameter (reported)", unit="mm", role="input"
+        ),
+        VariableSpec(
+            symbol="K", name="burning-rate constant (reported by the FLEX team)", unit="mm^2/s", role="input"
+        ),
+        VariableSpec(symbol="t_burn", name="burn time (reported)", unit="s", role="input"),
+        VariableSpec(symbol="r", name="d^2-implied duration / reported burn time", unit="1", role="output"),
+    ],
+    references=[*D2_LAW_CARD.references, _TP_REF],
+    assumptions=[
+        "d^2-law with one constant K between D0 and Dext.",
+        "Reported values are as tabulated in PSI-69; no value is corrected.",
+    ],
+    validity_limits=[
+        "Only runs that end in Extinction with usable, unflagged D0, Dext, K and burn time, D0 > Dext > 0.",
+        "K excludes the heat-up transient and the burn-time definition is undocumented, "
+        "so r = 1 is not expected.",
+    ],
+    required_inputs=["PSI-69 run-level table via the verified loader"],
+    uncertainty_method=(
+        "Per run: worst-case interval from each value's reporting resolution (half a unit of the last "
+        "written decimal), optionally widened by a caller-supplied diameter bound. Per fuel: median with "
+        "percentile bootstrap 95% CI (9999 resamples, fixed seed). Review flag: Tukey fences, only when the "
+        "whole interval lies outside them."
+    ),
+    validation=[
+        "Unit tests: analytic examples for t_d2 and the interval bounds; deterministic bootstrap.",
+        "Not a validation of the d^2-law or of NASA data: it screens reported values for internal "
+        "consistency.",
+    ],
+    abstention_conditions=[
+        "Run excluded with a counted reason when any input is missing, flagged or non-physical"
+    ],
+    status="implemented_diagnostic",
+)
+
+OXYGEN_EFFECT_CARD = MethodCard(
+    method_id="flex.oxygen_effect_on_reported_k",
+    version="0.1.0",
+    title="Within-stratum linear association of ambient O2 mole fraction with reported K",
+    regimes=[CombustionRegime.FLEX_DROPLET],
+    formula="K = b0 + b1 * X_O2  (sensitivity: + b2 * D0); OLS with HC3 standard errors",
+    variables=[
+        VariableSpec(symbol="X_O2", name="ambient O2 mole fraction (reported)", unit="1", role="input"),
+        VariableSpec(symbol="K", name="burning-rate constant (reported)", unit="mm^2/s", role="input"),
+        VariableSpec(symbol="b1", name="slope", unit="mm^2/s per unit mole fraction", role="output"),
+    ],
+    references=[_TP_REF],
+    assumptions=[
+        "Within a stratum (fuel, N2-only diluent, pressure cluster, support mode) O2 is the varied "
+        "condition.",
+        "Linear over the observed O2 range.",
+    ],
+    validity_limits=[
+        "Association, not causation; no extrapolation beyond the observed O2 range.",
+        "Support mode is from unregistered NASA/TP captions and is used only as a stratifier.",
+    ],
+    required_inputs=["PSI-69 run-level table via the verified loader"],
+    uncertainty_method=(
+        "HC3 heteroskedasticity-robust standard errors; 95% CI from Student t on the residual dof "
+        "(statsmodels, use_t=True)."
+    ),
+    validation=["Unit tests recover exact coefficients from noiseless synthetic data."],
+    abstention_conditions=["Stratum with n < 8 or fewer than 3 distinct O2 levels: not computed"],
+    status="implemented_descriptive",
+)
+
+METHOD_REGISTRY: dict[str, MethodCard] = {
+    c.method_id: c for c in (D2_LAW_CARD, D2_CONSISTENCY_CARD, OXYGEN_EFFECT_CARD)
+}

@@ -71,11 +71,12 @@ export function LabProvider({ dataset, children }: { dataset: LabDataset; childr
     setSelectedKey(key);
     if (key && opts.open !== false) setInspectorOpen(true);
   }, []);
+  const closeInspector = useCallback(() => setInspectorOpen(false), []);
 
   const value: LabState = {
     dataset, byKey, filters, setFilters,
     resetFilters: () => setFilters(defaultFilters(dataset.records)),
-    selectedKey, select, inspectorOpen, closeInspector: () => setInspectorOpen(false),
+    selectedKey, select, inspectorOpen, closeInspector,
     theme, setTheme: setThemeState, chartTheme,
   };
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
