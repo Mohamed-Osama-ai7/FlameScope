@@ -247,7 +247,7 @@ def main(argv: list[str] | None = None) -> int:
         "captions": {f"FLEX-{k:03d}": v for k, v in sorted(caps.items())},
     }
     (out_dir / f"flex_enrichment_v{ENRICHMENT_VERSION}_captions.json").write_text(
-        json.dumps(cap_out, indent=1, ensure_ascii=False) + "\n", encoding="utf-8"
+        json.dumps(cap_out, indent=1, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n"
     )
     print(f"enrichment rows: {len(out_rows)}; unmatched Table IX rows: {[t['flex'] for t in pool]}")
     return 0

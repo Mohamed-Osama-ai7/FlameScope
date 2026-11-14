@@ -16,6 +16,7 @@ from app.analysis import flex_run_level as fx
 from app.domain.comparison import ComparisonRequest, validate_comparison
 from app.domain.sources import find_source, load_registry
 from app.rag.config import PROJECT_ROOT
+from app.rag.eligibility import EligibilityPolicy
 from app.rag.measurements import MeasurementFact
 from app.science.droplet import DropletSeries, fit_burning_rate_constant
 from app.science.method_cards import METHOD_REGISTRY
@@ -131,6 +132,9 @@ def fit_k(a: DropletSeries) -> dict[str, Any]:
     )
     if src is not None and not src.usable_as_evidence:  # same gate as POST /analysis/droplet/...
         raise ValueError(f"source {src.source_id} is {src.verification_status.value}; refusing to analyse")
+    decision = EligibilityPolicy(PROJECT_ROOT).decision(a.provenance.source_id) if src else None
+    if decision is not None and not decision.usable_as_evidence:  # e.g. PSI-25 excluded
+        raise ValueError(f"source {decision.source_id} is {decision.eligibility.value}; refusing to analyse")
     return fit_burning_rate_constant(a).model_dump(mode="json")
 
 

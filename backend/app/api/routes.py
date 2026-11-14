@@ -12,6 +12,7 @@ from app.domain.sources import (
     load_registry,
     official_resource_recorded,
 )
+from app.rag.eligibility import EligibilityPolicy
 from app.science.droplet import BurningRateResult, DropletSeries, fit_burning_rate_constant
 from app.science.method_cards import METHOD_REGISTRY, MethodCard
 
@@ -38,6 +39,7 @@ def list_sources() -> list[SourceRecord]:
 @router.get("/status", tags=["system"])
 def project_status() -> dict[str, object]:
     records = _registry()
+    policy = EligibilityPolicy(PROJECT_ROOT)
     db = platform_status()  # never raises; False when no database is configured or reachable
     loaded = db.database_reachable and db.measurements > 0
     return {
@@ -47,7 +49,13 @@ def project_status() -> dict[str, object]:
         # Derived from the scientific database: true only when the loader has stored verified rows.
         "scientific_dataset_loaded": loaded,
         "official_challenge_resource_loaded": db.official_challenge_resource_loaded,
-        "sources_usable_as_evidence": [r.source_id for r in records if r.usable_as_evidence],
+        # registry status AND the scientific evidence decision (PSI-25 is ACQUIRED but excluded)
+        "sources_usable_as_evidence": [
+            r.source_id
+            for r in records
+            if r.usable_as_evidence and policy.decision(r.source_id).usable_as_evidence
+        ],
+        "evidence_eligibility": {d.source_id: d.eligibility.value for d in policy.all_decisions()},
         "notice": (
             f"Scientific database: {len(db.investigations_loaded)} investigation(s), {db.measurements} "
             "source-cell measurements, each traceable to artifact SHA-256 + row + column."
@@ -99,6 +107,16 @@ def burning_rate_constant(series: DropletSeries) -> BurningRateResult:
                 "cannot be used for scientific analysis until acquired/verified."
             ),
         )
+    if source is not None:
+        decision = EligibilityPolicy(PROJECT_ROOT).decision(source.source_id)
+        if not decision.usable_as_evidence:  # e.g. PSI-25 ACQUIRED_BUT_EXCLUDED
+            raise HTTPException(
+                status_code=422,
+                detail=(
+                    f"Source {source.source_id} is {decision.eligibility.value} and cannot be used for "
+                    "scientific analysis (data/metadata/source_eligibility.csv)."
+                ),
+            )
     result = fit_burning_rate_constant(series)
     if source is None:
         result.warnings.append(

@@ -202,7 +202,9 @@ def main() -> int:
         "strata": strata,
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(dataset, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    OUT.write_text(  # newline="\n": identical bytes on every OS (hash is pinned)
+        json.dumps(dataset, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8", newline="\n"
+    )
     print(f"records={len(records)} strata={len(strata)} -> {OUT.relative_to(ROOT)} sha256={sha(OUT)}")
     return 0
 
