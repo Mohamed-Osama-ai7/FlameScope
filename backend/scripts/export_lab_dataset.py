@@ -12,6 +12,7 @@ Packages, without new calculations:
 
 Output: frontend/public/data/flex_lab_dataset_v0.2.0.json (deterministic; no timestamps).
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -112,54 +113,75 @@ def main() -> int:
     for r in sorted(runs, key=lambda x: x.psi_row):
         e = r.enrichment
         cap = captions.get(f"FLEX-{r.flex_test_number:03d}") if r.flex_test_number else None
-        records.append({
-            "record_key": r.record_key,
-            "psi_row": r.psi_row,
-            "flex_test_number": r.flex_test_number,
-            "identifier": r.identifier,
-            "test_date": r.test_date,
-            "test_gmt": r.test_time_gmt or None,
-            "fuel": r.fuel,
-            "test_end": r.test_end,
-            "values": {k: r.values[k] for k in fx.NUMERIC_FIELDS},
-            "raw": {k: r.raw.get(k, "") for k in fx.NUMERIC_FIELDS},
-            "field_flags": {k: v for k, v in r.field_flags.items() if v},
-            "row_flags": r.row_flags,
-            "usable": {k: r.usable(k) for k in fx.NUMERIC_FIELDS},
-            "diluent_family": r.diluent_family,
-            "pressure_cluster": r.pressure_cluster,
-            "composition_sum": r.composition_sum,
-            "support_mode": r.support_mode,
-            "support_basis": e.get("support_basis", ""),
-            "dext_origin": r.dext_origin,
-            "sensitivity_tags": r.sensitivity_tags,
-            "eligible": sorted(membership[r.psi_row]),
-            "evidence": {
-                "table_ix_pdf_page": int(e["table_ix_pdf_page"]),
-                "table_ix_printed_page": int(e["table_ix_printed_page"]),
-                "caption_figure": int(e["caption_figure"]) if e.get("caption_figure") else None,
-                "caption_pdf_page": int(e["caption_pdf_page"]) if e.get("caption_pdf_page") else None,
-                "caption": cap["caption"] if cap else None,
-                "matrix_table": e.get("matrix_table") or None,
-                "matrix_table_fiber": e.get("matrix_table_fiber"),
-                "matrix_table_pressure_atm": float(e["matrix_table_pressure_atm"])
-                if e.get("matrix_table_pressure_atm") else None,
-                "pressure_source_conflict": e.get("pressure_source_conflict") or None,
-                "shutter_1_30s_period": e.get("shutter_1_30s_period") == "True",
-                "coated_needle_period": e.get("coated_needle_period") == "True",
-                "documented_contamination_or_feature": e.get("documented_contamination_or_feature") or None,
-                "dext_caption_note": e.get("dext_caption_note") or None,
-                "match_method": e.get("match_method"),
-                "verification_status": e.get("verification_status"),
-            },
-        })
+        records.append(
+            {
+                "record_key": r.record_key,
+                "psi_row": r.psi_row,
+                "flex_test_number": r.flex_test_number,
+                "identifier": r.identifier,
+                "test_date": r.test_date,
+                "test_gmt": r.test_time_gmt or None,
+                "fuel": r.fuel,
+                "test_end": r.test_end,
+                "values": {k: r.values[k] for k in fx.NUMERIC_FIELDS},
+                "raw": {k: r.raw.get(k, "") for k in fx.NUMERIC_FIELDS},
+                "field_flags": {k: v for k, v in r.field_flags.items() if v},
+                "row_flags": r.row_flags,
+                "usable": {k: r.usable(k) for k in fx.NUMERIC_FIELDS},
+                "diluent_family": r.diluent_family,
+                "pressure_cluster": r.pressure_cluster,
+                "composition_sum": r.composition_sum,
+                "support_mode": r.support_mode,
+                "support_basis": e.get("support_basis", ""),
+                "dext_origin": r.dext_origin,
+                "sensitivity_tags": r.sensitivity_tags,
+                "eligible": sorted(membership[r.psi_row]),
+                "evidence": {
+                    "table_ix_pdf_page": int(e["table_ix_pdf_page"]),
+                    "table_ix_printed_page": int(e["table_ix_printed_page"]),
+                    "caption_figure": int(e["caption_figure"]) if e.get("caption_figure") else None,
+                    "caption_pdf_page": int(e["caption_pdf_page"]) if e.get("caption_pdf_page") else None,
+                    "caption": cap["caption"] if cap else None,
+                    "matrix_table": e.get("matrix_table") or None,
+                    "matrix_table_fiber": e.get("matrix_table_fiber"),
+                    "matrix_table_pressure_atm": float(e["matrix_table_pressure_atm"])
+                    if e.get("matrix_table_pressure_atm")
+                    else None,
+                    "pressure_source_conflict": e.get("pressure_source_conflict") or None,
+                    "shutter_1_30s_period": e.get("shutter_1_30s_period") == "True",
+                    "coated_needle_period": e.get("coated_needle_period") == "True",
+                    "documented_contamination_or_feature": e.get("documented_contamination_or_feature")
+                    or None,
+                    "dext_caption_note": e.get("dext_caption_note") or None,
+                    "match_method": e.get("match_method"),
+                    "verification_status": e.get("verification_status"),
+                },
+            }
+        )
 
     strata = []
     for s in results["strata"]:
-        strata.append({k: s[k] for k in ("analysis", "fuel", "x", "y", "n", "rho_spearman", "note",
-                                         "n_values_in_x_ties", "n_values_in_y_ties", "sensitivity_rows",
-                                         "rho_without_sensitivity_rows", "evidence_class", "psi_rows")}
-                      | {"stratum": {k: v for k, v in s["stratum"].items() if k != "by_pressure_cluster"}})
+        strata.append(
+            {
+                k: s[k]
+                for k in (
+                    "analysis",
+                    "fuel",
+                    "x",
+                    "y",
+                    "n",
+                    "rho_spearman",
+                    "note",
+                    "n_values_in_x_ties",
+                    "n_values_in_y_ties",
+                    "sensitivity_rows",
+                    "rho_without_sensitivity_rows",
+                    "evidence_class",
+                    "psi_rows",
+                )
+            }
+            | {"stratum": {k: v for k, v in s["stratum"].items() if k != "by_pressure_cluster"}}
+        )
 
     dataset = {
         "dataset": "FlameScope Scientific Exploration Lab - FLEX (PSI-69)",
@@ -167,7 +189,7 @@ def main() -> int:
         "analysis_version": ANALYSIS_VERSION,
         "synthetic": False,
         "value_origin": "NASA-reported values (burning_rate_constant_mm2_s is the FLEX team's reported K, not a "
-                        "FlameScope calculation; the d2-law calculator is not used).",
+        "FlameScope calculation; the d2-law calculator is not used).",
         "provenance": {
             "source_id": fx.SOURCE_ID,
             "doi": "10.60555/mbq8-0451",
@@ -188,21 +210,31 @@ def main() -> int:
             "report_pdf_sha256": "b4f6ca983e2792c33a0b92220a791a818f426bb635b94f7fd33dc8c9c471e79d",
             "audit_doc": DOC,
         },
-        "scope": {"records": len(records), "unique_flex_tests": len({r["flex_test_number"] for r in records}),
-                  "unique_identifiers": len({r["identifier"] for r in records}),
-                  "nasa_stated_tests": 284, "table_ix_printed_rows": 276,
-                  "table_ix_rows_not_in_psi": ["FLEX-216", "FLEX-230"]},
+        "scope": {
+            "records": len(records),
+            "unique_flex_tests": len({r["flex_test_number"] for r in records}),
+            "unique_identifiers": len({r["identifier"] for r in records}),
+            "nasa_stated_tests": 284,
+            "table_ix_printed_rows": 276,
+            "table_ix_rows_not_in_psi": ["FLEX-216", "FLEX-230"],
+        },
         "units": UNITS,
         "raw_headers": RAW_HEADERS,
         "rules": RULES,
-        "unknown_fields": ["H2O mole fraction", "heptane vapour mole fraction", "methanol vapour mole fraction",
-                           "uncertainty of reported K"],
+        "unknown_fields": [
+            "H2O mole fraction",
+            "heptane vapour mole fraction",
+            "methanol vapour mole fraction",
+            "uncertainty of reported K",
+        ],
         "outcome_caveats": results["outcomes"]["contamination_caveats"],
         "records": records,
         "strata": strata,
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(dataset, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    OUT.write_text(  # newline="\n": identical bytes on every OS
+        json.dumps(dataset, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8", newline="\n"
+    )
     print(f"records={len(records)} strata={len(strata)} -> {OUT.relative_to(ROOT)} sha256={sha(OUT)}")
     return 0
 
