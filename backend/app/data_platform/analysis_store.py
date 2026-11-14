@@ -21,6 +21,8 @@ from app.data_platform.models import (
     Investigation,
     Measurement,
 )
+from app.data_platform.settings import project_root
+from app.domain.eligibility import EligibilityPolicy
 
 USABLE_REGISTRY_STATUSES = frozenset({"ACQUIRED", "VERIFIED"})
 
@@ -52,20 +54,24 @@ def record_analysis_result(
         raise AnalysisInputRejected({"inputs": "computable=false requires an abstention_reason"})
 
     rows = session.execute(
-        select(Measurement, Investigation.registry_status)
+        select(Measurement, Investigation.registry_status, Investigation.investigation_id)
         .join(ExperimentalRun, Measurement.run_id == ExperimentalRun.run_id)
         .join(Investigation, ExperimentalRun.investigation_id == Investigation.investigation_id)
         .where(Measurement.measurement_id.in_(ids))
     ).all()
-    found = {m.measurement_id: (m, status) for m, status in rows}
+    found = {m.measurement_id: (m, status, inv) for m, status, inv in rows}
+    policy = EligibilityPolicy(project_root())
     problems: dict[str, str] = {}
     for mid in ids:
         if mid not in found:
             problems[str(mid)] = "unknown measurement"
             continue
-        m, status = found[mid]
+        m, status, inv = found[mid]
+        decision = policy.decision(inv)
         if status not in USABLE_REGISTRY_STATUSES:
             problems[str(mid)] = f"source registry status {status} (withdrawn or quarantined)"
+        elif not decision.usable_as_evidence:
+            problems[str(mid)] = f"source {inv} is {decision.eligibility.value} (source_eligibility.csv)"
         elif m.value is None:
             problems[str(mid)] = f"no numeric value (value_status={m.value_status})"
         elif not m.usable_for_analysis:

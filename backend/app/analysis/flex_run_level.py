@@ -456,6 +456,9 @@ def cross_fuel_gate_check(runs: list[FlexRun]) -> dict[str, Any]:
 # ---------------------------------------------------------------- analyses
 
 
+NOT_CONTROLLED = "not_controlled"  # support mode not used (its only source is unregistered)
+
+
 @dataclass
 class StratumResult:
     analysis: str
@@ -534,7 +537,14 @@ K = "burning_rate_constant_mm2_s"
 O2 = "ambient_oxygen_mole_fraction"
 
 
-def run_analyses(runs: list[FlexRun]) -> dict[str, Any]:
+def run_analyses(runs: list[FlexRun], stratify_by_support_mode: bool = True) -> dict[str, Any]:
+    """stratify_by_support_mode=True reproduces the approved v0.2.0 strata. Support modes come from
+    NASA/TP-2015-216046 captions (unregistered); analysis v0.3.0 passes False so they are never an
+    analysis input, and every stratum is labelled support_mode='not_controlled'."""
+
+    def sm_of(r: FlexRun) -> str:
+        return r.support_mode if stratify_by_support_mode else NOT_CONTROLLED
+
     results: list[StratumResult] = []
     exclusions: dict[str, dict[str, dict[str, int]]] = {}
     comp_needed = ["ambient_pressure", *COMPOSITION]
@@ -549,7 +559,7 @@ def run_analyses(runs: list[FlexRun]) -> dict[str, Any]:
         kept, why = _exclusions(fr, [K, *comp_needed])
         record("A1_O2_vs_K", fuel, why)
         for (fam, pc, sm), rows in _group(
-            kept, lambda r: (r.diluent_family, r.pressure_cluster, r.support_mode)
+            kept, lambda r: (r.diluent_family, r.pressure_cluster, sm_of(r))
         ).items():
             if fam == "N2_only":
                 stratum = {"diluent_family": fam, "pressure_cluster": pc, "support_mode": sm}
@@ -572,7 +582,7 @@ def run_analyses(runs: list[FlexRun]) -> dict[str, Any]:
         ):
             record(name, fuel, why)
             groups = _group(
-                kept, lambda r: (r.diluent_family, r.pressure_cluster, r.values[O2], r.support_mode)
+                kept, lambda r: (r.diluent_family, r.pressure_cluster, r.values[O2], sm_of(r))
             )
             for (fam, pc, o2, sm), rows in groups.items():
                 if fam != fam_name:
@@ -584,7 +594,7 @@ def run_analyses(runs: list[FlexRun]) -> dict[str, Any]:
                     if r.diluent_family == "N2_only"
                     and r.pressure_cluster == pc
                     and r.values[O2] == o2
-                    and r.support_mode == sm
+                    and sm_of(r) == sm
                 ]
                 stratum = {
                     "pressure_cluster": pc,
@@ -608,7 +618,7 @@ def run_analyses(runs: list[FlexRun]) -> dict[str, Any]:
         # A4 pressure vs reported K at fixed O2 within N2-only runs.
         record("A4_P_vs_K", fuel, why)
         for (fam, o2, sm), rows in _group(
-            kept, lambda r: (r.diluent_family, r.values[O2], r.support_mode)
+            kept, lambda r: (r.diluent_family, r.values[O2], sm_of(r))
         ).items():
             if fam == "N2_only" and len({r.pressure_cluster for r in rows}) >= 2:
                 res = _strata_result(
@@ -629,7 +639,7 @@ def run_analyses(runs: list[FlexRun]) -> dict[str, Any]:
         kept5, why5 = _exclusions(fr, [K, "initial_droplet_diameter", *comp_needed])
         record("A5_D0_vs_K", fuel, why5)
         for (fam, pc, sm), rows in _group(
-            kept5, lambda r: (r.diluent_family, r.pressure_cluster, r.support_mode)
+            kept5, lambda r: (r.diluent_family, r.pressure_cluster, sm_of(r))
         ).items():
             stratum = {"diluent_family": fam, "pressure_cluster": pc, "support_mode": sm}
             results.append(
@@ -657,7 +667,7 @@ def run_analyses(runs: list[FlexRun]) -> dict[str, Any]:
         why6.update(why_c)
         record("A6_O2_vs_Dext", fuel, why6)
         for (fam, pc, sm), rows in _group(
-            kept6, lambda r: (r.diluent_family, r.pressure_cluster, r.support_mode)
+            kept6, lambda r: (r.diluent_family, r.pressure_cluster, sm_of(r))
         ).items():
             if fam == "N2_only":
                 stratum = {"diluent_family": fam, "pressure_cluster": pc, "support_mode": sm}

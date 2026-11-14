@@ -25,6 +25,7 @@ from app.data_platform.models import (
     ValueStatus,
 )
 from app.data_platform.vocabulary import dimension_of_variable, unit_specs
+from app.domain.eligibility import explicit_exclusion
 from app.domain.flex_schema import FLEX_COLUMNS, NASA_TP_FLEX
 from app.domain.regimes import CombustionRegime
 from app.domain.sources import SourceRecord
@@ -210,6 +211,9 @@ def extract(
             f"{source.source_id} has registry status {source.verification_status.value}; only "
             "ACQUIRED/VERIFIED sources are loaded"
         )
+    excluded = explicit_exclusion(root, source.source_id)
+    if excluded:
+        raise ExtractionRefused(f"{source.source_id} is {excluded} (source_eligibility.csv); not loaded")
     entry = _manifest_row(manifest, source)
     raw_path = root / entry["relative_path"]
     if not raw_path.is_file():
@@ -268,6 +272,10 @@ def extract(
                     "pressure_cluster": r.pressure_cluster,
                     "composition_sum": r.composition_sum,
                     "support_mode": r.support_mode,
+                    "support_mode_provenance": (
+                        "NASA/TP-2015-216046 captions (UNREGISTERED); exploration label only, "
+                        "not evidence or an analysis input"
+                    ),
                     "flex_test_number": r.flex_test_number,
                     "sensitivity_tags": list(r.sensitivity_tags),
                     "nasa_tp_table_ix_match": r.enrichment.get("match_method"),

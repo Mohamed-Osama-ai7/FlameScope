@@ -112,8 +112,13 @@ def test_copilot_never_cites_ineligible_or_claims_approval(make_copilot):
 
 def test_lab_export_makes_no_approval_claim():
     text = DATASET.read_text(encoding="utf-8")
-    assert "approved" not in text.lower() and "VERIFIED_ELIGIBLE" not in text
-    assert '"VERIFIED"' not in text
+    # booleans, not substring asserts: a failure must not print the whole dataset
+    claims = {
+        "approved": "approved" in text.lower(),
+        "VERIFIED_ELIGIBLE": "VERIFIED_ELIGIBLE" in text,
+        '"VERIFIED"': '"VERIFIED"' in text,
+    }
+    assert claims == {k: False for k in claims}
     assert "not visually verified" in text  # caption-derived fields carry their caveat
 
 

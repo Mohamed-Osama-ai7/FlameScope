@@ -23,6 +23,7 @@ sys.path.insert(0, str(ROOT / "backend"))
 
 from app.analysis import flex_run_level as fx  # noqa: E402
 from app.analysis.svg_charts import Point, scatter_by_fuel  # noqa: E402
+from app.domain.eligibility import EligibilityPolicy  # noqa: E402
 
 ANALYSIS_VERSION = "0.2.0"
 ENRICHMENT = Path("data") / "derived" / "flex_enrichment_v1.csv"
@@ -71,7 +72,8 @@ def panels(runs, select, xvar, yvar, group_of):
     return out
 
 
-def make_charts(runs: list[fx.FlexRun], outdir: Path) -> list[dict[str, Any]]:
+def make_charts(runs: list[fx.FlexRun], outdir: Path, by_support: bool = True) -> list[dict[str, Any]]:
+    """by_support=False (v0.3.0): no free-floating filter; support mode is never an analysis input."""
     """Primary charts show FREE-FLOATING droplets only (fiber-supported runs are a different flow regime)."""
     outdir.mkdir(parents=True, exist_ok=True)
     tiers = tier_labels(runs)
@@ -178,16 +180,11 @@ def make_charts(runs: list[fx.FlexRun], outdir: Path) -> list[dict[str, Any]]:
     ]
     made = []
     for fname, title, sub, xv, yv, xl, yl, sel, grp, order in specs:
-        p = panels(runs, lambda r, sel=sel: sel(r) and r.support_mode == "free_floating", xv, yv, grp)
+        keep = (lambda r: r.support_mode == "free_floating") if by_support else (lambda r: True)
+        p = panels(runs, lambda r, sel=sel, keep=keep: sel(r) and keep(r), xv, yv, grp)
         other = {
             f: sum(
-                1
-                for r in runs
-                if r.fuel == f
-                and sel(r)
-                and r.support_mode != "free_floating"
-                and r.usable(xv)
-                and r.usable(yv)
+                1 for r in runs if r.fuel == f and sel(r) and not keep(r) and r.usable(xv) and r.usable(yv)
             )
             for f in fx.FUELS
         }
@@ -195,6 +192,9 @@ def make_charts(runs: list[fx.FlexRun], outdir: Path) -> list[dict[str, Any]]:
         sub = (
             f"{sub} Free-floating droplets only; not shown: fiber/unknown-support runs "
             f"(methanol {other['Methanol']}, heptane {other['Heptane']})."
+            if by_support
+            else f"{sub} All support modes pooled (support mode not controlled; its only source is the "
+            "unregistered NASA/TP-2015-216046)."
         )
         svg = scatter_by_fuel(title, sub, xl, yl, p, used, FOOT)
         (outdir / fname).write_text(svg, encoding="utf-8", newline="\n")
@@ -227,24 +227,31 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--root", type=Path, default=ROOT)
     ap.add_argument("--out", type=Path, default=None)
     ap.add_argument("--enrichment", type=Path, default=None)
+    ap.add_argument(
+        "--no-support-mode",
+        action="store_true",
+        help="analysis v0.3.0: support modes (unregistered NASA/TP captions) are not an analysis input",
+    )
     args = ap.parse_args(argv)
     root: Path = args.root
-    out: Path = args.out or root / "reports" / "flex_run_level_v0.2"
+    by_support = not args.no_support_mode
+    version = ANALYSIS_VERSION if by_support else "0.3.0"
+    out: Path = args.out or root / "reports" / f"flex_run_level_v{version.rsplit('.', 1)[0]}"
     manifest = root / "data" / "metadata" / "artifact_manifest.csv"
     entry = fx.manifest_entry(manifest)
     runs, entry = fx.load_verified(root / entry["relative_path"], manifest)
     enrichment_path = args.enrichment or root / ENRICHMENT
     enrichment_sha = fx.attach_enrichment(runs, enrichment_path)
 
-    results = fx.run_analyses(runs)
+    results = fx.run_analyses(runs, stratify_by_support_mode=by_support)
     quality = fx.quality_report(runs)
     desc = fx.descriptive_by_fuel(runs)
     out.mkdir(parents=True, exist_ok=True)
-    charts = make_charts(runs, out / "charts")
+    charts = make_charts(runs, out / "charts", by_support)
 
     summary = {
         "analysis": "FLEX run-level exploratory analysis",
-        "analysis_version": ANALYSIS_VERSION,
+        "analysis_version": version,
         "source": {
             "source_id": fx.SOURCE_ID,
             "doi": "10.60555/mbq8-0451",
@@ -289,8 +296,14 @@ def main(argv: list[str] | None = None) -> int:
             "min_n_meaning": "reporting floor only; n >= 5 is not evidence of reliability",
             "pressure_cluster_justification": "clusters identical for gap rules 25-200 mmHg and labelled "
             "by NASA nominal design levels 0.70/1.00/2.03/2.72/3.05 atm",
-            "support_mode_stratification": "every K and Dext stratum is split by support mode "
-            "(free-floating, fiber translated, fiber translation not stated, conflicting sources)",
+            "support_mode_stratification": (
+                "every K and Dext stratum is split by support mode "
+                "(free-floating, fiber translated, fiber translation not stated, conflicting sources)"
+                if by_support
+                else "NOT used: support modes come only from NASA/TP-2015-216046 captions (unregistered); "
+                "strata pool support modes and are labelled support_mode='not_controlled', so support "
+                "mode is an uncontrolled confounder in every K and Dext stratum"
+            ),
             "sensitivity_rows": list(fx.SENSITIVITY_TAGS),
             "statistic": "Spearman rank correlation (descriptive; no p-values, no regression, no prediction)",
             "compositional_rule": "O2 only within N2-only runs; CO2/He only at fixed O2 (with N2-only "
@@ -298,7 +311,9 @@ def main(argv: list[str] | None = None) -> int:
         },
         "quality": {k: v for k, v in quality.items() if k != "flagged_rows"},
         "descriptive_by_fuel": desc,
-        "reported_K_by_fuel_and_support_mode": {
+        "reported_K_by_fuel_and_support_mode": "not computed in v0.3.0 (support mode is not an input)"
+        if not by_support
+        else {
             f: {
                 sm: fx.describe(
                     fx._vals(
@@ -325,6 +340,15 @@ def main(argv: list[str] | None = None) -> int:
         "results": results,
         "charts": charts,
     }
+    if not by_support:  # v0.3.0 only (v0.2.0 outputs stay byte-identical)
+        summary["evidence_eligibility"] = {
+            fx.SOURCE_ID: EligibilityPolicy(root).decision(fx.SOURCE_ID).eligibility.value
+        }
+        summary["unregistered_inputs_remaining"] = (
+            "A6 (extinction diameter) eligibility still uses dext_origin, which reads caption "
+            "extrapolation notes from NASA/TP-2015-216046 (unregistered); FLEX test numbers come from the "
+            "approved Table IX cross-match. See docs/22."
+        )
     # newline="\n": identical bytes on every OS (these hashes are pinned in tests and in the lab dataset)
     (out / "summary.json").write_text(
         json.dumps(summary, indent=2, default=str) + "\n", encoding="utf-8", newline="\n"

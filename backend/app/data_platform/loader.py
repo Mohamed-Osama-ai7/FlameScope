@@ -33,6 +33,7 @@ from app.data_platform.models import (
 from app.data_platform.schema_version import expected_head
 from app.data_platform.settings import manifest_path, registry_path
 from app.data_platform.vocabulary import unit_specs, variable_specs
+from app.domain.eligibility import EligibilityPolicy
 from app.domain.sources import SourceRecord, find_source, load_registry
 
 # source_id -> extractor. Sources without an extractor are reported, never silently skipped.
@@ -247,6 +248,7 @@ def load_all(
     if check_schema:
         assert_schema_at_head(session)
     registry = load_registry(registry_path(root))
+    policy = EligibilityPolicy(root)  # scientific evidence decisions (data/metadata/source_eligibility.csv)
     wanted = source_ids or [r.source_id for r in registry if r.source_type.startswith("NASA_PSI")]
     revision = git_revision(root)
     results: list[SourceLoadResult] = []
@@ -261,6 +263,16 @@ def load_all(
             if not source.usable_as_evidence:
                 withdrawn = _withdraw_loaded_source(session, source)
                 reason = f"{source.verification_status.value} in source_registry.csv; refused"
+                if withdrawn:
+                    reason += f"; {withdrawn} previously loaded measurements withdrawn from analysis"
+                results.append(SourceLoadResult(sid, False, reason))
+                continue
+            decision = policy.decision(sid)
+            if not decision.usable_as_evidence:
+                # e.g. PSI-25: ACQUIRED in the registry but ACQUIRED_BUT_EXCLUDED by the scientific owner.
+                # Refused even if an extractor exists; anything loaded earlier is withdrawn from analysis.
+                withdrawn = _withdraw_loaded_source(session, source)
+                reason = f"{decision.eligibility.value} in source_eligibility.csv; refused"
                 if withdrawn:
                     reason += f"; {withdrawn} previously loaded measurements withdrawn from analysis"
                 results.append(SourceLoadResult(sid, False, reason))
