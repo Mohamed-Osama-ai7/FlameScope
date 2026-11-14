@@ -1,4 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { api, apiUrl } from '../../api/client';
+import type { RunDetail } from '../../api/contracts';
 import { dextClassLabel } from '../charts/specs';
 import type { NumericField } from '../data/types';
 import { FAMILY_LABEL, FIELD_LABEL, NUMERIC_FIELDS, SUPPORT_LABEL } from '../data/types';
@@ -10,6 +12,41 @@ export function EvidenceInspector() {
   const panel = useRef<HTMLDivElement>(null);
   const opener = useRef<HTMLElement | null>(null);
   const r = selectedKey ? byKey.get(selectedKey) : undefined;
+  const [liveRun, setLiveRun] = useState<RunDetail | null>(null);
+  const [loadingLive, setLoadingLive] = useState(false);
+  const [liveError, setLiveError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!inspectorOpen || !r) return;
+    let active = true;
+    setLoadingLive(true);
+    setLiveError(null);
+    setLiveRun(null);
+
+    api.listRuns({ source_record_key: r.record_key, limit: 1 })
+      .then(async (page) => {
+        if (!active) return;
+        if (page.items.length > 0) {
+          try {
+            const detail = await api.getRun(page.items[0].run_id);
+            if (active) setLiveRun(detail);
+          } catch (e: unknown) {
+            if (active) setLiveError(e instanceof Error ? e.message : 'Failed to fetch run details');
+          }
+        } else {
+          if (active) setLiveError('Run not indexed in live database.');
+        }
+      })
+      .catch((err: unknown) => {
+        if (!active) return;
+        setLiveError(err instanceof Error ? err.message : 'Database offline or not configured');
+      })
+      .finally(() => {
+        if (active) setLoadingLive(false);
+      });
+
+    return () => { active = false; };
+  }, [inspectorOpen, r?.record_key]);
 
   useEffect(() => {
     if (!inspectorOpen) return;
@@ -107,6 +144,41 @@ export function EvidenceInspector() {
             {ev.caption_figure && ev.caption_pdf_page && <li>Appendix B Figure {ev.caption_figure} (PDF p. {ev.caption_pdf_page}) — <a href={reportPage(ev.caption_pdf_page) ?? undefined} target="_blank" rel="noreferrer">open figure page</a></li>}
             <li>Extraction: {ev.verification_status}</li>
           </ul>
+        </section>
+
+        <section aria-labelledby="ins-db"><h3 id="ins-db">Scientific Data Platform (Live Database)</h3>
+          {loadingLive && <p className="small muted">Checking live database...</p>}
+          {liveRun && (
+            <div className="live-db-panel">
+              <p><span className="tag ok">Database Verified</span> <code>{liveRun.run_id}</code> · {liveRun.measurements.length} cells stored</p>
+              <div className="table-scroll"><table className="data">
+                <thead><tr><th>Variable</th><th>Live DB Value</th><th>Unit</th><th>Status</th><th>Source Column</th><th>Provenance</th></tr></thead>
+                <tbody>
+                  {liveRun.measurements.map((m) => (
+                    <tr key={m.measurement_id}>
+                      <th scope="row">{m.variable_name}</th>
+                      <td className="num">{m.value !== null ? m.value : '—'}</td>
+                      <td>{m.unit}</td>
+                      <td><span className={`tag ${m.usable_for_analysis ? 'ok' : 'warn'}`}>{m.value_status}</span></td>
+                      <td><code>{m.source_column}</code></td>
+                      <td>
+                        <a href={apiUrl(`/measurements/${m.measurement_id}/provenance`)} target="_blank" rel="noreferrer" className="link small">
+                          Trace NASA cell ↗
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table></div>
+            </div>
+          )}
+          {!loadingLive && !liveRun && (
+            <p className="small muted">
+              {liveError
+                ? `Live database not active (${liveError}). Displaying verified local dataset export v${dataset.analysis_version} (SHA-256 byte-level provenance).`
+                : 'No live database record found.'}
+            </p>
+          )}
         </section>
 
         <section aria-labelledby="ins-prov"><h3 id="ins-prov">Provenance</h3>

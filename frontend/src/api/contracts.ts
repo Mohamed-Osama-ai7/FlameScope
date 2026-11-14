@@ -205,3 +205,127 @@ export interface SearchResponse {
   hits: SearchHit[];
   warnings: string[];
 }
+
+// ---- Scientific Data Platform (/runs, /measurements, /provenance, /data-platform/status) ----
+
+export interface RunSummary {
+  run_id: string;
+  investigation_id: string;
+  source_row: number;
+  source_identifier: string;
+  source_record_key: string | null;
+  combustion_regime: string;
+  material_or_fuel: string | null;
+  test_date: string | null;
+  test_date_raw: string;
+  test_time_gmt_raw: string;
+  end_mode: string | null;
+  quality_flags: string[];
+  derived_attributes: Record<string, unknown>;
+  source_locator: string;
+}
+
+export interface ArtifactRecord {
+  artifact_id: string;
+  investigation_id: string;
+  artifact_kind: string;
+  file_name: string;
+  relative_path: string;
+  media_type: string | null;
+  text_encoding: string | null;
+  byte_size: number;
+  sha256: string;
+  source_url: string;
+  source_version: string | null;
+  license_id: string | null;
+  retrieved_at: string;
+}
+
+export interface MeasurementRecord {
+  measurement_id: string;
+  run_id: string;
+  variable_name: string;
+  role: string;
+  value: number | null;
+  value_status: string;
+  original_value_text: string;
+  unit: string;
+  measured_or_derived: string;
+  usable_for_analysis: boolean;
+  quality_flags: string[];
+  attributes: Record<string, unknown>;
+  uncertainty_value: number | null;
+  uncertainty_type: string | null;
+  coverage_factor: number | null;
+  source_column: string;
+  source_locator: string;
+}
+
+export interface RunDetail extends RunSummary {
+  artifact: ArtifactRecord;
+  measurements: MeasurementRecord[];
+}
+
+export interface PaginatedResult<T> {
+  items: T[];
+  total: number;
+  limit: number;
+  offset: number;
+}
+
+export interface SourceCell {
+  file_name: string;
+  source_row: number;
+  source_column: string;
+  original_value_text: string;
+  original_unit_label: string | null;
+  platform_unit: string;
+  unit_evidence: string | null;
+  source_locator: string;
+}
+
+export interface ProvenanceRecord {
+  measurement: MeasurementRecord;
+  source_cell: SourceCell;
+  run: RunSummary;
+  investigation: {
+    investigation_id: string;
+    title: string;
+    acronym: string | null;
+    combustion_regime: string;
+    source_repository: string;
+    source_url: string;
+    doi: string | null;
+    license_id: string | null;
+    research_area: string | null;
+    official_challenge_resource: boolean;
+    registry_status: string;
+  };
+  artifact: ArtifactRecord;
+  extraction: {
+    extraction_run_id: string;
+    extractor_name: string;
+    extractor_version: string;
+    inputs_json: Record<string, unknown>;
+    parameters_json: Record<string, unknown>;
+    code_revision: string | null;
+    run_count: number;
+    measurement_count: number;
+    first_loaded_at: string;
+    last_loaded_at: string;
+  };
+  extraction_method: string;
+  how_to_verify: string;
+}
+
+export interface DataPlatformStatus {
+  database_configured: boolean;
+  database_reachable: boolean;
+  schema_revision: string | null;
+  expected_schema_revision: string;
+  investigations_loaded: string[];
+  official_challenge_resource_loaded: boolean;
+  runs: number;
+  measurements: number;
+  detail: string | null;
+}

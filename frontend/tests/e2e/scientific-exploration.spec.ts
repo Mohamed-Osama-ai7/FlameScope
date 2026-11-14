@@ -81,6 +81,37 @@ test.describe('scientific explorer API workflow', () => {
     await expect(page.getByText('No analysis methods are registered.')).toBeVisible();
     expect(sourceRequestCount).toBe(2);
   });
+
+  test('displays live scientific database status and runs when data platform is connected', async ({ page }) => {
+    await page.route('**/api/v1/sources', (route) => route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: '[]',
+    }));
+    await page.route('**/api/v1/regimes', (route) => route.fulfill({ status: 200, contentType: 'application/json', body: '[]' }));
+    await page.route('**/api/v1/methods', (route) => route.fulfill({ status: 200, contentType: 'application/json', body: '[]' }));
+    await page.route('**/api/v1/data-platform/status', (route) => route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        database_configured: true,
+        database_reachable: true,
+        schema_revision: '0001',
+        expected_schema_revision: '0001',
+        investigations_loaded: ['PSI-69'],
+        official_challenge_resource_loaded: true,
+        runs: 274,
+        measurements: 2466,
+        detail: null,
+      }),
+    }));
+
+    await openLab(page, 'explorer');
+    await expect(page.getByText('Scientific Data Platform Database')).toBeVisible();
+    await expect(page.getByText('Database Connected')).toBeVisible();
+    await expect(page.getByText('274 runs')).toBeVisible();
+    await expect(page.getByText('2466 cells')).toBeVisible();
+  });
 });
 
 test.describe('comparison validation guardrail', () => {

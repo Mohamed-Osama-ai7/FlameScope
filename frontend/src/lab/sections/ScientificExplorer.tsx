@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { api } from '../../api/client';
-import type { MethodCard, RegimeRecord, SourceRecord } from '../../api/contracts';
+import type { DataPlatformStatus, MethodCard, RegimeRecord, SourceRecord } from '../../api/contracts';
 import type { FlexRecord, NumericField } from '../data/types';
 import { countBy } from '../data/selectors';
 import { useLab } from '../state/LabContext';
@@ -14,6 +14,7 @@ interface ExplorerResources {
   sources: ResourceState<SourceRecord>;
   regimes: ResourceState<RegimeRecord>;
   methods: ResourceState<MethodCard>;
+  platform: ResourceState<DataPlatformStatus>;
 }
 
 const EMPTY_RESOURCE = { items: [], error: null };
@@ -215,6 +216,38 @@ function ExperimentTable({ records, onSelect, oxygenUnit, pressureUnit, burningR
   );
 }
 
+function PlatformStatusCard({ resource, loading }: { resource: ResourceState<DataPlatformStatus>; loading: boolean }) {
+  if (loading) return <LoadingList label="scientific data platform status" />;
+  const status = resource.items[0];
+  return (
+    <section className="card platform-summary" aria-labelledby="platform-title">
+      <div className="explorer-heading">
+        <div>
+          <h3 id="platform-title">Scientific Data Platform Database</h3>
+          <p className="small muted">Live PostgreSQL / SQLite storage for experiment runs, cell measurements, and provenance.</p>
+        </div>
+        <span className={`explorer-status ${status?.database_reachable ? 'status-verified' : 'status-not_yet_acquired'}`}>
+          {status?.database_reachable ? 'Database Connected' : 'Database Offline (503)'}
+        </span>
+      </div>
+      {status?.database_reachable ? (
+        <div className="condition-grid">
+          <div><span className="explorer-label">Stored runs</span><p>{status.runs} runs</p></div>
+          <div><span className="explorer-label">Stored measurements</span><p>{status.measurements} cells</p></div>
+          <div><span className="explorer-label">Investigations loaded</span><p>{status.investigations_loaded.join(', ') || 'None'}</p></div>
+          <div><span className="explorer-label">Schema revision</span><p><code>{status.schema_revision ?? 'none'}</code></p></div>
+        </div>
+      ) : (
+        <p className="small muted">
+          {resource.error
+            ? `Scientific database not configured (${resource.error}). The application uses the verified offline dataset export with SHA-256 byte integrity.`
+            : 'Scientific database is not currently running or configured.'}
+        </p>
+      )}
+    </section>
+  );
+}
+
 function RegistryPanels({ resources, loading, onRetry }: { resources: ExplorerResources; loading: boolean; onRetry: () => void }) {
   return (
     <section className="api-explorer" aria-label="Scientific registry">
@@ -227,7 +260,12 @@ function RegistryPanels({ resources, loading, onRetry }: { resources: ExplorerRe
 
 export function ScientificExplorer() {
   const { dataset, select } = useLab();
-  const [resources, setResources] = useState<ExplorerResources>({ sources: EMPTY_RESOURCE, regimes: EMPTY_RESOURCE, methods: EMPTY_RESOURCE });
+  const [resources, setResources] = useState<ExplorerResources>({
+    sources: EMPTY_RESOURCE,
+    regimes: EMPTY_RESOURCE,
+    methods: EMPTY_RESOURCE,
+    platform: EMPTY_RESOURCE,
+  });
   const [loading, setLoading] = useState(true);
   const [reloadKey, setReloadKey] = useState(0);
   useEffect(() => {
@@ -237,8 +275,9 @@ export function ScientificExplorer() {
       api.listSources().then((items) => ({ items, error: null })).catch((error: unknown) => ({ items: [], error: errorText(error) })),
       api.listRegimes().then((items) => ({ items, error: null })).catch((error: unknown) => ({ items: [], error: errorText(error) })),
       api.listMethods().then((items) => ({ items, error: null })).catch((error: unknown) => ({ items: [], error: errorText(error) })),
-    ]).then(([sources, regimes, methods]) => {
-      if (active) { setResources({ sources, regimes, methods }); setLoading(false); }
+      api.getDataPlatformStatus().then((status) => ({ items: [status], error: null })).catch((error: unknown) => ({ items: [], error: errorText(error) })),
+    ]).then(([sources, regimes, methods, platform]) => {
+      if (active) { setResources({ sources, regimes, methods, platform }); setLoading(false); }
     });
     return () => { active = false; };
   }, [reloadKey]);
@@ -246,6 +285,7 @@ export function ScientificExplorer() {
   return (
     <div className="explorer-page">
       <section className="explorer-intro"><h2>Scientific Explorer</h2><p>Browse the source registry and scientific vocabulary, then inspect individual FLEX test records with their reported conditions and evidence.</p><p className="small muted">Registry metadata comes from the API. Experimental records below come from the verified FLEX dataset shown in the lab.</p></section>
+      <PlatformStatusCard resource={resources.platform} loading={loading} />
       <DatasetSummary dataset={dataset} />
       <ExperimentRecords dataset={dataset} onSelect={select} />
       <RegistryPanels resources={resources} loading={loading} onRetry={retry} />

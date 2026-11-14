@@ -2,12 +2,26 @@ import type {
   ComparisonRequest,
   ComparisonResult,
   CopilotResponse,
+  DataPlatformStatus,
+  MeasurementRecord,
   MethodCard,
+  PaginatedResult,
+  ProvenanceRecord,
   RagSource,
+  RunDetail,
+  RunSummary,
   SearchResponse,
   RegimeRecord,
   SourceRecord,
 } from './contracts';
+import {
+  parseDataPlatformStatus,
+  parseMeasurementRecord,
+  parsePaginatedMeasurements,
+  parsePaginatedRuns,
+  parseProvenanceRecord,
+  parseRunDetail,
+} from './dataPlatformValidation';
 import { parseCopilotResponse, parseRagSource, parseSearchResponse } from './ragValidation';
 import { parseComparison, parseList, parseMethod, parseRegime, parseSource } from './validation';
 
@@ -100,6 +114,58 @@ export const api = {
       signal,
     });
     return parseCopilotResponse(payload);
+  },
+  // ---- Scientific Data Platform (/runs, /measurements, /provenance, /data-platform/status) ----
+  async getDataPlatformStatus(): Promise<DataPlatformStatus> {
+    return parseDataPlatformStatus(await requestJson('/data-platform/status'));
+  },
+  async listRuns(params?: {
+    investigation?: string;
+    fuel?: string;
+    source_record_key?: string;
+    limit?: number;
+    offset?: number;
+  }, signal?: AbortSignal): Promise<PaginatedResult<RunSummary>> {
+    const query = new URLSearchParams();
+    if (params?.investigation) query.set('investigation', params.investigation);
+    if (params?.fuel) query.set('fuel', params.fuel);
+    if (params?.source_record_key) query.set('source_record_key', params.source_record_key);
+    if (params?.limit !== undefined) query.set('limit', String(params.limit));
+    if (params?.offset !== undefined) query.set('offset', String(params.offset));
+    const qs = query.toString();
+    const payload = await requestJson(`/runs${qs ? `?${qs}` : ''}`, { signal });
+    return parsePaginatedRuns(payload);
+  },
+  async getRun(runId: string, signal?: AbortSignal): Promise<RunDetail> {
+    const payload = await requestJson(`/runs/${encodeURIComponent(runId)}`, { signal });
+    return parseRunDetail(payload);
+  },
+  async listMeasurements(params?: {
+    investigation?: string;
+    run_id?: string;
+    variable?: string;
+    usable_only?: boolean;
+    limit?: number;
+    offset?: number;
+  }, signal?: AbortSignal): Promise<PaginatedResult<MeasurementRecord>> {
+    const query = new URLSearchParams();
+    if (params?.investigation) query.set('investigation', params.investigation);
+    if (params?.run_id) query.set('run_id', params.run_id);
+    if (params?.variable) query.set('variable', params.variable);
+    if (params?.usable_only !== undefined) query.set('usable_only', String(params.usable_only));
+    if (params?.limit !== undefined) query.set('limit', String(params.limit));
+    if (params?.offset !== undefined) query.set('offset', String(params.offset));
+    const qs = query.toString();
+    const payload = await requestJson(`/measurements${qs ? `?${qs}` : ''}`, { signal });
+    return parsePaginatedMeasurements(payload);
+  },
+  async getMeasurement(measurementId: string, signal?: AbortSignal): Promise<MeasurementRecord> {
+    const payload = await requestJson(`/measurements/${encodeURIComponent(measurementId)}`, { signal });
+    return parseMeasurementRecord(payload);
+  },
+  async getMeasurementProvenance(measurementId: string, signal?: AbortSignal): Promise<ProvenanceRecord> {
+    const payload = await requestJson(`/measurements/${encodeURIComponent(measurementId)}/provenance`, { signal });
+    return parseProvenanceRecord(payload);
   },
 };
 

@@ -279,3 +279,8 @@ blockquote { margin: 0; padding: 10px 12px; border-left: 3px solid var(--accent)
 .citations { list-style: none; padding: 0; margin: 6px 0 0; display: grid; gap: 8px; }
 .citation blockquote { margin: 6px 0; padding: 6px 10px; border-left: 3px solid var(--border); color: var(--text-2); font-size: 13px; overflow-wrap: anywhere; }
 .measurement-row { flex-wrap: wrap; align-items: center; }
+
+/* Live Scientific Data Platform */
+.platform-summary { border-left: 3px solid var(--accent); }
+.live-db-panel { margin-top: 8px; }
+.live-db-panel p { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
