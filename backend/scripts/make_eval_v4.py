@@ -253,8 +253,9 @@ def main() -> None:
             "gold_chunks": [],
             **{key: v for key, v in it.items() if key != "expected_status"},
         }
-        if "facts" in q and "gold_quote" not in q:
-            q["gold_quote"] = q["facts"][0]  # verify_gold checks it as a verbatim span of a gold chunk
+        facts = q.get("facts")
+        if isinstance(facts, list) and facts and "gold_quote" not in q:
+            q["gold_quote"] = facts[0]  # verify_gold checks it as a verbatim span of a gold chunk
         lines.append(json.dumps(q, ensure_ascii=False))
     DST.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
     print(f"wrote {DST}: {len(lines)} items; {per}")

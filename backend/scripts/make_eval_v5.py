@@ -17,6 +17,7 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
+from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
@@ -91,13 +92,23 @@ def main() -> None:
         k = per.get(cat, 0)
         per[cat] = k + 1
         answerable = "expected_status" not in it
-        q = {"id": f"U{i:02d}", "split": "diagnostic" if k % 2 == 0 else "holdout", "answerable": answerable,
-             "expected_status": "answered" if answerable else it["expected_status"], "gold_chunks": [], **it}
-        q.pop("expected_status", None) if answerable else None
-        q["expected_status"] = "answered" if answerable else it["expected_status"]
+        entry: dict[str, Any] = {
+            "id": f"U{i:02d}",
+            "split": "diagnostic" if k % 2 == 0 else "holdout",
+            "answerable": answerable,
+            "expected_status": "answered" if answerable else it["expected_status"],
+            "gold_chunks": [],
+            **it,
+        }
         if answerable:
-            q["gold_quote"] = q["facts"][0]
-        lines.append(json.dumps(q, ensure_ascii=False))
+            entry.pop("expected_status", None)
+            entry["expected_status"] = "answered"
+            facts_list = entry.get("facts")
+            if isinstance(facts_list, list) and facts_list:
+                entry["gold_quote"] = facts_list[0]
+        else:
+            entry["expected_status"] = it["expected_status"]
+        lines.append(json.dumps(entry, ensure_ascii=False))
     DST.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
     print(f"wrote {DST}: {len(lines)} items; {per}")
 
