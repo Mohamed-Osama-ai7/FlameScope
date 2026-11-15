@@ -33,7 +33,7 @@ jobs:
       - name: Install backend dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -e "backend[dev,data,rag,vision]"
+          pip install -e "backend[dev,data,rag,vision,orchestrator]"
 
       - name: Run Ruff Lint Check
         working-directory: backend
