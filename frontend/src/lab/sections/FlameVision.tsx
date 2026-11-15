@@ -39,6 +39,9 @@ export function FlameVision() {
   const [loading, setLoading] = useState<boolean>(true);
   const [source, setSource] = useState<'live' | 'offline_baseline'>('offline_baseline');
   const [error, setError] = useState<string | null>(null);
+  // why the live API was not used, and live test summaries that failed to load (never hidden)
+  const [liveFailure, setLiveFailure] = useState<string | null>(null);
+  const [failedTests, setFailedTests] = useState<string[]>([]);
 
   // Series viewer controls
   const [chartMode, setChartMode] = useState<'d2' | 'd'>('d2');
@@ -61,6 +64,7 @@ export function FlameVision() {
         const testPoints = evalData.tests.map((t) => t.test_point);
         const summaries: Record<string, VisionTestSummary> = {};
         const seriesData: Record<string, VisionFrame[]> = {};
+        const failed: string[] = [];
 
         await Promise.all(
           testPoints.map(async (tp) => {
@@ -76,7 +80,7 @@ export function FlameVision() {
                 }
               }
             } catch {
-              // Individual test fetch error
+              failed.push(tp); // reported in the UI, not silently dropped
             }
           })
         );
@@ -86,9 +90,12 @@ export function FlameVision() {
         setMethodCard(methodData);
         setTestSummaries(summaries);
         setTestSeries(seriesData);
+        setFailedTests(failed.sort());
         setSource('live');
-      } catch {
-        // Live API unreachable; load verified offline baseline
+        setLiveFailure(null);
+      } catch (liveErr: unknown) {
+        // Live API unreachable: show the stored snapshot, labelled as not live
+        if (active) setLiveFailure(liveErr instanceof Error ? liveErr.message : 'request failed');
         try {
           const baseline = await loadOfflineVisionBaseline();
           if (!active) return;
@@ -168,12 +175,26 @@ export function FlameVision() {
             title="FastAPI Flame Vision API service connection status"
           >
             <i className={source === 'live' ? 'online' : 'offline'} aria-hidden="true" />
-            {source === 'live' ? 'Live Vision API' : 'Verified Baseline (v1.0.0)'}
+            {loading ? 'Loading…' : source === 'live' ? 'Live Vision API' : 'Offline snapshot · not live'}
           </span>
           <span className="badge info" title="Combustion regime">FLEX Droplet</span>
           <span className="badge warning" title="Verification state">Implemented & Compared · Not Validated</span>
         </div>
       </div>
+
+      {!loading && source === 'offline_baseline' && !error && (
+        <div className="callout warn" role="alert" data-testid="vision-offline-notice" style={{ margin: '14px 0' }}>
+          <strong>Live Vision API unavailable</strong> ({liveFailure ?? 'request failed'}). Showing the stored
+          offline snapshot <code>flame_vision_baseline_v1.0.0.json</code>, not live results; it may differ from the
+          current pipeline.
+        </div>
+      )}
+      {!loading && source === 'live' && failedTests.length > 0 && (
+        <div className="callout warn" role="alert" style={{ margin: '14px 0' }}>
+          <strong>Incomplete live results:</strong> {failedTests.length} test summar
+          {failedTests.length === 1 ? 'y' : 'ies'} could not be loaded from the live API ({failedTests.join(', ')}).
+        </div>
+      )}
 
       {/* Critical Scientific Safeguards Banner */}
       <div className="callout warning" role="note" style={{ margin: '14px 0' }}>

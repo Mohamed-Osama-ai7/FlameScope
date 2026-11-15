@@ -9,7 +9,7 @@ test.describe('Physics Analysis Engine E2E', () => {
     await expect(page.getByRole('heading', { name: /Combustion Physics & Published Results/i })).toBeVisible();
 
     // Verification badges
-    await expect(page.locator('.status-badges')).toContainText(/Verified Baseline|Live API/i);
+    await expect(page.locator('.status-badges')).toContainText(/Offline snapshot · not live|Live Physics API/i);
     await expect(page.getByText(/PSI-69 FLEX Evidence/i)).toBeVisible();
 
     // Subnav tabs exist

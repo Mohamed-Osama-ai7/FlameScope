@@ -74,7 +74,9 @@ test('no console errors or failed requests in any section, both themes', async (
   const problems: string[] = [];
   page.on('console', (m) => {
     // The header's optional backend /health probe fails when the API is not running; that is expected.
-    if (m.type() === 'error' && !/ERR_CONNECTION_REFUSED|Failed to load resource.*(8000|health)|NS_ERROR_CONNECTION_REFUSED|Could not connect/i.test(m.text())) problems.push(`console: ${m.text()}`);
+    // Production builds call the same origin: without a backend, /health and /api/v1 fail there instead of on :8000.
+    const backendUrl = /\/health$|\/api\/v1\//.test(m.location().url ?? '');
+    if (m.type() === 'error' && !backendUrl && !/ERR_CONNECTION_REFUSED|Failed to load resource.*(8000|health)|NS_ERROR_CONNECTION_REFUSED|Could not connect/i.test(m.text())) problems.push(`console: ${m.text()}`);
   });
   page.on('pageerror', (e) => problems.push(`pageerror: ${e.message}`));
   for (const theme of ['dark', 'light'] as const) {

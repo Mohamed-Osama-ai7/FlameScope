@@ -42,6 +42,8 @@ export function AnalysisResults() {
   const [physicsLoading, setPhysicsLoading] = useState<boolean>(true);
   const [physicsSource, setPhysicsSource] = useState<'live' | 'offline_baseline'>('offline_baseline');
   const [physicsError, setPhysicsError] = useState<string | null>(null);
+  // why the live API was not used (shown whenever the offline snapshot is displayed)
+  const [liveFailure, setLiveFailure] = useState<string | null>(null);
 
   // Diagnostic interactive filters
   const [d2Fuel, setD2Fuel] = useState<FuelFilter>('all');
@@ -71,8 +73,10 @@ export function AnalysisResults() {
       setD2Data(d2);
       setO2Data(o2);
       setPhysicsSource('live');
-    } catch {
-      // Live API unreachable or returned 503; load verified offline baseline
+      setLiveFailure(null);
+    } catch (liveErr: unknown) {
+      // Live API unreachable or returned an error: show the stored snapshot, labelled as not live
+      setLiveFailure(liveErr instanceof Error ? liveErr.message : 'request failed');
       try {
         const baseline = await loadOfflinePhysicsBaseline();
         // Client-side filter if user selected a fuel for offline view
@@ -148,16 +152,18 @@ export function AnalysisResults() {
               </p>
             </div>
             <div className="status-badges">
-              {physicsSource === 'live' ? (
+              {physicsLoading ? (
+                <span className="explorer-status">Loading…</span>
+              ) : physicsSource === 'live' ? (
                 <span className="explorer-status status-verified" title="Results generated live by FastAPI backend">
                   ● Live Physics API
                 </span>
               ) : (
                 <span
-                  className="explorer-status"
-                  title="Results loaded from verified precomputed baseline v0.1.1 (SHA-256 verified)"
+                  className="explorer-status status-quarantined"
+                  title="Live Physics API unavailable; showing the stored file physics_baseline_v0.1.1.json, not live results"
                 >
-                  Verified Baseline v0.1.1
+                  Offline snapshot · not live
                 </span>
               )}
             </div>
@@ -256,6 +262,14 @@ export function AnalysisResults() {
                 <span />
                 <span />
                 <span />
+              </div>
+            )}
+
+            {!physicsLoading && physicsSource === 'offline_baseline' && !physicsError && (
+              <div className="callout warn" role="alert" data-testid="physics-offline-notice">
+                <strong>Live Physics API unavailable</strong> ({liveFailure ?? 'request failed'}). Showing the stored
+                offline snapshot <code>{d2Data?.analysis_version ?? 'physics_baseline_v0.1.1'}</code>, not live
+                results; it may differ from the current physics engine.
               </div>
             )}
 

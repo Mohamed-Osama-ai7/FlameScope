@@ -63,7 +63,7 @@ npm install
 npm run dev
 ```
 
-The frontend API client uses `http://127.0.0.1:8000` by default. Set `VITE_API_BASE_URL` to the backend origin when it runs elsewhere.
+In development the frontend API client uses `http://127.0.0.1:8000`; a production build calls the same origin (`/api/v1`, `/health`). Set `VITE_API_BASE_URL` to override: any URL in development, an https backend or a same-origin path in production (loopback and plain-http values are ignored there).
 
 ### 3. Audit downloaded files without modifying them
 

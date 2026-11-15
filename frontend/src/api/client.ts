@@ -32,8 +32,26 @@ import { parseCopilotResponse, parseRagSource, parseSearchResponse } from './rag
 import { parseComparison, parseList, parseMethod, parseRegime, parseSource } from './validation';
 import { parseVisionEvaluation, parseVisionFrameList, parseVisionTestSummary } from './visionValidation';
 
-export const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? 'http://127.0.0.1:8000')
-  .replace(/\/+$/, '');
+export const DEV_API_BASE_URL = 'http://127.0.0.1:8000';
+const LOOPBACK = /^https?:\/\/(localhost|127\.\d+\.\d+\.\d+|\[::1\]|0\.0\.0\.0)(:\d+)?(\/|$)/i;
+
+/**
+ * Base URL prepended to `/api/v1/...` and `/health`.
+ * - Development: VITE_API_BASE_URL if set, else the local backend (http://127.0.0.1:8000).
+ * - Production: same origin ('' -> `/api/v1`, `/health`), unless VITE_API_BASE_URL is a usable production
+ *   backend: an https URL that is not loopback, or a same-origin path such as `/backend`. A loopback or
+ *   plain-http override is ignored in production (it can never be reached from a deployed page).
+ */
+export function resolveApiBaseUrl(env: { DEV?: boolean; VITE_API_BASE_URL?: string }): string {
+  const explicit = (env.VITE_API_BASE_URL ?? '').trim().replace(/\/+$/, '');
+  if (env.DEV) return explicit || DEV_API_BASE_URL;
+  if (/^https:\/\//i.test(explicit) && !LOOPBACK.test(explicit)) return explicit;
+  if (/^\/[^/]/.test(explicit)) return explicit;
+  if (explicit) console.warn(`Ignoring VITE_API_BASE_URL="${explicit}" in production; using same-origin /api/v1.`);
+  return '';
+}
+
+export const API_BASE_URL = resolveApiBaseUrl(import.meta.env);
 
 export class ApiError extends Error {
   constructor(message: string, readonly status: number) {
