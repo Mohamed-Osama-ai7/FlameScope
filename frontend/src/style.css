@@ -64,6 +64,7 @@ button.link { background: none; border: none; color: var(--accent); padding: 2px
 .app { max-width: 1480px; margin: 0 auto; padding: 18px 20px 24px; }
 .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--border); padding-bottom: 14px; }
 .brand { display: flex; align-items: center; gap: 12px; }
+a.brand { color: inherit; text-decoration: none; }
 .brand h1 { margin: 2px 0 0; font-size: 21px; letter-spacing: 0.02em; }
 .mark { width: 44px; height: 44px; border: 1px solid var(--accent); border-radius: 12px; display: grid; place-items: center; color: var(--accent); font-weight: 800; letter-spacing: 0.08em; }
 .top-actions { display: flex; gap: 10px; align-items: center; }
@@ -77,6 +78,8 @@ button.link { background: none; border: none; color: var(--accent); padding: 2px
 .banner { font-size: 12px; color: var(--text-2); border: 1px dashed var(--border); border-radius: 8px; padding: 7px 10px; margin-bottom: 14px; }
 
 .layout { display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 16px; align-items: start; }
+.layout-wide { grid-template-columns: minmax(0, 1fr); }
+.layout-wide .filters-wrap { display: none; }
 .filters-wrap { position: sticky; top: 10px; max-height: calc(100vh - 20px); overflow: auto; }
 .filters-toggle { display: none; width: 100%; margin-bottom: 8px; }
 main { min-width: 0; scroll-margin-top: 12px; }

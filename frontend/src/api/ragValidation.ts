@@ -73,6 +73,14 @@ function parseClaim(p: unknown): CopilotClaim {
   return p as unknown as CopilotClaim;
 }
 
+const UNCERTAINTY_KINDS = ['measurement', 'data', 'model', 'retrieval'];
+
+function parseUncertainty(p: unknown): void {
+  if (!isObj(p) || !UNCERTAINTY_KINDS.includes(String(p.kind)) || !isStr(p.code) || !isStr(p.detail) || !strList(p.evidence)) {
+    fail('Uncertainty item');
+  }
+}
+
 export function parseCopilotResponse(p: unknown): CopilotResponse {
   if (!isObj(p) || !COPILOT_STATUS.includes(p.status as CopilotStatus) || !isStr(p.answer)
     || !Array.isArray(p.claims) || !isObj(p.evidence) || !strList(p.warnings) || !isStr(p.notice)
@@ -83,6 +91,10 @@ export function parseCopilotResponse(p: unknown): CopilotResponse {
     fail('Copilot');
   }
   p.claims.forEach(parseClaim);
+  if (p.uncertainty !== undefined) {
+    if (!Array.isArray(p.uncertainty)) fail('Copilot');
+    p.uncertainty.forEach(parseUncertainty);
+  }
   return p as unknown as CopilotResponse;
 }
 

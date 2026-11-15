@@ -138,6 +138,17 @@ function CopilotAnswer({ result }: { result: CopilotResponse }) {
         <div className="callout"><strong>Not in the usable evidence</strong><ul>{result.evidence.missing.map((f) => <li key={f}>{f}</li>)}</ul></div>
       )}
       {verification && <p className="small muted">{verification}</p>}
+      {result.uncertainty && result.uncertainty.length > 0 && (
+        <div className="callout" data-testid="copilot-uncertainty">
+          <strong>Uncertainty &amp; limits</strong>
+          <ul className="small">
+            {result.uncertainty.map((u) => (
+              <li key={`${u.kind}:${u.code}`}><span className="tag">{u.kind}</span> {u.detail}</li>
+            ))}
+          </ul>
+          <p className="small muted">Derived from the evidence in this answer. FlameScope reports no confidence score.</p>
+        </div>
+      )}
       {result.warnings.length > 0 && <ul className="small muted">{result.warnings.map((w) => <li key={w}>{w}</li>)}</ul>}
       <p className="small muted">{result.notice}</p>
     </section>

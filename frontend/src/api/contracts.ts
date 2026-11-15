@@ -159,6 +159,16 @@ export interface CopilotClaim {
   measurement_status: EvidenceStatus | null;
 }
 
+export type UncertaintyKind = 'measurement' | 'data' | 'model' | 'retrieval';
+
+/** Deterministic uncertainty item (backend app/rag/uncertainty.py). There is no confidence score. */
+export interface UncertaintyItem {
+  kind: UncertaintyKind;
+  code: string;
+  detail: string;
+  evidence: string[];
+}
+
 export interface CopilotResponse {
   status: CopilotStatus;
   answer: string;
@@ -169,6 +179,7 @@ export interface CopilotResponse {
   measurement_verification: MeasurementVerification;
   source_eligibility: Record<string, string>;
   notice: string;
+  uncertainty?: UncertaintyItem[]; // absent on older backends
 }
 
 export interface MeasurementRef {

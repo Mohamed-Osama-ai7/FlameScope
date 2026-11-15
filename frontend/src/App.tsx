@@ -16,6 +16,7 @@ import { Overview } from './lab/sections/Overview';
 import { Quality } from './lab/sections/Quality';
 import { ScientificExplorer } from './lab/sections/ScientificExplorer';
 import { LabProvider, useLab } from './lab/state/LabContext';
+import { Quasar } from './quasar/Quasar';
 
 const SECTIONS = [
   { id: 'overview', label: 'Overview' },
@@ -31,9 +32,14 @@ const SECTIONS = [
   { id: 'observations', label: 'Observations' },
 ] as const;
 type SectionId = (typeof SECTIONS)[number]['id'];
+type RouteId = SectionId | 'home';
+// Views that do not use the Lab's visual filters: the rail is hidden there so the content gets the full width.
+const NO_FILTER_VIEWS: ReadonlySet<RouteId> = new Set<RouteId>(['explorer', 'comparison', 'vision', 'copilot']);
 
-function parseHash(): { section: SectionId; param?: string } {
+function parseHash(): { section: RouteId; param?: string } {
   const [s, ...rest] = window.location.hash.replace(/^#/, '').split('/');
+  // QUASAR entry: no hash (or #home / #quasar). Every Lab section keeps its existing hash.
+  if (s === '' || s === 'home' || s === 'quasar') return { section: 'home' };
   const section = (SECTIONS.find((x) => x.id === s)?.id ?? 'overview') as SectionId;
   return { section, param: rest.length ? decodeURIComponent(rest.join('/')) : undefined };
 }
@@ -73,6 +79,7 @@ function Shell() {
     return () => window.removeEventListener('hashchange', on);
   }, []);
   useEffect(() => {
+    if (route.section === 'home') return; // the QUASAR entry sets its own title
     document.title = `${SECTIONS.find((s) => s.id === route.section)?.label} · FlameScope Lab`;
     if (previousRoute.current !== routeIdentity) {
       previousRoute.current = routeIdentity;
@@ -80,12 +87,14 @@ function Shell() {
     }
   }, [route.section, route.param, routeIdentity]);
 
+  if (route.section === 'home') return <Quasar theme={theme} setTheme={setTheme} />;
+
   return (
     <div className="app">
       <a className="skip" href="#main">Skip to content</a>
       <header className="topbar">
-        <div className="brand"><div className="mark" aria-hidden="true">FS</div>
-          <div><span className="eyebrow">UNDERFITTED · SCIENTIFIC EXPLORATION LAB</span><h1>FlameScope</h1></div></div>
+        <a className="brand" href="#home" title="Back to the QUASAR entry"><div className="mark" aria-hidden="true">FS</div>
+          <div><span className="eyebrow">UNDERFITTED · SCIENTIFIC EXPLORATION LAB</span><h1>FlameScope</h1></div></a>
         <div className="top-actions">
           <ApiStatus />
           <button type="button" className="ghost" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}>
@@ -101,7 +110,7 @@ function Shell() {
       <div className="banner" role="note">
         Independent research prototype · not NASA-endorsed · not a fire-safety tool · descriptive exploration of NASA-reported FLEX values (analysis v{dataset.analysis_version}).
       </div>
-      <div className="layout">
+      <div className={`layout${NO_FILTER_VIEWS.has(route.section) ? ' layout-wide' : ''}`}>
         <div className={`filters-wrap ${filtersOpen ? 'open' : ''}`}>
           <button type="button" className="filters-toggle" aria-expanded={filtersOpen} aria-controls="filters-panel" onClick={() => setFiltersOpen(!filtersOpen)}>
             {filtersOpen ? 'Hide filters' : 'Show filters'}

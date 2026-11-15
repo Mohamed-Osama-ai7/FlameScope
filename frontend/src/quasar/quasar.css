@@ -1,0 +1,62 @@
+/* QUASAR entry (landing). Uses the Lab's design tokens; the cinematic hero is dark in both themes. */
+.quasar { max-width: 1200px; margin: 0 auto; padding: 0 16px 32px; }
+.q-bar { display: flex; align-items: center; gap: 10px; padding: 14px 0; }
+.q-logo { color: var(--accent); font-size: 22px; }
+.q-bar strong { letter-spacing: 0.22em; }
+.q-bar .ghost { white-space: nowrap; }
+.q-bar-sub { color: var(--text-3); font-size: 12px; letter-spacing: 0.08em; }
+.q-spacer { flex: 1; }
+.q-enter { background: var(--accent); color: var(--accent-ink); border-radius: 999px; padding: 9px 18px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.q-ghost { border: 1px solid #ffffff55; color: #f4f6fa; border-radius: 999px; padding: 9px 18px; text-decoration: none; }
+.q-enter:focus-visible, .q-ghost:focus-visible, .q-card:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.q-hero { position: relative; border-radius: 18px; overflow: hidden; min-height: min(78vh, 640px); background: #050914; color: #f4f6fa; display: flex; align-items: center; }
+.q-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 78% center; }
+.q-hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, #050914 8%, #050914cc 38%, #05091400 72%); }
+.q-hero-copy { position: relative; padding: clamp(24px, 5vw, 64px); max-width: 620px; }
+.q-eyebrow { font-size: 11px; letter-spacing: 0.22em; color: var(--accent); font-weight: 700; margin: 0 0 10px; }
+.q-hero .q-eyebrow { color: #46d3e6; }
+.q-hero h1 { font-size: clamp(48px, 9vw, 96px); letter-spacing: 0.08em; margin: 0 0 12px; line-height: 1; }
+.q-lead { font-size: clamp(18px, 2.4vw, 24px); margin: 0 0 12px; line-height: 1.35; }
+.q-lead strong { color: #ffa52e; }
+.q-sub { color: #c3cddc; max-width: 46ch; margin: 0 0 22px; }
+.q-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.q-credit { position: absolute; right: 14px; bottom: 10px; margin: 0; font-size: 11px; color: #a4b0c6; max-width: 46ch; text-align: right; }
+.q-section { padding: 56px 0 8px; }
+.q-section h2 { font-size: clamp(26px, 4vw, 38px); margin: 0 0 12px; }
+.q-text { color: var(--text-2); max-width: 70ch; line-height: 1.6; }
+.q-buoyancy { display: grid; grid-template-columns: minmax(240px, 380px) 1fr; gap: 28px; align-items: center; margin-top: 18px; background: var(--surface-1); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+.q-flame-svg { width: 100%; height: auto; max-height: 420px; overflow: visible; }
+.q-ring { fill: none; stroke: var(--accent); stroke-width: 1; stroke-dasharray: 3 5; }
+.q-arrow line, .q-arrow polyline, .q-plume line, .q-plume polyline { stroke: #46d3e6; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.q-droplet { fill: var(--text-1); opacity: 0.55; }
+.q-buoyancy-controls label { display: block; margin-bottom: 8px; color: var(--text-2); }
+.q-buoyancy-controls input[type='range'] { width: 100%; accent-color: var(--accent); }
+.q-scale { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 12px; color: var(--text-3); margin-top: 6px; }
+.q-caption { font-size: 12px; color: var(--text-3); margin: 12px 0 0; }
+.q-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 18px; }
+.q-card { display: block; background: var(--surface-1); border: 1px solid var(--border); border-radius: 14px; padding: 18px; text-decoration: none; color: var(--text-1); transition: border-color 0.15s, transform 0.15s; }
+.q-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.q-card h3 { margin: 6px 0; }
+.q-card p { color: var(--text-2); font-size: 14px; margin: 0 0 12px; }
+.q-num { color: var(--accent); font-weight: 800; letter-spacing: 0.1em; }
+.q-link { color: var(--accent); font-weight: 600; font-size: 14px; }
+.q-ledger { list-style: none; margin: 16px 0 0; padding: 0; max-width: 640px; display: grid; gap: 6px; }
+.q-ledger li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 14px; background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; }
+.q-ledger-note { color: var(--text-3); margin-top: 16px; }
+.q-state { font-size: 12px; font-weight: 700; border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; }
+.q-state-pending_verification { color: var(--warn); border-color: var(--warn); }
+.q-state-acquired_but_excluded, .q-state-quarantined, .q-state-unregistered { color: var(--bad); border-color: var(--bad); }
+.q-state-verified_eligible { color: var(--ok); border-color: var(--ok); }
+.q-foot { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--text-3); font-size: 12px; }
+.q-foot a { color: var(--accent); }
+@media (max-width: 720px) {
+  .q-buoyancy { grid-template-columns: 1fr; }
+  .q-bar-sub { display: none; }
+  /* image on top, copy below, so the real NASA flame stays visible on phones */
+  .q-hero { display: block; min-height: 0; }
+  .q-hero-img { position: static; height: 240px; object-position: 80% center; }
+  .q-hero-shade { display: none; }
+  .q-hero-copy { padding: 22px 20px 6px; }
+  .q-credit { position: static; text-align: left; padding: 0 20px 16px; max-width: none; }
+}
+@media (prefers-reduced-motion: reduce) { .q-card { transition: none; } }

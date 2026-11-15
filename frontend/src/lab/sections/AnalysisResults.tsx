@@ -147,7 +147,7 @@ export function AnalysisResults() {
               <span className="eyebrow">FlameScope Scientific Analysis · PSI-69 FLEX Evidence</span>
               <h2 id="analysis-main-title">Combustion Physics & Published Results</h2>
               <p className="question">
-                Explore physics-informed diagnostics ($d^2$-law internal consistency), regression models (ambient
+                Explore physics-informed diagnostics (d²-law internal consistency), regression models (ambient
                 oxygen effect on burning rates with robust HC3 inference), and published correlation strata.
               </p>
             </div>
@@ -207,13 +207,13 @@ export function AnalysisResults() {
             <div className="callout" role="note">
               <strong>Physics Diagnostic Contract.</strong> Tests the internal consistency of NASA-reported{' '}
               <code>D₀</code>, <code>D_ext</code>, burning-rate constant <code>K</code>, and burn time{' '}
-              <code>t_burn</code> with the classical $d^2$-law:
+              <code>t_burn</code> with the classical d²-law:
               <p className="formula" style={{ margin: '6px 0' }}>
                 <code>t_d2 = (D₀² - D_ext²) / K ;  r = t_d2 / t_burn  (from D(t)² = D₀² - K·t)</code>
               </p>
-              This is a <em>data-quality screening diagnostic</em>, not a physical validation of the $d^2$-law.
-              Because reported $K$ excludes the heat-up transient and burn-time definitions are undocumented,{' '}
-              $r = 1.0$ is not expected. Runs far from their fuel's typical ratio are flagged for investigator review,
+              This is a <em>data-quality screening diagnostic</em>, not a physical validation of the d²-law.
+              Because reported K excludes the heat-up transient and burn-time definitions are undocumented,{' '}
+              r = 1.0 is not expected. Runs far from their fuel's typical ratio are flagged for investigator review,
               never silently altered or discarded.
             </div>
 
@@ -342,7 +342,7 @@ export function AnalysisResults() {
                       <h3>Usable: {d2Data.n_runs} / 274 Runs</h3>
                     </div>
                     <p className="small muted">
-                      Runs excluded from the $d^2$ diagnostic by strict NASA data verification rules:
+                      Runs excluded from the d² diagnostic by strict NASA data verification rules:
                     </p>
                     <ul className="exclusion-list">
                       {Object.entries(d2Data.excluded).map(([reason, count]) => (
@@ -434,7 +434,7 @@ export function AnalysisResults() {
                         All Evaluated Runs ({filteredD2Runs.length} matching)
                       </h3>
                       <p className="small muted">
-                        Search and inspect all usable extinction runs and their computed $d^2$-law consistency.
+                        Search and inspect all usable extinction runs and their computed d²-law consistency.
                       </p>
                     </div>
                     <button
@@ -530,7 +530,7 @@ export function AnalysisResults() {
             <div className="callout" role="note">
               <strong>Within-Stratum OLS Regression Contract.</strong> Examines the linear association between
               ambient oxygen mole fraction X_O₂ and the reported burning rate constant K holding diluent
-              (N₂-only), pressure cluster, and droplet support mode strictly fixed:
+              (N₂-only) and pressure cluster fixed (droplet support mode is not controlled; see limitations below):
               <p className="formula" style={{ margin: '6px 0' }}>
                 <code>K = b₀ + b₁·X_O₂  (sensitivity check: + b₂·D₀) ; OLS with HC3 robust standard errors</code>
               </p>

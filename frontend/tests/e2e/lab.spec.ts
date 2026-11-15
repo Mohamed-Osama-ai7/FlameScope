@@ -4,7 +4,7 @@ import { firstPointPosition, openLab, waitForPlot } from './helpers';
 
 test.describe('Scientific Exploration Lab · verified FLEX v0.2.0 data', () => {
   test('overview derives counts from source records and distinguishes records from tests', async ({ page }) => {
-    await openLab(page);
+    await openLab(page, 'overview');
     await expect(page.getByRole('heading', { name: /What this dataset contains/ })).toBeVisible();
     await expect(page.locator('.tile', { hasText: 'Records (PSI-69 rows)' })).toContainText('274');
     await expect(page.locator('.tile', { hasText: 'Unique FLEX identifiers' })).toContainText('273');
@@ -155,7 +155,7 @@ test.describe('Scientific Exploration Lab · verified FLEX v0.2.0 data', () => {
   });
 
   test('keyboard: sections, filters and inspector are operable without a mouse', async ({ page }) => {
-    await openLab(page);
+    await openLab(page, 'overview');
     await page.keyboard.press('Tab');
     await expect(page.getByRole('link', { name: 'Skip to content' })).toBeFocused();
     await page.getByRole('link', { name: 'Observations', exact: true }).focus();
